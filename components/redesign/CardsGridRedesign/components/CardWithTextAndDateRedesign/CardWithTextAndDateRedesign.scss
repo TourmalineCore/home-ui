@@ -1,0 +1,17 @@
+.card-with-text-and-date-redesign {
+  &__text {
+    @include caption;
+
+    margin-bottom: 4px;
+
+    @include desktop-xl {
+      margin-bottom: 8px;
+    }
+  }
+
+  &__date {
+    @include body-m;
+
+    color: $color-grey-300-redesign;
+  }
+}

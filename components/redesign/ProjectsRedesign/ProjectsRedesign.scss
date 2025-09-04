@@ -1,0 +1,46 @@
+.projects-redesign {
+  $grid-mobile-gap: 32px;
+  $grid-desktop-gap: 12px;
+
+  padding-top: 40px;
+  padding-bottom: 40px;
+  background-color: $color-white;
+
+  &__cards {
+    gap: $grid-mobile-gap;
+
+    @include tablet {
+      gap: $grid-desktop-gap;
+    }
+  }
+
+  // adds padding to the last block in the chain
+  &:not(:has(+ &)) {
+    padding-bottom: 40px;
+
+    @include desktop {
+      padding-bottom: 48px;
+    }
+  }
+
+  & + & {
+    @media (width < $tablet-width) {
+      padding-top: 0;
+    }
+  }
+
+  @include tablet {
+    padding-top: 24px;
+    padding-bottom: 24px;
+  }
+
+  @include desktop {
+    padding-top: 48px;
+    padding-bottom: 48px;
+  }
+
+  @include desktop-xl {
+    padding-top: 72px;
+    padding-bottom: 72px;
+  }
+}

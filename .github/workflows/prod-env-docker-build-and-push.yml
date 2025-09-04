@@ -1,0 +1,13 @@
+name: Publish Docker image for prod-env
+
+on:
+  push:
+    branches:
+      - master
+      - feature/*
+
+jobs:
+  push_to_registry:
+    uses: TourmalineCore/home-github-workflows/.github/workflows/docker-build-and-push.yml@master
+    # without this it cannot login to the registry
+    secrets: inherit

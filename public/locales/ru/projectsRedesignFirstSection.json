@@ -1,0 +1,24 @@
+{
+  "title": "Проекты",
+  "projectCardsWithImage": [
+    {
+      "imageUrl": "/images/zoo-project.jpg",
+      "title": "Pelican",
+      "description": "Open-source сайт для\u00A0Челябинского зоопарка, который мы\u00A0сделали на\u00A0благотворительной основе",
+      "link": "https://chelzoo.ru",
+      "size": "S",
+      "isNda": false
+    },
+    {
+      "imageUrl": "/images/tourmanique-project.png",
+      "title": "Tourmanique",
+      "description": "Сервис для определения уникальности фотографий",
+      "size": "L",
+      "link": "https://www.behance.net/gallery/203111257/Photo-Uniqueness-Detection-Service-UI-UX",
+      "isNda": false
+    }
+  ],
+  "textBlockTitle": "Делаем проекты для B2B, B2C, муниципальных и\u00A0благотворительных организаций, техкомпаний и\u00A0инновационных стартапов.",
+  "textBlockMarkdown": "Челябинский зоопарк, Fairaction, Senmotion, Industry Transformation Solutions, Daoism Systems\n<span className='blue-deep-color'>+ NDA клиенты</span>",
+  "showOnMobile": true
+}

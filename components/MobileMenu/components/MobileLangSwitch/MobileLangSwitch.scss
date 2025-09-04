@@ -1,0 +1,47 @@
+.mobile-lang-switch {
+  &__list {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 1.1;
+    gap: 24px;
+
+    @include desktop-xl {
+      font-size: 17px;
+      line-height: 1.5;
+    }
+  }
+
+  &__link {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    text-transform: uppercase;
+    color: inherit;
+    opacity: 0.5;
+
+    &--active,
+    &:focus,
+    &:active {
+      opacity: 1;
+    }
+
+    @media (hover: hover) {
+      &:hover {
+        opacity: 1;
+      }
+    }
+  }
+
+  &__icon {
+    margin-right: 8px;
+    width: 16px;
+    height: 16px;
+  }
+
+  svg {
+    display: block;
+  }
+}

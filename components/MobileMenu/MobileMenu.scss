@@ -1,0 +1,115 @@
+.mobile-menu {
+  position: fixed;
+  top: 0;
+  z-index: $mobile-menu;
+  overflow: hidden scroll;
+  padding: 40px 0;
+  width: 100%;
+  height: 100%;
+  background:
+    linear-gradient(
+        89.5deg,
+        $color-purple-black 0.45%,
+        $color-black 99.59%
+      );
+
+  &__inner {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+
+  &__top {
+    display: flex;
+    align-items: center;
+  }
+
+  &__logo {
+    position: relative;
+    display: block;
+    width: 135px;
+    height: $header-logo-height;
+
+    // svg {
+    //   display: block;
+    //   width: 100%;
+    //   height: 100%;
+    // }
+  }
+
+  &__close {
+    margin-left: auto;
+    border: none;
+    padding: 0;
+    width: 24px;
+    height: 24px;
+    background-color: transparent;
+    cursor: pointer;
+    transition: opacity 0.3s;
+
+    svg {
+      display: block;
+      width: 100%;
+      height: 100%;
+    }
+
+    &:focus,
+    &:active {
+      opacity: 0.6;
+    }
+
+    @media (hover: hover) {
+      &:hover {
+        opacity: 0.6;
+      }
+    }
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    margin-top: 48px;
+  }
+
+  &__link {
+    margin-top: 32px;
+    width: max-content;
+    text-decoration: none;
+    color: inherit;
+
+    &:focus,
+    &:active {
+      opacity: 0.8;
+    }
+
+    @media (hover: hover) {
+      &:hover {
+        opacity: 0.8;
+      }
+    }
+  }
+
+  &__footer {
+    margin-top: auto;
+  }
+
+  &__tourmaline-core {
+    position: absolute;
+    right: -180px;
+    top: 80px;
+    z-index: -1;
+    width: 302px;
+    height: 505px;
+
+    img {
+      display: block;
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  @include desktop {
+    display: none;
+  }
+}

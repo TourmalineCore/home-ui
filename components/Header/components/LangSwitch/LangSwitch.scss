@@ -1,0 +1,149 @@
+.lang-switch {
+  $this: &;
+
+  position: relative;
+  font-weight: 500;
+
+  svg {
+    display: block;
+  }
+
+  &__arrow {
+    margin-left: 8px;
+    width: 12px;
+    height: 6px;
+    color: $color-white;
+    transition: transform 0.3s;
+
+    &--open {
+      transform: rotate(-0.5turn);
+    }
+  }
+
+  &__flag {
+    margin-right: 8px;
+    width: 16px;
+    height: 16px;
+
+    @include desktop-xl {
+      width: 20px;
+      height: 20px;
+    }
+  }
+
+  &__active {
+    @include type-body-2;
+
+    position: relative;
+    display: flex;
+    align-items: center;
+    border: none;
+    padding: 0;
+    box-shadow: none;
+    font-family: inherit;
+    text-transform: inherit;
+    text-transform: uppercase;
+    color: inherit;
+    background-color: transparent;
+    cursor: pointer;
+    transition: opacity 0.3s;
+
+    &:hover,
+    &:focus {
+      opacity: 0.8;
+    }
+  }
+
+  &__list {
+    @include type-body-2;
+
+    position: absolute;
+    right: -4px;
+    top: calc(100% + 8px);
+    z-index: $top-panel;
+    list-style: none;
+    margin: 0;
+    border-radius: 3px;
+    padding: 4px 0;
+    min-width: 170px;
+    background-color: $color-gray;
+    animation: showLangTooltip 0.15s ease-out forwards;
+  }
+
+  &__option {
+    & + & {
+      margin-top: 4px;
+    }
+  }
+
+  &__link {
+    position: relative;
+    display: flex;
+    align-items: center;
+    padding: 12px;
+    text-decoration: none;
+    color: inherit;
+
+    &::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-image:
+        linear-gradient(
+            90.05deg,
+            rgba($color-pink, 0.1) 0.04%,
+            rgba($color-pink, 0.1) 0.05%,
+            rgba($color-green, 0.1) 99.96%
+          );
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+
+    &:hover,
+    &:focus {
+      &::before {
+        opacity: 1;
+      }
+    }
+
+    &--active {
+      background-image:
+        linear-gradient(
+            90.05deg,
+            rgba($color-pink, 0.1) 0.04%,
+            rgba($color-pink, 0.1) 0.05%,
+            rgba($color-green, 0.1) 99.96%
+          );
+      cursor: not-allowed;
+
+      &::before {
+        content: none;
+      }
+    }
+  }
+
+  &--zh {
+    #{$this}__list {
+      @include type-body-2-zh;
+    }
+
+    #{$this}__active {
+      @include type-body-2-zh;
+    }
+  }
+}
+
+@keyframes showLangTooltip {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, -10px, 0);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}

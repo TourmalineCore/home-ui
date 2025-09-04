@@ -1,0 +1,101 @@
+.header {
+  $this: &;
+
+  z-index: $top-panel;
+  padding: 0;
+  padding-top: 40px;
+  background-color: $color-black;
+
+  &__inner {
+    display: flex;
+    align-items: center;
+  }
+
+  &__logo {
+    position: relative;
+    display: block;
+    width: 135px;
+    height: $header-logo-height;
+
+    @include desktop-xl {
+      width: 162px;
+      height: $header-logo-height-desktop-xl;
+    }
+
+    // svg {
+    //   display: block;
+    //   width: 100%;
+    //   height: 100%;
+    // }
+  }
+
+  &__desktop {
+    display: none;
+
+    @include desktop {
+      display: flex;
+      align-items: center;
+    }
+  }
+
+  &__link {
+    @include type-body-2;
+
+    margin-right: 32px;
+    text-decoration: none;
+    color: inherit;
+    transition: opacity 0.3s;
+
+    &:focus,
+    &:active {
+      opacity: 0.8;
+    }
+
+    @media (hover: hover) {
+      &:hover {
+        opacity: 0.8;
+      }
+    }
+  }
+
+  &__menu-toggle {
+    border: none;
+    padding: 0;
+    width: 30px;
+    height: 20px;
+    background-color: transparent;
+    cursor: pointer;
+    transition: opacity 0.3s;
+
+    svg {
+      display: block;
+      width: 100%;
+      height: 100%;
+    }
+
+    &:focus,
+    &:active {
+      opacity: 0.6;
+    }
+
+    @include desktop {
+      display: none;
+    }
+
+    @media (hover: hover) {
+      &:hover {
+        opacity: 0.6;
+      }
+    }
+  }
+
+  &__right-panel {
+    margin-left: auto;
+  }
+
+  &--zh {
+    #{$this}__link {
+      @include type-body-2-zh;
+    }
+  }
+}
