@@ -9,4 +9,6 @@ export * from './blocks/signpost-multiple-block';
 export * from './blocks/single-image-block';
 export * from './blocks/blocks-collection';
 export * from './blocks/seo-block';
+export * from './blocks/form-block';
 export * from './layout';
+export * from './api-types';

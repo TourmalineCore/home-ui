@@ -2,16 +2,18 @@ import { ReactNode, useRef } from 'react';
 import { FooterRedesign } from '../FooterRedesign/FooterRedesign';
 import { SkipLink } from '../../SkipLink/SkipLink';
 import { HeaderRedesign } from '../HeaderRedesign/HeaderRedesign';
-import { HeaderRedesignProps } from '../../../common/types';
+import { FooterRedesignProps, HeaderRedesignProps } from '../../../common/types';
 
 export function LayoutRedesign({
   children,
   mainClassName,
   headerContent,
+  footerContent,
 }: {
   children?: ReactNode;
   mainClassName?: string;
   headerContent: HeaderRedesignProps;
+  footerContent: FooterRedesignProps;
 }) {
   const mainElementRef = useRef<null | HTMLDivElement>(null);
 
@@ -34,7 +36,11 @@ export function LayoutRedesign({
       >
         {children}
       </main>
-      <FooterRedesign />
+      <FooterRedesign
+        emailCaption={footerContent.emailCaption}
+        emailAddress={footerContent.emailAddress}
+        navigationLists={footerContent.navigationLists}
+      />
     </div>
   );
 }

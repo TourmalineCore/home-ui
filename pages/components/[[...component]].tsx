@@ -38,6 +38,7 @@ export default function ComponentsPage({
     singleImageRedesign,
     pageNotFound,
     headerRedesign,
+    footerRedesign,
   } = pageData;
 
   const router = useRouter();
@@ -77,7 +78,13 @@ export default function ComponentsPage({
   }
 
   if (componentName === ComponentName.FOOTER) {
-    return <FooterRedesign />;
+    return (
+      <FooterRedesign
+        emailCaption={footerRedesign.emailCaption}
+        emailAddress={footerRedesign.emailAddress}
+        navigationLists={footerRedesign.navigationLists}
+      />
+    );
   }
 
   if (componentName === ComponentName.HERO) {
@@ -321,16 +328,13 @@ export async function getStaticProps({
     `singleImageRedesign`,
     `pageNotFound`,
     `headerRedesign`,
+    `footerRedesign`,
   ]);
 
   return {
     props: {
       pageData: translationsPageData,
-      ...(await serverSideTranslations(locale, [
-        `cookie`,
-        `footerRedesign`,
-        `formBlockRedesign`,
-      ])),
+      ...(await serverSideTranslations(locale, [`cookie`, `formBlockRedesign`])),
     },
   };
 }

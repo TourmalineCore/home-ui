@@ -23,6 +23,8 @@ export type CustomTestFixtures = {
       breakpoint: Breakpoint;
       breakpointName: BreakpointName;
     }) => void;
+  authorizationInCms: () => void;
+  skipCmsTutorial: () => void;
 };
 
 // https://playwright.dev/docs/test-fixtures
@@ -38,7 +40,7 @@ export const test = base.extend<CustomTestFixtures>({
       // interrupting the connection for gif, for more stable work of tests
       await page.route(`**/**.gif`, (route) => route.abort());
 
-      await page.goto(`/ru/${path}`, {
+      await page.goto(`/${path}`, {
         waitUntil: `networkidle`,
       });
     };
@@ -197,6 +199,39 @@ export const test = base.extend<CustomTestFixtures>({
     };
 
     await use(testAxeCoreCheckAtBreakpoint);
+  },
+
+  authorizationInCms: async ({
+    page,
+  }, use) => {
+    const authorizationInCms = async () => {
+      await page.locator(`input[name=email]`)
+        .fill(process.env.CMS_EMAIL as string);
+
+      await page.locator(`input[name=password]`)
+        .fill(process.env.CMS_PASSWORD as string);
+
+      await page.getByText(`Login`)
+        .click();
+    };
+
+    await use(authorizationInCms);
+  },
+
+  skipCmsTutorial: async ({
+    page,
+  }, use) => {
+    const skipCmsTutorial = async () => {
+      const skipButton = await page.getByRole(`button`, {
+        name: `Skip`,
+      });
+
+      if (await skipButton.isVisible()) {
+        await skipButton.click();
+      }
+    };
+
+    await use(skipCmsTutorial);
   },
 });
 
