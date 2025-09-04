@@ -59,7 +59,7 @@ export async function getServerSideProps({
 }: {
   locale: string;
 }) {
-  if (process.env.IS_STATIC_MODE) {
+  if (process.env.IS_STATIC_MODE === `true`) {
     const translationsPageData = await loadTranslations(locale, [
       `common`,
       `heroRedesign`,
