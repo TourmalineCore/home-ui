@@ -325,45 +325,45 @@ test.describe(`Layout integration e2e test`, () => {
           .toBeVisible();
       },
     );
-  });
 
-  async function updateLayoutApi({
-    emailAddress,
-    buttonLabel,
-    navigationListCaption,
-    locale = `en`,
-  }: {
-    emailAddress: string;
-    buttonLabel: string;
-    navigationListCaption: string;
-    locale?: 'ru' | 'en';
-  }) {
-    try {
-      const response = await cmsFetch(`${LAYOUT_ENDPOINT}?locale=${locale}`, {
-        method: `PUT`,
-        body: JSON.stringify({
-          data: {
-            emailAddress,
-            header: {
-              buttonLabel,
+    async function updateLayoutApi({
+      emailAddress,
+      buttonLabel,
+      navigationListCaption,
+      locale = `en`,
+    }: {
+      emailAddress: string;
+      buttonLabel: string;
+      navigationListCaption: string;
+      locale?: 'ru' | 'en';
+    }) {
+      try {
+        const response = await cmsFetch(`${LAYOUT_ENDPOINT}?locale=${locale}`, {
+          method: `PUT`,
+          body: JSON.stringify({
+            data: {
+              emailAddress,
+              header: {
+                buttonLabel,
+              },
+              footer: {
+                navigationLists: [
+                  {
+                    caption: navigationListCaption,
+                  },
+                ],
+              },
             },
-            footer: {
-              navigationLists: [
-                {
-                  caption: navigationListCaption,
-                },
-              ],
-            },
-          },
-          locale,
-        }),
-      });
-      await expect(response.data, `Layout should be updated`)
-        .not.toBeNull();
-    } catch (error: any) {
-      throw new Error(`Failed to update layout: ${error.message}`);
+            locale,
+          }),
+        });
+        await expect(response.data, `Layout should be updated`)
+          .not.toBeNull();
+      } catch (error: any) {
+        throw new Error(`Failed to update layout: ${error.message}`);
+      }
     }
-  }
+  });
 });
 
 async function cleanupLayoutApi({
