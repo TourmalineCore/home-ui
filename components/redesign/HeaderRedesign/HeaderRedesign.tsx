@@ -86,7 +86,7 @@ export function HeaderRedesign({
           <span className="header-redesign__line" />
         </button>
 
-        {isTabletXl && (
+        {isTabletXl && buttonLabel && (
           <HeaderButton
             className="header-redesign__button"
             // onClick={setIsModalOpen}

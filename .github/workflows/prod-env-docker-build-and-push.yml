@@ -11,3 +11,4 @@ jobs:
     uses: TourmalineCore/home-github-workflows/.github/workflows/docker-build-and-push.yml@master
     # without this it cannot login to the registry
     secrets: inherit
+

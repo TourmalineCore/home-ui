@@ -87,7 +87,7 @@ test.describe(`Header`, () => {
           width: breakpoint,
         });
 
-        await page.getByTestId(`lang-switch-redesign`)
+        await page.getByTestId(`lang-switch`)
           .hover();
 
         await page.waitForTimeout(150);

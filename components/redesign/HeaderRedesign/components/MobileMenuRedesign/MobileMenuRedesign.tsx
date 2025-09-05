@@ -10,12 +10,7 @@ export function MobileMenu({
   emailAddress,
   socialLinks,
   // setIsModalOpen,
-}: {
-  navigationLists: HeaderRedesignProps["navigationLists"];
-  buttonLabel: HeaderRedesignProps['buttonLabel'];
-  emailCaption: HeaderRedesignProps['emailCaption'];
-  emailAddress: HeaderRedesignProps["emailAddress"];
-  socialLinks: HeaderRedesignProps["socialLinks"];
+}: HeaderRedesignProps & {
   // setIsModalOpen: (isOpen: boolean) => void;
 }) {
   return (
@@ -28,16 +23,18 @@ export function MobileMenu({
         navigationLists={navigationLists}
       />
 
-      <HeaderButton
-        className="mobile-menu-redesign__button"
-        // ToDo: uncomment after editing the form
-        // onClick={setIsModalOpen}
-      >
-        {buttonLabel}
-      </HeaderButton>
+      {buttonLabel && (
+        <HeaderButton
+          className="mobile-menu-redesign__button"
+          // ToDo: uncomment after editing the form
+          // onClick={setIsModalOpen}
+        >
+          {buttonLabel}
+        </HeaderButton>
+      )}
 
       <div className="mobile-menu-redesign__contact">
-        <span className="mobile-menu-redesign__caption">{emailCaption}</span>
+        {emailCaption && <span className="mobile-menu-redesign__caption">{emailCaption}</span>}
         <Link
           className="mobile-menu-redesign__email"
           href={`mailto:${emailAddress}`}

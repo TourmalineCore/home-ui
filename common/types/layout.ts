@@ -1,5 +1,18 @@
 export interface LayoutData {
   headerContent: HeaderRedesignProps;
+  footerContent: FooterRedesignProps;
+}
+
+export interface FooterRedesignProps {
+  emailCaption: string;
+  emailAddress: string;
+  navigationLists: FooterNavigationItem[];
+}
+
+export interface FooterNavigationItem {
+  id: number;
+  caption: string;
+  links: NavigationLink[];
 }
 
 export interface HeaderRedesignProps {
@@ -7,14 +20,14 @@ export interface HeaderRedesignProps {
   buttonLabel: string;
   emailCaption: string;
   emailAddress: string;
-  socialLinks: HeaderLink[];
+  socialLinks: NavigationLink[];
 }
 
-export interface HeaderNavigationItem extends HeaderLink {
-  navItems: HeaderLink[];
+export interface HeaderNavigationItem extends NavigationLink {
+  navItems: NavigationLink[];
 }
 
-interface HeaderLink {
+export interface NavigationLink {
   id: number;
   name: string;
   link: string;

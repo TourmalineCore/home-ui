@@ -64,7 +64,7 @@ export function HeaderNavigationList({
           >
             <Link
               className="header-navigation-list__link"
-              href={el.link}
+              href={el.link || ``}
             >
               {el.name}
             </Link>

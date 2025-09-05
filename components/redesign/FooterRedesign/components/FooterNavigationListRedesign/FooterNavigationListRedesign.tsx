@@ -1,20 +1,11 @@
 import router from 'next/router';
 import { SmartLink } from '../../../../SmartLink/SmartLink';
-
-export type FooterNavigationList = {
-  id: number;
-  caption: string;
-  links: {
-    id: number;
-    name: string;
-    link: string;
-  }[];
-};
+import { FooterNavigationItem } from '../../../../../common/types';
 
 export function FooterNavigationListRedesign({
   caption,
   links,
-}: Omit<FooterNavigationList, 'id'>) {
+}: Omit<FooterNavigationItem, 'id'>) {
   return (
     <li className="footer-navigation-list-redesign">
       <span className="footer-navigation-list-redesign__caption">{caption}</span>
@@ -26,7 +17,7 @@ export function FooterNavigationListRedesign({
           >
             <SmartLink
               className="footer-navigation-list-redesign__link"
-              href={el.link}
+              href={el.link || ``}
               onClick={(e) => router.pathname === el.link && e.preventDefault()}
             >
               {el.name}

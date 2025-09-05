@@ -73,7 +73,7 @@ export function HeaderAccordion({
                 >
                   <Link
                     className="header-accordion__link"
-                    href={el.link}
+                    href={el.link || ``}
                   >
                     {el.name}
                   </Link>
