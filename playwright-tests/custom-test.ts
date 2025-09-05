@@ -222,13 +222,10 @@ export const test = base.extend<CustomTestFixtures>({
     page,
   }, use) => {
     const skipCmsTutorial = async () => {
-      const skipButton = await page.getByRole(`button`, {
+      await page.getByRole(`button`, {
         name: `Skip`,
-      });
-
-      if (await skipButton.isVisible()) {
-        await skipButton.click();
-      }
+      })
+        .click();
     };
 
     await use(skipCmsTutorial);

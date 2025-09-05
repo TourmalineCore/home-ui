@@ -80,9 +80,6 @@ test.describe(`Layout integration e2e test`, () => {
           await page.getByText(`Content Manager`)
             .click();
 
-          // We are waiting for the tutorial window to appear in order to close it
-          await page.waitForTimeout(1500);
-
           await skipCmsTutorial();
 
           await test.step(`Creating nested navigation`, createAndPublishNestedNavigationCmsUi);
@@ -105,6 +102,9 @@ test.describe(`Layout integration e2e test`, () => {
             await page.locator(`input[name=name]`)
               .fill(HEADER_NAVIGATION);
 
+            await page.locator(`input[name=isMultiLevelNavigation]`)
+              .check();
+
             await page.locator(`input[name=navItems]`)
               .click();
 
@@ -117,11 +117,17 @@ test.describe(`Layout integration e2e test`, () => {
               .last()
               .fill(NESTED_HEADER_NAVIGATION);
 
+            await page.locator(`input[name=link]`)
+              .last()
+              .fill(`/frontend`);
+
             await page.getByRole(`button`, {
               name: `Publish`,
             })
               .last()
               .click();
+
+            await page.waitForTimeout(1500);
 
             await page.getByRole(`button`, {
               name: `Close modal`,

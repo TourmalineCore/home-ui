@@ -19,172 +19,6 @@ export interface Error {
   };
 }
 
-export interface FooterNavigationRequest {
-  data: {
-    name: string;
-    link: string;
-    locale?: string;
-    localizations?: (number | string)[];
-  };
-}
-
-export interface FooterNavigationListResponse {
-  data?: FooterNavigation[];
-  meta?: {
-    pagination?: {
-      page?: number;
-      /** @min 25 */
-      pageSize?: number;
-      /** @max 1 */
-      pageCount?: number;
-      total?: number;
-    };
-  };
-}
-
-export interface FooterNavigation {
-  id?: number;
-  documentId?: string;
-  name: string;
-  link: string;
-  /** @format date-time */
-  createdAt?: string;
-  /** @format date-time */
-  updatedAt?: string;
-  /** @format date-time */
-  publishedAt?: string;
-  createdBy?: {
-    id?: number;
-    documentId?: string;
-    firstname?: string;
-    lastname?: string;
-    username?: string;
-    /** @format email */
-    email?: string;
-    resetPasswordToken?: string;
-    registrationToken?: string;
-    isActive?: boolean;
-    roles?: {
-      id?: number;
-      documentId?: string;
-      name?: string;
-      code?: string;
-      description?: string;
-      users?: {
-        id?: number;
-        documentId?: string;
-      }[];
-      permissions?: {
-        id?: number;
-        documentId?: string;
-        action?: string;
-        actionParameters?: any;
-        subject?: string;
-        properties?: any;
-        conditions?: any;
-        role?: {
-          id?: number;
-          documentId?: string;
-        };
-        /** @format date-time */
-        createdAt?: string;
-        /** @format date-time */
-        updatedAt?: string;
-        /** @format date-time */
-        publishedAt?: string;
-        createdBy?: {
-          id?: number;
-          documentId?: string;
-        };
-        updatedBy?: {
-          id?: number;
-          documentId?: string;
-        };
-        locale?: string;
-        localizations?: {
-          id?: number;
-          documentId?: string;
-        }[];
-      }[];
-      /** @format date-time */
-      createdAt?: string;
-      /** @format date-time */
-      updatedAt?: string;
-      /** @format date-time */
-      publishedAt?: string;
-      createdBy?: {
-        id?: number;
-        documentId?: string;
-      };
-      updatedBy?: {
-        id?: number;
-        documentId?: string;
-      };
-      locale?: string;
-      localizations?: {
-        id?: number;
-        documentId?: string;
-      }[];
-    }[];
-    blocked?: boolean;
-    preferedLanguage?: string;
-    /** @format date-time */
-    createdAt?: string;
-    /** @format date-time */
-    updatedAt?: string;
-    /** @format date-time */
-    publishedAt?: string;
-    createdBy?: {
-      id?: number;
-      documentId?: string;
-    };
-    updatedBy?: {
-      id?: number;
-      documentId?: string;
-    };
-    locale?: string;
-    localizations?: {
-      id?: number;
-      documentId?: string;
-    }[];
-  };
-  updatedBy?: {
-    id?: number;
-    documentId?: string;
-  };
-  locale?: string;
-  localizations?: {
-    id?: number;
-    documentId?: string;
-    name?: string;
-    link?: string;
-    /** @format date-time */
-    createdAt?: string;
-    /** @format date-time */
-    updatedAt?: string;
-    /** @format date-time */
-    publishedAt?: string;
-    createdBy?: {
-      id?: number;
-      documentId?: string;
-    };
-    updatedBy?: {
-      id?: number;
-      documentId?: string;
-    };
-    locale?: string;
-    localizations?: {
-      id?: number;
-      documentId?: string;
-    }[];
-  }[];
-}
-
-export interface FooterNavigationResponse {
-  data?: FooterNavigation;
-  meta?: object;
-}
-
 export interface LayoutRequest {
   data: {
     emailAddress: string;
@@ -300,8 +134,9 @@ export interface SharedFooterComponent {
 export interface NavigationRequest {
   data: {
     name: string;
-    link?: string;
+    link: string;
     navItems?: (number | string)[];
+    isMultiLevelNavigation: boolean;
     locale?: string;
     localizations?: (number | string)[];
   };
@@ -325,7 +160,7 @@ export interface Navigation {
   id?: number;
   documentId?: string;
   name: string;
-  link?: string;
+  link: string;
   navItems?: {
     id?: number;
     documentId?: string;
@@ -335,6 +170,7 @@ export interface Navigation {
       id?: number;
       documentId?: string;
     }[];
+    isMultiLevelNavigation?: boolean;
     /** @format date-time */
     createdAt?: string;
     /** @format date-time */
@@ -446,6 +282,7 @@ export interface Navigation {
       documentId?: string;
     }[];
   }[];
+  isMultiLevelNavigation: boolean;
   /** @format date-time */
   createdAt?: string;
   /** @format date-time */
