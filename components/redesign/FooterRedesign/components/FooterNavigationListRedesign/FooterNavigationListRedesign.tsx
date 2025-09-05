@@ -17,7 +17,7 @@ export function FooterNavigationListRedesign({
           >
             <SmartLink
               className="footer-navigation-list-redesign__link"
-              href={el.link}
+              href={el.link || ``}
               onClick={(e) => router.pathname === el.link && e.preventDefault()}
             >
               {el.name}
