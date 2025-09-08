@@ -16,6 +16,9 @@ export type CustomTestFixtures = {
     }) => void;
   goToComponentsPage: (path: string) => void;
   goto: (path?: string) => void;
+  gotoInPreviewMode: (options?: {
+    slug: string;
+  }) => void;
   setViewportSize: (options?: { width?: number; height?: number; }) => void;
   testAxeCoreCheckAtBreakpoint: (
     options: {
@@ -23,7 +26,7 @@ export type CustomTestFixtures = {
       breakpoint: Breakpoint;
       breakpointName: BreakpointName;
     }) => void;
-  authorizationInCms: () => void;
+  authorizeInCms: () => void;
   skipCmsTutorial: () => void;
 };
 
@@ -75,6 +78,23 @@ export const test = base.extend<CustomTestFixtures>({
     };
 
     await use(goToComponentsPage);
+  },
+
+  gotoInPreviewMode: async ({
+    page,
+    apiImageMock,
+  }, use) => {
+    const gotoInPreviewMode = async ({
+      slug = ``,
+    }: {
+      slug?: string;
+    } = {}) => {
+      await apiImageMock();
+
+      await page.goto(`/api/preview?secret=secret&slug=${slug}`);
+    };
+
+    await use(gotoInPreviewMode);
   },
 
   testScreenshotAtBreakpoint: async ({
@@ -201,10 +221,10 @@ export const test = base.extend<CustomTestFixtures>({
     await use(testAxeCoreCheckAtBreakpoint);
   },
 
-  authorizationInCms: async ({
+  authorizeInCms: async ({
     page,
   }, use) => {
-    const authorizationInCms = async () => {
+    const authorizeInCms = async () => {
       await page.locator(`input[name=email]`)
         .fill(process.env.CMS_EMAIL as string);
 
@@ -215,7 +235,7 @@ export const test = base.extend<CustomTestFixtures>({
         .click();
     };
 
-    await use(authorizationInCms);
+    await use(authorizeInCms);
   },
 
   skipCmsTutorial: async ({

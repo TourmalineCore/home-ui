@@ -1,7 +1,7 @@
 import { Breakpoint } from "../../common/enums";
 import { Navigation, NavigationListResponse } from "../../common/types";
 import { cmsFetch } from "../../services/cms/api/http-client";
-import { E2E_UI_NAME_PREFIX } from "../constants/e2e-ui-name-prefix";
+import { E2E_UI_DRAFT_NAME_PREFIX, E2E_UI_NAME_PREFIX } from "../constants/e2e-ui-name-prefix";
 import {
   CustomTestFixtures,
   expect,
@@ -23,6 +23,9 @@ const FOOTER_NAVIGATION_CAPTION_RU = `Навигация`;
 
 const LAYOUT_ENDPOINT = `/layout`;
 const NAVIGATION_ENDPOINT = `/navigations`;
+
+const BUTTON_LABEL_DRAFT = `${E2E_UI_DRAFT_NAME_PREFIX} Discuss the project`;
+const FOOTER_NAVIGATION_CAPTION_DRAFT = `${E2E_UI_DRAFT_NAME_PREFIX} Navigation`;
 
 test.describe(`Layout integration e2e test`, () => {
   test.describe(`Main scenario for filling layout`, () => {
@@ -57,20 +60,20 @@ test.describe(`Layout integration e2e test`, () => {
     `,
       async ({
         goto,
-        authorizationInCms,
+        authorizeInCms,
         skipCmsTutorial,
         setViewportSize,
         page,
       }: {
         goto: CustomTestFixtures['goto'];
-        authorizationInCms: CustomTestFixtures['authorizationInCms'];
+        authorizeInCms: CustomTestFixtures['authorizeInCms'];
         skipCmsTutorial: CustomTestFixtures['skipCmsTutorial'];
         setViewportSize: CustomTestFixtures['setViewportSize'];
         page: Page;
       }) => {
         await page.goto(process.env.CMS_URL as string);
 
-        await test.step(`Authorization in CMS`, authorizationInCms);
+        await test.step(`authorize in CMS`, authorizeInCms);
 
         await test.step(`Setup CMS content`, setupCmsContent);
 
@@ -331,46 +334,99 @@ test.describe(`Layout integration e2e test`, () => {
           .toBeVisible();
       },
     );
+  });
 
-    async function updateLayoutApi({
-      emailAddress,
-      buttonLabel,
-      navigationListCaption,
-      locale = `en`,
-    }: {
-      emailAddress: string;
-      buttonLabel: string;
-      navigationListCaption: string;
-      locale?: 'ru' | 'en';
-    }) {
-      try {
-        const response = await cmsFetch(`${LAYOUT_ENDPOINT}?locale=${locale}`, {
-          method: `PUT`,
-          body: JSON.stringify({
-            data: {
-              emailAddress,
-              header: {
-                buttonLabel,
-              },
-              footer: {
-                navigationLists: [
-                  {
-                    caption: navigationListCaption,
-                  },
-                ],
-              },
-            },
-            locale,
-          }),
-        });
-        await expect(response.data, `Layout should be updated`)
-          .not.toBeNull();
-      } catch (error: any) {
-        throw new Error(`Failed to update layout: ${error.message}`);
-      }
-    }
+  test.describe(`Open page preview`, () => {
+    test.beforeEach(async () => {
+      await cleanupLayoutApi();
+
+      await updateLayoutApi({
+        emailAddress: EMAIL_ADDRESS,
+        buttonLabel: BUTTON_LABEL_DRAFT,
+        navigationListCaption: FOOTER_NAVIGATION_CAPTION_DRAFT,
+        status: `draft`,
+      });
+    });
+
+    test.afterEach(async () => {
+      await cleanupLayoutApi();
+    });
+
+    test(
+      `
+      GIVEN an empty layout
+      WHEN filling layout content and saving changes via API
+      AND opening the page in preview mode
+      SHOULD see filled layout on frontend UI in preview mode
+    `,
+      async ({
+        goto,
+        gotoInPreviewMode,
+        page,
+      }: {
+        goto: CustomTestFixtures['goto'];
+        gotoInPreviewMode: CustomTestFixtures['gotoInPreviewMode'];
+        page: Page;
+      }) => {
+        await goto();
+
+        await expect(page.getByText(BUTTON_LABEL_DRAFT))
+          .toBeHidden();
+
+        await expect(page.getByText(FOOTER_NAVIGATION_CAPTION_DRAFT))
+          .toBeHidden();
+
+        await gotoInPreviewMode();
+
+        await expect(page.getByText(BUTTON_LABEL_DRAFT))
+          .toBeVisible();
+
+        await expect(page.getByText(FOOTER_NAVIGATION_CAPTION_DRAFT))
+          .toBeVisible();
+      },
+    );
   });
 });
+
+async function updateLayoutApi({
+  emailAddress,
+  buttonLabel,
+  navigationListCaption,
+  locale = `en`,
+  status = `published`,
+}: {
+  emailAddress: string;
+  buttonLabel: string;
+  navigationListCaption: string;
+  locale?: 'ru' | 'en';
+  status?: 'draft' | 'published';
+}) {
+  try {
+    const response = await cmsFetch(`${LAYOUT_ENDPOINT}?locale=${locale}&status=${status}`, {
+      method: `PUT`,
+      body: JSON.stringify({
+        data: {
+          emailAddress,
+          header: {
+            buttonLabel,
+          },
+          footer: {
+            navigationLists: [
+              {
+                caption: navigationListCaption,
+              },
+            ],
+          },
+        },
+        locale,
+      }),
+    });
+    await expect(response.data, `Layout should be updated`)
+      .not.toBeNull();
+  } catch (error: any) {
+    throw new Error(`Failed to update layout: ${error.message}`);
+  }
+}
 
 async function cleanupLayoutApi({
   locale = `en`,
