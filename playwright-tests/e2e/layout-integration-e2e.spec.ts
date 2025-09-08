@@ -130,12 +130,16 @@ test.describe(`Layout integration e2e test`, () => {
               .last()
               .click();
 
+            // Wait until navigation record is saved in db
             await page.waitForTimeout(1500);
 
             await page.getByRole(`button`, {
               name: `Close modal`,
             })
               .click();
+
+            // Wait until modal is closed
+            await page.waitForTimeout(1000);
 
             await page.locator(`input[name=navItems]`)
               .click();
