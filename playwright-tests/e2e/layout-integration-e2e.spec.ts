@@ -276,13 +276,11 @@ test.describe(`Layout integration e2e test`, () => {
       });
 
       await updateLayoutApi({
-        emailAddress: EMAIL_ADDRESS,
         buttonLabel: BUTTON_LABEL_EN,
         navigationListCaption: FOOTER_NAVIGATION_CAPTION_EN,
       });
 
       await updateLayoutApi({
-        emailAddress: EMAIL_ADDRESS,
         buttonLabel: BUTTON_LABEL_RU,
         navigationListCaption: FOOTER_NAVIGATION_CAPTION_RU,
         locale: `ru`,
@@ -341,7 +339,6 @@ test.describe(`Layout integration e2e test`, () => {
       await cleanupLayoutApi();
 
       await updateLayoutApi({
-        emailAddress: EMAIL_ADDRESS,
         buttonLabel: BUTTON_LABEL_DRAFT,
         navigationListCaption: FOOTER_NAVIGATION_CAPTION_DRAFT,
         status: `draft`,
@@ -389,13 +386,11 @@ test.describe(`Layout integration e2e test`, () => {
 });
 
 async function updateLayoutApi({
-  emailAddress,
   buttonLabel,
   navigationListCaption,
   locale = `en`,
   status = `published`,
 }: {
-  emailAddress: string;
   buttonLabel: string;
   navigationListCaption: string;
   locale?: 'ru' | 'en';
@@ -406,7 +401,7 @@ async function updateLayoutApi({
       method: `PUT`,
       body: JSON.stringify({
         data: {
-          emailAddress,
+          emailAddress: EMAIL_ADDRESS,
           header: {
             buttonLabel,
           },
