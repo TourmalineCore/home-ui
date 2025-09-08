@@ -73,7 +73,7 @@ test.describe(`Layout integration e2e test`, () => {
       }) => {
         await page.goto(process.env.CMS_URL as string);
 
-        await test.step(`authorize in CMS`, authorizeInCms);
+        await test.step(`Authorize in CMS`, authorizeInCms);
 
         await test.step(`Setup CMS content`, setupCmsContent);
 
