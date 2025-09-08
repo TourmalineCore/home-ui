@@ -103,20 +103,6 @@ test.describe(`Layout integration e2e test`, () => {
               .click();
 
             await page.locator(`input[name=name]`)
-              .fill(HEADER_NAVIGATION);
-
-            await page.locator(`input[name=isMultiLevelNavigation]`)
-              .check();
-
-            await page.locator(`input[name=navItems]`)
-              .click();
-
-            await page.getByText(`Create a relation`, {
-              exact: true,
-            })
-              .click();
-
-            await page.locator(`input[name=name]`)
               .last()
               .fill(NESTED_HEADER_NAVIGATION);
 
@@ -131,15 +117,25 @@ test.describe(`Layout integration e2e test`, () => {
               .click();
 
             // Wait until navigation record is saved in db
-            await page.waitForTimeout(1500);
+            await page.waitForTimeout(1000);
 
-            await page.getByRole(`button`, {
-              name: `Close modal`,
+            await page.getByRole(`link`, {
+              name: `Navigation`,
+              exact: true,
             })
               .click();
 
-            // Wait until modal is closed
-            await page.waitForTimeout(1000);
+            await page.getByRole(`link`, {
+              name: `Create new entry`,
+            })
+              .last()
+              .click();
+
+            await page.locator(`input[name=name]`)
+              .fill(HEADER_NAVIGATION);
+
+            await page.locator(`input[name=isMultiLevelNavigation]`)
+              .check();
 
             await page.locator(`input[name=navItems]`)
               .click();
@@ -152,6 +148,7 @@ test.describe(`Layout integration e2e test`, () => {
             })
               .click();
 
+            // Wait until navigation record is saved in db
             await page.waitForTimeout(1000);
           }
 
