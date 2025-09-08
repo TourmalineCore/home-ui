@@ -15,9 +15,11 @@ type PageData = {
 export default function HomePage({
   layoutData,
   pageData,
+  isPreview,
 }: {
   layoutData: LayoutData;
   pageData: PageData;
+  isPreview: boolean;
 }) {
   const {
     blocks,
@@ -42,6 +44,7 @@ export default function HomePage({
       <LayoutRedesign
         headerContent={layoutData.headerContent}
         footerContent={layoutData.footerContent}
+        isPreview={isPreview}
       >
         {blocks.map((block: Block) => (
           <BlockRenderer
@@ -179,6 +182,7 @@ export async function getServerSideProps({
   return {
     props: {
       layoutData,
+      isPreview: preview,
       pageData: {
         blocks: [],
       },
