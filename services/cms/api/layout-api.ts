@@ -8,7 +8,13 @@ import {
   NavigationLink,
 } from '../../../common/types';
 
-export async function getLayoutData(locale: string): Promise<LayoutData> {
+export async function getLayoutData({
+  locale,
+  status,
+}: {
+  locale: string;
+  status: `draft` | `published`;
+}): Promise<LayoutData> {
   const queryParams = {
     populate: [
       `header.socialLinks`,
@@ -19,6 +25,7 @@ export async function getLayoutData(locale: string): Promise<LayoutData> {
       `footer.navigationLists.socialLinks`,
     ],
     locale,
+    status,
   };
 
   const layoutResponse = await cmsFetch<LayoutResponse>(`/layout?${qs.stringify(queryParams)}`);

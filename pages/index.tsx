@@ -56,8 +56,10 @@ export default function HomePage({
 
 export async function getServerSideProps({
   locale,
+  preview = false,
 }: {
   locale: string;
+  preview: boolean;
 }) {
   if (process.env.IS_STATIC_MODE === `true`) {
     const translationsPageData = await loadTranslations(locale, [
@@ -167,7 +169,12 @@ export async function getServerSideProps({
     };
   }
 
-  const layoutData = await getLayoutData(locale);
+  const status = preview ? `draft` : `published`;
+
+  const layoutData = await getLayoutData({
+    locale,
+    status,
+  });
 
   return {
     props: {
