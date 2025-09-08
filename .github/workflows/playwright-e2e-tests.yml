@@ -48,9 +48,9 @@ jobs:
             
             sed -i "0,/git::https:\/\/github.com\/TourmalineCore\/${{ github.event.repository.name }}.git@\/ci\/values.yaml?ref=.*/s//git::https:\/\/github.com\/TourmalineCore\/${{ github.event.repository.name }}.git@\/ci\/values.yaml?ref=${{ github.sha }}/" deploy/helmfile.yaml
 
-            kind create cluster --name pelican --config kind-local-config.yaml --kubeconfig ./.pelican-cluster-kubeconfig
+            kind create cluster --name home --config kind-local-config.yaml --kubeconfig ./.home-cluster-kubeconfig
             
-            export KUBECONFIG=$(pwd)/.pelican-cluster-kubeconfig
+            export KUBECONFIG=$(pwd)/.home-cluster-kubeconfig
 
             helmfile --environment local --namespace local -f deploy/helmfile.yaml apply
           push: never
