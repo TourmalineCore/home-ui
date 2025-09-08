@@ -11,6 +11,7 @@
 
   &__inner {
     display: grid;
+    min-height: 100px;
     gap: 48px;
     grid-template-rows: repeat(3, auto);
 
