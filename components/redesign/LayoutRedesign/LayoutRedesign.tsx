@@ -2,16 +2,21 @@ import { ReactNode, useRef } from 'react';
 import { FooterRedesign } from '../FooterRedesign/FooterRedesign';
 import { SkipLink } from '../../SkipLink/SkipLink';
 import { HeaderRedesign } from '../HeaderRedesign/HeaderRedesign';
-import { HeaderRedesignProps } from '../../../common/types';
+import { FooterRedesignProps, HeaderRedesignProps } from '../../../common/types';
+import { ExitPreviewButton } from '../ExitPreviewButton/ExitPreviewButton';
 
 export function LayoutRedesign({
   children,
   mainClassName,
   headerContent,
+  footerContent,
+  isPreview,
 }: {
   children?: ReactNode;
   mainClassName?: string;
   headerContent: HeaderRedesignProps;
+  footerContent: FooterRedesignProps;
+  isPreview: boolean;
 }) {
   const mainElementRef = useRef<null | HTMLDivElement>(null);
 
@@ -20,6 +25,7 @@ export function LayoutRedesign({
       <SkipLink
         mainElementRef={mainElementRef}
       />
+      {isPreview && <ExitPreviewButton />}
       <HeaderRedesign
         navigationLists={headerContent.navigationLists}
         buttonLabel={headerContent.buttonLabel}
@@ -34,7 +40,11 @@ export function LayoutRedesign({
       >
         {children}
       </main>
-      <FooterRedesign />
+      <FooterRedesign
+        emailCaption={footerContent.emailCaption}
+        emailAddress={footerContent.emailAddress}
+        navigationLists={footerContent.navigationLists}
+      />
     </div>
   );
 }

@@ -16,6 +16,9 @@ export type CustomTestFixtures = {
     }) => void;
   goToComponentsPage: (path: string) => void;
   goto: (path?: string) => void;
+  gotoInPreviewMode: (options?: {
+    slug: string;
+  }) => void;
   setViewportSize: (options?: { width?: number; height?: number; }) => void;
   testAxeCoreCheckAtBreakpoint: (
     options: {
@@ -23,6 +26,8 @@ export type CustomTestFixtures = {
       breakpoint: Breakpoint;
       breakpointName: BreakpointName;
     }) => void;
+  authorizeInCms: () => void;
+  skipCmsTutorial: () => void;
 };
 
 // https://playwright.dev/docs/test-fixtures
@@ -38,7 +43,7 @@ export const test = base.extend<CustomTestFixtures>({
       // interrupting the connection for gif, for more stable work of tests
       await page.route(`**/**.gif`, (route) => route.abort());
 
-      await page.goto(`/ru/${path}`, {
+      await page.goto(`/${path}`, {
         waitUntil: `networkidle`,
       });
     };
@@ -73,6 +78,23 @@ export const test = base.extend<CustomTestFixtures>({
     };
 
     await use(goToComponentsPage);
+  },
+
+  gotoInPreviewMode: async ({
+    page,
+    apiImageMock,
+  }, use) => {
+    const gotoInPreviewMode = async ({
+      slug = ``,
+    }: {
+      slug?: string;
+    } = {}) => {
+      await apiImageMock();
+
+      await page.goto(`/api/preview?secret=secret&slug=${slug}`);
+    };
+
+    await use(gotoInPreviewMode);
   },
 
   testScreenshotAtBreakpoint: async ({
@@ -197,6 +219,36 @@ export const test = base.extend<CustomTestFixtures>({
     };
 
     await use(testAxeCoreCheckAtBreakpoint);
+  },
+
+  authorizeInCms: async ({
+    page,
+  }, use) => {
+    const authorizeInCms = async () => {
+      await page.locator(`input[name=email]`)
+        .fill(process.env.CMS_EMAIL as string);
+
+      await page.locator(`input[name=password]`)
+        .fill(process.env.CMS_PASSWORD as string);
+
+      await page.getByText(`Login`)
+        .click();
+    };
+
+    await use(authorizeInCms);
+  },
+
+  skipCmsTutorial: async ({
+    page,
+  }, use) => {
+    const skipCmsTutorial = async () => {
+      await page.getByRole(`button`, {
+        name: `Skip`,
+      })
+        .click();
+    };
+
+    await use(skipCmsTutorial);
   },
 });
 

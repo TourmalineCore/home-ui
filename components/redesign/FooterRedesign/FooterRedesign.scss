@@ -11,6 +11,7 @@
 
   &__inner {
     display: grid;
+    min-height: 100px;
     gap: 48px;
     grid-template-rows: repeat(3, auto);
 
@@ -52,7 +53,6 @@
   &__navigation {
     display: grid;
     gap: 8px;
-    grid-template-columns: repeat(2, auto);
 
     @include tablet {
       margin-right: 56px;

@@ -1,20 +1,27 @@
-import { useTranslation } from 'next-i18next';
 
 import { useRouter } from 'next/router';
-import { FooterNavigationList, FooterNavigationListRedesign } from './components/FooterNavigationListRedesign/FooterNavigationListRedesign';
+import { FooterNavigationListRedesign } from './components/FooterNavigationListRedesign/FooterNavigationListRedesign';
+import { FooterRedesignProps } from '../../../common/types';
+import { useDeviceSize } from '../../../common/hooks';
 
-export function FooterRedesign() {
-  const {
-    t,
-  } = useTranslation(`footerRedesign`);
-
+export function FooterRedesign({
+  emailCaption,
+  emailAddress,
+  navigationLists,
+}: FooterRedesignProps) {
   const {
     locale,
   } = useRouter();
 
-  const footerNavigationLists: FooterNavigationList[] = t(`navigationLists`, {
-    returnObjects: true,
-  });
+  const {
+    isTabletXl,
+  } = useDeviceSize();
+
+  const colCount = Math.min(navigationLists.length, 4);
+
+  const footerNavigationStyle = {
+    gridTemplateColumns: ` repeat(${isTabletXl ? colCount : 2}, auto)`,
+  };
 
   return (
     <footer
@@ -24,13 +31,12 @@ export function FooterRedesign() {
     >
       <div className="container-redesign footer-redesign__inner">
         <div className="footer-redesign__info">
-          <p className="footer-redesign__caption">{t(`emailCaption`)}</p>
-          {/* TODO: Change when next will be upgrade to 12+ version */}
+          {emailCaption && <p className="footer-redesign__caption">{emailCaption}</p>}
           <a
             className="footer-redesign__email"
-            href={`mailto:${t(`emailAddress`)}`}
+            href={`mailto:${emailAddress}`}
           >
-            {t(`emailAddress`)}
+            {emailAddress}
           </a>
         </div>
         <div className="footer-redesign__copyright">
@@ -47,8 +53,11 @@ export function FooterRedesign() {
             {locale === `ru` ? `Политика конфиденциальности` : `Privacy policy`}
           </a>
         </div>
-        <ul className="footer-redesign__navigation">
-          {footerNavigationLists.map((el) => (
+        <ul
+          className="footer-redesign__navigation"
+          style={footerNavigationStyle}
+        >
+          {navigationLists.map((el) => (
             <FooterNavigationListRedesign
               key={el.id}
               caption={el.caption}
