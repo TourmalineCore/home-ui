@@ -95,9 +95,9 @@ jobs:
       - name: Playwright run
         run: npm run playwright:run:e2e --reporter=html 
     
-        # env:
-        #   FRONTEND_URL: http://localhost:40120 
-        #   CMS_URL: 'http://localhost:40120/cms'
+        env:
+          FRONTEND_URL: http://localhost:40120 
+          CMS_URL: http://localhost:40120/cms
 
       - name: Upload HTML report
         uses: actions/upload-artifact@v4
