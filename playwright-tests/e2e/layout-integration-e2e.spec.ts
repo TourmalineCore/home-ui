@@ -114,7 +114,7 @@ test.describe(`Layout integration e2e test`, () => {
               .click();
 
             // Wait until navigation record is saved in db
-            await page.waitForTimeout(1500);
+            await page.waitForTimeout(1000);
 
             await page.getByRole(`link`, {
               name: `Navigation`,
@@ -146,7 +146,7 @@ test.describe(`Layout integration e2e test`, () => {
               .click();
 
             // Wait until navigation record is saved in db
-            await page.waitForTimeout(1500);
+            await page.waitForTimeout(1000);
           }
 
           async function fillAndPublishLayoutCmsUi() {
@@ -185,7 +185,7 @@ test.describe(`Layout integration e2e test`, () => {
               .click();
 
             // Wait until navigation record is saved in db
-            await page.waitForTimeout(1500);
+            await page.waitForTimeout(1000);
           }
         }
 
