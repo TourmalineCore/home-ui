@@ -93,17 +93,7 @@ jobs:
         run: npx playwright install chromium --with-deps
 
       - name: Playwright run
-        run: |
-          npm run playwright:run:e2e --reporter=html --output=playwright-report || true
-          # Проверяем, создался ли отчет
-          if [ -d "playwright-report" ]; then
-            echo "Report found at playwright-report/"
-            ls -la playwright-report/
-          else
-            echo "Report not found, creating empty directory"
-            mkdir -p playwright-report
-            echo "No report generated" > playwright-report/README.txt
-          fi
+        run: npm run playwright:run:e2e --reporter=html --output=playwright-report
     
         env:
           FRONTEND_URL: http://localhost:40120 
