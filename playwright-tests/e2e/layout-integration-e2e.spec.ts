@@ -103,39 +103,36 @@ test.describe(`Layout integration e2e test`, () => {
               .click();
 
             await page.locator(`input[name=name]`)
-              .fill(HEADER_NAVIGATION);
-
-            await page.locator(`input[name=isMultiLevelNavigation]`)
-              .check();
-
-            await page.locator(`input[name=navItems]`)
-              .click();
-
-            await page.getByText(`Create a relation`, {
-              exact: true,
-            })
-              .click();
-
-            await page.locator(`input[name=name]`)
-              .last()
               .fill(NESTED_HEADER_NAVIGATION);
 
             await page.locator(`input[name=link]`)
-              .last()
               .fill(`/frontend`);
 
             await page.getByRole(`button`, {
               name: `Publish`,
             })
+              .click();
+
+            // Wait until navigation record is saved in db
+            await page.waitForTimeout(1500);
+
+            await page.getByRole(`link`, {
+              name: `Navigation`,
+              exact: true,
+            })
+              .click();
+
+            await page.getByRole(`link`, {
+              name: `Create new entry`,
+            })
               .last()
               .click();
 
-            await page.waitForTimeout(1500);
+            await page.locator(`input[name=name]`)
+              .fill(HEADER_NAVIGATION);
 
-            await page.getByRole(`button`, {
-              name: `Close modal`,
-            })
-              .click();
+            await page.locator(`input[name=isMultiLevelNavigation]`)
+              .check();
 
             await page.locator(`input[name=navItems]`)
               .click();
@@ -148,7 +145,8 @@ test.describe(`Layout integration e2e test`, () => {
             })
               .click();
 
-            await page.waitForTimeout(1000);
+            // Wait until navigation record is saved in db
+            await page.waitForTimeout(1500);
           }
 
           async function fillAndPublishLayoutCmsUi() {
@@ -185,6 +183,9 @@ test.describe(`Layout integration e2e test`, () => {
               name: `Publish`,
             })
               .click();
+
+            // Wait until navigation record is saved in db
+            await page.waitForTimeout(1500);
           }
         }
 
