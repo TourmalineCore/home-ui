@@ -103,21 +103,18 @@ test.describe(`Layout integration e2e test`, () => {
               .click();
 
             await page.locator(`input[name=name]`)
-              .last()
               .fill(NESTED_HEADER_NAVIGATION);
 
             await page.locator(`input[name=link]`)
-              .last()
               .fill(`/frontend`);
 
             await page.getByRole(`button`, {
               name: `Publish`,
             })
-              .last()
               .click();
 
             // Wait until navigation record is saved in db
-            await page.waitForTimeout(1000);
+            await page.waitForTimeout(1500);
 
             await page.getByRole(`link`, {
               name: `Navigation`,
@@ -149,7 +146,7 @@ test.describe(`Layout integration e2e test`, () => {
               .click();
 
             // Wait until navigation record is saved in db
-            await page.waitForTimeout(1000);
+            await page.waitForTimeout(1500);
           }
 
           async function fillAndPublishLayoutCmsUi() {
@@ -186,6 +183,9 @@ test.describe(`Layout integration e2e test`, () => {
               name: `Publish`,
             })
               .click();
+
+            // Wait until navigation record is saved in db
+            await page.waitForTimeout(1500);
           }
         }
 
