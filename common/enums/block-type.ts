@@ -1,5 +1,5 @@
 export enum BlockType {
-  HOME_HERO = `home.hero`,
+  SHARED_HERO = `shared.hero`,
   HOME_SERVICES = `home.services`,
   HOME_PROJECTS_WITH_TEXT_BLOCK = `home.project-with-text-block`,
   HOME_PROJECTS = `home.projects`,
@@ -9,6 +9,4 @@ export enum BlockType {
   HOME_CARDS_GRID = `home.cards-grid`,
   HOME_COLLAGE_WITH_LINK = `home.collage-with-link`,
   HOME_FORM_BLOCK = `home.form-block`,
-
-  SHARED_SEO_BLOCK = `shared.seo`,
 }

@@ -12,3 +12,4 @@ export * from './blocks/seo-block';
 export * from './blocks/form-block';
 export * from './layout';
 export * from './api-types';
+export * from './page';
