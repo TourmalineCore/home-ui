@@ -23,7 +23,7 @@ export interface LayoutRequest {
   data: {
     emailAddress: string;
     header: SharedHeaderComponent;
-    footer: SharedFooterComponent;
+    footer?: SharedFooterComponent;
     locale?: string;
     localizations?: (number | string)[];
   };
@@ -48,7 +48,7 @@ export interface Layout {
   documentId?: string;
   emailAddress: string;
   header: SharedHeaderComponent;
-  footer: SharedFooterComponent;
+  footer?: SharedFooterComponent;
   /** @format date-time */
   createdAt?: string;
   /** @format date-time */

@@ -81,7 +81,7 @@ function mapLayoutResponse(response: LayoutResponse | null): LayoutData {
       navigationLists: footer?.navigationLists?.map((navigation) => ({
         ...navigation,
         links: navigation.isSocialNetworks ? navigation.socialLinks : navigation.links,
-      })) as FooterNavigationItem[],
+      })) as FooterNavigationItem[] ?? [],
     },
   };
 }
