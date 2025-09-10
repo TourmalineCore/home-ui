@@ -173,6 +173,9 @@ test.describe(`Layout integration e2e test`, () => {
             await page.getByText(`No entry yet. Click to add one.`)
               .click();
 
+            await page.getByText(`No entry yet. Click to add one.`)
+              .click();
+
             await page.locator(`input[name='footer.navigationLists.0.caption']`)
               .fill(FOOTER_NAVIGATION_CAPTION_EN);
 
