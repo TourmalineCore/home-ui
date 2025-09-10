@@ -1,27 +1,30 @@
 import { BlockType } from "../../enums";
 import { BaseBlock } from "./base-block";
 
-export interface ServicesBlock extends BaseBlock<BlockType.HOME_SERVICES> {
+export interface FeaturedCardsListBlock extends BaseBlock<BlockType.SHARED_FEATURED_CARDS_LIST> {
   title: string;
-  services: Service[];
+  cards: FeaturedCardProps[];
   teamsCard: TeamsCard;
   teams: TeamSection;
 }
 
-export interface Service {
+export interface FeaturedCardProps {
   id: number;
   title?: string;
-  skillsList?: string[];
+  points?: string[];
   link?: string;
   linkText?: string;
   theme: Theme;
   imageUrl?: string;
+  type: Type;
 }
 
 interface TeamsCard {
   theme: Theme;
   imageUrl: string;
 }
+
+type Type = 'image' | 'points' | 'blank' | 'wide';
 
 type Theme = 'white' | 'grey' | 'black' | 'blue';
 

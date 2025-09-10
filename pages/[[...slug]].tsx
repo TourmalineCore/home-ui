@@ -101,7 +101,7 @@ export async function getServerSideProps({
         ...translationsPageData.heroRedesign,
       },
       {
-        __component: BlockType.HOME_SERVICES,
+        __component: BlockType.SHARED_FEATURED_CARDS_LIST,
         ...translationsPageData.servicesRedesign,
       },
       {

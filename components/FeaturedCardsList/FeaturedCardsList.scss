@@ -1,4 +1,4 @@
-.services-redesign {
+.featured-cards-list {
   $this: &;
 
   padding-top: 40px;
@@ -167,28 +167,28 @@
 
     &::before {
       left: -1px;
-      background-image: url("../../../public/images/edge-left-mobile.svg");
+      background-image: url("../../public/images/edge-left-mobile.svg");
       pointer-events: none;
 
       @include tablet {
-        background-image: url("../../../public/images/edge-left-desktop.svg");
+        background-image: url("../../public/images/edge-left-desktop.svg");
       }
 
       @include desktop-xl {
-        background-image: url("../../../public/images/edge-left-desktop-xl.svg");
+        background-image: url("../../public/images/edge-left-desktop-xl.svg");
       }
     }
 
     &::after {
       right: -1px;
-      background-image: url("../../../public/images/edge-right-mobile.svg");
+      background-image: url("../../public/images/edge-right-mobile.svg");
 
       @include tablet {
-        background-image: url("../../../public/images/edge-right-desktop.svg");
+        background-image: url("../../public/images/edge-right-desktop.svg");
       }
 
       @include desktop-xl {
-        background-image: url("../../../public/images/edge-right-desktop-xl.svg");
+        background-image: url("../../public/images/edge-right-desktop-xl.svg");
       }
     }
 

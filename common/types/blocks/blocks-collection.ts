@@ -4,12 +4,12 @@ import { CollageWithTitleBlock } from "./collage-with-title-block";
 import { FormBlock } from "./form-block";
 import { HeroBlock } from "./hero-block";
 import { ProjectBlock, ProjectWithTextBlock } from "./project";
-import { ServicesBlock } from "./services-block";
+import { FeaturedCardsListBlock } from "./featured-cards-list-block";
 import { SignpostMultipleBlock } from "./signpost-multiple-block";
 import { SingleImageBlock } from "./single-image-block";
 
 export type Block = HeroBlock
-| ServicesBlock
+| FeaturedCardsListBlock
 | CardsGridBlock
 | CardsGridBlock
 | CollageWithTitleBlock

@@ -1,55 +1,66 @@
 {
   "title": "What we do",
-  "services":
+  "cards":
   [
     {
       "id": 0,
       "title": "Web Development",
-      "skillsList": ["Single-page applications", "Websites and landing pages", "Enterprise systems", "CRM, ERP, personal accounts"],
-      "theme": "black"
+      "points": ["Single-page applications", "Websites and landing pages", "Enterprise systems", "CRM, ERP, personal accounts"],
+      "theme": "black",
+      "type": "points"
     },
     {
       "id": 1,
       "title": "Embedded development",
-      "skillsList": ["Drivers", "Software modules with complex logic", "Protocols and libraries", "Cross-compilation setup", "Technical documentation"],
+      "points": ["Drivers", "Software modules with complex logic", "Protocols and libraries", "Cross-compilation setup", "Technical documentation"],
       "link": "/embedded",
       "linkText": "Learn more",
-      "theme": "white"
+      "theme": "white",
+      "type": "points"
     },
     {
       "id": 2,
       "imageUrl": "/images/services-card.png",
-      "theme": "blue"
+      "theme": "blue",
+      "type": "image"
     },
     {
       "id": 3,
       "title": "Machine learning and data analysis",
-      "skillsList": ["Business data analytics", "Computer vision models", "Text and audio processing models", "Sensor signal processing models"],
+      "points": ["Business data analytics", "Computer vision models", "Text and audio processing models", "Sensor signal processing models"],
       "link": "/ml",
       "linkText": "Learn more",
-      "theme": "grey"
+      "theme": "grey",
+      "type": "points"
     },
     {
       "id": 4,
       "title": "Testing",
-      "skillsList": ["E2E testing", "UI & API testing", "Integration and unit testing", "Manual and automated testing"],
+      "points": ["E2E testing", "UI & API testing", "Integration and unit testing", "Manual and automated testing"],
       "link": "/qa",
       "linkText": "Learn more",
-      "theme": "white"
+      "theme": "white",
+      "type": "points"
     },
     {
       "id": 5,
       "title": "Design",
-      "skillsList": ["UI/UX design", "Websites and landing pages design", "No/Low-code websites"],
+      "points": ["UI/UX design", "Websites and landing pages design", "No/Low-code websites"],
       "link": "/design",
       "linkText": "Learn more",
-      "theme": "grey"
+      "theme": "grey",
+      "type": "points"
     },
     {
       "id": 6,
       "title": "Other",
-      "skillsList": ["Launching MVP projects", "Architecture design", "Development of high-load services", "Setting up project’s environment and CI/CD", "Software architecture and development consulting"],
-      "theme": "grey"
+      "points": ["Launching MVP projects", "Architecture design", "Development of high-load services", "Setting up project’s environment and CI/CD", "Software architecture and development consulting"],
+      "theme": "grey",
+      "type": "points"
+    },
+    {
+      "id": 7,
+      "type": "blank"
     }
   ],
   "teamsCard": {
