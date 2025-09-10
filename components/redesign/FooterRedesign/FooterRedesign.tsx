@@ -53,18 +53,20 @@ export function FooterRedesign({
             {locale === `ru` ? `Политика конфиденциальности` : `Privacy policy`}
           </a>
         </div>
-        <ul
-          className="footer-redesign__navigation"
-          style={footerNavigationStyle}
-        >
-          {navigationLists.map((el) => (
-            <FooterNavigationListRedesign
-              key={el.id}
-              caption={el.caption}
-              links={el.links}
-            />
-          ))}
-        </ul>
+        {navigationLists.length > 0 && (
+          <ul
+            className="footer-redesign__navigation"
+            style={footerNavigationStyle}
+          >
+            {navigationLists.map((el) => (
+              <FooterNavigationListRedesign
+                key={el.id}
+                caption={el.caption}
+                links={el.links}
+              />
+            ))}
+          </ul>
+        )}
       </div>
     </footer>
   );
