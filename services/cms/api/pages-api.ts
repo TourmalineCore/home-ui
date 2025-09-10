@@ -71,7 +71,7 @@ function mapPageResponse(response: PageResponse): Page {
 
 function mapSeoResponse(seo: SharedSeoComponent): Seo {
   return {
-    metaTitle: seo.metaDescription ?? ``,
+    metaTitle: seo.metaTitle ?? ``,
     metaDescription: seo.metaDescription ?? ``,
     metaKeywords: seo.keywords ?? ``,
   };
