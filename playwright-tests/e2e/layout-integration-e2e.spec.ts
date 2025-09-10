@@ -414,7 +414,6 @@ async function updateLayoutApi({
             ],
           },
         },
-        locale,
       }),
     });
     await expect(response.data, `Layout should be updated`)
