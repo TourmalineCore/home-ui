@@ -16,7 +16,7 @@ export const BlockRenderer = ({
 }: {
   block: Block;
 }) => {
-  if (block.__component === BlockType.HOME_HERO) {
+  if (block.__component === BlockType.SHARED_HERO) {
     return (
       <HeroRedesign
         title={block.title}

@@ -9,6 +9,12 @@ module.exports = withReactSvg({
   include: path.resolve(__dirname, 'icons'),
   images: {
     domains: ['raw.githubusercontent.com'],
+    remotePatterns: [
+      {
+        protocol: 'http',
+        hostname: 'localhost',
+      },
+    ]
   },
   env: {
     METRICS_ENABLED: process.env.METRICS_ENABLED,

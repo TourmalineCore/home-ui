@@ -2,17 +2,18 @@ import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import { PageHead } from '../components/PageHead/PageHead';
 import { LayoutRedesign } from '../components/redesign/LayoutRedesign/LayoutRedesign';
 import { BlockRenderer } from '../components/BlockRenderer/BlockRenderer';
-import { BlockType } from '../common/enums';
+import { AppRoute, BlockType } from '../common/enums';
 import { loadTranslations } from '../common/utils';
-import { Block, LayoutData, SeoBlock } from '../common/types';
+import { Block, LayoutData, Seo } from '../common/types';
 import { getLayoutData } from '../services/cms/api/layout-api';
+import { getPageData } from '../services/cms/api/pages-api';
 
 type PageData = {
-  seo: SeoBlock;
+  seo: Seo;
   blocks: Block[];
 };
 
-export default function HomePage({
+export default function UniversalPage({
   layoutData,
   pageData,
   isPreview,
@@ -59,9 +60,13 @@ export default function HomePage({
 
 export async function getServerSideProps({
   locale,
+  query,
   preview = false,
 }: {
   locale: string;
+  query: {
+    slug: string;
+  };
   preview: boolean;
 }) {
   if (process.env.IS_STATIC_MODE === `true`) {
@@ -92,7 +97,7 @@ export async function getServerSideProps({
 
     const blocks = mapStaticBlocksWithId([
       {
-        __component: BlockType.HOME_HERO,
+        __component: BlockType.SHARED_HERO,
         ...translationsPageData.heroRedesign,
       },
       {
@@ -179,12 +184,29 @@ export async function getServerSideProps({
     status,
   });
 
+  const pageData = await getPageData({
+    locale,
+    status,
+    slug: Array.isArray(query.slug) ? query.slug[0] : AppRoute.Main,
+  });
+
+  if (!pageData) {
+    return {
+      notFound: true,
+    };
+  }
+  const {
+    seo,
+    blocks,
+  } = pageData;
+
   return {
     props: {
       layoutData,
       isPreview: preview,
       pageData: {
-        blocks: [],
+        blocks,
+        seo,
       },
       ...(await serverSideTranslations(locale, [
         `common`,

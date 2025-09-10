@@ -19,6 +19,193 @@ export interface Error {
   };
 }
 
+export interface HomepageRequest {
+  data: {
+    blocks: BaseNull & BaseNullComponentMapping<"shared.hero", SharedHeroComponent>;
+    seo: SharedSeoComponent;
+    locale?: string;
+    localizations?: (number | string)[];
+  };
+}
+
+export interface HomepageListResponse {
+  data?: Homepage[];
+  meta?: {
+    pagination?: {
+      page?: number;
+      /** @min 25 */
+      pageSize?: number;
+      /** @max 1 */
+      pageCount?: number;
+      total?: number;
+    };
+  };
+}
+
+export interface Homepage {
+  id?: number;
+  documentId?: string;
+  blocks: AbstractNull & AbstractNullComponentMapping<"shared.hero", SharedHeroComponent>;
+  seo: SharedSeoComponent;
+  /** @format date-time */
+  createdAt?: string;
+  /** @format date-time */
+  updatedAt?: string;
+  /** @format date-time */
+  publishedAt?: string;
+  createdBy?: {
+    id?: number;
+    documentId?: string;
+  };
+  updatedBy?: {
+    id?: number;
+    documentId?: string;
+  };
+  locale?: string;
+  localizations?: {
+    id?: number;
+    documentId?: string;
+    blocks?: DiscriminatorNull & DiscriminatorNullComponentMapping<"shared.hero", SharedHeroComponent>;
+    seo?: SharedSeoComponent;
+    /** @format date-time */
+    createdAt?: string;
+    /** @format date-time */
+    updatedAt?: string;
+    /** @format date-time */
+    publishedAt?: string;
+    createdBy?: {
+      id?: number;
+      documentId?: string;
+    };
+    updatedBy?: {
+      id?: number;
+      documentId?: string;
+    };
+    locale?: string;
+    localizations?: {
+      id?: number;
+      documentId?: string;
+    }[];
+  }[];
+}
+
+export interface HomepageResponse {
+  data?: Homepage;
+  meta?: object;
+}
+
+export interface SharedHeroComponent {
+  id?: number;
+  __component?: "shared.hero";
+  title?: string;
+  description?: string;
+  gallery?: {
+    id?: number;
+    documentId?: string;
+    name?: string;
+    alternativeText?: string;
+    caption?: string;
+    width?: number;
+    height?: number;
+    formats?: any;
+    hash?: string;
+    ext?: string;
+    mime?: string;
+    /** @format float */
+    size?: number;
+    url?: string;
+    previewUrl?: string;
+    provider?: string;
+    provider_metadata?: any;
+    related?: {
+      id?: number;
+      documentId?: string;
+    }[];
+    folder?: {
+      id?: number;
+      documentId?: string;
+    };
+    folderPath?: string;
+    /** @format date-time */
+    createdAt?: string;
+    /** @format date-time */
+    updatedAt?: string;
+    /** @format date-time */
+    publishedAt?: string;
+    createdBy?: {
+      id?: number;
+      documentId?: string;
+    };
+    updatedBy?: {
+      id?: number;
+      documentId?: string;
+    };
+    locale?: string;
+    localizations?: {
+      id?: number;
+      documentId?: string;
+    }[];
+  }[];
+}
+
+export interface SharedSeoComponent {
+  id?: number;
+  metaTitle?: string;
+  metaDescription?: string;
+  metaImage?: {
+    id?: number;
+    documentId?: string;
+    name?: string;
+    alternativeText?: string;
+    caption?: string;
+    width?: number;
+    height?: number;
+    formats?: any;
+    hash?: string;
+    ext?: string;
+    mime?: string;
+    /** @format float */
+    size?: number;
+    url?: string;
+    previewUrl?: string;
+    provider?: string;
+    provider_metadata?: any;
+    related?: {
+      id?: number;
+      documentId?: string;
+    }[];
+    folder?: {
+      id?: number;
+      documentId?: string;
+    };
+    folderPath?: string;
+    /** @format date-time */
+    createdAt?: string;
+    /** @format date-time */
+    updatedAt?: string;
+    /** @format date-time */
+    publishedAt?: string;
+    createdBy?: {
+      id?: number;
+      documentId?: string;
+    };
+    updatedBy?: {
+      id?: number;
+      documentId?: string;
+    };
+    locale?: string;
+    localizations?: {
+      id?: number;
+      documentId?: string;
+    }[];
+  };
+  keywords?: string;
+  metaRobots?: string;
+  metaViewport?: string;
+  canonicalURL?: string;
+  structuredData?: any;
+}
+
 export interface LayoutRequest {
   data: {
     emailAddress: string;
@@ -474,3 +661,21 @@ export interface SocialNetworkResponse {
   data?: SocialNetwork;
   meta?: object;
 }
+
+type BaseNull = SharedHeroComponent[];
+
+type BaseNullComponentMapping<Key, Type> = {
+  __component: Key;
+} & Type;
+
+type AbstractNull = SharedHeroComponent[];
+
+type AbstractNullComponentMapping<Key, Type> = {
+  __component: Key;
+} & Type;
+
+type DiscriminatorNull = SharedHeroComponent[];
+
+type DiscriminatorNullComponentMapping<Key, Type> = {
+  __component: Key;
+} & Type;
