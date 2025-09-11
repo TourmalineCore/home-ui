@@ -3,6 +3,7 @@ import Image from 'next/image';
 import IconArrow from '../../../../icons/icon-arrow-redesign.svg';
 import { FeaturedCardProps } from '../../../../common/types';
 import { WideCard } from './components/WideCard/WideCard';
+import { SmartLink } from '../../../SmartLink/SmartLink';
 
 export function FeaturedCard({
   title,
@@ -22,12 +23,12 @@ export function FeaturedCard({
         className={clsx(`featured-card featured-card--${theme.toLowerCase()} col-tablet-6 col-tablet-xl-4 col-desktop-3`)}
       >
         {link ? (
-          <a
+          <SmartLink
             className="featured-card__link-wrapper"
             href={link}
           >
             {renderCardContent()}
-          </a>
+          </SmartLink>
         )
           : renderCardContent()}
 
@@ -38,6 +39,7 @@ export function FeaturedCard({
   if (type === `wide`) {
     return (
       <WideCard
+        className="featured-card__wide-card"
         title={title}
         description={description}
         wideCardItems={wideCardItems}
