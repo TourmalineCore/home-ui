@@ -10,9 +10,7 @@ export function FeaturedCard({
   description,
   points,
   link,
-  linkText,
   wideCardItems,
-  wideCardLink,
   theme,
   imageUrl,
   type,
@@ -25,7 +23,7 @@ export function FeaturedCard({
         {link ? (
           <SmartLink
             className="featured-card__link-wrapper"
-            href={link}
+            href={link.url}
           >
             {renderCardContent()}
           </SmartLink>
@@ -43,7 +41,7 @@ export function FeaturedCard({
         title={title}
         description={description}
         wideCardItems={wideCardItems}
-        wideCardLink={wideCardLink}
+        link={link}
       />
     );
   }
@@ -84,7 +82,7 @@ export function FeaturedCard({
           <span
             className="featured-card__link-text"
           >
-            {linkText}
+            {link.text}
             <IconArrow />
           </span>
         )}

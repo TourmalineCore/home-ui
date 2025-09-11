@@ -6,7 +6,7 @@ export function WideCard({
   title,
   description,
   wideCardItems,
-  wideCardLink,
+  link,
   className,
 }: WideCardProps & {
   className: string;
@@ -20,51 +20,55 @@ export function WideCard({
             {description}
           </p>
         )}
-        <ul className="wide-card__list">
-          {
-            wideCardItems.map(({
-              id,
-              icon,
-              link: itemLink,
-              name,
-            }) => (
-              <li
-                className="wide-card__item"
-                key={id}
-              >
-                <span className="wide-card__icon-wrapper">
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img
-                    src={icon}
-                    alt=""
-                  />
-                </span>
-                {
-                  itemLink
-                    ? (
-                      <SmartLink
-                        className="wide-card__link"
-                        href={itemLink}
-                      >
-                        {name}
-                      </SmartLink>
-                    )
-                    : (
-                      <span className="wide-card__name">
-                        {name}
-                      </span>
-                    )
-                }
-              </li>
-            ))
-          }
-        </ul>
-        {wideCardLink && (
+        {wideCardItems.length > 0 && (
+          <ul className="wide-card__list">
+            {
+              wideCardItems.map(({
+                id,
+                icon,
+                link: itemLink,
+                name,
+              }) => (
+                <li
+                  className="wide-card__item"
+                  key={id}
+                >
+                  {icon && (
+                    <span className="wide-card__icon-wrapper">
+                      {/* eslint-disable-next-line @next/next/no-img-element */}
+                      <img
+                        src={icon}
+                        alt=""
+                      />
+                    </span>
+                  )}
+                  {
+                    itemLink
+                      ? (
+                        <SmartLink
+                          className="wide-card__link"
+                          href={itemLink}
+                        >
+                          {name}
+                        </SmartLink>
+                      )
+                      : (
+                        <span className="wide-card__name">
+                          {name}
+                        </span>
+                      )
+                  }
+                </li>
+              ))
+            }
+          </ul>
+        )}
+        {link && (
           <SmartLink
-            href={wideCardLink.url}
+            href={link.url}
             className="wide-card__featured-link"
           >
-            {wideCardLink.text}
+            {link.text}
           </SmartLink>
         )}
       </div>
