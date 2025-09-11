@@ -31,8 +31,6 @@ export const BlockRenderer = ({
       <FeaturedCardsList
         title={block.title}
         cards={block.cards}
-        teamsCard={block.teamsCard}
-        teams={block.teams}
         targetId="featured-cards-list"
       />
     );

@@ -131,6 +131,14 @@
     min-height: 607px;
   }
 
+  &--blank {
+    display: none;
+
+    @include desktop {
+      display: block;
+    }
+  }
+
   &--blue {
     display: none;
     background-color: $color-deep-blue-redesign;

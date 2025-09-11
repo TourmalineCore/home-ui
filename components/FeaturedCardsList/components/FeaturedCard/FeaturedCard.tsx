@@ -2,12 +2,16 @@ import clsx from 'clsx';
 import Image from 'next/image';
 import IconArrow from '../../../../icons/icon-arrow-redesign.svg';
 import { FeaturedCardProps } from '../../../../common/types';
+import { WideCard } from './components/WideCard/WideCard';
 
 export function FeaturedCard({
   title,
+  description,
   points,
   link,
   linkText,
+  wideCardItems,
+  wideCardLink,
   theme,
   imageUrl,
   type,
@@ -15,33 +19,35 @@ export function FeaturedCard({
   if (type === `points` || type === `image`) {
     return (
       <li
-        className="featured-cards-list__card col-tablet-6 col-tablet-xl-4 col-desktop-3"
+        className={clsx(`featured-card featured-card--${theme.toLowerCase()} col-tablet-6 col-tablet-xl-4 col-desktop-3`)}
       >
-        <div className={clsx(
-          `featured-card featured-card--${theme.toLowerCase()}`,
-        )}
-        >
-          {link ? (
-            <a
-              className="featured-card__link-wrapper"
-              href={link}
-            >
-              {renderCardContent()}
-            </a>
-          )
-            : renderCardContent()}
-        </div>
+        {link ? (
+          <a
+            className="featured-card__link-wrapper"
+            href={link}
+          >
+            {renderCardContent()}
+          </a>
+        )
+          : renderCardContent()}
+
       </li>
     );
   }
 
-  return (
-    <li className="featured-cards-list__card col-tablet-12 col-tablet-xl-4 col-desktop-3">
-      <div className={clsx(
-        `featured-card featured-card--white`,
-      )}
+  if (type === `wide`) {
+    return (
+      <WideCard
+        title={title}
+        description={description}
+        wideCardItems={wideCardItems}
+        wideCardLink={wideCardLink}
       />
-    </li>
+    );
+  }
+
+  return (
+    <li className="featured-card featured-card--white featured-card--blank col-tablet-12 col-tablet-xl-4 col-desktop-3" />
   );
 
   function renderCardContent() {

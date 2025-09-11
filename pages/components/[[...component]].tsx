@@ -33,7 +33,7 @@ export default function ComponentsPage({
     projectsRedesignFirstSection,
     projectsRedesignSecondarySection,
     projectsRedesignThirdSection,
-    servicesRedesign,
+    featuredCardsList,
     articleSignpostsRedesign,
     singleImageRedesign,
     pageNotFound,
@@ -157,10 +157,8 @@ export default function ComponentsPage({
   if (componentName === ComponentName.FEATURED_CARDS_LIST) {
     return (
       <FeaturedCardsList
-        title={servicesRedesign.title}
-        services={servicesRedesign.services}
-        teamsCard={servicesRedesign.teamsCard}
-        teams={servicesRedesign.teams}
+        title={featuredCardsList.title}
+        cards={featuredCardsList.cards}
       />
     );
   }
@@ -278,7 +276,7 @@ export default function ComponentsPage({
           <Link href={ComponentName.PROJECTS_WITH_TEXT_BLOCK}>Projects with text block</Link>
         </li>
         <li className="components-page__item">
-          <Link href={ComponentName.FEATURED_CARDS_LIST}>Services</Link>
+          <Link href={ComponentName.FEATURED_CARDS_LIST}>Featured cards list</Link>
         </li>
         <li className="components-page__item">
           <Link href={ComponentName.SIGNPOST_MULTIPLE}>Articles signpost</Link>
@@ -323,7 +321,7 @@ export async function getStaticProps({
     `projectsRedesignFirstSection`,
     `projectsRedesignSecondarySection`,
     `projectsRedesignThirdSection`,
-    `servicesRedesign`,
+    `featuredCardsList`,
     `articleSignpostsRedesign`,
     `singleImageRedesign`,
     `pageNotFound`,
