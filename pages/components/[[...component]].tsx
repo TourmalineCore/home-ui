@@ -8,7 +8,7 @@ import { FooterRedesign } from "../../components/redesign/FooterRedesign/FooterR
 import { HeroRedesign } from "../../components/redesign/HeroRedesign/HeroRedesign";
 import { ProjectsRedesign } from "../../components/redesign/ProjectsRedesign/ProjectsRedesign";
 import { ProjectsWithTextBlockRedesign } from "../../components/redesign/ProjectsWithTextBlockRedesign/ProjectsWithTextBlockRedesign";
-import { ServicesRedesign } from "../../components/redesign/ServicesRedesign/ServicesRedesign";
+import { FeaturedCardsList } from "../../components/FeaturedCardsList/FeaturedCardsList";
 import { SignpostMultipleRedesign } from "../../components/redesign/SignpostMultipleRedesign/SignpostMultipleRedesign";
 import { SingleImageRedesign } from "../../components/redesign/SingleImageRedesign/SingleImageRedesign";
 import { FormBlockRedesign } from "../../components/redesign/FormBlockRedesign/FormBlockRedesign";
@@ -33,7 +33,7 @@ export default function ComponentsPage({
     projectsRedesignFirstSection,
     projectsRedesignSecondarySection,
     projectsRedesignThirdSection,
-    servicesRedesign,
+    featuredCardsList,
     articleSignpostsRedesign,
     singleImageRedesign,
     pageNotFound,
@@ -154,13 +154,11 @@ export default function ComponentsPage({
     );
   }
 
-  if (componentName === ComponentName.SERVICES) {
+  if (componentName === ComponentName.FEATURED_CARDS_LIST) {
     return (
-      <ServicesRedesign
-        title={servicesRedesign.title}
-        services={servicesRedesign.services}
-        teamsCard={servicesRedesign.teamsCard}
-        teams={servicesRedesign.teams}
+      <FeaturedCardsList
+        title={featuredCardsList.title}
+        cards={featuredCardsList.cards}
       />
     );
   }
@@ -278,7 +276,7 @@ export default function ComponentsPage({
           <Link href={ComponentName.PROJECTS_WITH_TEXT_BLOCK}>Projects with text block</Link>
         </li>
         <li className="components-page__item">
-          <Link href={ComponentName.SERVICES}>Services</Link>
+          <Link href={ComponentName.FEATURED_CARDS_LIST}>Featured cards list</Link>
         </li>
         <li className="components-page__item">
           <Link href={ComponentName.SIGNPOST_MULTIPLE}>Articles signpost</Link>
@@ -323,7 +321,7 @@ export async function getStaticProps({
     `projectsRedesignFirstSection`,
     `projectsRedesignSecondarySection`,
     `projectsRedesignThirdSection`,
-    `servicesRedesign`,
+    `featuredCardsList`,
     `articleSignpostsRedesign`,
     `singleImageRedesign`,
     `pageNotFound`,

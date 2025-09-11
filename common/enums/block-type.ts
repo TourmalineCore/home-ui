@@ -1,6 +1,7 @@
 export enum BlockType {
   SHARED_HERO = `shared.hero`,
-  HOME_SERVICES = `home.services`,
+  SHARED_FEATURED_CARDS_LIST = `shared.featured-cards-list`,
+
   HOME_PROJECTS_WITH_TEXT_BLOCK = `home.project-with-text-block`,
   HOME_PROJECTS = `home.projects`,
   HOME_COLLAGE_WITH_TITLE = `home.collage-with-title`,

@@ -1,5 +1,6 @@
 import { BlockType } from '../../common/enums';
 import { Block } from '../../common/types';
+import { FeaturedCardsList } from '../FeaturedCardsList/FeaturedCardsList';
 import { CardsGridRedesign } from '../redesign/CardsGridRedesign/CardsGridRedesign';
 import { CollageWithLinkRedesign } from '../redesign/CollageWithLinkRedesign/CollageWithLinkRedesign';
 import { CollageWithTitleRedesign } from '../redesign/CollageWithTitleRedesign/CollageWithTitleRedesign';
@@ -7,7 +8,6 @@ import { FormBlockRedesign } from '../redesign/FormBlockRedesign/FormBlockRedesi
 import { HeroRedesign } from '../redesign/HeroRedesign/HeroRedesign';
 import { ProjectsRedesign } from '../redesign/ProjectsRedesign/ProjectsRedesign';
 import { ProjectsWithTextBlockRedesign } from '../redesign/ProjectsWithTextBlockRedesign/ProjectsWithTextBlockRedesign';
-import { ServicesRedesign } from '../redesign/ServicesRedesign/ServicesRedesign';
 import { SignpostMultipleRedesign } from '../redesign/SignpostMultipleRedesign/SignpostMultipleRedesign';
 import { SingleImageRedesign } from '../redesign/SingleImageRedesign/SingleImageRedesign';
 
@@ -26,14 +26,12 @@ export const BlockRenderer = ({
     );
   }
 
-  if (block.__component === BlockType.HOME_SERVICES) {
+  if (block.__component === BlockType.SHARED_FEATURED_CARDS_LIST) {
     return (
-      <ServicesRedesign
+      <FeaturedCardsList
         title={block.title}
-        services={block.services}
-        teamsCard={block.teamsCard}
-        teams={block.teams}
-        targetId="services"
+        cards={block.cards}
+        targetId="featured-cards-list"
       />
     );
   }

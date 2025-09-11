@@ -73,7 +73,7 @@ export async function getServerSideProps({
     const translationsPageData = await loadTranslations(locale, [
       `common`,
       `heroRedesign`,
-      `servicesRedesign`,
+      `featuredCardsList`,
       `projectsRedesignFirstSection`,
       `projectsRedesignSecondarySection`,
       `projectsRedesignThirdSection`,
@@ -101,8 +101,8 @@ export async function getServerSideProps({
         ...translationsPageData.heroRedesign,
       },
       {
-        __component: BlockType.HOME_SERVICES,
-        ...translationsPageData.servicesRedesign,
+        __component: BlockType.SHARED_FEATURED_CARDS_LIST,
+        ...translationsPageData.featuredCardsList,
       },
       {
         __component: BlockType.HOME_PROJECTS_WITH_TEXT_BLOCK,

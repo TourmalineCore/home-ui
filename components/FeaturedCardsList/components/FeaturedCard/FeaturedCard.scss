@@ -1,4 +1,4 @@
-.services-card-redesign {
+.featured-card {
   $this: &;
 
   position: relative;
@@ -129,6 +129,14 @@
   @include desktop-xl {
     padding: 32px 28px;
     min-height: 607px;
+  }
+
+  &--blank {
+    display: none;
+
+    @include desktop {
+      display: block;
+    }
   }
 
   &--blue {
