@@ -27,6 +27,7 @@ export interface WideCardProps {
   title?: string;
   description?: string;
   wideCardItems: {
+    id: number;
     icon: string;
     name: string;
     link?: string;

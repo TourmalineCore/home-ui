@@ -18,13 +18,14 @@ export function WideCard({
         <ul className="wide-card__list">
           {
             wideCardItems.map(({
+              id,
               icon,
               link: itemLink,
               name,
             }) => (
               <li
                 className="wide-card__item"
-                key={name}
+                key={id}
               >
                 <span className="wide-card__icon-wrapper">
                   {/* eslint-disable-next-line @next/next/no-img-element */}

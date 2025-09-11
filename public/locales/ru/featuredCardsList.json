@@ -78,36 +78,43 @@
       },
       "wideCardItems": [
         {
+          "id": 1,
           "name": "Backend",
           "icon": "/images/icon-backend.svg",
           "link": "/ru/backend"
         },
         {
+          "id": 2,
           "name": "Frontend",
           "icon": "/images/icon-frontend.svg",
           "link": "/ru/frontend"
         },
         {
+          "id": 3,
           "name": "ML-инженеры",
           "icon": "/images/icon-ml.svg",
           "link": "/ru/ml"
         },
         {
+          "id": 4,
           "name": "Embedded",
           "icon": "/images/icon-embedded.svg",
           "link": "/ru/embedded"
         },
         {
+          "id": 5,
           "name": "QA-инженеры",
           "icon": "/images/icon-qa.svg",
           "link": "/ru/qa"
         },
         {
+          "id": 6,
           "name": "Дизайнеры",
           "icon": "/images/icon-design.svg",
           "link": "/ru/design"
         },
         {
+          "id": 7,
           "name": "DevOps",
           "icon": "/images/icon-devops.svg"
         }
