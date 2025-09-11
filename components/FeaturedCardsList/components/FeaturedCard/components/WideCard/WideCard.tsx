@@ -1,5 +1,6 @@
 import clsx from "clsx";
 import { WideCardProps } from "../../../../../../common/types";
+import { SmartLink } from "../../../../../SmartLink/SmartLink";
 
 export function WideCard({
   title,
@@ -41,12 +42,12 @@ export function WideCard({
                 {
                   itemLink
                     ? (
-                      <a
+                      <SmartLink
                         className="wide-card__link"
                         href={itemLink}
                       >
                         {name}
-                      </a>
+                      </SmartLink>
                     )
                     : (
                       <span className="wide-card__name">
@@ -59,12 +60,12 @@ export function WideCard({
           }
         </ul>
         {wideCardLink && (
-          <a
+          <SmartLink
             href={wideCardLink.url}
             className="wide-card__featured-link"
           >
             {wideCardLink.text}
-          </a>
+          </SmartLink>
         )}
       </div>
     </li>
