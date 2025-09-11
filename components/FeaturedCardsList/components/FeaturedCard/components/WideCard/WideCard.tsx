@@ -1,3 +1,4 @@
+import clsx from "clsx";
 import { WideCardProps } from "../../../../../../common/types";
 
 export function WideCard({
@@ -5,9 +6,12 @@ export function WideCard({
   description,
   wideCardItems,
   wideCardLink,
-}: WideCardProps) {
+  className,
+}: WideCardProps & {
+  className: string;
+}) {
   return (
-    <li className="wide-card col-tablet-12 col-tablet-xl-8 col-desktop-6">
+    <li className={clsx(`wide-card col-tablet-12 col-tablet-xl-8 col-desktop-6`, className)}>
       <div className="wide-card__wrapper">
         {title && <h3 className="wide-card__subtitle">{title}</h3>}
         {description && (
