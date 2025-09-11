@@ -14,7 +14,7 @@ export interface FeaturedCardProps extends Points, ImageCard, WideCardProps {
 
 export interface Points {
   title?: string;
-  points?: string[];
+  points: string[];
   link?: {
     text: string;
     url: string;
