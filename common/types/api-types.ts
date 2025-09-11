@@ -21,7 +21,11 @@ export interface Error {
 
 export interface HomepageRequest {
   data: {
-    blocks: BaseNull & BaseNullComponentMapping<"shared.hero", SharedHeroComponent>;
+    blocks: BaseNull &
+      (
+        | BaseNullComponentMapping<"shared.hero", SharedHeroComponent>
+        | BaseNullComponentMapping<"shared.featured-cards-list", SharedFeaturedCardsListComponent>
+      );
     seo: SharedSeoComponent;
     locale?: string;
     localizations?: (number | string)[];
@@ -45,7 +49,11 @@ export interface HomepageListResponse {
 export interface Homepage {
   id?: number;
   documentId?: string;
-  blocks: AbstractNull & AbstractNullComponentMapping<"shared.hero", SharedHeroComponent>;
+  blocks: AbstractNull &
+    (
+      | AbstractNullComponentMapping<"shared.hero", SharedHeroComponent>
+      | AbstractNullComponentMapping<"shared.featured-cards-list", SharedFeaturedCardsListComponent>
+    );
   seo: SharedSeoComponent;
   /** @format date-time */
   createdAt?: string;
@@ -65,7 +73,11 @@ export interface Homepage {
   localizations?: {
     id?: number;
     documentId?: string;
-    blocks?: DiscriminatorNull & DiscriminatorNullComponentMapping<"shared.hero", SharedHeroComponent>;
+    blocks?: DiscriminatorNull &
+      (
+        | DiscriminatorNullComponentMapping<"shared.hero", SharedHeroComponent>
+        | DiscriminatorNullComponentMapping<"shared.featured-cards-list", SharedFeaturedCardsListComponent>
+      );
     seo?: SharedSeoComponent;
     /** @format date-time */
     createdAt?: string;
@@ -146,6 +158,153 @@ export interface SharedHeroComponent {
       documentId?: string;
     }[];
   }[];
+}
+
+export interface FeaturedCardCardWithImageComponent {
+  id?: number;
+  image?: {
+    id?: number;
+    documentId?: string;
+    name?: string;
+    alternativeText?: string;
+    caption?: string;
+    width?: number;
+    height?: number;
+    formats?: any;
+    hash?: string;
+    ext?: string;
+    mime?: string;
+    /** @format float */
+    size?: number;
+    url?: string;
+    previewUrl?: string;
+    provider?: string;
+    provider_metadata?: any;
+    related?: {
+      id?: number;
+      documentId?: string;
+    }[];
+    folder?: {
+      id?: number;
+      documentId?: string;
+    };
+    folderPath?: string;
+    /** @format date-time */
+    createdAt?: string;
+    /** @format date-time */
+    updatedAt?: string;
+    /** @format date-time */
+    publishedAt?: string;
+    createdBy?: {
+      id?: number;
+      documentId?: string;
+    };
+    updatedBy?: {
+      id?: number;
+      documentId?: string;
+    };
+    locale?: string;
+    localizations?: {
+      id?: number;
+      documentId?: string;
+    }[];
+  };
+  theme?: "black" | "grey" | "blue";
+}
+
+export interface SharedTextComponent {
+  id?: number;
+  text?: string;
+}
+
+export interface SharedLinkComponent {
+  id?: number;
+  text?: string;
+  url?: string;
+}
+
+export interface FeaturedCardCardWithPointsComponent {
+  id?: number;
+  title?: string;
+  points?: SharedTextComponent[];
+  link?: SharedLinkComponent;
+  theme?: "white" | "black" | "grey";
+}
+
+export interface FeaturedCardWideCardItemsComponent {
+  id?: number;
+  name?: string;
+  icon?: {
+    id?: number;
+    documentId?: string;
+    name?: string;
+    alternativeText?: string;
+    caption?: string;
+    width?: number;
+    height?: number;
+    formats?: any;
+    hash?: string;
+    ext?: string;
+    mime?: string;
+    /** @format float */
+    size?: number;
+    url?: string;
+    previewUrl?: string;
+    provider?: string;
+    provider_metadata?: any;
+    related?: {
+      id?: number;
+      documentId?: string;
+    }[];
+    folder?: {
+      id?: number;
+      documentId?: string;
+    };
+    folderPath?: string;
+    /** @format date-time */
+    createdAt?: string;
+    /** @format date-time */
+    updatedAt?: string;
+    /** @format date-time */
+    publishedAt?: string;
+    createdBy?: {
+      id?: number;
+      documentId?: string;
+    };
+    updatedBy?: {
+      id?: number;
+      documentId?: string;
+    };
+    locale?: string;
+    localizations?: {
+      id?: number;
+      documentId?: string;
+    }[];
+  };
+  link?: string;
+}
+
+export interface FeaturedCardWideCardComponent {
+  id?: number;
+  title?: string;
+  description?: string;
+  wideCardItems?: FeaturedCardWideCardItemsComponent[];
+  link?: SharedLinkComponent;
+}
+
+export interface SharedFeaturedCardComponent {
+  id?: number;
+  type?: "points" | "image" | "blank" | "wide";
+  cardWithImage?: FeaturedCardCardWithImageComponent;
+  cardWithPoints?: FeaturedCardCardWithPointsComponent;
+  wideCard?: FeaturedCardWideCardComponent;
+}
+
+export interface SharedFeaturedCardsListComponent {
+  id?: number;
+  __component?: "shared.featured-cards-list";
+  title?: string;
+  featuredCards?: SharedFeaturedCardComponent[];
 }
 
 export interface SharedSeoComponent {
@@ -662,19 +821,19 @@ export interface SocialNetworkResponse {
   meta?: object;
 }
 
-type BaseNull = SharedHeroComponent[];
+type BaseNull = (SharedHeroComponent | SharedFeaturedCardsListComponent)[];
 
 type BaseNullComponentMapping<Key, Type> = {
   __component: Key;
 } & Type;
 
-type AbstractNull = SharedHeroComponent[];
+type AbstractNull = (SharedHeroComponent | SharedFeaturedCardsListComponent)[];
 
 type AbstractNullComponentMapping<Key, Type> = {
   __component: Key;
 } & Type;
 
-type DiscriminatorNull = SharedHeroComponent[];
+type DiscriminatorNull = (SharedHeroComponent | SharedFeaturedCardsListComponent)[];
 
 type DiscriminatorNullComponentMapping<Key, Type> = {
   __component: Key;
