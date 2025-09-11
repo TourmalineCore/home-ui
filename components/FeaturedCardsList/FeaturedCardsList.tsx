@@ -24,7 +24,7 @@ export function FeaturedCardsList({
         </li>
         {cards.map(({
           id,
-          title: servicesTitle,
+          title: cardTitle,
           points,
           description,
           link,
@@ -37,7 +37,7 @@ export function FeaturedCardsList({
         }) => (
           <FeaturedCard
             key={id}
-            title={servicesTitle}
+            title={cardTitle}
             description={description}
             points={points}
             link={link}
