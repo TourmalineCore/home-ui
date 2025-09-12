@@ -1,28 +1,24 @@
 import { ReactNode } from 'react';
 import clsx from 'clsx';
 import { MarkdownText } from '../redesign/MarkdownText/MarkdownText';
+import { ColumnWithContentProps } from '../../common/types';
 
-export type CardWithContent = {
-  title?: string;
-  markdownText?: string;
-};
-
-export function CardWithContentRedesign({
+export function ColumnWithContent({
   title,
   children,
   markdownText,
   className,
-}: CardWithContent & {
+}: ColumnWithContentProps & {
   className: string;
   children: ReactNode;
 }) {
   return (
-    <div className={clsx(`card-with-content-redesign`, className)}>
-      {title && <h3 className="card-with-content-redesign__title">{title}</h3>}
+    <div className={clsx(`column-with-content`, className)}>
+      {title && <h3 className="column-with-content__title">{title}</h3>}
       {children}
       {markdownText && (
         <MarkdownText
-          className="card-with-content-redesign__markdown"
+          className="column-with-content__markdown"
           isTargetBlank
         >
           {markdownText}

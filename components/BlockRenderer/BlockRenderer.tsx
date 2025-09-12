@@ -1,6 +1,6 @@
 import { BlockType } from '../../common/enums';
 import { Block } from '../../common/types';
-import { CardsGridRedesign } from '../CardsGridRedesign/CardsGridRedesign';
+import { ThreeColumnGrid } from '../ThreeColumnGrid/ThreeColumnGrid';
 import { FeaturedCardsList } from '../FeaturedCardsList/FeaturedCardsList';
 import { CollageWithLinkRedesign } from '../redesign/CollageWithLinkRedesign/CollageWithLinkRedesign';
 import { CollageWithTitleRedesign } from '../redesign/CollageWithTitleRedesign/CollageWithTitleRedesign';
@@ -87,7 +87,7 @@ export const BlockRenderer = ({
 
   if (block.__component === BlockType.HOME_CARDS_GRID) {
     return (
-      <CardsGridRedesign
+      <ThreeColumnGrid
         cardWithImage={block.cardWithImage}
         cardWithRepositories={block.cardWithRepositories}
         cardWithTextAndDate={block.cardWithTextAndDate}

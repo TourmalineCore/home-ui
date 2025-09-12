@@ -18,7 +18,7 @@ import { FormModal } from "../../components/FormModal/FormModal";
 import { loadTranslations } from "../../common/utils/loadTranslations";
 import { HeaderRedesign } from "../../components/redesign/HeaderRedesign/HeaderRedesign";
 import { MobileMenu } from "../../components/redesign/HeaderRedesign/components/MobileMenuRedesign/MobileMenuRedesign";
-import { CardsGridRedesign } from "../../components/CardsGridRedesign/CardsGridRedesign";
+import { ThreeColumnGrid } from "../../components/ThreeColumnGrid/ThreeColumnGrid";
 
 export default function ComponentsPage({
   pageData,
@@ -26,7 +26,7 @@ export default function ComponentsPage({
   pageData: Record<string, any>;
 }) {
   const {
-    cardsGridRedesign,
+    threeColumnGrid,
     collageWithLinkRedesign,
     collageWithTitleRedesign,
     heroRedesign,
@@ -50,10 +50,10 @@ export default function ComponentsPage({
 
   if (componentName === ComponentName.CARDS_GRID) {
     return (
-      <CardsGridRedesign
-        cardWithImage={cardsGridRedesign.cardWithImage}
-        cardWithRepositories={cardsGridRedesign.cardWithRepositories}
-        cardWithTextAndDate={cardsGridRedesign.cardWithTextAndDate}
+      <ThreeColumnGrid
+        cardWithImage={threeColumnGrid.cardWithImage}
+        cardWithRepositories={threeColumnGrid.cardWithRepositories}
+        cardWithTextAndDate={threeColumnGrid.cardWithTextAndDate}
       />
     );
   }
@@ -245,7 +245,7 @@ export default function ComponentsPage({
       </h2>
       <ul className="components-page__list">
         <li className="components-page__item">
-          <Link href={ComponentName.CARDS_GRID}>Cards grid</Link>
+          <Link href={ComponentName.CARDS_GRID}>Three Column Grid</Link>
         </li>
         <li className="components-page__item">
           <Link href={ComponentName.COLLAGE_WITH_LINK}>Collage with link</Link>
@@ -313,7 +313,7 @@ export async function getStaticProps({
   locale: string;
 }) {
   const translationsPageData = await loadTranslations(locale, [
-    `cardsGridRedesign`,
+    `threeColumnGrid`,
     `collageWithLinkRedesign`,
     `collageWithTitleRedesign`,
     `heroRedesign`,

@@ -1,4 +1,4 @@
-import { CardsGridBlock } from "./cards-grid-block";
+import { ThreeColumnGridBlock } from "./three-column-grid-block";
 import { CollageWithLinkBlock } from "./collage-with-link-block";
 import { CollageWithTitleBlock } from "./collage-with-title-block";
 import { FormBlock } from "./form-block";
@@ -10,8 +10,8 @@ import { SingleImageBlock } from "./single-image-block";
 
 export type Block = HeroBlock
 | FeaturedCardsListBlock
-| CardsGridBlock
-| CardsGridBlock
+| ThreeColumnGridBlock
+| ThreeColumnGridBlock
 | CollageWithTitleBlock
 | CollageWithLinkBlock
 | ProjectBlock
