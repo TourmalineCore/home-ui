@@ -28,6 +28,7 @@ export async function getPageData({
       `blocks.featuredCards.wideCard.wideCardItems.icon`,
       `blocks.featuredCards.wideCard.link`,
       `blocks.images`,
+      `blocks.image`,
       `blocks.link`,
       `blocks.signposts.image`,
       `seo`,

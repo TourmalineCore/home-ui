@@ -77,7 +77,7 @@ export const BlockRenderer = ({
     );
   }
 
-  if (block.__component === BlockType.HOME_SINGLE_IMAGE) {
+  if (block.__component === BlockType.SHARED_SINGLE_IMAGE) {
     return (
       <SingleImageRedesign
         imageUrl={block.imageUrl}

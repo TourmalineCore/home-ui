@@ -137,7 +137,7 @@ export async function getServerSideProps({
         ...translationsPageData.conferenceSignpostsRedesign,
       },
       {
-        __component: BlockType.HOME_SINGLE_IMAGE,
+        __component: BlockType.SHARED_SINGLE_IMAGE,
         ...translationsPageData.singleImageRedesign,
       },
       {

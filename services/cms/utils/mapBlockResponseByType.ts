@@ -59,13 +59,21 @@ export function mapBlockResponseByType(block: BlockApi): Block | null {
       __component: BlockType.SHARED_SIGNPOST_MULTIPLE,
       id: block.id,
       title: block.title ?? ``,
-      viewAllLink: block?.link as SignpostMultipleBlock['viewAllLink'] ?? null,
-      signposts: block?.signposts?.map((signpost) => ({
-        title: signpost?.title ?? ``,
-        subtitle: signpost?.subtitle ?? ``,
-        link: signpost?.link ?? ``,
-        imageUrl: signpost?.image?.url ?? ``,
+      viewAllLink: block.link as SignpostMultipleBlock['viewAllLink'] ?? null,
+      signposts: block.signposts?.map((signpost) => ({
+        title: signpost.title ?? ``,
+        subtitle: signpost.subtitle ?? ``,
+        link: signpost.link ?? ``,
+        imageUrl: signpost.image?.url ?? ``,
       })) ?? [],
+    };
+  }
+
+  if (component === BlockType.SHARED_SINGLE_IMAGE) {
+    return {
+      __component: BlockType.SHARED_SINGLE_IMAGE,
+      id: block.id,
+      imageUrl: block.image?.url ?? ``,
     };
   }
 
