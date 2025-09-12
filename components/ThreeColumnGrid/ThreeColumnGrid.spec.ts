@@ -1,10 +1,10 @@
-import { test } from '../../../playwright-tests/custom-test';
-import { BREAKPOINTS } from '../../../playwright-tests/constants/breakpoints';
-import { ComponentName } from '../../../common/enums';
+import { ComponentName } from "../../common/enums";
+import { BREAKPOINTS } from "../../playwright-tests/constants/breakpoints";
+import { test } from "../../playwright-tests/custom-test";
 
-const TEST_ID = `cards-grid`;
+const TEST_ID = `three-column-grid`;
 
-test.describe(`CardsGridRedesign`, () => {
+test.describe(`ThreeColumnGrid`, () => {
   test.beforeEach(async ({
     goToComponentsPage,
   }) => {

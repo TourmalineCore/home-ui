@@ -4,16 +4,16 @@ import 'moment/locale/ru';
 import 'moment/locale/en-gb';
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
-import { CardWithContentRedesign } from '../../../CardWithContentRedesign/CardWithContentRedesign';
-import { CardWithTextAndDate } from '../../../../../common/types';
+import { ColumnWithContent } from '../../../ColumnWithContent/ColumnWithContent';
+import { ColumnWithTextAndDateProps } from '../../../../common/types';
 
-export function CardWithTextAndDateRedesign({
+export function ColumnWithTextAndDate({
   title,
   text,
   date,
   markdownText,
   className,
-}: CardWithTextAndDate & {
+}: ColumnWithTextAndDateProps & {
   className: string;
 }) {
   const {
@@ -34,15 +34,15 @@ export function CardWithTextAndDateRedesign({
   }, [locale]);
 
   return (
-    <CardWithContentRedesign
+    <ColumnWithContent
       title={title}
       markdownText={markdownText}
-      className={clsx(`card-with-text-and-date-redesign`, className)}
+      className={clsx(`column-with-text-and-date`, className)}
     >
-      <p className="card-with-text-and-date-redesign__text">{text}</p>
-      <span className="card-with-text-and-date-redesign__date">
+      <p className="column-with-text-and-date__text">{text}</p>
+      <span className="column-with-text-and-date__date">
         {formattedDate}
       </span>
-    </CardWithContentRedesign>
+    </ColumnWithContent>
   );
 }
