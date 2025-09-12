@@ -1,3 +1,3 @@
-import { SharedHeroComponent } from "../api-types";
+import { SharedFeaturedCardsListComponent, SharedHeroComponent } from "../api-types";
 
-export type BlockApi = SharedHeroComponent;
+export type BlockApi = SharedHeroComponent | SharedFeaturedCardsListComponent;

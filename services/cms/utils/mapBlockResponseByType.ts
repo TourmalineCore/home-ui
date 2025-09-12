@@ -1,5 +1,5 @@
 import { BlockType } from "../../../common/enums";
-import { Block } from "../../../common/types";
+import { Block, FeaturedCardProps } from "../../../common/types";
 import { BlockApi } from "../../../common/types/blocks/api-block";
 
 export function mapBlockResponseByType(block: BlockApi): Block | null {
@@ -14,6 +14,32 @@ export function mapBlockResponseByType(block: BlockApi): Block | null {
       imageUrls: block.gallery?.map(({
         url,
       }) => url ?? ``) ?? [],
+    };
+  }
+
+  if (component === BlockType.SHARED_FEATURED_CARDS_LIST) {
+    const featuredCards = block.featuredCards?.map((card) => ({
+      id: card.id,
+      type: card.type,
+      theme: card.cardWithPoints?.theme || card.cardWithImage?.theme || null,
+      title: card.wideCard?.title || card.cardWithPoints?.title || null,
+      points: card.cardWithPoints?.points?.map(({
+        text,
+      }) => text) || null,
+      link: card.cardWithPoints?.link || card.wideCard?.link || null,
+      imageUrl: card.cardWithImage?.image?.url || null,
+      description: card.wideCard?.description || null,
+      wideCardItems: card.wideCard?.wideCardItems?.map((item) => ({
+        ...item,
+        icon: item.icon?.url || null,
+      })) || null,
+    }));
+
+    return {
+      __component: BlockType.SHARED_FEATURED_CARDS_LIST,
+      id: block.id,
+      title: block.title ?? ``,
+      cards: featuredCards as FeaturedCardProps[] ?? [],
     };
   }
 

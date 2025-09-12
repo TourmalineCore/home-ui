@@ -20,7 +20,15 @@ export async function getPageData({
   slug: string;
 }): Promise<Page | null> {
   const queryParams = {
-    populate: [`blocks.gallery`, `seo`],
+    populate: [
+      `blocks.gallery`,
+      `blocks.featuredCards.cardWithPoints.points`,
+      `blocks.featuredCards.cardWithPoints.link`,
+      `blocks.featuredCards.cardWithImage.image`,
+      `blocks.featuredCards.wideCard.wideCardItems.icon`,
+      `blocks.featuredCards.wideCard.link`,
+      `seo`,
+    ],
     locale,
     status,
   };

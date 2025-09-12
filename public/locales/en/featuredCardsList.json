@@ -13,8 +13,10 @@
       "id": 1,
       "title": "Embedded development",
       "points": ["Drivers", "Software modules with complex logic", "Protocols and libraries", "Cross-compilation setup", "Technical documentation"],
-      "link": "/embedded",
-      "linkText": "Learn more",
+      "link": {
+        "text": "Learn more",
+        "url":  "/embedded"
+      },
       "theme": "white",
       "type": "points"
     },
@@ -28,8 +30,10 @@
       "id": 3,
       "title": "Machine learning and data analysis",
       "points": ["Business data analytics", "Computer vision models", "Text and audio processing models", "Sensor signal processing models"],
-      "link": "/ml",
-      "linkText": "Learn more",
+      "link": {
+        "text": "Learn more",
+        "url": "/ml"
+      },
       "theme": "grey",
       "type": "points"
     },
@@ -37,8 +41,10 @@
       "id": 4,
       "title": "Testing",
       "points": ["E2E testing", "UI & API testing", "Integration and unit testing", "Manual and automated testing"],
-      "link": "/qa",
-      "linkText": "Learn more",
+      "link": {
+        "text": "Learn more",
+        "url": "/qa"
+      },
       "theme": "white",
       "type": "points"
     },
@@ -46,8 +52,10 @@
       "id": 5,
       "title": "Design",
       "points": ["UI/UX design", "Websites and landing pages design", "No/Low-code websites"],
-      "link": "/design",
-      "linkText": "Learn more",
+      "link": {
+        "text": "Learn more",
+        "url": "/design"
+      },
       "theme": "grey",
       "type": "points"
     },
@@ -72,7 +80,7 @@
       "id": 9,
       "title": "Teams",
       "description": "We can provide a dedicated team or outsource several specialists for your project.",
-      "wideCardLink": {
+      "link": {
         "text": "Learn more about our teams",
         "url": "/teams"
       },

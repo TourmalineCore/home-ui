@@ -18,9 +18,11 @@ export function FeaturedCardsList({
     >
       <ul className="featured-cards-list__cards grid container-redesign">
         <li className="featured-cards-list__card col-tablet-12 col-tablet-xl-4 col-desktop-3">
-          <h2 className="featured-cards-list__title">
-            {title}
-          </h2>
+          {title && (
+            <h2 className="featured-cards-list__title">
+              {title}
+            </h2>
+          )}
         </li>
         {cards.map(({
           id,
@@ -28,10 +30,8 @@ export function FeaturedCardsList({
           points,
           description,
           link,
-          linkText,
           theme,
           wideCardItems,
-          wideCardLink,
           imageUrl,
           type,
         }) => (
@@ -41,12 +41,10 @@ export function FeaturedCardsList({
             description={description}
             points={points}
             link={link}
-            linkText={linkText}
             theme={theme}
             imageUrl={imageUrl}
             type={type}
             wideCardItems={wideCardItems}
-            wideCardLink={wideCardLink}
           />
         ))}
       </ul>

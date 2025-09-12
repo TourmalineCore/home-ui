@@ -2,7 +2,7 @@ import { BlockType } from "../../enums";
 import { BaseBlock } from "./base-block";
 
 export interface FeaturedCardsListBlock extends BaseBlock<BlockType.SHARED_FEATURED_CARDS_LIST> {
-  title: string;
+  title?: string;
   cards: FeaturedCardProps[];
 }
 
@@ -14,9 +14,11 @@ export interface FeaturedCardProps extends Points, ImageCard, WideCardProps {
 
 export interface Points {
   title?: string;
-  points?: string[];
-  link?: string;
-  linkText?: string;
+  points: string[];
+  link?: {
+    text: string;
+    url: string;
+  };
 }
 
 export interface ImageCard {
@@ -28,11 +30,11 @@ export interface WideCardProps {
   description?: string;
   wideCardItems: {
     id: number;
-    icon: string;
+    icon?: string;
     name: string;
     link?: string;
   }[];
-  wideCardLink: {
+  link?: {
     text: string;
     url: string;
   };
