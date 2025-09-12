@@ -1,7 +1,7 @@
 import clsx from 'clsx';
 import { CardWithContentRedesign } from '../../../CardWithContentRedesign/CardWithContentRedesign';
-import { useDeviceSize } from '../../../../../common/hooks';
-import { CardWithRepositories } from '../../../../../common/types';
+import { useDeviceSize } from '../../../../common/hooks';
+import { CardWithRepositories } from '../../../../common/types';
 
 export function CardWithRepositoriesRedesign({
   title,

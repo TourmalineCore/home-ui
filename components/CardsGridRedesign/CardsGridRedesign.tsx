@@ -1,4 +1,4 @@
-import { CardsGridBlock } from '../../../common/types';
+import { CardsGridBlock } from '../../common/types';
 import { CardWithImageRedesign } from './components/CardWithImageRedesign/CardWithImageRedesign';
 import { CardWithRepositoriesRedesign } from './components/CardWithRepositoriesRedesign/CardWithRepositoriesRedesign';
 import { CardWithTextAndDateRedesign } from './components/CardWithTextAndDateRedesign/CardWithTextAndDateRedesign';

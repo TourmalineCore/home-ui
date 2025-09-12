@@ -1,6 +1,6 @@
 import { ReactNode } from 'react';
 import clsx from 'clsx';
-import { MarkdownText } from '../MarkdownText/MarkdownText';
+import { MarkdownText } from '../redesign/MarkdownText/MarkdownText';
 
 export type CardWithContent = {
   title?: string;

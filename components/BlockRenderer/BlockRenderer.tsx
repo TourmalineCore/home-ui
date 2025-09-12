@@ -1,7 +1,7 @@
 import { BlockType } from '../../common/enums';
 import { Block } from '../../common/types';
+import { CardsGridRedesign } from '../CardsGridRedesign/CardsGridRedesign';
 import { FeaturedCardsList } from '../FeaturedCardsList/FeaturedCardsList';
-import { CardsGridRedesign } from '../redesign/CardsGridRedesign/CardsGridRedesign';
 import { CollageWithLinkRedesign } from '../redesign/CollageWithLinkRedesign/CollageWithLinkRedesign';
 import { CollageWithTitleRedesign } from '../redesign/CollageWithTitleRedesign/CollageWithTitleRedesign';
 import { FormBlockRedesign } from '../redesign/FormBlockRedesign/FormBlockRedesign';

@@ -5,7 +5,7 @@ import 'moment/locale/en-gb';
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import { CardWithContentRedesign } from '../../../CardWithContentRedesign/CardWithContentRedesign';
-import { CardWithTextAndDate } from '../../../../../common/types';
+import { CardWithTextAndDate } from '../../../../common/types';
 
 export function CardWithTextAndDateRedesign({
   title,

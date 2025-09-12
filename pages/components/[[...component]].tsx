@@ -1,7 +1,6 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
-import { CardsGridRedesign } from "../../components/redesign/CardsGridRedesign/CardsGridRedesign";
 import { CollageWithLinkRedesign } from "../../components/redesign/CollageWithLinkRedesign/CollageWithLinkRedesign";
 import { CollageWithTitleRedesign } from "../../components/redesign/CollageWithTitleRedesign/CollageWithTitleRedesign";
 import { FooterRedesign } from "../../components/redesign/FooterRedesign/FooterRedesign";
@@ -19,6 +18,7 @@ import { FormModal } from "../../components/FormModal/FormModal";
 import { loadTranslations } from "../../common/utils/loadTranslations";
 import { HeaderRedesign } from "../../components/redesign/HeaderRedesign/HeaderRedesign";
 import { MobileMenu } from "../../components/redesign/HeaderRedesign/components/MobileMenuRedesign/MobileMenuRedesign";
+import { CardsGridRedesign } from "../../components/CardsGridRedesign/CardsGridRedesign";
 
 export default function ComponentsPage({
   pageData,

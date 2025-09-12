@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import clsx from 'clsx';
 import { CardWithContentRedesign } from '../../../CardWithContentRedesign/CardWithContentRedesign';
-import { CardWithImage } from '../../../../../common/types';
+import { CardWithImage } from '../../../../common/types';
 
 export function CardWithImageRedesign({
   title,
