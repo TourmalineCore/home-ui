@@ -27,6 +27,7 @@ export interface HomepageRequest {
         | BaseNullComponentMapping<"shared.featured-cards-list", SharedFeaturedCardsListComponent>
         | BaseNullComponentMapping<"shared.collage-with-title", SharedCollageWithTitleComponent>
         | BaseNullComponentMapping<"shared.signpost-multiple", SharedSignpostMultipleComponent>
+        | BaseNullComponentMapping<"shared.single-image", SharedSingleImageComponent>
       );
     seo: SharedSeoComponent;
     locale?: string;
@@ -57,6 +58,7 @@ export interface Homepage {
       | AbstractNullComponentMapping<"shared.featured-cards-list", SharedFeaturedCardsListComponent>
       | AbstractNullComponentMapping<"shared.collage-with-title", SharedCollageWithTitleComponent>
       | AbstractNullComponentMapping<"shared.signpost-multiple", SharedSignpostMultipleComponent>
+      | AbstractNullComponentMapping<"shared.single-image", SharedSingleImageComponent>
     );
   seo: SharedSeoComponent;
   /** @format date-time */
@@ -83,6 +85,7 @@ export interface Homepage {
         | DiscriminatorNullComponentMapping<"shared.featured-cards-list", SharedFeaturedCardsListComponent>
         | DiscriminatorNullComponentMapping<"shared.collage-with-title", SharedCollageWithTitleComponent>
         | DiscriminatorNullComponentMapping<"shared.signpost-multiple", SharedSignpostMultipleComponent>
+        | DiscriminatorNullComponentMapping<"shared.single-image", SharedSingleImageComponent>
       );
     seo?: SharedSeoComponent;
     /** @format date-time */
@@ -426,6 +429,58 @@ export interface SharedSignpostMultipleComponent {
   title?: string;
   link?: SharedLinkComponent;
   signposts?: SharedSignpostComponent[];
+}
+
+export interface SharedSingleImageComponent {
+  id?: number;
+  __component?: "shared.single-image";
+  image?: {
+    id?: number;
+    documentId?: string;
+    name?: string;
+    alternativeText?: string;
+    caption?: string;
+    width?: number;
+    height?: number;
+    formats?: any;
+    hash?: string;
+    ext?: string;
+    mime?: string;
+    /** @format float */
+    size?: number;
+    url?: string;
+    previewUrl?: string;
+    provider?: string;
+    provider_metadata?: any;
+    related?: {
+      id?: number;
+      documentId?: string;
+    }[];
+    folder?: {
+      id?: number;
+      documentId?: string;
+    };
+    folderPath?: string;
+    /** @format date-time */
+    createdAt?: string;
+    /** @format date-time */
+    updatedAt?: string;
+    /** @format date-time */
+    publishedAt?: string;
+    createdBy?: {
+      id?: number;
+      documentId?: string;
+    };
+    updatedBy?: {
+      id?: number;
+      documentId?: string;
+    };
+    locale?: string;
+    localizations?: {
+      id?: number;
+      documentId?: string;
+    }[];
+  };
 }
 
 export interface SharedSeoComponent {
@@ -947,6 +1002,7 @@ type BaseNull = (
   | SharedFeaturedCardsListComponent
   | SharedCollageWithTitleComponent
   | SharedSignpostMultipleComponent
+  | SharedSingleImageComponent
 )[];
 
 type BaseNullComponentMapping<Key, Type> = {
@@ -958,6 +1014,7 @@ type AbstractNull = (
   | SharedFeaturedCardsListComponent
   | SharedCollageWithTitleComponent
   | SharedSignpostMultipleComponent
+  | SharedSingleImageComponent
 )[];
 
 type AbstractNullComponentMapping<Key, Type> = {
@@ -969,6 +1026,7 @@ type DiscriminatorNull = (
   | SharedFeaturedCardsListComponent
   | SharedCollageWithTitleComponent
   | SharedSignpostMultipleComponent
+  | SharedSingleImageComponent
 )[];
 
 type DiscriminatorNullComponentMapping<Key, Type> = {
