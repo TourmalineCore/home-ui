@@ -1,12 +1,11 @@
-import Link from 'next/link';
 import { SignpostRedesign } from '../SignpostRedesign/SignpostRedesign';
 import IconArrow from '../../../icons/icon-arrow-redesign.svg';
 import { SignpostMultipleBlock } from '../../../common/types';
+import { SmartLink } from '../../SmartLink/SmartLink';
 
 export function SignpostMultipleRedesign({
   title,
   viewAllLink,
-  viewAllLinkText,
   signposts,
   dataTestId,
 }: Omit<SignpostMultipleBlock, "__component"> & {
@@ -18,16 +17,16 @@ export function SignpostMultipleRedesign({
       data-testid={dataTestId}
     >
       <div className="signpost-multiple-redesign__head">
-        <h2 className="signpost-multiple-redesign__title">{title}</h2>
+        {title && <h2 className="signpost-multiple-redesign__title">{title}</h2>}
         {viewAllLink
         && (
-          <Link
+          <SmartLink
             className="signpost-multiple-redesign__view-all-link"
-            href={viewAllLink}
+            href={viewAllLink.url}
           >
-            {viewAllLinkText}
+            {viewAllLink.text}
             <IconArrow />
-          </Link>
+          </SmartLink>
         )}
       </div>
       <ul

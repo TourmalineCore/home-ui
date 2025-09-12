@@ -1,5 +1,11 @@
-import { SharedCollageWithTitleComponent, SharedFeaturedCardsListComponent, SharedHeroComponent } from "../api-types";
+import {
+  SharedCollageWithTitleComponent,
+  SharedFeaturedCardsListComponent,
+  SharedHeroComponent,
+  SharedSignpostMultipleComponent,
+} from "../api-types";
 
 export type BlockApi = SharedHeroComponent
 | SharedFeaturedCardsListComponent
-| SharedCollageWithTitleComponent;
+| SharedCollageWithTitleComponent
+| SharedSignpostMultipleComponent;

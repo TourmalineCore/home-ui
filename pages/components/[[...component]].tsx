@@ -168,7 +168,6 @@ export default function ComponentsPage({
       <SignpostMultipleRedesign
         title={articleSignpostsRedesign.title}
         viewAllLink={articleSignpostsRedesign.viewAllLink}
-        viewAllLinkText={articleSignpostsRedesign.viewAllLinkText}
         signposts={articleSignpostsRedesign.signposts}
         dataTestId="signpost-multiple-articles"
       />

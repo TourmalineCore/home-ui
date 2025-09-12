@@ -1,7 +1,6 @@
 {
   "title": "We speak at conferences",
-  "viewAllLinkText": "",
-  "viewAllLink": "",
+  "viewAllLink": null,
   "signposts": [
     {
       "imageUrl": "/images/conference-1.png",

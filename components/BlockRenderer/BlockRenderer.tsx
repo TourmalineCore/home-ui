@@ -67,12 +67,11 @@ export const BlockRenderer = ({
     );
   }
 
-  if (block.__component === BlockType.HOME_SIGNPOST_MULTIPLE) {
+  if (block.__component === BlockType.SHARED_SIGNPOST_MULTIPLE) {
     return (
       <SignpostMultipleRedesign
         title={block.title}
         viewAllLink={block.viewAllLink}
-        viewAllLinkText={block.viewAllLinkText}
         signposts={block.signposts}
       />
     );

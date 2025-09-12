@@ -1,7 +1,9 @@
 {
   "title": "We write articles",
-  "viewAllLinkText": "All articles",
-  "viewAllLink": "/articles",
+  "viewAllLink": {
+    "text": "All articles",
+    "url":"/articles"
+  },
   "signposts": [
     {
       "imageUrl": "/images/article-1-en.png",
