@@ -58,7 +58,7 @@ export const BlockRenderer = ({
     );
   }
 
-  if (block.__component === BlockType.HOME_COLLAGE_WITH_TITLE) {
+  if (block.__component === BlockType.SHARED_COLLAGE_WITH_TITLE) {
     return (
       <CollageWithTitleRedesign
         title={block.title}

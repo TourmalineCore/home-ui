@@ -43,5 +43,16 @@ export function mapBlockResponseByType(block: BlockApi): Block | null {
     };
   }
 
+  if (component === BlockType.SHARED_COLLAGE_WITH_TITLE) {
+    return {
+      __component: BlockType.SHARED_COLLAGE_WITH_TITLE,
+      id: block.id,
+      title: block.title ?? ``,
+      imageUrls: block.images?.map(({
+        url,
+      }) => url ?? ``) ?? [],
+    };
+  }
+
   return null;
 }
