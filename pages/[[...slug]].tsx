@@ -133,7 +133,7 @@ export async function getServerSideProps({
         ...translationsPageData.collageWithTitleRedesign,
       },
       {
-        __component: BlockType.HOME_SIGNPOST_MULTIPLE,
+        __component: BlockType.SHARED_SIGNPOST_MULTIPLE,
         ...translationsPageData.conferenceSignpostsRedesign,
       },
       {
@@ -141,7 +141,7 @@ export async function getServerSideProps({
         ...translationsPageData.singleImageRedesign,
       },
       {
-        __component: BlockType.HOME_SIGNPOST_MULTIPLE,
+        __component: BlockType.SHARED_SIGNPOST_MULTIPLE,
         ...translationsPageData.articleSignpostsRedesign,
       },
       {

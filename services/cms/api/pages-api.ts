@@ -28,6 +28,8 @@ export async function getPageData({
       `blocks.featuredCards.wideCard.wideCardItems.icon`,
       `blocks.featuredCards.wideCard.link`,
       `blocks.images`,
+      `blocks.link`,
+      `blocks.signposts.image`,
       `seo`,
     ],
     locale,

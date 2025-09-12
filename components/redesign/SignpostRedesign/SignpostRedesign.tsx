@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import { Signpost } from '../../../common/types';
+import { SmartLink } from '../../SmartLink/SmartLink';
 
 export function SignpostRedesign({
   title,
@@ -10,12 +11,12 @@ export function SignpostRedesign({
   return (
     <div className="signpost-redesign">
       {link ? (
-        <a
+        <SmartLink
           className="signpost-redesign__link-wrapper"
           href={link}
         >
           {renderSignpostContent()}
-        </a>
+        </SmartLink>
       )
         : renderSignpostContent()}
     </div>
@@ -34,9 +35,11 @@ export function SignpostRedesign({
         <h3 className="signpost-redesign__title">
           {title}
         </h3>
-        <span className="signpost-redesign__subtitle">
-          {subtitle}
-        </span>
+        {subtitle && (
+          <span className="signpost-redesign__subtitle">
+            {subtitle}
+          </span>
+        )}
       </>
     );
   }

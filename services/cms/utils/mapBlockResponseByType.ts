@@ -1,5 +1,5 @@
 import { BlockType } from "../../../common/enums";
-import { Block, FeaturedCardProps } from "../../../common/types";
+import { Block, FeaturedCardProps, SignpostMultipleBlock } from "../../../common/types";
 import { BlockApi } from "../../../common/types/blocks/api-block";
 
 export function mapBlockResponseByType(block: BlockApi): Block | null {
@@ -51,6 +51,21 @@ export function mapBlockResponseByType(block: BlockApi): Block | null {
       imageUrls: block.images?.map(({
         url,
       }) => url ?? ``) ?? [],
+    };
+  }
+
+  if (component === BlockType.SHARED_SIGNPOST_MULTIPLE) {
+    return {
+      __component: BlockType.SHARED_SIGNPOST_MULTIPLE,
+      id: block.id,
+      title: block.title ?? ``,
+      viewAllLink: block?.link as SignpostMultipleBlock['viewAllLink'] ?? null,
+      signposts: block?.signposts?.map((signpost) => ({
+        title: signpost?.title ?? ``,
+        subtitle: signpost?.subtitle ?? ``,
+        link: signpost?.link ?? ``,
+        imageUrl: signpost?.image?.url ?? ``,
+      })) ?? [],
     };
   }
 

@@ -1,7 +1,6 @@
 {
   "title": "Выступаем на конференциях",
-  "viewAllLinkText": "",
-  "viewAllLink": "",
+   "viewAllLink": null,
   "signposts": [
     {
       "imageUrl": "/images/conference-1.png",
