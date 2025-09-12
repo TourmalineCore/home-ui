@@ -129,7 +129,7 @@ export async function getServerSideProps({
       //   __component: BlockType.HOME_FORM_BLOCK,
       // },
       {
-        __component: BlockType.HOME_COLLAGE_WITH_TITLE,
+        __component: BlockType.SHARED_COLLAGE_WITH_TITLE,
         ...translationsPageData.collageWithTitleRedesign,
       },
       {

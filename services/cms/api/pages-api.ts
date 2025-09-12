@@ -27,6 +27,7 @@ export async function getPageData({
       `blocks.featuredCards.cardWithImage.image`,
       `blocks.featuredCards.wideCard.wideCardItems.icon`,
       `blocks.featuredCards.wideCard.link`,
+      `blocks.images`,
       `seo`,
     ],
     locale,
