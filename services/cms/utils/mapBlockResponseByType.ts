@@ -1,5 +1,10 @@
 import { BlockType } from "../../../common/enums";
-import { Block, FeaturedCardProps, SignpostMultipleBlock } from "../../../common/types";
+import {
+  Block,
+  FeaturedCardProps,
+  SignpostMultipleBlock,
+  Column,
+} from "../../../common/types";
 import { BlockApi } from "../../../common/types/blocks/api-block";
 
 export function mapBlockResponseByType(block: BlockApi): Block | null {
@@ -77,5 +82,21 @@ export function mapBlockResponseByType(block: BlockApi): Block | null {
     };
   }
 
+  if (component === BlockType.SHARED_THREE_COLUMN_GRID) {
+    return {
+      __component: BlockType.SHARED_THREE_COLUMN_GRID,
+      id: block.id,
+      columns: block.columnsWithContent?.map((column) => ({
+        id: column.id,
+        type: column.type,
+        columnWithImage: {
+          ...column.columnWithImage,
+          imageUrl: column.columnWithImage?.image?.url ?? [],
+        },
+        columnWithRepositories: column.columnWithRepositories || null,
+        columnWithTextAndDate: column.columnWithTextAndDate || null,
+      })) as Column[] ?? [],
+    };
+  }
   return null;
 }

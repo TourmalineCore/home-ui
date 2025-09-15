@@ -48,11 +48,13 @@ export function ColumnWithRepositories({
                   {name}
                 </h3>
                 {description && <p className="column-with-repositories__description">{description}</p>}
-                <span
-                  className={`column-with-repositories__language column-with-repositories__language--${language.toLowerCase()}`}
-                >
-                  {language}
-                </span>
+                {language && (
+                  <span
+                    className={`column-with-repositories__language column-with-repositories__language--${language.toLowerCase()}`}
+                  >
+                    {language}
+                  </span>
+                )}
               </div>
             </a>
 
