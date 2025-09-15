@@ -16,14 +16,7 @@ export async function getLayoutData({
   status: `draft` | `published`;
 }): Promise<LayoutData> {
   const queryParams = {
-    populate: [
-      `header.socialLinks`,
-      `header.navigationLists`,
-      `header.navigationLists.navItems`,
-      `footer.navigationLists`,
-      `footer.navigationLists.links`,
-      `footer.navigationLists.socialLinks`,
-    ],
+    populate: `all`,
     locale,
     status,
   };
