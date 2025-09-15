@@ -85,12 +85,10 @@ export const BlockRenderer = ({
     );
   }
 
-  if (block.__component === BlockType.HOME_CARDS_GRID) {
+  if (block.__component === BlockType.SHARED_THREE_COLUMN_GRID) {
     return (
       <ThreeColumnGrid
-        cardWithImage={block.cardWithImage}
-        cardWithRepositories={block.cardWithRepositories}
-        cardWithTextAndDate={block.cardWithTextAndDate}
+        columns={block.columns}
       />
     );
   }

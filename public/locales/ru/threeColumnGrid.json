@@ -1,36 +1,50 @@
 {
-  "cardWithImage": {
-    "title": "Преподаём\n в университете",
-    "imageUrl": "/images/teach-at-the-university.png",
-    "markdownText": "Рассказываем на\u00A0парах об\u00A0основах проектирования веб-сервисов и\u00A0экстремальных подходах к\u00A0разработке"
-  },
-  "cardWithRepositories": {
-     "title": "По возможности\n опенсорсим",
-     "repositories": [
-      {
-        "name": "to-dos-documentation",
-        "language": "TypeScript",
-        "description": "",
-        "link": "https://github.com/TourmalineCore/to-dos-documentation"
-      },
-      {
-        "name": "TourmalineCore.AspNetCore.JwtAuthentication",
-        "description": "Библиотеки, которые помогут вам легко подключить аутентификацию на основе JWT к вашему проекту.",
-        "language": "C#",
-        "link": "https://github.com/TourmalineCore/TourmalineCore.AspNetCore.JwtAuthentication"
-      },
-      {
-        "name": "pelican-documentation",
-        "description": "",
-        "language": "TypeScript",
-        "link": "https://github.com/TourmalineCore/pelican-documentation"
+  "columns":[
+    {
+      "id": 0,
+      "type":"image",
+      "cardWithImage":{
+        "title":"Преподаём\n в университете",
+        "imageUrl":"/images/teach-at-the-university.png",
+        "markdownText":"Рассказываем на\u00A0парах об\u00A0основах проектирования веб-сервисов и\u00A0экстремальных подходах к\u00A0разработке"
       }
-    ],
-    "markdownText": "Нам важно обмениваться опытом, улучшать качество кода и\u00A0развивать проекты, поэтому делимся кодом <a href='https://github.com/TourmalineCore'>на\u00A0Github</a>"
-  },
-  "cardWithTextAndDate": {
-    "title": "Публикуем научные\n исследования",
-    "text": "«Метод определения уровня схожести изображений\u00A0по цветовой составляющей\u00A0на основе корреляционного анализа и\u00A0квантования цветового пространства»",
-    "date": "2023-06-03"
-  }
+    },
+    {
+      "id": 1,
+      "type":"repositories",
+      "cardWithRepositories":{
+        "title":"По возможности\n опенсорсим",
+        "repositories":[
+            {
+              "name":"to-dos-documentation",
+              "language":"TypeScript",
+              "description":"",
+              "link":"https://github.com/TourmalineCore/to-dos-documentation"
+            },
+            {
+              "name":"TourmalineCore.AspNetCore.JwtAuthentication",
+              "description":"Библиотеки, которые помогут вам легко подключить аутентификацию на основе JWT к вашему проекту.",
+              "language":"C#",
+              "link":"https://github.com/TourmalineCore/TourmalineCore.AspNetCore.JwtAuthentication"
+            },
+            {
+              "name":"pelican-documentation",
+              "description":"",
+              "language":"TypeScript",
+              "link":"https://github.com/TourmalineCore/pelican-documentation"
+            }
+        ],
+        "markdownText":"Нам важно обмениваться опытом, улучшать качество кода и\u00A0развивать проекты, поэтому делимся кодом <a href='https://github.com/TourmalineCore'>на\u00A0Github</a>"
+      }
+    },
+    {
+      "id": 2,
+      "type":"text-and-date",
+      "cardWithTextAndDate":{
+        "title":"Публикуем научные\n исследования",
+        "text":"«Метод определения уровня схожести изображений\u00A0по цветовой составляющей\u00A0на основе корреляционного анализа и\u00A0квантования цветового пространства»",
+        "date":"2023-06-03"
+      }
+    }
+  ]
 }

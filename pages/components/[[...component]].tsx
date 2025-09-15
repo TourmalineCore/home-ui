@@ -51,9 +51,7 @@ export default function ComponentsPage({
   if (componentName === ComponentName.CARDS_GRID) {
     return (
       <ThreeColumnGrid
-        cardWithImage={threeColumnGrid.cardWithImage}
-        cardWithRepositories={threeColumnGrid.cardWithRepositories}
-        cardWithTextAndDate={threeColumnGrid.cardWithTextAndDate}
+        columns={threeColumnGrid.columns}
       />
     );
   }

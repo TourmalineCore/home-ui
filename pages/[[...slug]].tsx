@@ -145,7 +145,7 @@ export async function getServerSideProps({
         ...translationsPageData.articleSignpostsRedesign,
       },
       {
-        __component: BlockType.HOME_CARDS_GRID,
+        __component: BlockType.SHARED_THREE_COLUMN_GRID,
         ...translationsPageData.threeColumnGrid,
       },
       {
