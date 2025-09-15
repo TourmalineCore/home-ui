@@ -9,11 +9,11 @@ export function mapBlockResponseByType(block: BlockApi): Block | null {
     return {
       __component: BlockType.SHARED_HERO,
       id: block.id,
-      title: block.title ?? ``,
-      description: block.description ?? ``,
+      title: block.title || ``,
+      description: block.description,
       imageUrls: block.gallery?.map(({
         url,
-      }) => url ?? ``) ?? [],
+      }) => url || ``) || [],
     };
   }
 
@@ -30,7 +30,9 @@ export function mapBlockResponseByType(block: BlockApi): Block | null {
       imageUrl: card.cardWithImage?.image?.url || null,
       description: card.wideCard?.description || null,
       wideCardItems: card.wideCard?.wideCardItems?.map((item) => ({
-        ...item,
+        id: item.id,
+        name: item.name || ``,
+        link: item.link,
         icon: item.icon?.url || null,
       })) || null,
     }));
@@ -38,8 +40,8 @@ export function mapBlockResponseByType(block: BlockApi): Block | null {
     return {
       __component: BlockType.SHARED_FEATURED_CARDS_LIST,
       id: block.id,
-      title: block.title ?? ``,
-      cards: featuredCards as FeaturedCardProps[] ?? [],
+      title: block.title,
+      cards: featuredCards as FeaturedCardProps[] || [],
     };
   }
 
@@ -47,10 +49,10 @@ export function mapBlockResponseByType(block: BlockApi): Block | null {
     return {
       __component: BlockType.SHARED_COLLAGE_WITH_TITLE,
       id: block.id,
-      title: block.title ?? ``,
+      title: block.title || ``,
       imageUrls: block.images?.map(({
         url,
-      }) => url ?? ``) ?? [],
+      }) => url || ``) || [],
     };
   }
 
@@ -58,14 +60,14 @@ export function mapBlockResponseByType(block: BlockApi): Block | null {
     return {
       __component: BlockType.SHARED_SIGNPOST_MULTIPLE,
       id: block.id,
-      title: block.title ?? ``,
-      viewAllLink: block.link as SignpostMultipleBlock['viewAllLink'] ?? null,
+      title: block.title,
+      viewAllLink: block.link as SignpostMultipleBlock['viewAllLink'],
       signposts: block.signposts?.map((signpost) => ({
-        title: signpost.title ?? ``,
-        subtitle: signpost.subtitle ?? ``,
-        link: signpost.link ?? ``,
-        imageUrl: signpost.image?.url ?? ``,
-      })) ?? [],
+        title: signpost.title || ``,
+        subtitle: signpost.subtitle,
+        link: signpost.link,
+        imageUrl: signpost.image?.url || ``,
+      })) || [],
     };
   }
 
@@ -73,7 +75,7 @@ export function mapBlockResponseByType(block: BlockApi): Block | null {
     return {
       __component: BlockType.SHARED_SINGLE_IMAGE,
       id: block.id,
-      imageUrl: block.image?.url ?? ``,
+      imageUrl: block.image?.url || ``,
     };
   }
 
