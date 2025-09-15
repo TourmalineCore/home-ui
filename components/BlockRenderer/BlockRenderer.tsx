@@ -1,7 +1,7 @@
 import { BlockType } from '../../common/enums';
 import { Block } from '../../common/types';
+import { ThreeColumnGrid } from '../ThreeColumnGrid/ThreeColumnGrid';
 import { FeaturedCardsList } from '../FeaturedCardsList/FeaturedCardsList';
-import { CardsGridRedesign } from '../redesign/CardsGridRedesign/CardsGridRedesign';
 import { CollageWithLinkRedesign } from '../redesign/CollageWithLinkRedesign/CollageWithLinkRedesign';
 import { CollageWithTitleRedesign } from '../redesign/CollageWithTitleRedesign/CollageWithTitleRedesign';
 import { FormBlockRedesign } from '../redesign/FormBlockRedesign/FormBlockRedesign';
@@ -85,12 +85,10 @@ export const BlockRenderer = ({
     );
   }
 
-  if (block.__component === BlockType.HOME_CARDS_GRID) {
+  if (block.__component === BlockType.SHARED_THREE_COLUMN_GRID) {
     return (
-      <CardsGridRedesign
-        cardWithImage={block.cardWithImage}
-        cardWithRepositories={block.cardWithRepositories}
-        cardWithTextAndDate={block.cardWithTextAndDate}
+      <ThreeColumnGrid
+        columns={block.columns}
       />
     );
   }

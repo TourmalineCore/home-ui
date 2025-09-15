@@ -79,7 +79,7 @@ export async function getServerSideProps({
       `projectsRedesignThirdSection`,
       `projectsRedesignFourthSection`,
       `projectsRedesignFifthSection`,
-      `cardsGridRedesign`,
+      `threeColumnGrid`,
       `collageWithTitleRedesign`,
       `collageWithLinkRedesign`,
       `conferenceSignpostsRedesign`,
@@ -145,8 +145,8 @@ export async function getServerSideProps({
         ...translationsPageData.articleSignpostsRedesign,
       },
       {
-        __component: BlockType.HOME_CARDS_GRID,
-        ...translationsPageData.cardsGridRedesign,
+        __component: BlockType.SHARED_THREE_COLUMN_GRID,
+        ...translationsPageData.threeColumnGrid,
       },
       {
         __component: BlockType.HOME_COLLAGE_WITH_LINK,
