@@ -28,18 +28,19 @@ export function CollageWithLinkRedesign({
             {text}
           </span>
         </a>
-        {imageUrls.map((imageUrl, index) => (
-          <div
-            key={imageUrl}
-            className={`collage-with-link-redesign__image collage-with-link-redesign__image--${index + 1}`}
-          >
-            <Image
-              src={imageUrl}
-              fill
-              alt=""
-            />
-          </div>
-        ))}
+        {imageUrls.slice(0, 8)
+          .map((imageUrl, index) => (
+            <div
+              key={imageUrl}
+              className={`collage-with-link-redesign__image collage-with-link-redesign__image--${index + 1}`}
+            >
+              <Image
+                src={imageUrl}
+                fill
+                alt=""
+              />
+            </div>
+          ))}
       </div>
     </section>
   );

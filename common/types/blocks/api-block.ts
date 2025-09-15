@@ -4,10 +4,12 @@ import {
   SharedHeroComponent,
   SharedSignpostMultipleComponent,
   SharedSingleImageComponent,
+  SharedCollageWithLinkComponent,
 } from "../api-types";
 
 export type BlockApi = SharedHeroComponent
 | SharedFeaturedCardsListComponent
 | SharedCollageWithTitleComponent
 | SharedSignpostMultipleComponent
-| SharedSingleImageComponent;
+| SharedSingleImageComponent
+| SharedCollageWithLinkComponent;
