@@ -8,12 +8,12 @@ export interface FeaturedCardsListBlock extends BaseBlock<BlockType.SHARED_FEATU
 
 export interface FeaturedCardProps extends Points, ImageCard, WideCardProps {
   id: number;
-  theme: Theme;
   type: Type;
 }
 
 export interface Points {
   title?: string;
+  theme: Theme;
   points: string[];
   link?: {
     text: string;
@@ -22,6 +22,7 @@ export interface Points {
 }
 
 export interface ImageCard {
+  theme: Theme;
   imageUrl?: string;
 }
 

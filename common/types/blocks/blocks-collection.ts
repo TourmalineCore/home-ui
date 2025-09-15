@@ -11,7 +11,6 @@ import { SingleImageBlock } from "./single-image-block";
 export type Block = HeroBlock
 | FeaturedCardsListBlock
 | ThreeColumnGridBlock
-| ThreeColumnGridBlock
 | CollageWithTitleBlock
 | CollageWithLinkBlock
 | ProjectBlock
