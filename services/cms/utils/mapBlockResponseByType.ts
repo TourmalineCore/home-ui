@@ -93,8 +93,8 @@ export function mapBlockResponseByType(block: BlockApi): Block | null {
           ...column.columnWithImage,
           imageUrl: column.columnWithImage?.image?.url ?? [],
         },
-        columnWithRepositories: column.columnWithRepositories || null,
-        columnWithTextAndDate: column.columnWithTextAndDate || null,
+        columnWithRepositories: column.columnWithRepositories,
+        columnWithTextAndDate: column.columnWithTextAndDate,
       })) as Column[] ?? [],
     };
   }

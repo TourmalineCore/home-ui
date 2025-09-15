@@ -22,15 +22,15 @@ export interface ColumnWithRepositoriesProps extends ColumnWithContentProps {
   repositories: {
     name: string;
     description?: string;
-    language: string;
-    link: string;
+    language?: string;
+    link?: string;
   }[];
-  markdownText: string;
+  markdownText?: string;
 }
 
 export interface ColumnWithTextAndDateProps extends ColumnWithContentProps {
   text: string;
-  date: string;
+  date?: string;
 }
 
 export interface ColumnWithContentProps {
