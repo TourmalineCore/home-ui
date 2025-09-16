@@ -2,13 +2,13 @@ import { ComponentName } from "../../common/enums";
 import { BREAKPOINTS } from "../../playwright-tests/constants/breakpoints";
 import { test } from "../../playwright-tests/custom-test";
 
-const TEST_ID = `three-column-grid`;
+const TEST_ID = `showcase-with-markdown-column`;
 
-test.describe(`ThreeColumnGrid`, () => {
+test.describe(`ShowcaseWithMarkdownColumn`, () => {
   test.beforeEach(async ({
     goToComponentsPage,
   }) => {
-    await goToComponentsPage(ComponentName.THREE_COLUMN_GRID);
+    await goToComponentsPage(ComponentName.SHOWCASE_GRID_WITH_MARKDOWN_COLUMN);
   });
 
   for (const {

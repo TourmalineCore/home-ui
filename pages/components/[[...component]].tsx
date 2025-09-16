@@ -5,8 +5,7 @@ import { CollageWithLinkRedesign } from "../../components/redesign/CollageWithLi
 import { CollageWithTitleRedesign } from "../../components/redesign/CollageWithTitleRedesign/CollageWithTitleRedesign";
 import { FooterRedesign } from "../../components/redesign/FooterRedesign/FooterRedesign";
 import { HeroRedesign } from "../../components/redesign/HeroRedesign/HeroRedesign";
-import { ProjectsRedesign } from "../../components/redesign/ProjectsRedesign/ProjectsRedesign";
-import { ProjectsWithTextBlockRedesign } from "../../components/redesign/ProjectsWithTextBlockRedesign/ProjectsWithTextBlockRedesign";
+import { ShowcaseGrid } from "../../components/ShowcaseGrid/ShowcaseGrid";
 import { FeaturedCardsList } from "../../components/FeaturedCardsList/FeaturedCardsList";
 import { SignpostMultipleRedesign } from "../../components/redesign/SignpostMultipleRedesign/SignpostMultipleRedesign";
 import { SingleImageRedesign } from "../../components/redesign/SingleImageRedesign/SingleImageRedesign";
@@ -30,9 +29,9 @@ export default function ComponentsPage({
     collageWithLinkRedesign,
     collageWithTitleRedesign,
     heroRedesign,
-    projectsRedesignFirstSection,
-    projectsRedesignSecondarySection,
-    projectsRedesignThirdSection,
+    showcaseGridFirstSection,
+    showcaseGridSecondSection,
+    showcaseGridThirdSection,
     featuredCardsList,
     articleSignpostsRedesign,
     singleImageRedesign,
@@ -48,7 +47,7 @@ export default function ComponentsPage({
 
   const componentName = query.component?.[0];
 
-  if (componentName === ComponentName.CARDS_GRID) {
+  if (componentName === ComponentName.THREE_COLUMN_GRID) {
     return (
       <ThreeColumnGrid
         columns={threeColumnGrid.columns}
@@ -121,33 +120,33 @@ export default function ComponentsPage({
     );
   }
 
-  if (componentName === ComponentName.PROJECTS_WITH_FOUR_CARDS) {
+  if (componentName === ComponentName.SHOWCASE_GRID_WITH_FOUR_COLUMNS) {
     return (
-      <ProjectsRedesign
-        dataTestId="projects-with-four-cards"
-        projectCardsWithImage={projectsRedesignSecondarySection.projectCardsWithImage}
+      <ShowcaseGrid
+        dataTestId="showcase-with-four-columns"
+        showcaseColumns={showcaseGridSecondSection.showcaseColumns}
+        showOnMobile={showcaseGridSecondSection.showOnMobile}
       />
     );
   }
 
-  if (componentName === ComponentName.PROJECTS_WITH_THREE_CARDS) {
+  if (componentName === ComponentName.SHOWCASE_GRID_WITH_THREE_COLUMNS) {
     return (
-      <ProjectsRedesign
-        projectCardsWithImage={projectsRedesignThirdSection.projectCardsWithImage}
-        dataTestId="projects-with-three-cards"
+      <ShowcaseGrid
+        showcaseColumns={showcaseGridThirdSection.showcaseColumns}
+        dataTestId="showcase-with-three-columns"
+        showOnMobile={showcaseGridThirdSection.showOnMobile}
       />
     );
   }
 
-  if (componentName === ComponentName.PROJECTS_WITH_TEXT_BLOCK) {
+  if (componentName === ComponentName.SHOWCASE_GRID_WITH_MARKDOWN_COLUMN) {
     return (
-      <ProjectsWithTextBlockRedesign
-        targetId="projects"
-        dataTestId="projects-with-text-block-first"
-        title={projectsRedesignFirstSection.title}
-        textBlockTitle={projectsRedesignFirstSection.textBlockTitle}
-        projectCardsWithImage={projectsRedesignFirstSection.projectCardsWithImage}
-        textBlockMarkdown={projectsRedesignFirstSection.textBlockMarkdown}
+      <ShowcaseGrid
+        title={showcaseGridFirstSection.title}
+        showcaseColumns={showcaseGridFirstSection.showcaseColumns}
+        dataTestId="showcase-with-markdown-column"
+        showOnMobile={showcaseGridFirstSection.showOnMobile}
       />
     );
   }
@@ -243,7 +242,7 @@ export default function ComponentsPage({
       </h2>
       <ul className="components-page__list">
         <li className="components-page__item">
-          <Link href={ComponentName.CARDS_GRID}>Three Column Grid</Link>
+          <Link href={ComponentName.THREE_COLUMN_GRID}>Three Column Grid</Link>
         </li>
         <li className="components-page__item">
           <Link href={ComponentName.COLLAGE_WITH_LINK}>Collage with link</Link>
@@ -264,13 +263,13 @@ export default function ComponentsPage({
           <Link href={ComponentName.MOBILE_MENU}>Header popup</Link>
         </li>
         <li className="components-page__item">
-          <Link href={ComponentName.PROJECTS_WITH_FOUR_CARDS}>Projects with four cards</Link>
+          <Link href={ComponentName.SHOWCASE_GRID_WITH_FOUR_COLUMNS}>Showcase with four columns</Link>
         </li>
         <li className="components-page__item">
-          <Link href={ComponentName.PROJECTS_WITH_THREE_CARDS}>Projects with three cards</Link>
+          <Link href={ComponentName.SHOWCASE_GRID_WITH_THREE_COLUMNS}>Showcase with three columns</Link>
         </li>
         <li className="components-page__item">
-          <Link href={ComponentName.PROJECTS_WITH_TEXT_BLOCK}>Projects with text block</Link>
+          <Link href={ComponentName.SHOWCASE_GRID_WITH_MARKDOWN_COLUMN}>Showcase with markdown column</Link>
         </li>
         <li className="components-page__item">
           <Link href={ComponentName.FEATURED_CARDS_LIST}>Featured cards list</Link>
@@ -315,9 +314,9 @@ export async function getStaticProps({
     `collageWithLinkRedesign`,
     `collageWithTitleRedesign`,
     `heroRedesign`,
-    `projectsRedesignFirstSection`,
-    `projectsRedesignSecondarySection`,
-    `projectsRedesignThirdSection`,
+    `showcaseGridFirstSection`,
+    `showcaseGridSecondSection`,
+    `showcaseGridThirdSection`,
     `featuredCardsList`,
     `articleSignpostsRedesign`,
     `singleImageRedesign`,
