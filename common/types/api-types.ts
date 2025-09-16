@@ -657,6 +657,7 @@ export interface SharedShowcaseGridComponent {
   title?: string;
   showcaseColumns?: ShowcaseColumnShowcaseColumnsComponent[];
   showOnMobile?: boolean;
+  anchorId?: string;
 }
 
 export interface SharedCollageWithLinkComponent {
