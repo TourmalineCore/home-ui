@@ -19,8 +19,8 @@ export interface ShowcaseColumnWithMarkdownProps {
 }
 
 export interface ShowcaseColumnWithImageProps {
-  title: string;
-  description: string;
+  title?: string;
+  description?: string;
   media: {
     url: string;
     mime: string;

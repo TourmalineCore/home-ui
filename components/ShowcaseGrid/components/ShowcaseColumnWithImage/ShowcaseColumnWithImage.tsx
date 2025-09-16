@@ -28,8 +28,8 @@ export function ShowcaseColumnWithImage({
     return (
       <>
         <div className="showcase-column-with-image__content">
-          <h3 className="showcase-column-with-image__title">{title}</h3>
-          <p className="showcase-column-with-image__description">{description}</p>
+          {title && <h3 className="showcase-column-with-image__title">{title}</h3>}
+          {description && <p className="showcase-column-with-image__description">{description}</p>}
         </div>
         <div className={`showcase-column-with-image__images showcase-column-with-image__images--${size.toUpperCase()}`}>
           {isNda && <span className="showcase-column-with-image__nda">NDA</span>}
