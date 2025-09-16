@@ -2,13 +2,15 @@ import { BlockType } from "../../enums";
 import { BaseBlock } from "./base-block";
 
 export interface ThreeColumnGridBlock extends BaseBlock<BlockType.SHARED_THREE_COLUMN_GRID> {
-  columns: {
-    id: number;
-    type: 'image' | 'repositories' | 'text-and-date';
-    cardWithImage: ColumnWithImageProps | null;
-    cardWithRepositories: ColumnWithRepositoriesProps | null;
-    cardWithTextAndDate: ColumnWithTextAndDateProps | null;
-  }[];
+  columns: Column[];
+}
+
+export interface Column {
+  id: number;
+  type: 'image' | 'repositories' | 'text-and-date';
+  columnWithImage: ColumnWithImageProps | null;
+  columnWithRepositories: ColumnWithRepositoriesProps | null;
+  columnWithTextAndDate: ColumnWithTextAndDateProps | null;
 }
 
 export interface ColumnWithImageProps extends ColumnWithContentProps {
@@ -20,15 +22,15 @@ export interface ColumnWithRepositoriesProps extends ColumnWithContentProps {
   repositories: {
     name: string;
     description?: string;
-    language: string;
-    link: string;
+    language?: string;
+    link?: string;
   }[];
-  markdownText: string;
+  markdownText?: string;
 }
 
 export interface ColumnWithTextAndDateProps extends ColumnWithContentProps {
   text: string;
-  date: string;
+  date?: string;
 }
 
 export interface ColumnWithContentProps {

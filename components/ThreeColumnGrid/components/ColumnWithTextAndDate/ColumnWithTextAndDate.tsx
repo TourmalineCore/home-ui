@@ -22,14 +22,17 @@ export function ColumnWithTextAndDate({
   const [formattedDate, setFormattedDate] = useState(``);
 
   useEffect(() => {
-    moment.locale(locale);
+    if (date) {
+      moment.locale(locale);
 
-    setFormattedDate(moment(date)
-      .format(
-        locale === `en`
-          ? `MMMM D, YYYY`
-          : `D MMMM YYYY`,
-      ));
+      setFormattedDate(moment(date)
+        .format(
+          locale === `en`
+            ? `MMMM D, YYYY`
+            : `D MMMM YYYY`,
+        ));
+    }
+
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [locale]);
 
@@ -40,9 +43,11 @@ export function ColumnWithTextAndDate({
       className={clsx(`column-with-text-and-date`, className)}
     >
       <p className="column-with-text-and-date__text">{text}</p>
-      <span className="column-with-text-and-date__date">
-        {formattedDate}
-      </span>
+      {date && (
+        <span className="column-with-text-and-date__date">
+          {formattedDate}
+        </span>
+      )}
     </ColumnWithContent>
   );
 }

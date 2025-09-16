@@ -16,9 +16,9 @@ export function ThreeColumnGrid({
           {columns.map(({
             id,
             type,
-            cardWithImage,
-            cardWithRepositories,
-            cardWithTextAndDate,
+            columnWithImage,
+            columnWithRepositories,
+            columnWithTextAndDate,
           }) => (
             <li
               className="three-column-grid__card-item col-desktop-4 col-tablet-4"
@@ -27,25 +27,25 @@ export function ThreeColumnGrid({
               {type === `image` && (
                 <ColumnWithImage
                   className="three-column-grid__card-with-image"
-                  title={cardWithImage!.title}
-                  markdownText={cardWithImage!.markdownText}
-                  imageUrl={cardWithImage!.imageUrl}
+                  title={columnWithImage!.title}
+                  markdownText={columnWithImage!.markdownText}
+                  imageUrl={columnWithImage!.imageUrl}
                 />
               )}
               {type === `repositories` && (
                 <ColumnWithRepositories
                   className="three-column-grid__card-with-repositories"
-                  title={cardWithRepositories!.title}
-                  markdownText={cardWithRepositories!.markdownText}
-                  repositories={cardWithRepositories!.repositories}
+                  title={columnWithRepositories!.title}
+                  markdownText={columnWithRepositories!.markdownText}
+                  repositories={columnWithRepositories!.repositories}
                 />
               )}
               {type === `text-and-date` && (
                 <ColumnWithTextAndDate
                   className="three-column-grid__card-with-text-and-date"
-                  title={cardWithTextAndDate!.title}
-                  text={cardWithTextAndDate!.text}
-                  date={cardWithTextAndDate!.date}
+                  title={columnWithTextAndDate!.title}
+                  text={columnWithTextAndDate!.text}
+                  date={columnWithTextAndDate!.date}
                 />
               )}
             </li>
