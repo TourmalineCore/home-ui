@@ -29,6 +29,7 @@ export interface HomepageRequest {
         | BaseNullComponentMapping<"shared.signpost-multiple", SharedSignpostMultipleComponent>
         | BaseNullComponentMapping<"shared.single-image", SharedSingleImageComponent>
         | BaseNullComponentMapping<"shared.three-column-grid", SharedThreeColumnGridComponent>
+        | BaseNullComponentMapping<"shared.showcase-grid", SharedShowcaseGridComponent>
         | BaseNullComponentMapping<"shared.collage-with-link", SharedCollageWithLinkComponent>
       );
     seo: SharedSeoComponent;
@@ -62,6 +63,7 @@ export interface Homepage {
       | AbstractNullComponentMapping<"shared.signpost-multiple", SharedSignpostMultipleComponent>
       | AbstractNullComponentMapping<"shared.single-image", SharedSingleImageComponent>
       | AbstractNullComponentMapping<"shared.three-column-grid", SharedThreeColumnGridComponent>
+      | AbstractNullComponentMapping<"shared.showcase-grid", SharedShowcaseGridComponent>
       | AbstractNullComponentMapping<"shared.collage-with-link", SharedCollageWithLinkComponent>
     );
   seo: SharedSeoComponent;
@@ -91,6 +93,7 @@ export interface Homepage {
         | DiscriminatorNullComponentMapping<"shared.signpost-multiple", SharedSignpostMultipleComponent>
         | DiscriminatorNullComponentMapping<"shared.single-image", SharedSingleImageComponent>
         | DiscriminatorNullComponentMapping<"shared.three-column-grid", SharedThreeColumnGridComponent>
+        | DiscriminatorNullComponentMapping<"shared.showcase-grid", SharedShowcaseGridComponent>
         | DiscriminatorNullComponentMapping<"shared.collage-with-link", SharedCollageWithLinkComponent>
       );
     seo?: SharedSeoComponent;
@@ -577,6 +580,83 @@ export interface SharedThreeColumnGridComponent {
   id?: number;
   __component?: "shared.three-column-grid";
   columnsWithContent?: SharedColumnWithContentComponent[];
+}
+
+export interface ShowcaseColumnShowcaseColumnWithMarkdownComponent {
+  id?: number;
+  subtitle?: string;
+  markdown?: string;
+}
+
+export interface ShowcaseColumnShowcaseColumnWithMediaComponent {
+  id?: number;
+  title?: string;
+  description?: string;
+  media?: {
+    id?: number;
+    documentId?: string;
+    name?: string;
+    alternativeText?: string;
+    caption?: string;
+    width?: number;
+    height?: number;
+    formats?: any;
+    hash?: string;
+    ext?: string;
+    mime?: string;
+    /** @format float */
+    size?: number;
+    url?: string;
+    previewUrl?: string;
+    provider?: string;
+    provider_metadata?: any;
+    related?: {
+      id?: number;
+      documentId?: string;
+    }[];
+    folder?: {
+      id?: number;
+      documentId?: string;
+    };
+    folderPath?: string;
+    /** @format date-time */
+    createdAt?: string;
+    /** @format date-time */
+    updatedAt?: string;
+    /** @format date-time */
+    publishedAt?: string;
+    createdBy?: {
+      id?: number;
+      documentId?: string;
+    };
+    updatedBy?: {
+      id?: number;
+      documentId?: string;
+    };
+    locale?: string;
+    localizations?: {
+      id?: number;
+      documentId?: string;
+    }[];
+  };
+  link?: string;
+  isNda?: boolean;
+  size?: "XS" | "S" | "M" | "L";
+}
+
+export interface ShowcaseColumnShowcaseColumnsComponent {
+  id?: number;
+  type?: "media" | "markdown";
+  showcaseColumnWithMarkdown?: ShowcaseColumnShowcaseColumnWithMarkdownComponent[];
+  showcaseColumnWithMedia?: ShowcaseColumnShowcaseColumnWithMediaComponent[];
+}
+
+export interface SharedShowcaseGridComponent {
+  id?: number;
+  __component?: "shared.showcase-grid";
+  title?: string;
+  showcaseColumns?: ShowcaseColumnShowcaseColumnsComponent[];
+  showOnMobile?: boolean;
 }
 
 export interface SharedCollageWithLinkComponent {
@@ -1153,6 +1233,7 @@ type BaseNull = (
   | SharedSignpostMultipleComponent
   | SharedSingleImageComponent
   | SharedThreeColumnGridComponent
+  | SharedShowcaseGridComponent
   | SharedCollageWithLinkComponent
 )[];
 
@@ -1167,6 +1248,7 @@ type AbstractNull = (
   | SharedSignpostMultipleComponent
   | SharedSingleImageComponent
   | SharedThreeColumnGridComponent
+  | SharedShowcaseGridComponent
   | SharedCollageWithLinkComponent
 )[];
 
@@ -1181,6 +1263,7 @@ type DiscriminatorNull = (
   | SharedSignpostMultipleComponent
   | SharedSingleImageComponent
   | SharedThreeColumnGridComponent
+  | SharedShowcaseGridComponent
   | SharedCollageWithLinkComponent
 )[];
 
