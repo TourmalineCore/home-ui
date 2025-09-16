@@ -6,8 +6,7 @@ export enum BlockType {
   SHARED_SINGLE_IMAGE = `shared.single-image`,
   SHARED_THREE_COLUMN_GRID = `shared.three-column-grid`,
   SHARED_COLLAGE_WITH_LINK = `shared.collage-with-link`,
+  SHARED_SHOWCASE_GRID = `shared.showcase-grid`,
 
-  HOME_PROJECTS_WITH_TEXT_BLOCK = `home.project-with-text-block`,
-  HOME_PROJECTS = `home.projects`,
   HOME_FORM_BLOCK = `home.form-block`,
 }

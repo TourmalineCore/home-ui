@@ -1,6 +1,6 @@
 export * from './blocks/base-block';
 export * from './blocks/hero-block';
-export * from './blocks/project';
+export * from './blocks/showcase';
 export * from './blocks/featured-cards-list-block';
 export * from './blocks/three-column-grid-block';
 export * from './blocks/collage-with-link-block';

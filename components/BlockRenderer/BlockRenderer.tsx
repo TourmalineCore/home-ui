@@ -6,8 +6,7 @@ import { CollageWithLinkRedesign } from '../redesign/CollageWithLinkRedesign/Col
 import { CollageWithTitleRedesign } from '../redesign/CollageWithTitleRedesign/CollageWithTitleRedesign';
 import { FormBlockRedesign } from '../redesign/FormBlockRedesign/FormBlockRedesign';
 import { HeroRedesign } from '../redesign/HeroRedesign/HeroRedesign';
-import { ProjectsRedesign } from '../redesign/ProjectsRedesign/ProjectsRedesign';
-import { ProjectsWithTextBlockRedesign } from '../redesign/ProjectsWithTextBlockRedesign/ProjectsWithTextBlockRedesign';
+import { ShowcaseGrid } from '../ShowcaseGrid/ShowcaseGrid';
 import { SignpostMultipleRedesign } from '../redesign/SignpostMultipleRedesign/SignpostMultipleRedesign';
 import { SingleImageRedesign } from '../redesign/SingleImageRedesign/SingleImageRedesign';
 
@@ -36,24 +35,13 @@ export const BlockRenderer = ({
     );
   }
 
-  if (block.__component === BlockType.HOME_PROJECTS_WITH_TEXT_BLOCK) {
+  if (block.__component === BlockType.SHARED_SHOWCASE_GRID) {
     return (
-      <ProjectsWithTextBlockRedesign
+      <ShowcaseGrid
         title={block.title}
-        textBlockTitle={block.textBlockTitle}
-        projectCardsWithImage={block.projectCardsWithImage}
-        textBlockMarkdown={block.textBlockMarkdown}
+        showcaseColumns={block.showcaseColumns}
         showOnMobile={block.showOnMobile}
-        targetId="projects"
-      />
-    );
-  }
-
-  if (block.__component === BlockType.HOME_PROJECTS) {
-    return (
-      <ProjectsRedesign
-        projectCardsWithImage={block.projectCardsWithImage}
-        showOnMobile={block.showOnMobile}
+        anchorId={block.anchorId}
       />
     );
   }

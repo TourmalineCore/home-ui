@@ -1,14 +1,15 @@
-import { test } from '../../../playwright-tests/custom-test';
-import { BREAKPOINTS } from '../../../playwright-tests/constants/breakpoints';
-import { ComponentName } from '../../../common/enums';
 
-const TEST_ID = `projects-with-four-cards`;
+import { test } from '../../playwright-tests/custom-test';
+import { BREAKPOINTS } from '../../playwright-tests/constants/breakpoints';
+import { ComponentName } from '../../common/enums';
 
-test.describe(`ProjectsWithFourCards`, () => {
+const TEST_ID = `showcase-with-three-columns`;
+
+test.describe(`ShowcaseWithThreeColumns`, () => {
   test.beforeEach(async ({
     goToComponentsPage,
   }) => {
-    await goToComponentsPage(ComponentName.PROJECTS_WITH_FOUR_CARDS);
+    await goToComponentsPage(ComponentName.SHOWCASE_WITH_THREE_COLUMNS);
   });
 
   for (const {
