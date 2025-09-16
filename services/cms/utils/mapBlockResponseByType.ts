@@ -58,11 +58,11 @@ export function mapBlockResponseByType(block: BlockApi): Block | null {
     return {
       __component: BlockType.SHARED_COLLAGE_WITH_LINK,
       id: block.id,
-      text: block.link?.text ?? ``,
-      link: block.link?.url ?? ``,
+      text: block.link?.text || ``,
+      link: block.link?.url || ``,
       imageUrls: block.images?.map(({
         url,
-      }) => url ?? ``) ?? [],
+      }) => url || ``) || [],
     };
   }
 
