@@ -2,9 +2,9 @@ import { ComponentName } from "../../common/enums";
 import { BREAKPOINTS } from "../../playwright-tests/constants/breakpoints";
 import { test } from "../../playwright-tests/custom-test";
 
-const TEST_ID = `showcase-with-markdown-column`;
+const TEST_ID = `showcase-grid-with-markdown-column`;
 
-test.describe(`ShowcaseWithMarkdownColumn`, () => {
+test.describe(`ShowcaseGridWithMarkdownColumn`, () => {
   test.beforeEach(async ({
     goToComponentsPage,
   }) => {

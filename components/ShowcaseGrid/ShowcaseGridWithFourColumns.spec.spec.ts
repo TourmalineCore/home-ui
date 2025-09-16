@@ -1,15 +1,14 @@
-
 import { test } from '../../playwright-tests/custom-test';
 import { BREAKPOINTS } from '../../playwright-tests/constants/breakpoints';
 import { ComponentName } from '../../common/enums';
 
-const TEST_ID = `showcase-with-three-columns`;
+const TEST_ID = `showcase-grid-with-four-columns`;
 
-test.describe(`ShowcaseWithThreeColumns`, () => {
+test.describe(`ShowcaseGridWithFourColumns`, () => {
   test.beforeEach(async ({
     goToComponentsPage,
   }) => {
-    await goToComponentsPage(ComponentName.SHOWCASE_GRID_WITH_THREE_COLUMNS);
+    await goToComponentsPage(ComponentName.SHOWCASE_GRID_WITH_FOUR_COLUMNS);
   });
 
   for (const {
