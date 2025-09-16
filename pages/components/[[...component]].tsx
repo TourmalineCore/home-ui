@@ -29,9 +29,9 @@ export default function ComponentsPage({
     collageWithLinkRedesign,
     collageWithTitleRedesign,
     heroRedesign,
-    showcaseFirstSection,
-    showcaseSecondarySection,
-    showcaseThirdSection,
+    showcaseGridFirstSection,
+    showcaseGridSecondSection,
+    showcaseGridThirdSection,
     featuredCardsList,
     articleSignpostsRedesign,
     singleImageRedesign,
@@ -124,8 +124,8 @@ export default function ComponentsPage({
     return (
       <ShowcaseGrid
         dataTestId="showcase-with-four-columns"
-        showcaseColumns={showcaseSecondarySection.showcaseColumns}
-        showOnMobile={showcaseThirdSection.showOnMobile}
+        showcaseColumns={showcaseGridSecondSection.showcaseColumns}
+        showOnMobile={showcaseGridSecondSection.showOnMobile}
       />
     );
   }
@@ -133,9 +133,9 @@ export default function ComponentsPage({
   if (componentName === ComponentName.SHOWCASE_GRID_WITH_THREE_COLUMNS) {
     return (
       <ShowcaseGrid
-        showcaseColumns={showcaseThirdSection.showcaseColumns}
+        showcaseColumns={showcaseGridThirdSection.showcaseColumns}
         dataTestId="showcase-with-three-columns"
-        showOnMobile={showcaseThirdSection.showOnMobile}
+        showOnMobile={showcaseGridThirdSection.showOnMobile}
       />
     );
   }
@@ -143,10 +143,10 @@ export default function ComponentsPage({
   if (componentName === ComponentName.SHOWCASE_GRID_WITH_MARKDOWN_COLUMN) {
     return (
       <ShowcaseGrid
-        title={showcaseFirstSection.title}
-        showcaseColumns={showcaseFirstSection.showcaseColumns}
+        title={showcaseGridFirstSection.title}
+        showcaseColumns={showcaseGridFirstSection.showcaseColumns}
         dataTestId="showcase-with-markdown-column"
-        showOnMobile={showcaseThirdSection.showOnMobile}
+        showOnMobile={showcaseGridFirstSection.showOnMobile}
       />
     );
   }
@@ -314,9 +314,9 @@ export async function getStaticProps({
     `collageWithLinkRedesign`,
     `collageWithTitleRedesign`,
     `heroRedesign`,
-    `showcaseFirstSection`,
-    `showcaseSecondarySection`,
-    `showcaseThirdSection`,
+    `showcaseGridFirstSection`,
+    `showcaseGridSecondSection`,
+    `showcaseGridThirdSection`,
     `featuredCardsList`,
     `articleSignpostsRedesign`,
     `singleImageRedesign`,

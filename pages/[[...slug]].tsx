@@ -74,11 +74,11 @@ export async function getServerSideProps({
       `common`,
       `heroRedesign`,
       `featuredCardsList`,
-      `showcaseFirstSection`,
-      `showcaseSecondarySection`,
-      `showcaseThirdSection`,
-      `showcaseFourthSection`,
-      `showcaseFifthSection`,
+      `showcaseGridFirstSection`,
+      `showcaseGridSecondSection`,
+      `showcaseGridThirdSection`,
+      `showcaseGridFourthSection`,
+      `showcaseGridFifthSection`,
       `threeColumnGrid`,
       `collageWithTitleRedesign`,
       `collageWithLinkRedesign`,
@@ -106,23 +106,23 @@ export async function getServerSideProps({
       },
       {
         __component: BlockType.SHARED_SHOWCASE_GRID,
-        ...translationsPageData.showcaseFirstSection,
+        ...translationsPageData.showcaseGridFirstSection,
       },
       {
         __component: BlockType.SHARED_SHOWCASE_GRID,
-        ...translationsPageData.showcaseSecondarySection,
+        ...translationsPageData.showcaseGridSecondSection,
       },
       {
         __component: BlockType.SHARED_SHOWCASE_GRID,
-        ...translationsPageData.showcaseThirdSection,
+        ...translationsPageData.showcaseGridThirdSection,
       },
       {
         __component: BlockType.SHARED_SHOWCASE_GRID,
-        ...translationsPageData.showcaseFourthSection,
+        ...translationsPageData.showcaseGridFourthSection,
       },
       {
         __component: BlockType.SHARED_SHOWCASE_GRID,
-        ...translationsPageData.showcaseFifthSection,
+        ...translationsPageData.showcaseGridFifthSection,
       },
       // Todo: uncomment after fix form
       // {
