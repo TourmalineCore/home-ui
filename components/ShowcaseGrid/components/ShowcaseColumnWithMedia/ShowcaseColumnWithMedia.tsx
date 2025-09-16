@@ -1,20 +1,20 @@
 import Image from 'next/image';
-import { ShowcaseColumnWithImageProps } from '../../../../common/types';
+import { ShowcaseColumnWithMediaProps } from '../../../../common/types';
 import { SmartLink } from '../../../SmartLink/SmartLink';
 
-export function ShowcaseColumnWithImage({
+export function ShowcaseColumnWithMedia({
   title,
   description,
   media,
   size,
   link,
   isNda,
-}: ShowcaseColumnWithImageProps) {
+}: ShowcaseColumnWithMediaProps) {
   return (
-    <div className="showcase-column-with-image">
+    <div className="showcase-column-with-media">
       {link ? (
         <SmartLink
-          className="showcase-column-with-image__link"
+          className="showcase-column-with-media__link"
           href={link}
         >
           {renderCardContent()}
@@ -27,12 +27,12 @@ export function ShowcaseColumnWithImage({
   function renderCardContent() {
     return (
       <>
-        <div className="showcase-column-with-image__content">
-          {title && <h3 className="showcase-column-with-image__title">{title}</h3>}
-          {description && <p className="showcase-column-with-image__description">{description}</p>}
+        <div className="showcase-column-with-media__content">
+          {title && <h3 className="showcase-column-with-media__title">{title}</h3>}
+          {description && <p className="showcase-column-with-media__description">{description}</p>}
         </div>
-        <div className={`showcase-column-with-image__images showcase-column-with-image__images--${size.toUpperCase()}`}>
-          {isNda && <span className="showcase-column-with-image__nda">NDA</span>}
+        <div className={`showcase-column-with-media__images showcase-column-with-media__images--${size.toUpperCase()}`}>
+          {isNda && <span className="showcase-column-with-media__nda">NDA</span>}
           {
             media.mime.startsWith(`image`) ? (
               <Image
@@ -42,7 +42,7 @@ export function ShowcaseColumnWithImage({
               />
             ) : (
               <video
-                className="showcase-column-with-image__video"
+                className="showcase-column-with-media__video"
                 src={media.url}
                 playsInline
                 loop

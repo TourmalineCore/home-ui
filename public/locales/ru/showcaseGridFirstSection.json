@@ -4,8 +4,8 @@
   "showcaseColumns":[
     {
       "id":0,
-      "type":"image",
-      "showcaseColumnWithImage":{
+      "type": "media",
+      "showcaseColumnWithMedia":{
         "media": {
           "url": "/images/zoo-project.jpg",
           "mime": "image/png"
@@ -19,8 +19,8 @@
     },
     {
       "id":1,
-      "type":"image",
-      "showcaseColumnWithImage":{
+      "type": "media",
+      "showcaseColumnWithMedia":{
         "media": {
           "url": "/images/tourmanique-project.png",
           "mime": "image/png"
