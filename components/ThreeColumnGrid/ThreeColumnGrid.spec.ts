@@ -8,7 +8,7 @@ test.describe(`ThreeColumnGrid`, () => {
   test.beforeEach(async ({
     goToComponentsPage,
   }) => {
-    await goToComponentsPage(ComponentName.CARDS_GRID);
+    await goToComponentsPage(ComponentName.THREE_COLUMN_GRID);
   });
 
   for (const {

@@ -8,7 +8,7 @@ test.describe(`ShowcaseWithMarkdownColumn`, () => {
   test.beforeEach(async ({
     goToComponentsPage,
   }) => {
-    await goToComponentsPage(ComponentName.SHOWCASE_WITH_MARKDOWN_COLUMN);
+    await goToComponentsPage(ComponentName.SHOWCASE_GRID_WITH_MARKDOWN_COLUMN);
   });
 
   for (const {

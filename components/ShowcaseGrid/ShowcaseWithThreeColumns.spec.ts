@@ -9,7 +9,7 @@ test.describe(`ShowcaseWithThreeColumns`, () => {
   test.beforeEach(async ({
     goToComponentsPage,
   }) => {
-    await goToComponentsPage(ComponentName.SHOWCASE_WITH_THREE_COLUMNS);
+    await goToComponentsPage(ComponentName.SHOWCASE_GRID_WITH_THREE_COLUMNS);
   });
 
   for (const {

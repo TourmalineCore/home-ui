@@ -120,7 +120,7 @@ export default function ComponentsPage({
     );
   }
 
-  if (componentName === ComponentName.SHOWCASE_WITH_FOUR_COLUMNS) {
+  if (componentName === ComponentName.SHOWCASE_GRID_WITH_FOUR_COLUMNS) {
     return (
       <ShowcaseGrid
         dataTestId="showcase-with-four-columns"
@@ -130,7 +130,7 @@ export default function ComponentsPage({
     );
   }
 
-  if (componentName === ComponentName.SHOWCASE_WITH_THREE_COLUMNS) {
+  if (componentName === ComponentName.SHOWCASE_GRID_WITH_THREE_COLUMNS) {
     return (
       <ShowcaseGrid
         showcaseColumns={showcaseThirdSection.showcaseColumns}
@@ -140,7 +140,7 @@ export default function ComponentsPage({
     );
   }
 
-  if (componentName === ComponentName.SHOWCASE_WITH_MARKDOWN_COLUMN) {
+  if (componentName === ComponentName.SHOWCASE_GRID_WITH_MARKDOWN_COLUMN) {
     return (
       <ShowcaseGrid
         title={showcaseFirstSection.title}
@@ -263,13 +263,13 @@ export default function ComponentsPage({
           <Link href={ComponentName.MOBILE_MENU}>Header popup</Link>
         </li>
         <li className="components-page__item">
-          <Link href={ComponentName.SHOWCASE_WITH_FOUR_COLUMNS}>Showcase with four columns</Link>
+          <Link href={ComponentName.SHOWCASE_GRID_WITH_FOUR_COLUMNS}>Showcase with four columns</Link>
         </li>
         <li className="components-page__item">
-          <Link href={ComponentName.SHOWCASE_WITH_THREE_COLUMNS}>Showcase with three columns</Link>
+          <Link href={ComponentName.SHOWCASE_GRID_WITH_THREE_COLUMNS}>Showcase with three columns</Link>
         </li>
         <li className="components-page__item">
-          <Link href={ComponentName.SHOWCASE_WITH_MARKDOWN_COLUMN}>Showcase with markdown column</Link>
+          <Link href={ComponentName.SHOWCASE_GRID_WITH_MARKDOWN_COLUMN}>Showcase with markdown column</Link>
         </li>
         <li className="components-page__item">
           <Link href={ComponentName.FEATURED_CARDS_LIST}>Featured cards list</Link>

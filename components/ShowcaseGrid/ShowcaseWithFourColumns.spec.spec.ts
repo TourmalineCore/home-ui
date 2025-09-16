@@ -8,7 +8,7 @@ test.describe(`ShowcaseWithFourColumns`, () => {
   test.beforeEach(async ({
     goToComponentsPage,
   }) => {
-    await goToComponentsPage(ComponentName.SHOWCASE_WITH_FOUR_COLUMNS);
+    await goToComponentsPage(ComponentName.SHOWCASE_GRID_WITH_FOUR_COLUMNS);
   });
 
   for (const {
