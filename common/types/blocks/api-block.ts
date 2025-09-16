@@ -5,6 +5,7 @@ import {
   SharedSignpostMultipleComponent,
   SharedSingleImageComponent,
   SharedThreeColumnGridComponent,
+  SharedCollageWithLinkComponent,
 } from "../api-types";
 
 export type BlockApi = SharedHeroComponent
@@ -12,4 +13,5 @@ export type BlockApi = SharedHeroComponent
 | SharedCollageWithTitleComponent
 | SharedSignpostMultipleComponent
 | SharedSingleImageComponent
-| SharedThreeColumnGridComponent;
+| SharedThreeColumnGridComponent
+| SharedCollageWithLinkComponent;

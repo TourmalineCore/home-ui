@@ -29,6 +29,7 @@ export interface HomepageRequest {
         | BaseNullComponentMapping<"shared.signpost-multiple", SharedSignpostMultipleComponent>
         | BaseNullComponentMapping<"shared.single-image", SharedSingleImageComponent>
         | BaseNullComponentMapping<"shared.three-column-grid", SharedThreeColumnGridComponent>
+        | BaseNullComponentMapping<"shared.collage-with-link", SharedCollageWithLinkComponent>
       );
     seo: SharedSeoComponent;
     locale?: string;
@@ -61,6 +62,7 @@ export interface Homepage {
       | AbstractNullComponentMapping<"shared.signpost-multiple", SharedSignpostMultipleComponent>
       | AbstractNullComponentMapping<"shared.single-image", SharedSingleImageComponent>
       | AbstractNullComponentMapping<"shared.three-column-grid", SharedThreeColumnGridComponent>
+      | AbstractNullComponentMapping<"shared.collage-with-link", SharedCollageWithLinkComponent>
     );
   seo: SharedSeoComponent;
   /** @format date-time */
@@ -89,6 +91,7 @@ export interface Homepage {
         | DiscriminatorNullComponentMapping<"shared.signpost-multiple", SharedSignpostMultipleComponent>
         | DiscriminatorNullComponentMapping<"shared.single-image", SharedSingleImageComponent>
         | DiscriminatorNullComponentMapping<"shared.three-column-grid", SharedThreeColumnGridComponent>
+        | DiscriminatorNullComponentMapping<"shared.collage-with-link", SharedCollageWithLinkComponent>
       );
     seo?: SharedSeoComponent;
     /** @format date-time */
@@ -574,6 +577,59 @@ export interface SharedThreeColumnGridComponent {
   id?: number;
   __component?: "shared.three-column-grid";
   columnsWithContent?: SharedColumnWithContentComponent[];
+}
+
+export interface SharedCollageWithLinkComponent {
+  id?: number;
+  __component?: "shared.collage-with-link";
+  link?: SharedLinkComponent;
+  images?: {
+    id?: number;
+    documentId?: string;
+    name?: string;
+    alternativeText?: string;
+    caption?: string;
+    width?: number;
+    height?: number;
+    formats?: any;
+    hash?: string;
+    ext?: string;
+    mime?: string;
+    /** @format float */
+    size?: number;
+    url?: string;
+    previewUrl?: string;
+    provider?: string;
+    provider_metadata?: any;
+    related?: {
+      id?: number;
+      documentId?: string;
+    }[];
+    folder?: {
+      id?: number;
+      documentId?: string;
+    };
+    folderPath?: string;
+    /** @format date-time */
+    createdAt?: string;
+    /** @format date-time */
+    updatedAt?: string;
+    /** @format date-time */
+    publishedAt?: string;
+    createdBy?: {
+      id?: number;
+      documentId?: string;
+    };
+    updatedBy?: {
+      id?: number;
+      documentId?: string;
+    };
+    locale?: string;
+    localizations?: {
+      id?: number;
+      documentId?: string;
+    }[];
+  }[];
 }
 
 export interface SharedSeoComponent {
@@ -1097,6 +1153,7 @@ type BaseNull = (
   | SharedSignpostMultipleComponent
   | SharedSingleImageComponent
   | SharedThreeColumnGridComponent
+  | SharedCollageWithLinkComponent
 )[];
 
 type BaseNullComponentMapping<Key, Type> = {
@@ -1110,6 +1167,7 @@ type AbstractNull = (
   | SharedSignpostMultipleComponent
   | SharedSingleImageComponent
   | SharedThreeColumnGridComponent
+  | SharedCollageWithLinkComponent
 )[];
 
 type AbstractNullComponentMapping<Key, Type> = {
@@ -1123,6 +1181,7 @@ type DiscriminatorNull = (
   | SharedSignpostMultipleComponent
   | SharedSingleImageComponent
   | SharedThreeColumnGridComponent
+  | SharedCollageWithLinkComponent
 )[];
 
 type DiscriminatorNullComponentMapping<Key, Type> = {

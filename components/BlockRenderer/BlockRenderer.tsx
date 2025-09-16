@@ -93,7 +93,7 @@ export const BlockRenderer = ({
     );
   }
 
-  if (block.__component === BlockType.HOME_COLLAGE_WITH_LINK) {
+  if (block.__component === BlockType.SHARED_COLLAGE_WITH_LINK) {
     return (
       <CollageWithLinkRedesign
         text={block.text}

@@ -149,7 +149,7 @@ export async function getServerSideProps({
         ...translationsPageData.threeColumnGrid,
       },
       {
-        __component: BlockType.HOME_COLLAGE_WITH_LINK,
+        __component: BlockType.SHARED_COLLAGE_WITH_LINK,
         ...translationsPageData.collageWithLinkRedesign,
       },
     ]);
