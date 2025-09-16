@@ -20,22 +20,7 @@ export async function getPageData({
   slug: string;
 }): Promise<Page | null> {
   const queryParams = {
-    populate: [
-      `blocks.gallery`,
-      `blocks.featuredCards.cardWithPoints.points`,
-      `blocks.featuredCards.cardWithPoints.link`,
-      `blocks.featuredCards.cardWithImage.image`,
-      `blocks.featuredCards.wideCard.wideCardItems.icon`,
-      `blocks.featuredCards.wideCard.link`,
-      `blocks.images`,
-      `blocks.image`,
-      `blocks.link`,
-      `blocks.signposts.image`,
-      `blocks.columnsWithContent.columnWithImage.image`,
-      `blocks.columnsWithContent.columnWithRepositories.repositories`,
-      `blocks.columnsWithContent.columnWithTextAndDate`,
-      `seo`,
-    ],
+    populate: `all`,
     locale,
     status,
   };
