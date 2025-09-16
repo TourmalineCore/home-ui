@@ -3,7 +3,7 @@
     {
       "id": 0,
       "type": "image",
-      "cardWithImage": {  
+      "columnWithImage": {  
         "title": "We teach\n at the university",
         "imageUrl": "/images/teach-at-the-university.png",
         "markdownText": "We talk about the\u00A0basics of\u00A0web architecture and\u00A0extreme approaches to\u00A0development in\u00A0class"
@@ -12,7 +12,7 @@
     {
       "id": 1,
       "type": "repositories",
-      "cardWithRepositories": {
+      "columnWithRepositories": {
         "title": "We do open source\n where we can",
         "repositories": [
           {
@@ -40,7 +40,7 @@
     {
       "id": 2,
       "type": "text-and-date",
-       "cardWithTextAndDate": {
+       "columnWithTextAndDate": {
         "title": "We publish scientific\n research",
         "text": "«Мethod for\u00A0determining the\u00A0level of\u00A0similarity of\u00A0images by\u00A0color component based on\u00A0correlation analysis and\u00A0color space quantization»",
         "date": "2023-06-03"
