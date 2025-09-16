@@ -1,6 +1,6 @@
 import { useDeviceSize } from '../../common/hooks';
 import { ShowcaseGridBlock } from '../../common/types';
-import { ShowcaseColumnWithImage } from './components/ShowcaseColumnWithImage/ShowcaseColumnWithImage';
+import { ShowcaseColumnWithMedia } from './components/ShowcaseColumnWithMedia/ShowcaseColumnWithMedia';
 import { ShowcaseColumnWithMarkdown } from './components/ShowcaseColumnWithMarkdown/ShowcaseColumnWithMarkdown';
 
 const GRID_COLUMNS = 12;
@@ -39,21 +39,21 @@ export function ShowcaseGrid({
           {showcaseColumns.map(({
             id,
             type,
-            showcaseColumnWithImage,
+            showcaseColumnWithMedia,
             showcaseColumnWithMarkdown,
           }) => (
             <li
               className={`showcase-grid__column col-tablet-${columnsCount}`}
               key={id}
             >
-              {(showcaseColumnWithImage && type === `image`) && (
-                <ShowcaseColumnWithImage
-                  title={showcaseColumnWithImage.title}
-                  description={showcaseColumnWithImage.description}
-                  media={showcaseColumnWithImage.media}
-                  size={showcaseColumnWithImage.size}
-                  link={showcaseColumnWithImage.link}
-                  isNda={showcaseColumnWithImage.isNda}
+              {(showcaseColumnWithMedia && type === `media`) && (
+                <ShowcaseColumnWithMedia
+                  title={showcaseColumnWithMedia.title}
+                  description={showcaseColumnWithMedia.description}
+                  media={showcaseColumnWithMedia.media}
+                  size={showcaseColumnWithMedia.size}
+                  link={showcaseColumnWithMedia.link}
+                  isNda={showcaseColumnWithMedia.isNda}
                 />
               )}
               {(showcaseColumnWithMarkdown && type === `markdown`) && (

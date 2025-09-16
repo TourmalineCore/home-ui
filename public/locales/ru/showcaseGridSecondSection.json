@@ -2,8 +2,8 @@
   "showcaseColumns":[
     {
       "id":0,
-      "type":"image",
-      "showcaseColumnWithImage":{
+      "type": "media",
+      "showcaseColumnWithMedia":{
         "media": {
           "url": "/images/clever-project.png",
           "mime": "image/png"
@@ -17,8 +17,8 @@
     },
     {
       "id":1,
-      "type":"image",
-      "showcaseColumnWithImage":{
+      "type": "media",
+      "showcaseColumnWithMedia":{
         "media": {
           "url": "/images/sine-project.png",
           "mime": "image/png"
@@ -31,8 +31,8 @@
     },
     {
       "id":2,
-      "type":"image",
-      "showcaseColumnWithImage": {
+      "type": "media",
+      "showcaseColumnWithMedia": {
         "media": {
           "url": "/images/driver-project.png",
           "mime": "image/png"
@@ -45,8 +45,8 @@
     },
     {
       "id":3,
-      "type":"image",
-      "showcaseColumnWithImage": {
+      "type": "media",
+      "showcaseColumnWithMedia": {
         "media": {
             "url": "/images/protocol-project.png",
             "mime": "image/png"

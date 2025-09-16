@@ -2,8 +2,8 @@
   "showcaseColumns":[
     {
       "id":0,
-      "type":"image",
-      "showcaseColumnWithImage":{
+      "type": "media",
+      "showcaseColumnWithMedia":{
         "media": {
           "url": "/video/best-by.mp4",
           "mime": "video/mp4"
@@ -17,8 +17,8 @@
     },
     {
       "id":1,
-      "type":"image",
-      "showcaseColumnWithImage":{
+      "type": "media",
+      "showcaseColumnWithMedia":{
         "media": {
           "url": "/images/senmotion-project.png",
           "mime": "image/png"
@@ -32,8 +32,8 @@
     },
     {
       "id":2,
-      "type":"image",
-      "showcaseColumnWithImage": {
+      "type": "media",
+      "showcaseColumnWithMedia": {
         "media": {
           "url": "/images/smart-cleaning-project.png",
           "mime": "image/png"
@@ -46,8 +46,8 @@
     },
     {
       "id":3,
-      "type":"image",
-      "showcaseColumnWithImage": {
+      "type": "media",
+      "showcaseColumnWithMedia": {
         "media": {
           "url": "/images/tradehack-project.jpg",
           "mime": "image/png"

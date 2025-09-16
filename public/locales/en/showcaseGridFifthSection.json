@@ -2,8 +2,8 @@
   "showcaseColumns": [
     {
       "id": 0,
-      "type": "image",
-      "showcaseColumnWithImage": {
+      "type": "media",
+      "showcaseColumnWithMedia": {
         "media": {
           "url": "/images/real-estate-en.png",
           "mime": "image/png"
@@ -16,8 +16,8 @@
     },
     {
       "id": 1,
-      "type": "image",
-      "showcaseColumnWithImage": {
+      "type": "media",
+      "showcaseColumnWithMedia": {
         "media": {
           "url": "/images/fairaction-project.jpg",
           "mime": "image/png"
