@@ -1,3 +1,4 @@
+import { cmsFetch } from "../../../services/cms/api/http-client";
 import { E2E_UI_NAME_PREFIX } from "../../constants/e2e-ui-name-prefix";
 import {
   CustomTestFixtures,
@@ -5,7 +6,6 @@ import {
   Page,
   test,
 } from "../../custom-test";
-import { cleanupDynamicPageApi } from "./dynamic-page-api-helpers";
 
 export const DYNAMIC_PAGE_NAME = `${E2E_UI_NAME_PREFIX} Frontend`;
 const DYNAMIC_PAGE_LINK = `/frontend-e2e-test`;
@@ -16,6 +16,8 @@ const HERO_DESCRIPTION = `${E2E_UI_NAME_PREFIX} Launching MVP, working on R&D pr
 const META_TITLE = `Frontend`;
 const META_DESCRIPTION = `Development of public websites, customized enterprise information systems, and applications`;
 const META_KEYWORDS = `public websites, enterprise information systems, software development`;
+
+const ENDPOINT = `/navigations`;
 
 test.describe(`Main scenario for create dynamic page`, dynamicPageMainScenarioTest);
 
@@ -139,4 +141,23 @@ function dynamicPageMainScenarioTest() {
       }
     },
   );
+}
+
+export async function cleanupDynamicPageApi() {
+  try {
+    const dynamicPages = await cmsFetch(`${ENDPOINT}?populate=all`);
+
+    const dynamicPage = dynamicPages.data.find((navigationItem: any) => navigationItem.name === DYNAMIC_PAGE_NAME);
+
+    if (dynamicPage) {
+      const response = await cmsFetch(`${ENDPOINT}/${dynamicPage.documentId}`, {
+        method: `DELETE`,
+      });
+
+      await expect(response.status, `Dynamic page should be deleted with status 204`)
+        .toEqual(204);
+    }
+  } catch (error: any) {
+    throw new Error(`Failed to delete test dynamic page: ${error.message}`);
+  }
 }
