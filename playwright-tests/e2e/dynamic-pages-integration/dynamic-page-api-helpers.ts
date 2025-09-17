@@ -1,6 +1,6 @@
 import { cmsFetch } from "../../../services/cms/api/http-client";
 import { expect } from "../../custom-test";
-import { PAGE_NAME } from "./dynamic-page-main-scenario-e2e.spec";
+import { DYNAMIC_PAGE_NAME } from "./dynamic-page-main-scenario-e2e.spec";
 
 const ENDPOINT = `/navigations`;
 
@@ -8,7 +8,7 @@ export async function cleanupDynamicPageApi() {
   try {
     const dynamicPages = await cmsFetch(`${ENDPOINT}?populate=all`);
 
-    const dynamicPage = dynamicPages.data.find((navigationItem: any) => navigationItem.name === PAGE_NAME);
+    const dynamicPage = dynamicPages.data.find((navigationItem: any) => navigationItem.name === DYNAMIC_PAGE_NAME);
 
     if (dynamicPage) {
       const response = await cmsFetch(`${ENDPOINT}/${dynamicPage.documentId}`, {

@@ -7,8 +7,8 @@ import {
 } from "../../custom-test";
 import { cleanupDynamicPageApi } from "./dynamic-page-api-helpers";
 
-export const PAGE_NAME = `${E2E_UI_NAME_PREFIX} Frontend`;
-const PAGE_LINK = `/frontend-e2e-test`;
+export const DYNAMIC_PAGE_NAME = `${E2E_UI_NAME_PREFIX} Frontend`;
+const DYNAMIC_PAGE_LINK = `/frontend-e2e-test`;
 
 const HERO_TITLE = `${E2E_UI_NAME_PREFIX} Frontend page`;
 const HERO_DESCRIPTION = `${E2E_UI_NAME_PREFIX} Launching MVP, working on R&D projects, complex enterprise services, and websites.`;
@@ -74,10 +74,10 @@ function dynamicPageMainScenarioTest() {
 
           async function fillDynamicPageCmsUi() {
             await page.locator(`input[name=name]`)
-              .fill(PAGE_NAME);
+              .fill(DYNAMIC_PAGE_NAME);
 
             await page.locator(`input[name=link]`)
-              .fill(PAGE_LINK);
+              .fill(DYNAMIC_PAGE_LINK);
 
             await page.getByRole(`button`, {
               name: `Add a component to blocks`,
@@ -120,9 +120,9 @@ function dynamicPageMainScenarioTest() {
       }
 
       async function checkDynamicPageOnUi() {
-        await goto(PAGE_LINK);
+        await goto(DYNAMIC_PAGE_LINK);
 
-        await expect(page.getByText(PAGE_NAME))
+        await expect(page.getByText(DYNAMIC_PAGE_NAME))
           .toBeVisible();
 
         await page.getByText(HERO_DESCRIPTION)
