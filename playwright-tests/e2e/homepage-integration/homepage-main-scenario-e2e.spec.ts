@@ -29,8 +29,9 @@ function homepageMainScenarioTest() {
   test(
     `
     GIVEN an empty homepage
-    WHEN filling and publishing homepage in CMS UI
-    SHOULD see filled homepage on frontend UI 
+    WHEN adding hero component and SEO metadata in CMS
+    AND publishing it
+    THEN homepage should display hero content and correct SEO tags on frontend
     `,
     async ({
       goto,

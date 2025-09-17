@@ -82,7 +82,7 @@ export const createCmsActions = (page: Page) => ({
     })
       .click();
 
-    // Wait until navigation record is saved in db
+    // Wait until record is saved in db
     await page.waitForSelector(`text=Success`);
   },
 

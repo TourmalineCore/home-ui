@@ -12,7 +12,7 @@ const EMAIL_ADDRESS = `test@tourmalinecore.com`;
 const BUTTON_LABEL_DRAFT = `${E2E_UI_DRAFT_NAME_PREFIX} Discuss the project`;
 const FOOTER_NAVIGATION_CAPTION_DRAFT = `${E2E_UI_DRAFT_NAME_PREFIX} Navigation`;
 
-test.describe(`Open page preview`, layoutPreviewTest);
+test.describe(`Check preview mode`, layoutPreviewTest);
 
 function layoutPreviewTest() {
   test.beforeEach(async () => {
@@ -32,10 +32,11 @@ function layoutPreviewTest() {
 
   test(
     `
-    GIVEN an empty layout
-    WHEN filling layout content and saving changes via API
-    AND opening the page in preview mode
-    SHOULD see filled layout on frontend UI in preview mode
+    GIVEN layout content saved as draft via API
+    WHEN viewing the public website
+    THEN draft content should not be visible
+    BUT WHEN viewing in preview mode
+    THEN all draft content should be displayed
     `,
     async ({
       goto,

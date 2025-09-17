@@ -52,9 +52,9 @@ async function layoutMainScenarioTest() {
 
   test(
     `
-    GIVEN an empty layout
-    WHEN filling and publishing layout in CMS UI
-    SHOULD see filled layout on frontend UI 
+    GIVEN an empty layout with no navigation
+    WHEN creating navigation and filling layout in CMS
+    THEN the layout should display correctly on frontend for both desktop and mobile
     `,
     async ({
       goto,
