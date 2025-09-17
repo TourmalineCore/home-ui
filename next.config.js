@@ -14,6 +14,10 @@ module.exports = withReactSvg({
         protocol: 'http',
         hostname: 'localhost',
       },
+      {
+        protocol: 'http',
+        hostname: 'minio-s3',
+      },
     ]
   },
   env: {
