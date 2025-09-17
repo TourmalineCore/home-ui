@@ -4,6 +4,7 @@ import {
   FeaturedCardProps,
   SignpostMultipleBlock,
   Column,
+  ShowcaseGridBlock,
 } from "../../../common/types";
 import { BlockApi } from "../../../common/types/blocks/api-block";
 
@@ -105,11 +106,26 @@ export function mapBlockResponseByType(block: BlockApi): Block | null {
         type: column.type,
         columnWithImage: {
           ...column.columnWithImage,
-          imageUrl: column.columnWithImage?.image?.url ?? [],
+          imageUrl: column.columnWithImage?.image?.url || ``,
         },
         columnWithRepositories: column.columnWithRepositories,
         columnWithTextAndDate: column.columnWithTextAndDate,
-      })) as Column[] ?? [],
+      })) as Column[] || [],
+    };
+  }
+
+  if (component === BlockType.SHARED_SHOWCASE_GRID) {
+    return {
+      __component: BlockType.SHARED_SHOWCASE_GRID,
+      id: block.id,
+      showOnMobile: block.showOnMobile!,
+      title: block.title,
+      showcaseColumns: block.showcaseColumns?.map((column) => ({
+        id: column.id,
+        type: column.type,
+        showcaseColumnWithMedia: column.showcaseColumnWithMedia || null,
+        showcaseColumnWithMarkdown: column.showcaseColumnWithMarkdown || null,
+      })) as ShowcaseGridBlock['showcaseColumns'] || [],
     };
   }
   return null;

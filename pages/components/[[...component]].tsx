@@ -123,7 +123,7 @@ export default function ComponentsPage({
   if (componentName === ComponentName.SHOWCASE_GRID_WITH_FOUR_COLUMNS) {
     return (
       <ShowcaseGrid
-        dataTestId="showcase-with-four-columns"
+        dataTestId="showcase-grid-with-four-columns"
         showcaseColumns={showcaseGridSecondSection.showcaseColumns}
         showOnMobile={showcaseGridSecondSection.showOnMobile}
       />
@@ -134,7 +134,7 @@ export default function ComponentsPage({
     return (
       <ShowcaseGrid
         showcaseColumns={showcaseGridThirdSection.showcaseColumns}
-        dataTestId="showcase-with-three-columns"
+        dataTestId="showcase-grid-with-three-columns"
         showOnMobile={showcaseGridThirdSection.showOnMobile}
       />
     );
@@ -145,7 +145,7 @@ export default function ComponentsPage({
       <ShowcaseGrid
         title={showcaseGridFirstSection.title}
         showcaseColumns={showcaseGridFirstSection.showcaseColumns}
-        dataTestId="showcase-with-markdown-column"
+        dataTestId="showcase-grid-with-markdown-column"
         showOnMobile={showcaseGridFirstSection.showOnMobile}
       />
     );

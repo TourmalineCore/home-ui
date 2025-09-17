@@ -7,8 +7,8 @@ export interface ShowcaseGridBlock extends BaseBlock<BlockType.SHARED_SHOWCASE_G
   anchorId?: string;
   showcaseColumns: {
     id: number;
-    type: 'image' | 'markdown';
-    showcaseColumnWithImage: ShowcaseColumnWithImageProps | null;
+    type: 'media' | 'markdown';
+    showcaseColumnWithMedia: ShowcaseColumnWithMediaProps | null;
     showcaseColumnWithMarkdown: ShowcaseColumnWithMarkdownProps | null;
   }[];
 }
@@ -18,9 +18,9 @@ export interface ShowcaseColumnWithMarkdownProps {
   markdown: string;
 }
 
-export interface ShowcaseColumnWithImageProps {
-  title: string;
-  description: string;
+export interface ShowcaseColumnWithMediaProps {
+  title?: string;
+  description?: string;
   media: {
     url: string;
     mime: string;
