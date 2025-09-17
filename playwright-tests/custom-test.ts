@@ -43,7 +43,7 @@ export const test = base.extend<CustomTestFixtures>({
       // interrupting the connection for gif, for more stable work of tests
       await page.route(`**/**.gif`, (route) => route.abort());
 
-      await page.goto(`/${path}`, {
+      await page.goto(`${process.env.FRONTEND_URL}/${path}`, {
         waitUntil: `networkidle`,
       });
     };
