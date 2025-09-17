@@ -53,7 +53,7 @@ export async function getPageData({
   const pageResponse = await cmsFetch<NavigationListResponse>(`/navigations?${qs.stringify(navigationQueryParams)}`);
 
   const pageData = pageResponse?.data?.[0];
-  console.log(pageData);
+
   if (!pageData) {
     return null;
   }
