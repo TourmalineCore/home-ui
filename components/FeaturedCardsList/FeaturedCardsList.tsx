@@ -4,7 +4,7 @@ import { FeaturedCard } from './components/FeaturedCard/FeaturedCard';
 export function FeaturedCardsList({
   title,
   cards,
-  targetId,
+  anchorId,
 }: Omit<FeaturedCardsListBlock, '__component' | 'id'> & {
   targetId?: string;
 }) {
@@ -12,8 +12,8 @@ export function FeaturedCardsList({
     <section
       className="featured-cards-list"
       data-testid="featured-cards-list"
-      {...(targetId && {
-        id: targetId,
+      {...(anchorId && {
+        id: anchorId,
       })}
     >
       <ul className="featured-cards-list__cards grid container-redesign">

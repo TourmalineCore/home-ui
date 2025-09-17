@@ -323,6 +323,7 @@ export interface SharedFeaturedCardsListComponent {
   __component?: "shared.featured-cards-list";
   title?: string;
   featuredCards?: SharedFeaturedCardComponent[];
+  anchorId?: string;
 }
 
 export interface SharedCollageWithTitleComponent {
@@ -647,8 +648,8 @@ export interface ShowcaseColumnShowcaseColumnWithMediaComponent {
 export interface ShowcaseColumnShowcaseColumnsComponent {
   id?: number;
   type?: "media" | "markdown";
-  showcaseColumnWithMarkdown?: ShowcaseColumnShowcaseColumnWithMarkdownComponent[];
-  showcaseColumnWithMedia?: ShowcaseColumnShowcaseColumnWithMediaComponent[];
+  showcaseColumnWithMarkdown?: ShowcaseColumnShowcaseColumnWithMarkdownComponent;
+  showcaseColumnWithMedia?: ShowcaseColumnShowcaseColumnWithMediaComponent;
 }
 
 export interface SharedShowcaseGridComponent {

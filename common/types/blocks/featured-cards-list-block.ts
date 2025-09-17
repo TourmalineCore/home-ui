@@ -3,6 +3,7 @@ import { BaseBlock } from "./base-block";
 
 export interface FeaturedCardsListBlock extends BaseBlock<BlockType.SHARED_FEATURED_CARDS_LIST> {
   title?: string;
+  anchorId?: string;
   cards: FeaturedCardProps[];
 }
 
