@@ -62,19 +62,19 @@ function mapLayoutResponse(response: LayoutResponse | null): LayoutData {
 
   return {
     headerContent: {
-      buttonLabel: header?.buttonLabel ?? ``,
-      emailCaption: header?.emailCaption ?? ``,
-      emailAddress: emailAddress ?? ``,
+      buttonLabel: header?.buttonLabel || ``,
+      emailCaption: header?.emailCaption || ``,
+      emailAddress: emailAddress || ``,
       navigationLists: header?.navigationLists as HeaderNavigationItem[],
       socialLinks: header?.socialLinks as NavigationLink[],
     },
     footerContent: {
-      emailCaption: footer?.emailCaption ?? ``,
-      emailAddress: emailAddress ?? ``,
+      emailCaption: footer?.emailCaption || ``,
+      emailAddress: emailAddress || ``,
       navigationLists: footer?.navigationLists?.map((navigation) => ({
         ...navigation,
         links: navigation.isSocialNetworks ? navigation.socialLinks : navigation.links,
-      })) as FooterNavigationItem[] ?? [],
+      })) as FooterNavigationItem[] || [],
     },
   };
 }
