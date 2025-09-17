@@ -53,7 +53,7 @@ export async function getPageData({
   const pageResponse = await cmsFetch<NavigationListResponse>(`/navigations?${qs.stringify(navigationQueryParams)}`);
 
   const pageData = pageResponse?.data?.[0];
-
+  console.log(pageData);
   if (!pageData) {
     return null;
   }
@@ -99,9 +99,17 @@ function mapPageResponse(response: PageResponse): Page {
 }
 
 function mapSeoResponse(seo: SharedSeoComponent): Seo {
+  if (!seo) {
+    return {
+      metaTitle: ``,
+      metaDescription: ``,
+      metaKeywords: ``,
+    };
+  }
+
   return {
-    metaTitle: seo.metaTitle || ``,
-    metaDescription: seo.metaDescription || ``,
-    metaKeywords: seo.keywords || ``,
+    metaTitle: seo.metaTitle!,
+    metaDescription: seo.metaDescription!,
+    metaKeywords: seo.keywords,
   };
 }
