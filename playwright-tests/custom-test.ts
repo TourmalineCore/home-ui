@@ -26,8 +26,6 @@ export type CustomTestFixtures = {
       breakpoint: Breakpoint;
       breakpointName: BreakpointName;
     }) => void;
-  authorizeInCms: () => void;
-  skipCmsTutorial: () => void;
 };
 
 // https://playwright.dev/docs/test-fixtures
@@ -219,36 +217,6 @@ export const test = base.extend<CustomTestFixtures>({
     };
 
     await use(testAxeCoreCheckAtBreakpoint);
-  },
-
-  authorizeInCms: async ({
-    page,
-  }, use) => {
-    const authorizeInCms = async () => {
-      await page.locator(`input[name=email]`)
-        .fill(process.env.CMS_EMAIL as string);
-
-      await page.locator(`input[name=password]`)
-        .fill(process.env.CMS_PASSWORD as string);
-
-      await page.getByText(`Login`)
-        .click();
-    };
-
-    await use(authorizeInCms);
-  },
-
-  skipCmsTutorial: async ({
-    page,
-  }, use) => {
-    const skipCmsTutorial = async () => {
-      await page.getByRole(`button`, {
-        name: `Skip`,
-      })
-        .click();
-    };
-
-    await use(skipCmsTutorial);
   },
 });
 

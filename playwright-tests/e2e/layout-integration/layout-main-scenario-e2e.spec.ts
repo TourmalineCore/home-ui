@@ -2,6 +2,7 @@
 import { Breakpoint } from "../../../common/enums";
 import { NavigationListResponse, Navigation } from "../../../common/types";
 import { cmsFetch } from "../../../services/cms/api/http-client";
+import { createCmsActions } from "../../create-cms-actions";
 import { E2E_UI_NAME_PREFIX } from "../../constants/e2e-ui-name-prefix";
 import {
   CustomTestFixtures,
@@ -18,6 +19,7 @@ const FOOTER_NAVIGATION_CAPTION = `Navigation`;
 
 const HEADER_NAVIGATION = `${E2E_UI_NAME_PREFIX} Services`;
 const NESTED_HEADER_NAVIGATION = `${E2E_UI_NAME_PREFIX} Frontend`;
+const NESTED_HEADER_NAVIGATION_LINK = `/frontend`;
 
 const NAVIGATION_ENDPOINT = `/navigations`;
 
@@ -49,141 +51,111 @@ async function layoutMainScenarioTest() {
   });
 
   test(
-    `GIVEN an empty layout
-      WHEN filling and publishing layout in CMS UI
-      SHOULD see filled layout on frontend UI 
+    `
+    GIVEN an empty layout
+    WHEN filling and publishing layout in CMS UI
+    SHOULD see filled layout on frontend UI 
     `,
     async ({
       goto,
-      authorizeInCms,
-      skipCmsTutorial,
       setViewportSize,
       page,
     }: {
       goto: CustomTestFixtures['goto'];
-      authorizeInCms: CustomTestFixtures['authorizeInCms'];
-      skipCmsTutorial: CustomTestFixtures['skipCmsTutorial'];
       setViewportSize: CustomTestFixtures['setViewportSize'];
       page: Page;
     }) => {
+      const cms = createCmsActions(page);
+
       await page.goto(process.env.CMS_URL as string);
 
-      await test.step(`Authorize in CMS`, authorizeInCms);
+      await test.step(`Authorize in CMS`, cms.authorize);
 
       await test.step(`Setup CMS content`, setupCmsContent);
 
       await test.step(`Check layout content on ui`, checkLayoutOnUi);
 
       async function setupCmsContent() {
-        await page.getByText(`Content Manager`)
-          .click();
+        await cms.navigateToContentManager();
 
-        await skipCmsTutorial();
+        await cms.skipTutorial();
 
         await test.step(`Creating nested navigation`, createAndPublishNestedNavigationCmsUi);
 
         await test.step(`Filling layout content`, fillAndPublishLayoutCmsUi);
 
         async function createAndPublishNestedNavigationCmsUi() {
-          await page.getByRole(`link`, {
-            name: `Navigation`,
-            exact: true,
-          })
-            .click();
+          await cms.navigateToContentTypeByName(`Navigation`);
 
-          await page.getByRole(`link`, {
-            name: `Create new entry`,
-          })
-            .last()
-            .click();
+          await cms.createNewEntry();
 
-          await page.locator(`input[name=name]`)
-            .fill(NESTED_HEADER_NAVIGATION);
+          await cms.fillInputByName({
+            name: `name`,
+            value: NESTED_HEADER_NAVIGATION,
+          });
 
-          await page.locator(`input[name=link]`)
-            .fill(`/frontend`);
+          await cms.fillInputByName({
+            name: `link`,
+            value: NESTED_HEADER_NAVIGATION_LINK,
+          });
 
-          await page.getByRole(`button`, {
-            name: `Publish`,
-          })
-            .click();
+          await cms.publish();
 
-          // Wait until navigation record is saved in db
-          await page.waitForTimeout(1500);
+          await cms.navigateToContentTypeByName(`Navigation`);
 
-          await page.getByRole(`link`, {
-            name: `Navigation`,
-            exact: true,
-          })
-            .click();
+          await cms.createNewEntry();
 
-          await page.getByRole(`link`, {
-            name: `Create new entry`,
-          })
-            .last()
-            .click();
+          await cms.fillInputByName({
+            name: `name`,
+            value: HEADER_NAVIGATION,
+          });
 
-          await page.locator(`input[name=name]`)
-            .fill(HEADER_NAVIGATION);
+          await cms.checkCheckbox(`isMultiLevelNavigation`);
 
-          await page.locator(`input[name=isMultiLevelNavigation]`)
-            .check();
+          await cms.focusInput(`navItems`);
 
-          await page.locator(`input[name=navItems]`)
-            .click();
+          await cms.clickOnText(NESTED_HEADER_NAVIGATION);
 
-          await page.getByText(NESTED_HEADER_NAVIGATION)
-            .click();
-
-          await page.getByRole(`button`, {
-            name: `Publish`,
-          })
-            .click();
-
-          // Wait until navigation record is saved in db
-          await page.waitForTimeout(1500);
+          await cms.publish();
         }
 
         async function fillAndPublishLayoutCmsUi() {
-          await page.getByRole(`link`, {
-            name: `Layout`,
-          })
-            .click();
+          await cms.navigateToContentTypeByName(`Layout`);
 
-          await page.locator(`input[name=emailAddress]`)
-            .fill(EMAIL_ADDRESS);
+          await cms.fillInputByName({
+            name: `emailAddress`,
+            value: EMAIL_ADDRESS,
+          });
 
-          await page.locator(`input[name='header.buttonLabel']`)
-            .fill(BUTTON_LABEL);
+          await cms.fillInputByName({
+            name: `header.buttonLabel`,
+            value: BUTTON_LABEL,
+          });
 
-          await page.locator(`input[name='header.emailCaption']`)
-            .fill(EMAIL_CAPTION);
+          await cms.fillInputByName({
+            name: `header.emailCaption`,
+            value: EMAIL_CAPTION,
+          });
 
-          await page.locator(`input[name='header.navigationLists']`)
-            .click();
+          await cms.focusInput(`header.navigationLists`);
 
-          await page.getByText(HEADER_NAVIGATION)
-            .click();
+          await cms.clickOnText(HEADER_NAVIGATION);
 
-          await page.getByText(`No entry yet. Click to add one.`)
-            .click();
+          await cms.clickOnText(`No entry yet. Click to add one.`);
 
-          await page.getByText(`No entry yet. Click to add one.`)
-            .click();
+          await cms.clickOnText(`No entry yet. Click to add one.`);
 
-          await page.locator(`input[name='footer.navigationLists.0.caption']`)
-            .fill(FOOTER_NAVIGATION_CAPTION);
+          await cms.fillInputByName({
+            name: `footer.navigationLists.0.caption`,
+            value: FOOTER_NAVIGATION_CAPTION,
+          });
 
-          await page.locator(`input[name='footer.emailCaption']`)
-            .fill(EMAIL_CAPTION);
+          await cms.fillInputByName({
+            name: `footer.emailCaption`,
+            value: EMAIL_CAPTION,
+          });
 
-          await page.getByRole(`button`, {
-            name: `Publish`,
-          })
-            .click();
-
-          // Wait until navigation record is saved in db
-          await page.waitForTimeout(1500);
+          await cms.publish();
         }
       }
 

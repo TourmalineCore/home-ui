@@ -32,10 +32,10 @@ function layoutPreviewTest() {
 
   test(
     `
-      GIVEN an empty layout
-      WHEN filling layout content and saving changes via API
-      AND opening the page in preview mode
-      SHOULD see filled layout on frontend UI in preview mode
+    GIVEN an empty layout
+    WHEN filling layout content and saving changes via API
+    AND opening the page in preview mode
+    SHOULD see filled layout on frontend UI in preview mode
     `,
     async ({
       goto,

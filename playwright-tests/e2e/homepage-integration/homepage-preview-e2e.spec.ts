@@ -40,7 +40,7 @@ function homepagePreviewTest() {
     WHEN filling homepage content and saving changes via API
     AND opening the page in preview mode
     SHOULD see filled homepage on frontend UI in preview mode
-  `,
+    `,
     async ({
       goto,
       gotoInPreviewMode,

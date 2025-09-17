@@ -48,10 +48,10 @@ function layoutDifferentLanguagesTest() {
 
   test(
     `
-      GIVEN an empty layout
-      WHEN filling layout content in different languages via API
-      AND checking the layout content in different languages
-      THEN the user should see layout content on the frontend UI with correct translations
+    GIVEN an empty layout
+    WHEN filling layout content in different languages via API
+    AND checking the layout content in different languages
+    THEN the user should see layout content on the frontend UI with correct translations
     `,
     async ({
       goto,
