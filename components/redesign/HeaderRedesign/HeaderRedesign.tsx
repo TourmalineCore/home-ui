@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import clsx from "clsx";
 import { useRouter } from "next/router";
 import { LangSwitchRedesign } from "./components/LangSwitchRedesign/LangSwitchRedesign";
@@ -23,9 +23,20 @@ export function HeaderRedesign({
     isTabletXl,
   } = useDeviceSize();
 
+  const {
+    asPath,
+  } = useRouter();
+
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   // ToDo: uncomment after editing the form
   // const [isModalOpen, setIsModalOpen] = useState(false);
+
+  useEffect(() => {
+    if (isMobileMenuOpen) {
+      setIsMobileMenuOpen(false);
+    }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [asPath]);
 
   useBodyScrollHidden(isMobileMenuOpen);
 
