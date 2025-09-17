@@ -2,6 +2,7 @@ import Link from "next/link";
 import { HeaderButton } from "../HeaderButton/HeaderButton";
 import { HeaderRedesignProps } from "../../../../../common/types";
 import { HeaderNavigationList } from "../HeaderNavigationList/HeaderNavigationList";
+import { SmartLink } from "../../../../SmartLink/SmartLink";
 
 export function MobileMenu({
   navigationLists,
@@ -53,12 +54,12 @@ export function MobileMenu({
               key={id}
               className="mobile-menu-redesign__list-item"
             >
-              <Link
+              <SmartLink
                 className="mobile-menu-redesign__link"
                 href={link}
               >
                 {name}
-              </Link>
+              </SmartLink>
             </li>
           ))}
         </ul>

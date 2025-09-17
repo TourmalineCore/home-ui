@@ -647,8 +647,8 @@ export interface ShowcaseColumnShowcaseColumnWithMediaComponent {
 export interface ShowcaseColumnShowcaseColumnsComponent {
   id?: number;
   type?: "media" | "markdown";
-  showcaseColumnWithMarkdown?: ShowcaseColumnShowcaseColumnWithMarkdownComponent[];
-  showcaseColumnWithMedia?: ShowcaseColumnShowcaseColumnWithMediaComponent[];
+  showcaseColumnWithMarkdown?: ShowcaseColumnShowcaseColumnWithMarkdownComponent;
+  showcaseColumnWithMedia?: ShowcaseColumnShowcaseColumnWithMediaComponent;
 }
 
 export interface SharedShowcaseGridComponent {
@@ -889,6 +889,18 @@ export interface NavigationRequest {
     link: string;
     navItems?: (number | string)[];
     isMultiLevelNavigation: boolean;
+    blocks?: InternalNull &
+      (
+        | InternalNullComponentMapping<"shared.three-column-grid", SharedThreeColumnGridComponent>
+        | InternalNullComponentMapping<"shared.single-image", SharedSingleImageComponent>
+        | InternalNullComponentMapping<"shared.signpost-multiple", SharedSignpostMultipleComponent>
+        | InternalNullComponentMapping<"shared.showcase-grid", SharedShowcaseGridComponent>
+        | InternalNullComponentMapping<"shared.hero", SharedHeroComponent>
+        | InternalNullComponentMapping<"shared.featured-cards-list", SharedFeaturedCardsListComponent>
+        | InternalNullComponentMapping<"shared.collage-with-title", SharedCollageWithTitleComponent>
+        | InternalNullComponentMapping<"shared.collage-with-link", SharedCollageWithLinkComponent>
+      );
+    seo?: SharedSeoComponent;
     locale?: string;
     localizations?: (number | string)[];
   };
@@ -923,6 +935,18 @@ export interface Navigation {
       documentId?: string;
     }[];
     isMultiLevelNavigation?: boolean;
+    blocks?: PolymorphNull &
+      (
+        | PolymorphNullComponentMapping<"shared.three-column-grid", SharedThreeColumnGridComponent>
+        | PolymorphNullComponentMapping<"shared.single-image", SharedSingleImageComponent>
+        | PolymorphNullComponentMapping<"shared.signpost-multiple", SharedSignpostMultipleComponent>
+        | PolymorphNullComponentMapping<"shared.showcase-grid", SharedShowcaseGridComponent>
+        | PolymorphNullComponentMapping<"shared.hero", SharedHeroComponent>
+        | PolymorphNullComponentMapping<"shared.featured-cards-list", SharedFeaturedCardsListComponent>
+        | PolymorphNullComponentMapping<"shared.collage-with-title", SharedCollageWithTitleComponent>
+        | PolymorphNullComponentMapping<"shared.collage-with-link", SharedCollageWithLinkComponent>
+      );
+    seo?: SharedSeoComponent;
     /** @format date-time */
     createdAt?: string;
     /** @format date-time */
@@ -932,97 +956,6 @@ export interface Navigation {
     createdBy?: {
       id?: number;
       documentId?: string;
-      firstname?: string;
-      lastname?: string;
-      username?: string;
-      /** @format email */
-      email?: string;
-      resetPasswordToken?: string;
-      registrationToken?: string;
-      isActive?: boolean;
-      roles?: {
-        id?: number;
-        documentId?: string;
-        name?: string;
-        code?: string;
-        description?: string;
-        users?: {
-          id?: number;
-          documentId?: string;
-        }[];
-        permissions?: {
-          id?: number;
-          documentId?: string;
-          action?: string;
-          actionParameters?: any;
-          subject?: string;
-          properties?: any;
-          conditions?: any;
-          role?: {
-            id?: number;
-            documentId?: string;
-          };
-          /** @format date-time */
-          createdAt?: string;
-          /** @format date-time */
-          updatedAt?: string;
-          /** @format date-time */
-          publishedAt?: string;
-          createdBy?: {
-            id?: number;
-            documentId?: string;
-          };
-          updatedBy?: {
-            id?: number;
-            documentId?: string;
-          };
-          locale?: string;
-          localizations?: {
-            id?: number;
-            documentId?: string;
-          }[];
-        }[];
-        /** @format date-time */
-        createdAt?: string;
-        /** @format date-time */
-        updatedAt?: string;
-        /** @format date-time */
-        publishedAt?: string;
-        createdBy?: {
-          id?: number;
-          documentId?: string;
-        };
-        updatedBy?: {
-          id?: number;
-          documentId?: string;
-        };
-        locale?: string;
-        localizations?: {
-          id?: number;
-          documentId?: string;
-        }[];
-      }[];
-      blocked?: boolean;
-      preferedLanguage?: string;
-      /** @format date-time */
-      createdAt?: string;
-      /** @format date-time */
-      updatedAt?: string;
-      /** @format date-time */
-      publishedAt?: string;
-      createdBy?: {
-        id?: number;
-        documentId?: string;
-      };
-      updatedBy?: {
-        id?: number;
-        documentId?: string;
-      };
-      locale?: string;
-      localizations?: {
-        id?: number;
-        documentId?: string;
-      }[];
     };
     updatedBy?: {
       id?: number;
@@ -1035,6 +968,18 @@ export interface Navigation {
     }[];
   }[];
   isMultiLevelNavigation: boolean;
+  blocks?: DiscriminatorNull1 &
+    (
+      | DiscriminatorNull1ComponentMapping<"shared.three-column-grid", SharedThreeColumnGridComponent>
+      | DiscriminatorNull1ComponentMapping<"shared.single-image", SharedSingleImageComponent>
+      | DiscriminatorNull1ComponentMapping<"shared.signpost-multiple", SharedSignpostMultipleComponent>
+      | DiscriminatorNull1ComponentMapping<"shared.showcase-grid", SharedShowcaseGridComponent>
+      | DiscriminatorNull1ComponentMapping<"shared.hero", SharedHeroComponent>
+      | DiscriminatorNull1ComponentMapping<"shared.featured-cards-list", SharedFeaturedCardsListComponent>
+      | DiscriminatorNull1ComponentMapping<"shared.collage-with-title", SharedCollageWithTitleComponent>
+      | DiscriminatorNull1ComponentMapping<"shared.collage-with-link", SharedCollageWithLinkComponent>
+    );
+  seo?: SharedSeoComponent;
   /** @format date-time */
   createdAt?: string;
   /** @format date-time */
@@ -1269,5 +1214,50 @@ type DiscriminatorNull = (
 )[];
 
 type DiscriminatorNullComponentMapping<Key, Type> = {
+  __component: Key;
+} & Type;
+
+type InternalNull = (
+  | SharedThreeColumnGridComponent
+  | SharedSingleImageComponent
+  | SharedSignpostMultipleComponent
+  | SharedShowcaseGridComponent
+  | SharedHeroComponent
+  | SharedFeaturedCardsListComponent
+  | SharedCollageWithTitleComponent
+  | SharedCollageWithLinkComponent
+)[];
+
+type InternalNullComponentMapping<Key, Type> = {
+  __component: Key;
+} & Type;
+
+type PolymorphNull = (
+  | SharedThreeColumnGridComponent
+  | SharedSingleImageComponent
+  | SharedSignpostMultipleComponent
+  | SharedShowcaseGridComponent
+  | SharedHeroComponent
+  | SharedFeaturedCardsListComponent
+  | SharedCollageWithTitleComponent
+  | SharedCollageWithLinkComponent
+)[];
+
+type PolymorphNullComponentMapping<Key, Type> = {
+  __component: Key;
+} & Type;
+
+type DiscriminatorNull1 = (
+  | SharedThreeColumnGridComponent
+  | SharedSingleImageComponent
+  | SharedSignpostMultipleComponent
+  | SharedShowcaseGridComponent
+  | SharedHeroComponent
+  | SharedFeaturedCardsListComponent
+  | SharedCollageWithTitleComponent
+  | SharedCollageWithLinkComponent
+)[];
+
+type DiscriminatorNull1ComponentMapping<Key, Type> = {
   __component: Key;
 } & Type;
