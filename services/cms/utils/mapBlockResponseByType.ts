@@ -47,6 +47,7 @@ export function mapBlockResponseByType(block: BlockApi): Block | null {
       __component: BlockType.SHARED_FEATURED_CARDS_LIST,
       id: block.id,
       title: block.title,
+      anchorId: block.anchorId,
       cards: featuredCards as FeaturedCardProps[] || [],
     };
   }
@@ -120,6 +121,7 @@ export function mapBlockResponseByType(block: BlockApi): Block | null {
       id: block.id,
       showOnMobile: block.showOnMobile!,
       title: block.title,
+      anchorId: block.anchorId,
       showcaseColumns: block.showcaseColumns?.map((column) => ({
         id: column.id,
         type: column.type,
