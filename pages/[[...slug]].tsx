@@ -1,4 +1,5 @@
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
+import { useRouter } from 'next/router';
 import { PageHead } from '../components/PageHead/PageHead';
 import { LayoutRedesign } from '../components/redesign/LayoutRedesign/LayoutRedesign';
 import { BlockRenderer } from '../components/BlockRenderer/BlockRenderer';
@@ -7,6 +8,7 @@ import { loadTranslations } from '../common/utils';
 import { Block, LayoutData, Seo } from '../common/types';
 import { getLayoutData } from '../services/cms/api/layout-api';
 import { getPageData } from '../services/cms/api/pages-api';
+import { useScrollTop } from '../common/hooks/useScrollTop';
 
 type PageData = {
   seo: Seo;
@@ -22,6 +24,14 @@ export default function UniversalPage({
   pageData: PageData;
   isPreview: boolean;
 }) {
+  const {
+    asPath,
+  } = useRouter();
+
+  useScrollTop({
+    dependencies: [asPath],
+  });
+
   const {
     blocks,
     seo,
