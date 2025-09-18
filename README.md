@@ -79,6 +79,28 @@ If you develop in a Dev container, you can view the generated report via VNC:
 npx playwright open localhost:9323
 ```
 
+## Running Playwright E2E Tests
+ 
+Before running E2E tests, you need to launch the UI in API mode. To do this, execute the following command::
+
+```bash
+npm run dev
+```
+
+You also need to start the [CMS](https://github.com/TourmalineCore/home-cms).
+
+After starting both the UI and CMS, you can run the E2E tests. To run them in headless mode, execute the following command:
+
+```bash
+npm run playwright:run:e2e
+```
+
+To run E2E tests in UI mode, execute the following command:
+
+```bash
+npm run playwright:open:e2e
+```
+
 ## Learn More
 
 To learn more about Next.js, take a look at the following resources:
