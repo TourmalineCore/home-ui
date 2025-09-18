@@ -1,3 +1,4 @@
+import { createCmsActions } from "../../create-cms-actions";
 import { E2E_UI_NAME_PREFIX } from "../../constants/e2e-ui-name-prefix";
 import {
   CustomTestFixtures,
@@ -26,80 +27,75 @@ function homepageMainScenarioTest() {
   });
 
   test(
-    `GIVEN an empty homepage
-       WHEN filling and publishing homepage in CMS UI
-       SHOULD see filled homepage on frontend UI 
-      `,
+    `
+    GIVEN an empty homepage
+    WHEN adding hero component and SEO metadata in CMS
+    AND publishing it
+    THEN homepage should display hero content and correct SEO tags on frontend
+    `,
     async ({
       goto,
-      authorizeInCms,
-      skipCmsTutorial,
       page,
     }: {
       goto: CustomTestFixtures['goto'];
-      authorizeInCms: CustomTestFixtures['authorizeInCms'];
-      skipCmsTutorial: CustomTestFixtures['skipCmsTutorial'];
       page: Page;
     }) => {
+      const cms = createCmsActions(page);
+
       await page.goto(process.env.CMS_URL as string);
 
-      await test.step(`Authorize in CMS`, authorizeInCms);
+      await test.step(`Authorize in CMS`, cms.authorize);
 
       await test.step(`Setup CMS content`, setupCmsContent);
 
       await test.step(`Check homepage content on ui`, checkHomepageOnUi);
 
       async function setupCmsContent() {
-        await page.getByText(`Content Manager`)
-          .click();
+        await cms.navigateToContentManager();
 
-        await skipCmsTutorial();
+        await cms.skipTutorial();
 
         await test.step(`Filling homepage content`, fillAndPublishHomepageCmsUi);
 
         async function fillAndPublishHomepageCmsUi() {
-          await page.getByRole(`link`, {
-            name: `Homepage`,
-          })
-            .click();
+          await cms.navigateToContentTypeByName(`Homepage`);
 
-          await page.getByRole(`button`, {
-            name: `Add a component to blocks`,
-          })
-            .click();
+          await cms.addComponentBlock();
 
           await test.step(`Filling hero block`, fillHeroBlocksCmsUi);
 
           async function fillHeroBlocksCmsUi() {
-            await page.getByText(`hero`)
-              .click();
+            await cms.clickOnText(`hero`);
 
-            await page.getByText(`hero`)
-              .click();
+            await cms.clickOnText(`hero`);
 
-            await page.locator(`input[name='blocks.0.title']`)
-              .fill(HERO_TITLE);
+            await cms.fillInputByName({
+              name: `blocks.0.title`,
+              value: HERO_TITLE,
+            });
 
-            await page.locator(`textarea[name='blocks.0.description']`)
-              .fill(HERO_DESCRIPTION);
+            await cms.fillTextareaByName({
+              name: `blocks.0.description`,
+              value: HERO_DESCRIPTION,
+            });
 
-            await page.locator(`input[name='seo.metaTitle']`)
-              .fill(META_TITLE);
+            await cms.fillInputByName({
+              name: `seo.metaTitle`,
+              value: META_TITLE,
+            });
 
-            await page.locator(`input[name='seo.metaDescription']`)
-              .fill(META_DESCRIPTION);
+            await cms.fillInputByName({
+              name: `seo.metaDescription`,
+              value: META_DESCRIPTION,
+            });
 
-            await page.locator(`textarea[name='seo.keywords']`)
-              .fill(META_KEYWORDS);
+            await cms.fillTextareaByName({
+              name: `seo.keywords`,
+              value: META_KEYWORDS,
+            });
           }
 
-          await page.getByRole(`button`, {
-            name: `Publish`,
-          })
-            .click();
-
-          // Wait until navigation record is saved in db
-          await page.waitForTimeout(1500);
+          await cms.publish();
         }
       }
 

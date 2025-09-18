@@ -54,10 +54,11 @@ function homepageDifferentLanguagesTest() {
 
   test(
     `
-      GIVEN an empty homepage
-      WHEN filling homepage content in different languages via API
-      AND checking the homepage content in different languages
-      THEN the user should see homepage content on the frontend UI with correct translations
+    GIVEN homepage content filled in multiple languages via API
+    WHEN viewing the website in default language
+    THEN content should display in English
+    AND WHEN switching to Russian language
+    THEN content should display correct Russian translations
     `,
     async ({
       goto,
