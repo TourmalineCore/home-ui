@@ -4,7 +4,7 @@ import { ThreeColumnGrid } from '../ThreeColumnGrid/ThreeColumnGrid';
 import { FeaturedCardsList } from '../FeaturedCardsList/FeaturedCardsList';
 import { CollageWithTitle } from '../CollageWithTitle/CollageWithTitle';
 import { FormBlockRedesign } from '../redesign/FormBlockRedesign/FormBlockRedesign';
-import { HeroRedesign } from '../redesign/HeroRedesign/HeroRedesign';
+import { Hero } from '../Hero/Hero';
 import { ShowcaseGrid } from '../ShowcaseGrid/ShowcaseGrid';
 import { SignpostMultiple } from '../SignpostMultiple/SignpostMultiple';
 import { SingleImage } from '../SingleImage/SingleImage';
@@ -17,7 +17,7 @@ export const BlockRenderer = ({
 }) => {
   if (block.__component === BlockType.SHARED_HERO) {
     return (
-      <HeroRedesign
+      <Hero
         title={block.title}
         description={block.description}
         imageUrls={block.imageUrls}

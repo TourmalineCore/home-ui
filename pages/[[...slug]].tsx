@@ -82,7 +82,7 @@ export async function getServerSideProps({
   if (process.env.IS_STATIC_MODE === `true`) {
     const translationsPageData = await loadTranslations(locale, [
       `common`,
-      `heroRedesign`,
+      `hero`,
       `featuredCardsList`,
       `showcaseGridFirstSection`,
       `showcaseGridSecondSection`,
@@ -108,7 +108,7 @@ export async function getServerSideProps({
     const blocks = mapStaticBlocksWithId([
       {
         __component: BlockType.SHARED_HERO,
-        ...translationsPageData.heroRedesign,
+        ...translationsPageData.hero,
       },
       {
         __component: BlockType.SHARED_FEATURED_CARDS_LIST,
