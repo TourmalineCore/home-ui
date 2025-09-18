@@ -2,13 +2,13 @@ import { BlockType } from '../../common/enums';
 import { Block } from '../../common/types';
 import { ThreeColumnGrid } from '../ThreeColumnGrid/ThreeColumnGrid';
 import { FeaturedCardsList } from '../FeaturedCardsList/FeaturedCardsList';
-import { CollageWithLinkRedesign } from '../redesign/CollageWithLinkRedesign/CollageWithLinkRedesign';
-import { CollageWithTitleRedesign } from '../redesign/CollageWithTitleRedesign/CollageWithTitleRedesign';
+import { CollageWithTitle } from '../CollageWithTitle/CollageWithTitle';
 import { FormBlockRedesign } from '../redesign/FormBlockRedesign/FormBlockRedesign';
-import { HeroRedesign } from '../redesign/HeroRedesign/HeroRedesign';
+import { Hero } from '../Hero/Hero';
 import { ShowcaseGrid } from '../ShowcaseGrid/ShowcaseGrid';
-import { SignpostMultipleRedesign } from '../redesign/SignpostMultipleRedesign/SignpostMultipleRedesign';
-import { SingleImageRedesign } from '../redesign/SingleImageRedesign/SingleImageRedesign';
+import { SignpostMultiple } from '../SignpostMultiple/SignpostMultiple';
+import { SingleImage } from '../SingleImage/SingleImage';
+import { CollageWithLink } from '../CollageWithLink/CollageWithLink';
 
 export const BlockRenderer = ({
   block,
@@ -17,7 +17,7 @@ export const BlockRenderer = ({
 }) => {
   if (block.__component === BlockType.SHARED_HERO) {
     return (
-      <HeroRedesign
+      <Hero
         title={block.title}
         description={block.description}
         imageUrls={block.imageUrls}
@@ -49,7 +49,7 @@ export const BlockRenderer = ({
 
   if (block.__component === BlockType.SHARED_COLLAGE_WITH_TITLE) {
     return (
-      <CollageWithTitleRedesign
+      <CollageWithTitle
         title={block.title}
         imageUrls={block.imageUrls}
       />
@@ -58,7 +58,7 @@ export const BlockRenderer = ({
 
   if (block.__component === BlockType.SHARED_SIGNPOST_MULTIPLE) {
     return (
-      <SignpostMultipleRedesign
+      <SignpostMultiple
         title={block.title}
         viewAllLink={block.viewAllLink}
         signposts={block.signposts}
@@ -68,7 +68,7 @@ export const BlockRenderer = ({
 
   if (block.__component === BlockType.SHARED_SINGLE_IMAGE) {
     return (
-      <SingleImageRedesign
+      <SingleImage
         imageUrl={block.imageUrl}
       />
     );
@@ -84,7 +84,7 @@ export const BlockRenderer = ({
 
   if (block.__component === BlockType.SHARED_COLLAGE_WITH_LINK) {
     return (
-      <CollageWithLinkRedesign
+      <CollageWithLink
         text={block.text}
         link={block.link}
         imageUrls={block.imageUrls}

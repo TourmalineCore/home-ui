@@ -1,4 +1,4 @@
-import { MarkdownText } from '../../../redesign/MarkdownText/MarkdownText';
+import { MarkdownText } from '../../../MarkdownText/MarkdownText';
 import { ShowcaseColumnWithMarkdownProps } from '../../../../common/types';
 
 export function ShowcaseColumnWithMarkdown({

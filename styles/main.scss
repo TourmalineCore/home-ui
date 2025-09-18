@@ -18,7 +18,6 @@
 @import "../components/SocialLinks/SocialLinks";
 @import "../components/FormBlock/FormBlock";
 @import "../components/Modal/Modal";
-@import "../components/HeroBlock/HeroBlock";
 @import "../components/Cookie/Cookie";
 @import "../components/Form/Form";
 @import "../components/Form/components/Input/Input";
@@ -60,7 +59,7 @@
 
 // redesign
 @import "../components/redesign/LayoutRedesign/LayoutRedesign";
-@import "../components/redesign/HeroRedesign/HeroRedesign";
+@import "../components/Hero/Hero";
 @import "../components/FeaturedCardsList/FeaturedCardsList";
 @import "../components/FeaturedCardsList/components/FeaturedCard/FeaturedCard";
 @import "../components/FeaturedCardsList/components/FeaturedCard/components/WideCard/WideCard";
@@ -72,22 +71,22 @@
 @import "../components/ThreeColumnGrid/components/ColumnWithTextAndDate/ColumnWithTextAndDate";
 @import "../components/ThreeColumnGrid/components/ColumnWithImage/ColumnWithImage";
 @import "../components/ThreeColumnGrid/components/ColumnWithRepositories/ColumnWithRepositories";
-@import "../components/redesign/CollageWithTitleRedesign/CollageWithTitleRedesign";
-@import "../components/redesign/CollageWithLinkRedesign/CollageWithLinkRedesign";
-@import "../components/redesign/SignpostMultipleRedesign/SignpostMultipleRedesign";
-@import "../components/redesign/SignpostRedesign/SignpostRedesign";
-@import "../components/redesign/SingleImageRedesign/SingleImageRedesign";
+@import "../components/CollageWithTitle/CollageWithTitle";
+@import "../components/CollageWithLink/CollageWithLink";
+@import "../components/SignpostMultiple/SignpostMultiple";
+@import "../components/SignpostMultiple/components/Signpost/Signpost";
+@import "../components/SingleImage/SingleImage";
 @import "../components/redesign/FooterRedesign/FooterRedesign";
 @import "../components/redesign/FormBlockRedesign/FormBlockRedesign";
 @import "../components/redesign/FormRedesign/FormRedesign";
 @import "../components/redesign/FormRedesign/components/InputRedesign/InputRedesign";
 @import "../components/redesign/FormRedesign/components/TextareaRedesign/TextareaRedesign";
 @import "../components/redesign/FooterRedesign/components/FooterNavigationListRedesign/FooterNavigationListRedesign";
-@import "../components/redesign/CustomError/CustomError";
+@import "../components/CustomError/CustomError";
 @import "../components/redesign/HeaderRedesign/HeaderRedesign";
 @import "../components/redesign/HeaderRedesign/components/LangSwitchRedesign/LangSwitchRedesign";
 @import "../components/redesign/HeaderRedesign/components/HeaderButton/HeaderButton";
 @import "../components/redesign/HeaderRedesign/components/HeaderAccordion/HeaderAccordion";
 @import "../components/redesign/HeaderRedesign/components/HeaderNavigationList/HeaderNavigationList";
 @import "../components/redesign/HeaderRedesign/components/MobileMenuRedesign/MobileMenuRedesign";
-@import "../components/redesign/ExitPreviewButton/ExitPreviewButton";
+@import "../components/ExitPreviewButton/ExitPreviewButton";

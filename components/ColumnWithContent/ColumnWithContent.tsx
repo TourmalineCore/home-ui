@@ -1,6 +1,6 @@
 import { ReactNode } from 'react';
 import clsx from 'clsx';
-import { MarkdownText } from '../redesign/MarkdownText/MarkdownText';
+import { MarkdownText } from '../MarkdownText/MarkdownText';
 import { ColumnWithContentProps } from '../../common/types';
 
 export function ColumnWithContent({

@@ -1,23 +1,23 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
-import { CollageWithLinkRedesign } from "../../components/redesign/CollageWithLinkRedesign/CollageWithLinkRedesign";
-import { CollageWithTitleRedesign } from "../../components/redesign/CollageWithTitleRedesign/CollageWithTitleRedesign";
+import { CollageWithTitle } from "../../components/CollageWithTitle/CollageWithTitle";
 import { FooterRedesign } from "../../components/redesign/FooterRedesign/FooterRedesign";
-import { HeroRedesign } from "../../components/redesign/HeroRedesign/HeroRedesign";
+import { Hero } from "../../components/Hero/Hero";
 import { ShowcaseGrid } from "../../components/ShowcaseGrid/ShowcaseGrid";
 import { FeaturedCardsList } from "../../components/FeaturedCardsList/FeaturedCardsList";
-import { SignpostMultipleRedesign } from "../../components/redesign/SignpostMultipleRedesign/SignpostMultipleRedesign";
-import { SingleImageRedesign } from "../../components/redesign/SingleImageRedesign/SingleImageRedesign";
+import { SignpostMultiple } from "../../components/SignpostMultiple/SignpostMultiple";
+import { SingleImage } from "../../components/SingleImage/SingleImage";
 import { FormBlockRedesign } from "../../components/redesign/FormBlockRedesign/FormBlockRedesign";
 import { ComponentName } from "../../common/enums";
 import { Cookie } from "../../components/Cookie/Cookie";
-import { CustomError } from "../../components/redesign/CustomError/CustomError";
+import { CustomError } from "../../components/CustomError/CustomError";
 import { FormModal } from "../../components/FormModal/FormModal";
 import { loadTranslations } from "../../common/utils/loadTranslations";
 import { HeaderRedesign } from "../../components/redesign/HeaderRedesign/HeaderRedesign";
 import { MobileMenu } from "../../components/redesign/HeaderRedesign/components/MobileMenuRedesign/MobileMenuRedesign";
 import { ThreeColumnGrid } from "../../components/ThreeColumnGrid/ThreeColumnGrid";
+import { CollageWithLink } from "../../components/CollageWithLink/CollageWithLink";
 
 export default function ComponentsPage({
   pageData,
@@ -26,15 +26,15 @@ export default function ComponentsPage({
 }) {
   const {
     threeColumnGrid,
-    collageWithLinkRedesign,
-    collageWithTitleRedesign,
-    heroRedesign,
+    collageWithLink,
+    collageWithTitle,
+    hero,
     showcaseGridFirstSection,
     showcaseGridSecondSection,
     showcaseGridThirdSection,
     featuredCardsList,
-    articleSignpostsRedesign,
-    singleImageRedesign,
+    articleSignposts,
+    singleImage,
     pageNotFound,
     headerRedesign,
     footerRedesign,
@@ -57,19 +57,19 @@ export default function ComponentsPage({
 
   if (componentName === ComponentName.COLLAGE_WITH_LINK) {
     return (
-      <CollageWithLinkRedesign
-        text={collageWithLinkRedesign.text}
-        link={collageWithLinkRedesign.link}
-        imageUrls={collageWithLinkRedesign.imageUrls}
+      <CollageWithLink
+        text={collageWithLink.text}
+        link={collageWithLink.link}
+        imageUrls={collageWithLink.imageUrls}
       />
     );
   }
 
   if (componentName === ComponentName.COLLAGE_WITH_TITLE) {
     return (
-      <CollageWithTitleRedesign
-        title={collageWithTitleRedesign.title}
-        imageUrls={collageWithTitleRedesign.imageUrls}
+      <CollageWithTitle
+        title={collageWithTitle.title}
+        imageUrls={collageWithTitle.imageUrls}
       />
     );
   }
@@ -86,10 +86,10 @@ export default function ComponentsPage({
 
   if (componentName === ComponentName.HERO) {
     return (
-      <HeroRedesign
-        title={heroRedesign.title}
-        description={heroRedesign.description}
-        imageUrls={heroRedesign.imageUrls}
+      <Hero
+        title={hero.title}
+        description={hero.description}
+        imageUrls={hero.imageUrls}
       />
     );
   }
@@ -162,10 +162,10 @@ export default function ComponentsPage({
 
   if (componentName === ComponentName.SIGNPOST_MULTIPLE) {
     return (
-      <SignpostMultipleRedesign
-        title={articleSignpostsRedesign.title}
-        viewAllLink={articleSignpostsRedesign.viewAllLink}
-        signposts={articleSignpostsRedesign.signposts}
+      <SignpostMultiple
+        title={articleSignposts.title}
+        viewAllLink={articleSignposts.viewAllLink}
+        signposts={articleSignposts.signposts}
         dataTestId="signpost-multiple-articles"
       />
     );
@@ -173,8 +173,8 @@ export default function ComponentsPage({
 
   if (componentName === ComponentName.SINGLE_IMAGE) {
     return (
-      <SingleImageRedesign
-        imageUrl={singleImageRedesign.imageUrl}
+      <SingleImage
+        imageUrl={singleImage.imageUrl}
       />
     );
   }
@@ -311,15 +311,15 @@ export async function getStaticProps({
 }) {
   const translationsPageData = await loadTranslations(locale, [
     `threeColumnGrid`,
-    `collageWithLinkRedesign`,
-    `collageWithTitleRedesign`,
-    `heroRedesign`,
+    `collageWithLink`,
+    `collageWithTitle`,
+    `hero`,
     `showcaseGridFirstSection`,
     `showcaseGridSecondSection`,
     `showcaseGridThirdSection`,
     `featuredCardsList`,
-    `articleSignpostsRedesign`,
-    `singleImageRedesign`,
+    `articleSignposts`,
+    `singleImage`,
     `pageNotFound`,
     `headerRedesign`,
     `footerRedesign`,
