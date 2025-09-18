@@ -92,8 +92,8 @@ export async function getServerSideProps({
       `threeColumnGrid`,
       `collageWithTitle`,
       `collageWithLink`,
-      `conferenceSignpostsRedesign`,
-      `articleSignpostsRedesign`,
+      `conferenceSignposts`,
+      `articleSignposts`,
       `singleImageRedesign`,
       `formBlockRedesign`,
       `headerRedesign`,
@@ -144,7 +144,7 @@ export async function getServerSideProps({
       },
       {
         __component: BlockType.SHARED_SIGNPOST_MULTIPLE,
-        ...translationsPageData.conferenceSignpostsRedesign,
+        ...translationsPageData.conferenceSignposts,
       },
       {
         __component: BlockType.SHARED_SINGLE_IMAGE,
@@ -152,7 +152,7 @@ export async function getServerSideProps({
       },
       {
         __component: BlockType.SHARED_SIGNPOST_MULTIPLE,
-        ...translationsPageData.articleSignpostsRedesign,
+        ...translationsPageData.articleSignposts,
       },
       {
         __component: BlockType.SHARED_THREE_COLUMN_GRID,

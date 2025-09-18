@@ -6,7 +6,7 @@ import { CollageWithTitle } from '../CollageWithTitle/CollageWithTitle';
 import { FormBlockRedesign } from '../redesign/FormBlockRedesign/FormBlockRedesign';
 import { HeroRedesign } from '../redesign/HeroRedesign/HeroRedesign';
 import { ShowcaseGrid } from '../ShowcaseGrid/ShowcaseGrid';
-import { SignpostMultipleRedesign } from '../redesign/SignpostMultipleRedesign/SignpostMultipleRedesign';
+import { SignpostMultiple } from '../SignpostMultiple/SignpostMultiple';
 import { SingleImageRedesign } from '../redesign/SingleImageRedesign/SingleImageRedesign';
 import { CollageWithLink } from '../CollageWithLink/CollageWithLink';
 
@@ -58,7 +58,7 @@ export const BlockRenderer = ({
 
   if (block.__component === BlockType.SHARED_SIGNPOST_MULTIPLE) {
     return (
-      <SignpostMultipleRedesign
+      <SignpostMultiple
         title={block.title}
         viewAllLink={block.viewAllLink}
         signposts={block.signposts}

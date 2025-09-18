@@ -1,18 +1,18 @@
 import Image from 'next/image';
-import { Signpost } from '../../../common/types';
-import { SmartLink } from '../../SmartLink/SmartLink';
+import { SignpostProps } from '../../../../common/types';
+import { SmartLink } from '../../../SmartLink/SmartLink';
 
-export function SignpostRedesign({
+export function Signpost({
   title,
   subtitle,
   link,
   imageUrl,
-}: Signpost) {
+}: SignpostProps) {
   return (
-    <div className="signpost-redesign">
+    <div className="signpost">
       {link ? (
         <SmartLink
-          className="signpost-redesign__link-wrapper"
+          className="signpost__link-wrapper"
           href={link}
         >
           {renderSignpostContent()}
@@ -25,18 +25,18 @@ export function SignpostRedesign({
   function renderSignpostContent() {
     return (
       <>
-        <div className="signpost-redesign__image-container">
+        <div className="signpost__image-container">
           <Image
             src={imageUrl}
             fill
             alt=""
           />
         </div>
-        <h3 className="signpost-redesign__title">
+        <h3 className="signpost__title">
           {title}
         </h3>
         {subtitle && (
-          <span className="signpost-redesign__subtitle">
+          <span className="signpost__subtitle">
             {subtitle}
           </span>
         )}

@@ -1,9 +1,9 @@
-import { SignpostRedesign } from '../SignpostRedesign/SignpostRedesign';
-import IconArrow from '../../../icons/icon-arrow-redesign.svg';
-import { SignpostMultipleBlock } from '../../../common/types';
-import { SmartLink } from '../../SmartLink/SmartLink';
+import IconArrow from '../../icons/icon-arrow-redesign.svg';
+import { SignpostMultipleBlock } from '../../common/types';
+import { SmartLink } from '../SmartLink/SmartLink';
+import { Signpost } from './components/Signpost/Signpost';
 
-export function SignpostMultipleRedesign({
+export function SignpostMultiple({
   title,
   viewAllLink,
   signposts,
@@ -13,15 +13,15 @@ export function SignpostMultipleRedesign({
 }) {
   return (
     <section
-      className="signpost-multiple-redesign container-redesign"
+      className="signpost-multiple container-redesign"
       data-testid={dataTestId}
     >
-      <div className="signpost-multiple-redesign__head">
-        {title && <h2 className="signpost-multiple-redesign__title">{title}</h2>}
+      <div className="signpost-multiple__head">
+        {title && <h2 className="signpost-multiple__title">{title}</h2>}
         {viewAllLink
         && (
           <SmartLink
-            className="signpost-multiple-redesign__view-all-link"
+            className="signpost-multiple__view-all-link"
             href={viewAllLink.url}
           >
             {viewAllLink.text}
@@ -30,7 +30,7 @@ export function SignpostMultipleRedesign({
         )}
       </div>
       <ul
-        className="signpost-multiple-redesign__list grid"
+        className="signpost-multiple__list grid"
       >
         {signposts.map(({
           title: signpostTitle,
@@ -44,9 +44,9 @@ export function SignpostMultipleRedesign({
             // More info - https://dequeuniversity.com/rules/axe/4.10/scrollable-region-focusable?application=playwright
             // eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex
             tabIndex={0}
-            className="signpost-multiple-redesign__item col-desktop-3"
+            className="signpost-multiple__item col-desktop-3"
           >
-            <SignpostRedesign
+            <Signpost
               title={signpostTitle}
               subtitle={subtitle}
               link={link}

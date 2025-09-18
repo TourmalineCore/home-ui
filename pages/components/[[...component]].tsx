@@ -6,7 +6,7 @@ import { FooterRedesign } from "../../components/redesign/FooterRedesign/FooterR
 import { HeroRedesign } from "../../components/redesign/HeroRedesign/HeroRedesign";
 import { ShowcaseGrid } from "../../components/ShowcaseGrid/ShowcaseGrid";
 import { FeaturedCardsList } from "../../components/FeaturedCardsList/FeaturedCardsList";
-import { SignpostMultipleRedesign } from "../../components/redesign/SignpostMultipleRedesign/SignpostMultipleRedesign";
+import { SignpostMultiple } from "../../components/SignpostMultiple/SignpostMultiple";
 import { SingleImageRedesign } from "../../components/redesign/SingleImageRedesign/SingleImageRedesign";
 import { FormBlockRedesign } from "../../components/redesign/FormBlockRedesign/FormBlockRedesign";
 import { ComponentName } from "../../common/enums";
@@ -33,7 +33,7 @@ export default function ComponentsPage({
     showcaseGridSecondSection,
     showcaseGridThirdSection,
     featuredCardsList,
-    articleSignpostsRedesign,
+    articleSignposts,
     singleImageRedesign,
     pageNotFound,
     headerRedesign,
@@ -162,10 +162,10 @@ export default function ComponentsPage({
 
   if (componentName === ComponentName.SIGNPOST_MULTIPLE) {
     return (
-      <SignpostMultipleRedesign
-        title={articleSignpostsRedesign.title}
-        viewAllLink={articleSignpostsRedesign.viewAllLink}
-        signposts={articleSignpostsRedesign.signposts}
+      <SignpostMultiple
+        title={articleSignposts.title}
+        viewAllLink={articleSignposts.viewAllLink}
+        signposts={articleSignposts.signposts}
         dataTestId="signpost-multiple-articles"
       />
     );
@@ -318,7 +318,7 @@ export async function getStaticProps({
     `showcaseGridSecondSection`,
     `showcaseGridThirdSection`,
     `featuredCardsList`,
-    `articleSignpostsRedesign`,
+    `articleSignposts`,
     `singleImageRedesign`,
     `pageNotFound`,
     `headerRedesign`,

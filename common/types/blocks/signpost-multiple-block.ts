@@ -7,10 +7,10 @@ export interface SignpostMultipleBlock extends BaseBlock<BlockType.SHARED_SIGNPO
     url: string;
     text: string;
   } | null;
-  signposts: Signpost[];
+  signposts: SignpostProps[];
 }
 
-export interface Signpost {
+export interface SignpostProps {
   title: string;
   subtitle?: string;
   link?: string;
