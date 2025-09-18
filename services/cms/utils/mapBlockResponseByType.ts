@@ -5,7 +5,7 @@ import {
   SignpostMultipleBlock,
   Column,
   ShowcaseGridBlock,
-  MediaProps,
+  HeroBlock,
 } from "../../../common/types";
 import { BlockApi } from "../../../common/types/blocks/api-block";
 
@@ -18,7 +18,7 @@ export function mapBlockResponseByType(block: BlockApi): Block | null {
       id: block.id,
       title: block.title || ``,
       description: block.description,
-      media: block.media as MediaProps[],
+      media: block.media as HeroBlock['media'],
     };
   }
 
