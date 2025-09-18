@@ -91,7 +91,7 @@ export async function getServerSideProps({
       `showcaseGridFifthSection`,
       `threeColumnGrid`,
       `collageWithTitleRedesign`,
-      `collageWithLinkRedesign`,
+      `collageWithLink`,
       `conferenceSignpostsRedesign`,
       `articleSignpostsRedesign`,
       `singleImageRedesign`,
@@ -160,7 +160,7 @@ export async function getServerSideProps({
       },
       {
         __component: BlockType.SHARED_COLLAGE_WITH_LINK,
-        ...translationsPageData.collageWithLinkRedesign,
+        ...translationsPageData.collageWithLink,
       },
     ]);
 

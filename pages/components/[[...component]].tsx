@@ -1,7 +1,6 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
-import { CollageWithLinkRedesign } from "../../components/redesign/CollageWithLinkRedesign/CollageWithLinkRedesign";
 import { CollageWithTitleRedesign } from "../../components/redesign/CollageWithTitleRedesign/CollageWithTitleRedesign";
 import { FooterRedesign } from "../../components/redesign/FooterRedesign/FooterRedesign";
 import { HeroRedesign } from "../../components/redesign/HeroRedesign/HeroRedesign";
@@ -18,6 +17,7 @@ import { loadTranslations } from "../../common/utils/loadTranslations";
 import { HeaderRedesign } from "../../components/redesign/HeaderRedesign/HeaderRedesign";
 import { MobileMenu } from "../../components/redesign/HeaderRedesign/components/MobileMenuRedesign/MobileMenuRedesign";
 import { ThreeColumnGrid } from "../../components/ThreeColumnGrid/ThreeColumnGrid";
+import { CollageWithLink } from "../../components/CollageWithLink/CollageWithLink";
 
 export default function ComponentsPage({
   pageData,
@@ -26,7 +26,7 @@ export default function ComponentsPage({
 }) {
   const {
     threeColumnGrid,
-    collageWithLinkRedesign,
+    collageWithLink,
     collageWithTitleRedesign,
     heroRedesign,
     showcaseGridFirstSection,
@@ -57,10 +57,10 @@ export default function ComponentsPage({
 
   if (componentName === ComponentName.COLLAGE_WITH_LINK) {
     return (
-      <CollageWithLinkRedesign
-        text={collageWithLinkRedesign.text}
-        link={collageWithLinkRedesign.link}
-        imageUrls={collageWithLinkRedesign.imageUrls}
+      <CollageWithLink
+        text={collageWithLink.text}
+        link={collageWithLink.link}
+        imageUrls={collageWithLink.imageUrls}
       />
     );
   }
@@ -311,7 +311,7 @@ export async function getStaticProps({
 }) {
   const translationsPageData = await loadTranslations(locale, [
     `threeColumnGrid`,
-    `collageWithLinkRedesign`,
+    `collageWithLink`,
     `collageWithTitleRedesign`,
     `heroRedesign`,
     `showcaseGridFirstSection`,

@@ -1,31 +1,31 @@
 import Image from 'next/image';
-import { CollageWithLinkBlock } from '../../../common/types';
-import { SmartLink } from '../../SmartLink/SmartLink';
+import { CollageWithLinkBlock } from '../../common/types';
+import { SmartLink } from '../SmartLink/SmartLink';
 
-export function CollageWithLinkRedesign({
+export function CollageWithLink({
   text,
   link,
   imageUrls,
 }: Omit<CollageWithLinkBlock, "__component">) {
   return (
     <section
-      className="collage-with-link-redesign"
+      className="collage-with-link"
       data-testid="collage-with-link"
     >
-      <div className="collage-with-link-redesign__wrapper">
+      <div className="collage-with-link__wrapper">
         {link && (
           <SmartLink
             href={link}
-            className="collage-with-link-redesign__accent-link"
+            className="collage-with-link__accent-link"
           >
             <span
-              className="collage-with-link-redesign__link-box"
+              className="collage-with-link__link-box"
               aria-hidden="true"
             >
               ?
             </span>
             <span
-              className="collage-with-link-redesign__cta"
+              className="collage-with-link__cta"
             >
               {text}
             </span>
@@ -35,7 +35,7 @@ export function CollageWithLinkRedesign({
           .map((imageUrl, index) => (
             <div
               key={imageUrl}
-              className={`collage-with-link-redesign__image collage-with-link-redesign__image--${index + 1}`}
+              className={`collage-with-link__image collage-with-link__image--${index + 1}`}
             >
               <Image
                 src={imageUrl}

@@ -2,13 +2,13 @@ import { BlockType } from '../../common/enums';
 import { Block } from '../../common/types';
 import { ThreeColumnGrid } from '../ThreeColumnGrid/ThreeColumnGrid';
 import { FeaturedCardsList } from '../FeaturedCardsList/FeaturedCardsList';
-import { CollageWithLinkRedesign } from '../redesign/CollageWithLinkRedesign/CollageWithLinkRedesign';
 import { CollageWithTitleRedesign } from '../redesign/CollageWithTitleRedesign/CollageWithTitleRedesign';
 import { FormBlockRedesign } from '../redesign/FormBlockRedesign/FormBlockRedesign';
 import { HeroRedesign } from '../redesign/HeroRedesign/HeroRedesign';
 import { ShowcaseGrid } from '../ShowcaseGrid/ShowcaseGrid';
 import { SignpostMultipleRedesign } from '../redesign/SignpostMultipleRedesign/SignpostMultipleRedesign';
 import { SingleImageRedesign } from '../redesign/SingleImageRedesign/SingleImageRedesign';
+import { CollageWithLink } from '../CollageWithLink/CollageWithLink';
 
 export const BlockRenderer = ({
   block,
@@ -84,7 +84,7 @@ export const BlockRenderer = ({
 
   if (block.__component === BlockType.SHARED_COLLAGE_WITH_LINK) {
     return (
-      <CollageWithLinkRedesign
+      <CollageWithLink
         text={block.text}
         link={block.link}
         imageUrls={block.imageUrls}
