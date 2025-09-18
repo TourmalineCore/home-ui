@@ -20,7 +20,7 @@ export const BlockRenderer = ({
       <HeroRedesign
         title={block.title}
         description={block.description}
-        imageUrls={block.imageUrls}
+        media={block.media}
       />
     );
   }

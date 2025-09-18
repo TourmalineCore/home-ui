@@ -5,6 +5,7 @@ import {
   SignpostMultipleBlock,
   Column,
   ShowcaseGridBlock,
+  MediaProps,
 } from "../../../common/types";
 import { BlockApi } from "../../../common/types/blocks/api-block";
 
@@ -17,9 +18,7 @@ export function mapBlockResponseByType(block: BlockApi): Block | null {
       id: block.id,
       title: block.title || ``,
       description: block.description,
-      imageUrls: block.gallery?.map(({
-        url,
-      }) => url || ``) || [],
+      media: block.media as MediaProps[],
     };
   }
 

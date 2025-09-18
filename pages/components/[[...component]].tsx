@@ -89,7 +89,7 @@ export default function ComponentsPage({
       <HeroRedesign
         title={heroRedesign.title}
         description={heroRedesign.description}
-        imageUrls={heroRedesign.imageUrls}
+        media={heroRedesign.media}
       />
     );
   }

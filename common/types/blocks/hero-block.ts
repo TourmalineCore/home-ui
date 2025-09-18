@@ -4,5 +4,9 @@ import { BaseBlock } from "./base-block";
 export interface HeroBlock extends BaseBlock<BlockType.SHARED_HERO> {
   title: string;
   description?: string;
-  imageUrls: string[];
+  media?: MediaProps[];
+}
+export interface MediaProps {
+  url: string;
+  mime: string;
 }
