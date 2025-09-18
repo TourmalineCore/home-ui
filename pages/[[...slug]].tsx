@@ -94,7 +94,7 @@ export async function getServerSideProps({
       `collageWithLink`,
       `conferenceSignposts`,
       `articleSignposts`,
-      `singleImageRedesign`,
+      `singleImage`,
       `formBlockRedesign`,
       `headerRedesign`,
       `footerRedesign`,
@@ -148,7 +148,7 @@ export async function getServerSideProps({
       },
       {
         __component: BlockType.SHARED_SINGLE_IMAGE,
-        ...translationsPageData.singleImageRedesign,
+        ...translationsPageData.singleImage,
       },
       {
         __component: BlockType.SHARED_SIGNPOST_MULTIPLE,

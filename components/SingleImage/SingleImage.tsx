@@ -1,15 +1,15 @@
 import Image from 'next/image';
-import { SingleImageBlock } from '../../../common/types';
+import { SingleImageBlock } from '../../common/types';
 
-export function SingleImageRedesign({
+export function SingleImage({
   imageUrl,
 }: Omit<SingleImageBlock, "__component">) {
   return (
     <section
-      className="single-image-redesign container-redesign"
+      className="single-image container-redesign"
       data-testid="single-image"
     >
-      <div className="single-image-redesign__container">
+      <div className="single-image__container">
         <Image
           src={imageUrl}
           fill

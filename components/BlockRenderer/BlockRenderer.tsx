@@ -7,7 +7,7 @@ import { FormBlockRedesign } from '../redesign/FormBlockRedesign/FormBlockRedesi
 import { HeroRedesign } from '../redesign/HeroRedesign/HeroRedesign';
 import { ShowcaseGrid } from '../ShowcaseGrid/ShowcaseGrid';
 import { SignpostMultiple } from '../SignpostMultiple/SignpostMultiple';
-import { SingleImageRedesign } from '../redesign/SingleImageRedesign/SingleImageRedesign';
+import { SingleImage } from '../SingleImage/SingleImage';
 import { CollageWithLink } from '../CollageWithLink/CollageWithLink';
 
 export const BlockRenderer = ({
@@ -68,7 +68,7 @@ export const BlockRenderer = ({
 
   if (block.__component === BlockType.SHARED_SINGLE_IMAGE) {
     return (
-      <SingleImageRedesign
+      <SingleImage
         imageUrl={block.imageUrl}
       />
     );

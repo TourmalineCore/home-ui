@@ -7,7 +7,7 @@ import { HeroRedesign } from "../../components/redesign/HeroRedesign/HeroRedesig
 import { ShowcaseGrid } from "../../components/ShowcaseGrid/ShowcaseGrid";
 import { FeaturedCardsList } from "../../components/FeaturedCardsList/FeaturedCardsList";
 import { SignpostMultiple } from "../../components/SignpostMultiple/SignpostMultiple";
-import { SingleImageRedesign } from "../../components/redesign/SingleImageRedesign/SingleImageRedesign";
+import { SingleImage } from "../../components/SingleImage/SingleImage";
 import { FormBlockRedesign } from "../../components/redesign/FormBlockRedesign/FormBlockRedesign";
 import { ComponentName } from "../../common/enums";
 import { Cookie } from "../../components/Cookie/Cookie";
@@ -34,7 +34,7 @@ export default function ComponentsPage({
     showcaseGridThirdSection,
     featuredCardsList,
     articleSignposts,
-    singleImageRedesign,
+    singleImage,
     pageNotFound,
     headerRedesign,
     footerRedesign,
@@ -173,8 +173,8 @@ export default function ComponentsPage({
 
   if (componentName === ComponentName.SINGLE_IMAGE) {
     return (
-      <SingleImageRedesign
-        imageUrl={singleImageRedesign.imageUrl}
+      <SingleImage
+        imageUrl={singleImage.imageUrl}
       />
     );
   }
@@ -319,7 +319,7 @@ export async function getStaticProps({
     `showcaseGridThirdSection`,
     `featuredCardsList`,
     `articleSignposts`,
-    `singleImageRedesign`,
+    `singleImage`,
     `pageNotFound`,
     `headerRedesign`,
     `footerRedesign`,
