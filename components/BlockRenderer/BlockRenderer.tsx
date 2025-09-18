@@ -2,7 +2,7 @@ import { BlockType } from '../../common/enums';
 import { Block } from '../../common/types';
 import { ThreeColumnGrid } from '../ThreeColumnGrid/ThreeColumnGrid';
 import { FeaturedCardsList } from '../FeaturedCardsList/FeaturedCardsList';
-import { CollageWithTitleRedesign } from '../redesign/CollageWithTitleRedesign/CollageWithTitleRedesign';
+import { CollageWithTitle } from '../CollageWithTitle/CollageWithTitle';
 import { FormBlockRedesign } from '../redesign/FormBlockRedesign/FormBlockRedesign';
 import { HeroRedesign } from '../redesign/HeroRedesign/HeroRedesign';
 import { ShowcaseGrid } from '../ShowcaseGrid/ShowcaseGrid';
@@ -49,7 +49,7 @@ export const BlockRenderer = ({
 
   if (block.__component === BlockType.SHARED_COLLAGE_WITH_TITLE) {
     return (
-      <CollageWithTitleRedesign
+      <CollageWithTitle
         title={block.title}
         imageUrls={block.imageUrls}
       />

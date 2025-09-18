@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
-import { CollageWithTitleRedesign } from "../../components/redesign/CollageWithTitleRedesign/CollageWithTitleRedesign";
+import { CollageWithTitle } from "../../components/CollageWithTitle/CollageWithTitle";
 import { FooterRedesign } from "../../components/redesign/FooterRedesign/FooterRedesign";
 import { HeroRedesign } from "../../components/redesign/HeroRedesign/HeroRedesign";
 import { ShowcaseGrid } from "../../components/ShowcaseGrid/ShowcaseGrid";
@@ -27,7 +27,7 @@ export default function ComponentsPage({
   const {
     threeColumnGrid,
     collageWithLink,
-    collageWithTitleRedesign,
+    collageWithTitle,
     heroRedesign,
     showcaseGridFirstSection,
     showcaseGridSecondSection,
@@ -67,9 +67,9 @@ export default function ComponentsPage({
 
   if (componentName === ComponentName.COLLAGE_WITH_TITLE) {
     return (
-      <CollageWithTitleRedesign
-        title={collageWithTitleRedesign.title}
-        imageUrls={collageWithTitleRedesign.imageUrls}
+      <CollageWithTitle
+        title={collageWithTitle.title}
+        imageUrls={collageWithTitle.imageUrls}
       />
     );
   }
@@ -312,7 +312,7 @@ export async function getStaticProps({
   const translationsPageData = await loadTranslations(locale, [
     `threeColumnGrid`,
     `collageWithLink`,
-    `collageWithTitleRedesign`,
+    `collageWithTitle`,
     `heroRedesign`,
     `showcaseGridFirstSection`,
     `showcaseGridSecondSection`,

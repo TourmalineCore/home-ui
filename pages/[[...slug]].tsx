@@ -90,7 +90,7 @@ export async function getServerSideProps({
       `showcaseGridFourthSection`,
       `showcaseGridFifthSection`,
       `threeColumnGrid`,
-      `collageWithTitleRedesign`,
+      `collageWithTitle`,
       `collageWithLink`,
       `conferenceSignpostsRedesign`,
       `articleSignpostsRedesign`,
@@ -140,7 +140,7 @@ export async function getServerSideProps({
       // },
       {
         __component: BlockType.SHARED_COLLAGE_WITH_TITLE,
-        ...translationsPageData.collageWithTitleRedesign,
+        ...translationsPageData.collageWithTitle,
       },
       {
         __component: BlockType.SHARED_SIGNPOST_MULTIPLE,

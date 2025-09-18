@@ -1,4 +1,4 @@
-.collage-with-title-redesign {
+.collage-with-title {
   background-color: $color-black;
 
   &__wrapper {
@@ -28,7 +28,7 @@
       &::before {
         content: "";
         position: absolute;
-        background-image: url("../../../public/gif/text-surrounded-by-images-background.gif");
+        background-image: url("../../public/gif/text-surrounded-by-images-background.gif");
         background-size: cover;
         background-repeat: no-repeat;
         pointer-events: none;
