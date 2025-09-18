@@ -11,7 +11,7 @@ import { SingleImageRedesign } from "../../components/redesign/SingleImageRedesi
 import { FormBlockRedesign } from "../../components/redesign/FormBlockRedesign/FormBlockRedesign";
 import { ComponentName } from "../../common/enums";
 import { Cookie } from "../../components/Cookie/Cookie";
-import { CustomError } from "../../components/redesign/CustomError/CustomError";
+import { CustomError } from "../../components/CustomError/CustomError";
 import { FormModal } from "../../components/FormModal/FormModal";
 import { loadTranslations } from "../../common/utils/loadTranslations";
 import { HeaderRedesign } from "../../components/redesign/HeaderRedesign/HeaderRedesign";

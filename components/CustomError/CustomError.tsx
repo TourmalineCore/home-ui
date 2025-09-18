@@ -1,5 +1,5 @@
 import { useRouter } from "next/router";
-import { AppRoute } from "../../../common/enums";
+import { AppRoute } from "../../common/enums";
 
 export function CustomError({
   statusCode,

@@ -69,21 +69,21 @@
 
     &::before {
       left: 0;
-      background-image: url("../../../public/images/edge-left-black.svg");
+      background-image: url("../../public/images/edge-left-black.svg");
       pointer-events: none;
 
       @include desktop-xl {
         left: -1px;
-        background-image: url("../../../public/images/edge-left-black-desktop-xl.svg");
+        background-image: url("../../public/images/edge-left-black-desktop-xl.svg");
       }
     }
 
     &::after {
       right: -1px;
-      background-image: url("../../../public/images/edge-right-black.svg");
+      background-image: url("../../public/images/edge-right-black.svg");
 
       @include desktop-xl {
-        background-image: url("../../../public/images/edge-right-black-desktop-xl.svg");
+        background-image: url("../../public/images/edge-right-black-desktop-xl.svg");
       }
     }
 

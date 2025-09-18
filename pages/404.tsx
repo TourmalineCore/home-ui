@@ -2,7 +2,7 @@ import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import { useTranslation } from 'next-i18next';
 
 import { GetServerSideProps } from 'next';
-import { CustomError } from '../components/redesign/CustomError/CustomError';
+import { CustomError } from '../components/CustomError/CustomError';
 
 export default function Custom404() {
   const {
