@@ -1,5 +1,6 @@
 import { cmsFetch } from "../../../services/cms/api/http-client";
 import { E2E_UI_NAME_PREFIX } from "../../constants/e2e-ui-name-prefix";
+import { createCmsActions } from "../../create-cms-actions";
 import {
   CustomTestFixtures,
   expect,
@@ -37,87 +38,81 @@ function dynamicPageMainScenarioTest() {
       `,
     async ({
       goto,
-      authorizeInCms,
-      skipCmsTutorial,
       page,
     }: {
       goto: CustomTestFixtures['goto'];
-      authorizeInCms: CustomTestFixtures['authorizeInCms'];
-      skipCmsTutorial: CustomTestFixtures['skipCmsTutorial'];
       page: Page;
     }) => {
+      const cms = createCmsActions(page);
+
       await page.goto(process.env.CMS_URL as string);
 
-      await test.step(`Authorize in CMS`, authorizeInCms);
+      await test.step(`Authorize in CMS`, cms.authorize);
 
       await test.step(`Setup CMS content`, setupCmsContent);
 
       await test.step(`Check dynamic page on ui`, checkDynamicPageOnUi);
 
       async function setupCmsContent() {
-        await page.getByText(`Content Manager`)
-          .click();
+        await cms.navigateToContentManager();
 
-        await skipCmsTutorial();
+        await cms.skipTutorial();
 
         await test.step(`Create dynamic page`, createAndPublishDynamicPageCmsUi);
 
         async function createAndPublishDynamicPageCmsUi() {
-          await page.getByRole(`link`, {
-            name: `Navigation`,
-          })
-            .click();
+          await cms.navigateToContentTypeByName(`Navigation`);
 
-          await page.getByText(`Create new entry`)
-            .first()
-            .click();
+          await cms.createNewEntry();
 
           await test.step(`Filling dynamic page`, fillDynamicPageCmsUi);
 
           async function fillDynamicPageCmsUi() {
-            await page.locator(`input[name=name]`)
-              .fill(DYNAMIC_PAGE_NAME);
+            await cms.fillInputByName({
+              name: `name`,
+              value: DYNAMIC_PAGE_NAME,
+            });
 
-            await page.locator(`input[name=link]`)
-              .fill(DYNAMIC_PAGE_LINK);
+            await cms.fillInputByName({
+              name: `link`,
+              value: DYNAMIC_PAGE_LINK,
+            });
 
-            await page.getByRole(`button`, {
-              name: `Add a component to blocks`,
-            })
-              .click();
+            await cms.addComponentBlock();
 
-            await page.getByText(`hero`)
-              .click();
+            await cms.clickOnText(`hero`);
 
-            await page.getByText(`hero`)
-              .click();
+            await cms.clickOnText(`hero`);
 
-            await page.locator(`input[name='blocks.0.title']`)
-              .fill(HERO_TITLE);
+            await cms.fillInputByName({
+              name: `blocks.0.title`,
+              value: HERO_TITLE,
+            });
 
-            await page.locator(`textarea[name='blocks.0.description']`)
-              .fill(HERO_DESCRIPTION);
+            await cms.fillTextareaByName({
+              name: `blocks.0.description`,
+              value: HERO_DESCRIPTION,
+            });
 
-            await page.getByText(`No entry yet. Click to add one.`)
-              .click();
+            await cms.clickOnText(`No entry yet. Click to add one.`);
 
-            await page.locator(`input[name='seo.metaTitle']`)
-              .fill(META_TITLE);
+            await cms.fillInputByName({
+              name: `seo.metaTitle`,
+              value: META_TITLE,
+            });
 
-            await page.locator(`input[name='seo.metaDescription']`)
-              .fill(META_DESCRIPTION);
+            await cms.fillInputByName({
+              name: `seo.metaDescription`,
+              value: META_DESCRIPTION,
+            });
 
-            await page.locator(`textarea[name='seo.keywords']`)
-              .fill(META_KEYWORDS);
+            await cms.fillTextareaByName({
+              name: `seo.keywords`,
+              value: META_KEYWORDS,
+            });
           }
 
-          await page.getByRole(`button`, {
-            name: `Publish`,
-          })
-            .click();
-
-          // Wait until navigation record is saved in db
-          await page.waitForTimeout(1500);
+          await cms.publish();
         }
       }
 
