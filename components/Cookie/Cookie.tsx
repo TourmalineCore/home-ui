@@ -1,11 +1,10 @@
 import { Trans, useTranslation } from 'next-i18next';
 import { useState, useEffect } from 'react';
-import { getCookie, setCookie } from 'cookies-next';
 import { useRouter } from 'next/router';
 
 import { OptionYM } from '../../types/globals';
 
-const cookieAccept = `cookieAccept`;
+const STORAGE_KEY = `cookieAccept`;
 
 const yandexId = process.env.NEXT_PUBLIC_YANDEX_METRIKA_ID;
 const googleId = process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS_ID || ``;
@@ -36,7 +35,7 @@ export function Cookie({
   useEffect(() => {
     if (!isComponentPage) {
       setDate(new Date());
-      if (getCookie(cookieAccept) !== undefined) {
+      if (localStorage.getItem(STORAGE_KEY)) {
         setIsCookieVisible(false);
       } else {
         setIsCookieVisible(true);
@@ -91,7 +90,7 @@ export function Cookie({
 
   function acceptCookie() {
     if (!isComponentPage) {
-      setCookie(cookieAccept, true);
+      localStorage.setItem(STORAGE_KEY, `true`);
 
       if (isMetricsEnabled) {
         window.gtag(`js`, date);
@@ -106,7 +105,7 @@ export function Cookie({
 
   function rejectCookie() {
     if (!isComponentPage) {
-      setCookie(cookieAccept, false);
+      localStorage.setItem(STORAGE_KEY, `false`);
     }
 
     setIsCookieVisible(false);
