@@ -1,5 +1,5 @@
 import { HeroBlock } from '../../../common/types';
-import { ImageSlider } from '../ImageSlider/ImageSlider';
+import { ImageSlider } from '../../ImageSlider/ImageSlider';
 
 export function HeroRedesign({
   title,

@@ -3,7 +3,7 @@ import { FooterRedesign } from '../FooterRedesign/FooterRedesign';
 import { SkipLink } from '../../SkipLink/SkipLink';
 import { HeaderRedesign } from '../HeaderRedesign/HeaderRedesign';
 import { FooterRedesignProps, HeaderRedesignProps } from '../../../common/types';
-import { ExitPreviewButton } from '../ExitPreviewButton/ExitPreviewButton';
+import { ExitPreviewButton } from '../../ExitPreviewButton/ExitPreviewButton';
 
 export function LayoutRedesign({
   children,
