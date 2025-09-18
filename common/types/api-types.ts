@@ -323,6 +323,7 @@ export interface SharedFeaturedCardsListComponent {
   __component?: "shared.featured-cards-list";
   title?: string;
   featuredCards?: SharedFeaturedCardComponent[];
+  anchorId?: string;
 }
 
 export interface SharedCollageWithTitleComponent {

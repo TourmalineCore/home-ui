@@ -31,6 +31,7 @@ export const BlockRenderer = ({
         title={block.title}
         cards={block.cards}
         targetId="featured-cards-list"
+        anchorId={block.anchorId}
       />
     );
   }
