@@ -86,10 +86,10 @@ export default function ComponentsPage({
 
   if (componentName === ComponentName.HERO) {
     return (
-      <HeroRedesign
-        title={heroRedesign.title}
-        description={heroRedesign.description}
-        media={heroRedesign.media}
+      <Hero
+        title={hero.title}
+        description={hero.description}
+        media={hero.media}
       />
     );
   }
