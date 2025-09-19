@@ -10,11 +10,16 @@ import { Tasks } from '../../components/Tasks/Tasks';
 import { Stack } from '../../components/Stack/Stack';
 import { Cases } from '../../components/Cases/Cases';
 import { Stages } from '../../components/Stages/Stages';
+import { useScrollTop } from '../../common/hooks/useScrollTop';
 
 export default function FrontendTeamPage() {
   const {
     t,
   } = useTranslation(`common`);
+
+  useScrollTop({
+    dependencies: [],
+  });
 
   return (
     <>

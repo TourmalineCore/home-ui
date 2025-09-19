@@ -13,11 +13,16 @@ import { Stack } from '../../components/Stack/Stack';
 import { Payment } from '../../components/Payment/Payment';
 import { Cooperation } from '../../components/Cooperation/Cooperation';
 import { ServicesTechnology } from '../../components/ServicesTechnology/ServicesTechnology';
+import { useScrollTop } from '../../common/hooks/useScrollTop';
 
 export default function DesignPage() {
   const {
     t,
   } = useTranslation(`common`);
+
+  useScrollTop({
+    dependencies: [],
+  });
 
   return (
     <>
