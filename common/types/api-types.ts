@@ -129,7 +129,7 @@ export interface SharedHeroComponent {
   __component?: "shared.hero";
   title?: string;
   description?: string;
-  gallery?: {
+  media?: {
     id?: number;
     documentId?: string;
     name?: string;

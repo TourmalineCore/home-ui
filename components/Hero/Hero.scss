@@ -30,13 +30,14 @@
     }
   }
 
-  &__images {
+  &__media {
     position: relative;
     width: 352px;
     height: 264px;
 
     // Todo: move to global and fix other image
-    img {
+    img,
+    video {
       display: block;
       border-radius: 2px;
       width: 100%;

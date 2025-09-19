@@ -20,7 +20,7 @@ export const BlockRenderer = ({
       <Hero
         title={block.title}
         description={block.description}
-        imageUrls={block.imageUrls}
+        media={block.media}
       />
     );
   }
