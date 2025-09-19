@@ -9,7 +9,7 @@ import {
 } from "../../custom-test";
 
 export const DYNAMIC_PAGE_NAME = `${E2E_UI_NAME_PREFIX} Frontend`;
-const DYNAMIC_PAGE_LINK = `/frontend-e2e-test`;
+const DYNAMIC_PAGE_LINK = `frontend-e2e-test`;
 
 const HERO_TITLE = `${E2E_UI_NAME_PREFIX} Frontend page`;
 const HERO_DESCRIPTION = `${E2E_UI_NAME_PREFIX} Launching MVP, working on R&D projects, complex enterprise services, and websites.`;
