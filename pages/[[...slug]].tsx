@@ -82,7 +82,7 @@ export async function getServerSideProps({
   if (process.env.IS_STATIC_MODE === `true`) {
     const translationsPageData = await loadTranslations(locale, [
       `common`,
-      `heroRedesign`,
+      `hero`,
       `featuredCardsList`,
       `showcaseGridFirstSection`,
       `showcaseGridSecondSection`,
@@ -90,11 +90,11 @@ export async function getServerSideProps({
       `showcaseGridFourthSection`,
       `showcaseGridFifthSection`,
       `threeColumnGrid`,
-      `collageWithTitleRedesign`,
-      `collageWithLinkRedesign`,
-      `conferenceSignpostsRedesign`,
-      `articleSignpostsRedesign`,
-      `singleImageRedesign`,
+      `collageWithTitle`,
+      `collageWithLink`,
+      `conferenceSignposts`,
+      `articleSignposts`,
+      `singleImage`,
       `formBlockRedesign`,
       `headerRedesign`,
       `footerRedesign`,
@@ -108,7 +108,7 @@ export async function getServerSideProps({
     const blocks = mapStaticBlocksWithId([
       {
         __component: BlockType.SHARED_HERO,
-        ...translationsPageData.heroRedesign,
+        ...translationsPageData.hero,
       },
       {
         __component: BlockType.SHARED_FEATURED_CARDS_LIST,
@@ -140,19 +140,19 @@ export async function getServerSideProps({
       // },
       {
         __component: BlockType.SHARED_COLLAGE_WITH_TITLE,
-        ...translationsPageData.collageWithTitleRedesign,
+        ...translationsPageData.collageWithTitle,
       },
       {
         __component: BlockType.SHARED_SIGNPOST_MULTIPLE,
-        ...translationsPageData.conferenceSignpostsRedesign,
+        ...translationsPageData.conferenceSignposts,
       },
       {
         __component: BlockType.SHARED_SINGLE_IMAGE,
-        ...translationsPageData.singleImageRedesign,
+        ...translationsPageData.singleImage,
       },
       {
         __component: BlockType.SHARED_SIGNPOST_MULTIPLE,
-        ...translationsPageData.articleSignpostsRedesign,
+        ...translationsPageData.articleSignposts,
       },
       {
         __component: BlockType.SHARED_THREE_COLUMN_GRID,
@@ -160,7 +160,7 @@ export async function getServerSideProps({
       },
       {
         __component: BlockType.SHARED_COLLAGE_WITH_LINK,
-        ...translationsPageData.collageWithLinkRedesign,
+        ...translationsPageData.collageWithLink,
       },
     ]);
 

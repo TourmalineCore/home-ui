@@ -10,11 +10,16 @@ import { Cta } from '../../components/Cta/Cta';
 import { Payment } from '../../components/Payment/Payment';
 import { Cooperation } from '../../components/Cooperation/Cooperation';
 import { ServicesTechnology } from '../../components/ServicesTechnology/ServicesTechnology';
+import { useScrollTop } from '../../common/hooks/useScrollTop';
 
 export default function BackendPage() {
   const {
     t,
   } = useTranslation(`common`);
+
+  useScrollTop({
+    dependencies: [],
+  });
 
   return (
     <>

@@ -4,6 +4,7 @@ import {
   HomepageResponse,
   SharedSeoComponent,
   Seo,
+  NavigationListResponse,
 } from "../../../common/types";
 import { cmsFetch } from "./http-client";
 import { mapBlockResponseByType } from "../utils/mapBlockResponseByType";
@@ -19,19 +20,47 @@ export async function getPageData({
   status?: 'draft' | 'published';
   slug: string;
 }): Promise<Page | null> {
-  const queryParams = {
+  const generalQueryParams = {
     populate: `all`,
     locale,
     status,
   };
 
   if (slug === AppRoute.Main) {
-    const homepageResponse = await cmsFetch<HomepageResponse>(`/homepage?${qs.stringify(queryParams)}`);
+    const homepageResponse = await cmsFetch<HomepageResponse>(`/homepage?${qs.stringify(generalQueryParams)}`);
 
     return mapPageResponse(homepageResponse);
   }
 
-  return null;
+  const navigationQueryParams = {
+    ...generalQueryParams,
+    filters: {
+      $or: [
+        {
+          link: {
+            $eq: slug,
+          },
+        },
+        {
+          link: {
+            $eq: `/${slug}`,
+          },
+        },
+      ],
+    },
+  };
+
+  const pageResponse = await cmsFetch<NavigationListResponse>(`/navigations?${qs.stringify(navigationQueryParams)}`);
+
+  const pageData = pageResponse?.data?.[0];
+
+  if (!pageData) {
+    return null;
+  }
+
+  return mapPageResponse({
+    data: pageResponse.data![0],
+  } as PageResponse);
 }
 
 type PageResponse = HomepageResponse | null | {
@@ -70,9 +99,17 @@ function mapPageResponse(response: PageResponse): Page {
 }
 
 function mapSeoResponse(seo: SharedSeoComponent): Seo {
+  if (!seo) {
+    return {
+      metaTitle: ``,
+      metaDescription: ``,
+      metaKeywords: ``,
+    };
+  }
+
   return {
-    metaTitle: seo.metaTitle || ``,
-    metaDescription: seo.metaDescription || ``,
-    metaKeywords: seo.keywords || ``,
+    metaTitle: seo.metaTitle!,
+    metaDescription: seo.metaDescription!,
+    metaKeywords: seo.keywords,
   };
 }

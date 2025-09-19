@@ -5,7 +5,7 @@ import { useTranslation } from 'next-i18next';
 import { FormRedesign } from '../FormRedesign/FormRedesign';
 import { sendEmail } from '../../../services/emailService/emailService';
 import { getMessageFromForm } from '../../../common/utils';
-import { MarkdownText } from '../MarkdownText/MarkdownText';
+import { MarkdownText } from '../../MarkdownText/MarkdownText';
 
 export function FormBlockRedesign({
   initializeIsSubmit = false,

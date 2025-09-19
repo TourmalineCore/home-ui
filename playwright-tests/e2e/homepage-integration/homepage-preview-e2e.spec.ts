@@ -14,7 +14,7 @@ const META_TITLE = `Homepage`;
 const META_DESCRIPTION = `Development of public websites, customized enterprise information systems, and applications`;
 const META_KEYWORDS = `public websites, enterprise information systems, software development`;
 
-test.describe(`Open page preview`, homepagePreviewTest);
+test.describe(`Check preview mode`, homepagePreviewTest);
 
 function homepagePreviewTest() {
   test.beforeEach(async () => {
@@ -36,11 +36,12 @@ function homepagePreviewTest() {
 
   test(
     `
-    GIVEN an empty homepage
-    WHEN filling homepage content and saving changes via API
-    AND opening the page in preview mode
-    SHOULD see filled homepage on frontend UI in preview mode
-  `,
+    GIVEN homepage content saved as draft via API
+    WHEN viewing the public website
+    THEN draft content should not be visible
+    BUT WHEN viewing in preview mode
+    THEN all draft content should be displayed
+    `,
     async ({
       goto,
       gotoInPreviewMode,

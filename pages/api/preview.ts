@@ -15,5 +15,5 @@ export default async function preview(req: NextApiRequest, res: NextApiResponse)
 
   res.setPreviewData({ });
 
-  res.redirect(`/${slug}`);
+  res.redirect(`${slug}`.startsWith(`/`) ? `${slug}` : `/${slug}`);
 }

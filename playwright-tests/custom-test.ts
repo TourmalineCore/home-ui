@@ -26,8 +26,6 @@ export type CustomTestFixtures = {
       breakpoint: Breakpoint;
       breakpointName: BreakpointName;
     }) => void;
-  authorizeInCms: () => void;
-  skipCmsTutorial: () => void;
 };
 
 // https://playwright.dev/docs/test-fixtures
@@ -43,7 +41,7 @@ export const test = base.extend<CustomTestFixtures>({
       // interrupting the connection for gif, for more stable work of tests
       await page.route(`**/**.gif`, (route) => route.abort());
 
-      await page.goto(`/${path}`, {
+      await page.goto(`${process.env.FRONTEND_URL}/${path}`, {
         waitUntil: `networkidle`,
       });
     };
@@ -57,16 +55,9 @@ export const test = base.extend<CustomTestFixtures>({
   }, use) => {
     const goToComponentsPage = async (path: string) => {
       // hide cookie banner
-      await page.context()
-        .addCookies([
-          {
-            name: `cookieAccept`,
-            value: `false`,
-            domain: `localhost`,
-            path: `/`,
-          },
-        ]);
-
+      await page.addInitScript(() => {
+        localStorage.setItem(`cookieAccept`, `false`);
+      });
       await apiImageMock();
 
       // interrupting the connection for gif, for more stable work of tests
@@ -219,36 +210,6 @@ export const test = base.extend<CustomTestFixtures>({
     };
 
     await use(testAxeCoreCheckAtBreakpoint);
-  },
-
-  authorizeInCms: async ({
-    page,
-  }, use) => {
-    const authorizeInCms = async () => {
-      await page.locator(`input[name=email]`)
-        .fill(process.env.CMS_EMAIL as string);
-
-      await page.locator(`input[name=password]`)
-        .fill(process.env.CMS_PASSWORD as string);
-
-      await page.getByText(`Login`)
-        .click();
-    };
-
-    await use(authorizeInCms);
-  },
-
-  skipCmsTutorial: async ({
-    page,
-  }, use) => {
-    const skipCmsTutorial = async () => {
-      await page.getByRole(`button`, {
-        name: `Skip`,
-      })
-        .click();
-    };
-
-    await use(skipCmsTutorial);
   },
 });
 
