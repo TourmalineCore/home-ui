@@ -27,9 +27,7 @@
 
     img {
       object-fit: cover;
-
-      // Todo: think about what can be done with positioning
-      object-position: top;
+      object-position: center;
     }
 
     @include desktop {
