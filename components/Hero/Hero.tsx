@@ -18,11 +18,11 @@ export function Hero({
       className="hero"
       data-testid="hero"
     >
-      <div className="container-redesign hero-redesign__wrapper">
-        <h1 className="hero-redesign__title">{title}</h1>
-        {description && <p className="hero-redesign__description">{description}</p>}
+      <div className="container-redesign hero__wrapper">
+        <h1 className="hero__title">{title}</h1>
+        {description && <p className="hero__description">{description}</p>}
         {(isVideo || imageUrls.length > 0) && (
-          <div className="hero-redesign__media">
+          <div className="hero__media">
             {isVideo ? (
               <video
                 src={videoUrl}
