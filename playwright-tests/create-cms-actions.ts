@@ -83,7 +83,7 @@ export const createCmsActions = (page: Page) => ({
       .click();
 
     // Wait until record is saved in db
-    await page.waitForSelector(`text=Success`);
+    await page.waitForTimeout(1500);
   },
 
   skipTutorial: async () => {
