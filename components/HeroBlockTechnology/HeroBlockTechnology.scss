@@ -74,11 +74,10 @@
 
   &__button {
     position: relative;
-    display: block;
+    display: inline-block;
     border: 1px solid rgba($color-black, 0);
     border-radius: 100px;
     padding: 12px 40px;
-    max-width: 245px;
     font-family: $ff-montserrat;
     font-weight: 500;
     font-size: 16px;

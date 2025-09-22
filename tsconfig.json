@@ -33,7 +33,8 @@
     "**/*.tsx", 
     "**/*.jsx", 
     "**/*.config.js", 
-    "next-sitemap.config.js" 
+    "next-sitemap.config.js",
+    "packages.d.ts"
   ],
   "exclude": ["node_modules"]
 }

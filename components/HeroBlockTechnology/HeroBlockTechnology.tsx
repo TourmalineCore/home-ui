@@ -1,7 +1,12 @@
 import clsx from 'clsx';
 import { useState } from 'react';
 import { useRouter } from 'next/router';
-import { useBodyScrollHidden, usePath, useTranslationNamespace } from '../../common/hooks';
+import {
+  useBodyScrollHidden,
+  useIsRussianCountry,
+  usePath,
+  useTranslationNamespace,
+} from '../../common/hooks';
 import { isChineseLanguage } from '../../common/utils';
 import { FormModal } from '../FormModal/FormModal';
 
@@ -19,6 +24,8 @@ export function HeroBlockTechnology() {
 
   useBodyScrollHidden(isOpen);
 
+  const isCountryRus = useIsRussianCountry();
+
   return (
     <section className={clsx(`hero-block-technology`, {
       'hero-block-technology--zh': isChineseLanguage(locale),
@@ -28,20 +35,23 @@ export function HeroBlockTechnology() {
         <div className="hero-block-technology__inner">
           <h1 className="hero-block-technology__title">{t(`title`)}</h1>
           <h2 className="hero-block-technology__description">{t(`description`)}</h2>
-          {/* Todo: uncomment after editing the form */}
-          {/* <button
-            type="button"
-            onClick={() => setIsOpen(true)}
-            className={`hero-block-technology__button hero-block-technology__button--${slicePathname}`}
-          >
-            <span className="hero-block-technology__button-text">{t(`buttonText`)}</span>
-          </button> */}
-          <a
-            href="mailto:contact@tourmalinecore.com"
-            className={`hero-block-technology__button hero-block-technology__button--${slicePathname}`}
-          >
-            <span className="hero-block-technology__button-text">{t(`buttonText`)}</span>
-          </a>
+          {isCountryRus ? (
+            <button
+              type="button"
+              onClick={() => setIsOpen(true)}
+              className={`hero-block-technology__button hero-block-technology__button--${slicePathname}`}
+            >
+              <span className="hero-block-technology__button-text">{t(`buttonText`)}</span>
+            </button>
+          ) : (
+            <a
+              href="mailto:contact@tourmalinecore.com"
+              role="button"
+              className={`hero-block-technology__button hero-block-technology__button--${slicePathname}`}
+            >
+              <span className="hero-block-technology__button-text">{t(`buttonText`)}</span>
+            </a>
+          )}
         </div>
         <picture className="hero-block-technology__image">
           <source

@@ -114,8 +114,7 @@ export default function ComponentsPage({
         emailCaption={headerRedesign.emailCaption}
         emailAddress={headerRedesign.emailAddress}
         socialLinks={headerRedesign.socialLinks}
-        // ToDo: uncomment after editing the form
-        // setIsModalOpen={() => {}}
+        setIsModalOpen={() => {}}
       />
     );
   }
