@@ -5,17 +5,20 @@ import { useTranslation } from 'next-i18next';
 import { FormRedesign } from '../FormRedesign/FormRedesign';
 import { sendEmail } from '../../../services/emailService/emailService';
 import { getMessageFromForm } from '../../../common/utils';
+import { useIsRussianCountry } from '../../../common/hooks';
 import { MarkdownText } from '../../MarkdownText/MarkdownText';
 
 export function FormBlockRedesign({
   initializeIsSubmit = false,
   testId,
   isModal,
+  onCloseModal,
   isComponentPage,
 }: {
   initializeIsSubmit?: boolean;
   testId?: string;
   isModal?: boolean;
+  onCloseModal?: () => void;
   isComponentPage?: boolean;
 }) {
   const {
@@ -24,12 +27,18 @@ export function FormBlockRedesign({
 
   const [isSubmit, setIsSubmit] = useState(initializeIsSubmit);
 
+  const isCountryRus = useIsRussianCountry();
+
+  if (!isCountryRus && !isComponentPage) {
+    return null;
+  }
+
   return (
     <section
       className={clsx(`form-block-redesign`, {
         'is-modal': isModal,
       })}
-      data-testid={testId}
+      data-testid={testId || `form-block`}
     >
       <div className="form-block-redesign__wrapper container-redesign">
         <div className="form-block-redesign__inner">
@@ -44,6 +53,7 @@ export function FormBlockRedesign({
                         isSubmit={isSubmit}
                         setIsSubmit={setIsSubmit}
                         isModal={isModal}
+                        onCloseModal={onCloseModal}
                       />
                     </div>
                     <div className="form-block-redesign__aside">
@@ -72,6 +82,7 @@ export function FormBlockRedesign({
                       isSubmit={isSubmit}
                       setIsSubmit={setIsSubmit}
                       isModal={isModal}
+                      onCloseModal={onCloseModal}
                     />
                   </div>
                 )
