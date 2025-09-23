@@ -11,7 +11,7 @@ on:
   
 jobs:
   # this is needed to wait for the new docker image to be build and published to the registry
-  # so that we can use the image to run ui of the needed commit related version as part of local-env
+  # so that we can use the image to run ui of the needed commit related version as part of home-env
   # the idea is taken from here https://stackoverflow.com/a/71489231
   push_to_registry:
     uses: ./.github/workflows/prod-env-docker-build-and-push.yml
@@ -28,14 +28,15 @@ jobs:
         node-version: [20.18.0]
 
     steps:
-      - name: Checkout local-env
+      - name: Checkout home-env
         uses: actions/checkout@v4
         with:
-          repository: TourmalineCore/home-local-env
+          repository: TourmalineCore/home-env
 
       - name: Deploy Local Env to Kind k8s
         uses: devcontainers/ci@v0.3
         with:
+          configFile: .devcontainer/local/devcontainer.json
           runCmd: |
             # we need to override "latest" image tag of ui inside local-env to run e2e against the current commit ui version and not against latest from master
             # We tried to use yq to change the image tag, but in the values files for helmfile we have non-yaml code that yq can`t parse or ignore
