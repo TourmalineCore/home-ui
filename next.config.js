@@ -18,6 +18,10 @@ module.exports = withReactSvg({
         protocol: 'http',
         hostname: 'minio-s3',
       },
+      {
+        protocol: 'https',
+        hostname: 'storage.yandexcloud.net',
+      },
     ]
   },
   env: {
