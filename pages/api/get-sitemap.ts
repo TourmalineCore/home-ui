@@ -5,7 +5,7 @@ import { cmsFetch } from '../../services/cms/api/http-client';
 export default async function getSitemap(_: NextApiRequest, res: NextApiResponse) {
   try {
     const response = await cmsFetch<Response>(`/strapi-5-sitemap-plugin/sitemap.xml`, {
-      jsonFormat: false,
+      allResponse: true,
     });
 
     const xmlData = await response!.text();

@@ -1,6 +1,6 @@
 import { getCmsApiUrl } from "../utils/getCmsApiUrl";
 
-type CustomRequestInit = RequestInit & { isPreview?: boolean; jsonFormat?: boolean; };
+type CustomRequestInit = RequestInit & { isPreview?: boolean; allResponse?: boolean; };
 
 const getCmsFetch = () => {
   const baseUrl = getCmsApiUrl();
@@ -8,7 +8,7 @@ const getCmsFetch = () => {
   return async <T = any>(endpoint: string, options: CustomRequestInit = {}): Promise<T | null> => {
     const {
       isPreview,
-      jsonFormat = true,
+      allResponse = false,
       ...restOptions
     } = options;
 
@@ -36,11 +36,11 @@ const getCmsFetch = () => {
       return null;
     }
 
-    if (jsonFormat) {
-      return response.json() as Promise<T>;
+    if (allResponse) {
+      return response as unknown as Promise<T>;
     }
 
-    return response as unknown as Promise<T>;
+    return response.json() as Promise<T>;
   };
 };
 
