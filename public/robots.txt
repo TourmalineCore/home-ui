@@ -1,9 +1,0 @@
-# *
-User-agent: *
-Disallow: /components
-
-# Host
-Host: https://tourmalinecore.com
-
-# Sitemaps
-Sitemap: https://tourmalinecore.com/sitemap.xml
