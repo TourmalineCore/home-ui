@@ -11,6 +11,7 @@ import { HeaderRedesignProps } from "../../../common/types";
 import { useDeviceSize, useOnScrollDirections } from "../../../common/hooks";
 import { HeaderNavigationList } from "./components/HeaderNavigationList/HeaderNavigationList";
 import { AppRoute } from "../../../common/enums";
+import { FormModal } from "../../FormModal/FormModal";
 
 export function HeaderRedesign({
   navigationLists,
@@ -28,8 +29,7 @@ export function HeaderRedesign({
   } = useRouter();
 
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  // ToDo: uncomment after editing the form
-  // const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   useEffect(() => {
     if (isMobileMenuOpen) {
@@ -100,7 +100,7 @@ export function HeaderRedesign({
         {isTabletXl && buttonLabel && (
           <HeaderButton
             className="header-redesign__button"
-            // onClick={setIsModalOpen}
+            onClick={setIsModalOpen}
           >
             {buttonLabel}
           </HeaderButton>
@@ -114,13 +114,11 @@ export function HeaderRedesign({
           emailCaption={emailCaption}
           emailAddress={emailAddress}
           socialLinks={socialLinks}
-          // ToDo: uncomment after editing the form
-          // setIsModalOpen={setIsModalOpen}
+          setIsModalOpen={setIsModalOpen}
         />
       )}
 
-      {/* ToDo: uncomment after editing the form */}
-      {/* {isModalOpen && <FormModal setIsOpen={setIsModalOpen} />} */}
+      {isModalOpen && <FormModal setIsOpen={setIsModalOpen} />}
     </header>
   );
 }
