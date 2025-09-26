@@ -145,6 +145,7 @@
 
     &:disabled {
       background-color: $color-grey-500-redesign;
+      cursor: auto;
     }
 
     &:hover:not(:disabled),

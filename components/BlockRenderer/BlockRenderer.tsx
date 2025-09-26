@@ -92,7 +92,7 @@ export const BlockRenderer = ({
     );
   }
 
-  if (block.__component === BlockType.HOME_FORM_BLOCK) {
+  if (block.__component === BlockType.SHARED_FORM_BLOCK) {
     return (
       <FormBlockRedesign />
     );

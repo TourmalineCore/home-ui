@@ -31,6 +31,7 @@ export interface HomepageRequest {
         | BaseNullComponentMapping<"shared.three-column-grid", SharedThreeColumnGridComponent>
         | BaseNullComponentMapping<"shared.showcase-grid", SharedShowcaseGridComponent>
         | BaseNullComponentMapping<"shared.collage-with-link", SharedCollageWithLinkComponent>
+        | BaseNullComponentMapping<"shared.form", SharedFormComponent>
       );
     seo: SharedSeoComponent;
     locale?: string;
@@ -65,6 +66,7 @@ export interface Homepage {
       | AbstractNullComponentMapping<"shared.three-column-grid", SharedThreeColumnGridComponent>
       | AbstractNullComponentMapping<"shared.showcase-grid", SharedShowcaseGridComponent>
       | AbstractNullComponentMapping<"shared.collage-with-link", SharedCollageWithLinkComponent>
+      | AbstractNullComponentMapping<"shared.form", SharedFormComponent>
     );
   seo: SharedSeoComponent;
   /** @format date-time */
@@ -95,6 +97,7 @@ export interface Homepage {
         | DiscriminatorNullComponentMapping<"shared.three-column-grid", SharedThreeColumnGridComponent>
         | DiscriminatorNullComponentMapping<"shared.showcase-grid", SharedShowcaseGridComponent>
         | DiscriminatorNullComponentMapping<"shared.collage-with-link", SharedCollageWithLinkComponent>
+        | DiscriminatorNullComponentMapping<"shared.form", SharedFormComponent>
       );
     seo?: SharedSeoComponent;
     /** @format date-time */
@@ -714,6 +717,11 @@ export interface SharedCollageWithLinkComponent {
   }[];
 }
 
+export interface SharedFormComponent {
+  id?: number;
+  __component?: "shared.form";
+}
+
 export interface SharedSeoComponent {
   id?: number;
   metaTitle?: string;
@@ -969,16 +977,16 @@ export interface Navigation {
     }[];
   }[];
   isMultiLevelNavigation: boolean;
-  blocks?: DiscriminatorNull1 &
+  blocks?: BaseNull1 &
     (
-      | DiscriminatorNull1ComponentMapping<"shared.three-column-grid", SharedThreeColumnGridComponent>
-      | DiscriminatorNull1ComponentMapping<"shared.single-image", SharedSingleImageComponent>
-      | DiscriminatorNull1ComponentMapping<"shared.signpost-multiple", SharedSignpostMultipleComponent>
-      | DiscriminatorNull1ComponentMapping<"shared.showcase-grid", SharedShowcaseGridComponent>
-      | DiscriminatorNull1ComponentMapping<"shared.hero", SharedHeroComponent>
-      | DiscriminatorNull1ComponentMapping<"shared.featured-cards-list", SharedFeaturedCardsListComponent>
-      | DiscriminatorNull1ComponentMapping<"shared.collage-with-title", SharedCollageWithTitleComponent>
-      | DiscriminatorNull1ComponentMapping<"shared.collage-with-link", SharedCollageWithLinkComponent>
+      | BaseNull1ComponentMapping<"shared.three-column-grid", SharedThreeColumnGridComponent>
+      | BaseNull1ComponentMapping<"shared.single-image", SharedSingleImageComponent>
+      | BaseNull1ComponentMapping<"shared.signpost-multiple", SharedSignpostMultipleComponent>
+      | BaseNull1ComponentMapping<"shared.showcase-grid", SharedShowcaseGridComponent>
+      | BaseNull1ComponentMapping<"shared.hero", SharedHeroComponent>
+      | BaseNull1ComponentMapping<"shared.featured-cards-list", SharedFeaturedCardsListComponent>
+      | BaseNull1ComponentMapping<"shared.collage-with-title", SharedCollageWithTitleComponent>
+      | BaseNull1ComponentMapping<"shared.collage-with-link", SharedCollageWithLinkComponent>
     );
   seo?: SharedSeoComponent;
   /** @format date-time */
@@ -1182,6 +1190,7 @@ type BaseNull = (
   | SharedThreeColumnGridComponent
   | SharedShowcaseGridComponent
   | SharedCollageWithLinkComponent
+  | SharedFormComponent
 )[];
 
 type BaseNullComponentMapping<Key, Type> = {
@@ -1197,6 +1206,7 @@ type AbstractNull = (
   | SharedThreeColumnGridComponent
   | SharedShowcaseGridComponent
   | SharedCollageWithLinkComponent
+  | SharedFormComponent
 )[];
 
 type AbstractNullComponentMapping<Key, Type> = {
@@ -1212,6 +1222,7 @@ type DiscriminatorNull = (
   | SharedThreeColumnGridComponent
   | SharedShowcaseGridComponent
   | SharedCollageWithLinkComponent
+  | SharedFormComponent
 )[];
 
 type DiscriminatorNullComponentMapping<Key, Type> = {
@@ -1248,7 +1259,7 @@ type PolymorphNullComponentMapping<Key, Type> = {
   __component: Key;
 } & Type;
 
-type DiscriminatorNull1 = (
+type BaseNull1 = (
   | SharedThreeColumnGridComponent
   | SharedSingleImageComponent
   | SharedSignpostMultipleComponent
@@ -1259,6 +1270,6 @@ type DiscriminatorNull1 = (
   | SharedCollageWithLinkComponent
 )[];
 
-type DiscriminatorNull1ComponentMapping<Key, Type> = {
+type BaseNull1ComponentMapping<Key, Type> = {
   __component: Key;
 } & Type;
