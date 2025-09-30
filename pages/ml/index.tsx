@@ -13,11 +13,16 @@ import { Payment } from '../../components/Payment/Payment';
 import { Cooperation } from '../../components/Cooperation/Cooperation';
 import { ServicesTechnology } from '../../components/ServicesTechnology/ServicesTechnology';
 import { useScrollTop } from '../../common/hooks/useScrollTop';
+import { useIsRussianCountry } from '../../common/hooks';
+import { TechnologyPageAnchorLink } from '../../common/enums';
+import { FormBlock } from '../../components/FormBlock/FormBlock';
 
 export default function MlPage() {
   const {
     t,
   } = useTranslation(`common`);
+
+  const isCountryRus = useIsRussianCountry();
 
   useScrollTop({
     dependencies: [],
@@ -49,10 +54,12 @@ export default function MlPage() {
         <Payment />
         <Cooperation />
         <ServicesTechnology />
-        {/* <FormBlock
-          id={TechnologyPageAnchorLink.Contact}
-          buttonClassName="ml__form-button"
-        /> */}
+        {isCountryRus && (
+          <FormBlock
+            id={TechnologyPageAnchorLink.Contact}
+            buttonClassName="ml__form-button"
+          />
+        )}
       </Layout>
     </>
   );
