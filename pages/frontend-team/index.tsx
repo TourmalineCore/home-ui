@@ -11,11 +11,16 @@ import { Stack } from '../../components/Stack/Stack';
 import { Cases } from '../../components/Cases/Cases';
 import { Stages } from '../../components/Stages/Stages';
 import { useScrollTop } from '../../common/hooks/useScrollTop';
+import { useIsRussianCountry } from '../../common/hooks';
+import { FormBlock } from '../../components/FormBlock/FormBlock';
+import { TechnologyPageAnchorLink } from '../../common/enums';
 
 export default function FrontendTeamPage() {
   const {
     t,
   } = useTranslation(`common`);
+
+  const isCountryRus = useIsRussianCountry();
 
   useScrollTop({
     dependencies: [],
@@ -49,10 +54,12 @@ export default function FrontendTeamPage() {
         <Stages />
         <Stack />
         <ServicesTechnology />
-        {/* <FormBlock
-          id={TechnologyPageAnchorLink.Contact}
-          buttonClassName="frontend-team__form-button"
-        /> */}
+        {isCountryRus && (
+          <FormBlock
+            id={TechnologyPageAnchorLink.Contact}
+            buttonClassName="frontend-team__form-button"
+          />
+        )}
       </Layout>
     </>
   );

@@ -129,5 +129,12 @@ export function mapBlockResponseByType(block: BlockApi): Block | null {
       })) as ShowcaseGridBlock['showcaseColumns'] || [],
     };
   }
+
+  if (component === BlockType.SHARED_FORM_BLOCK) {
+    return {
+      __component: BlockType.SHARED_FORM_BLOCK,
+    };
+  }
+
   return null;
 }

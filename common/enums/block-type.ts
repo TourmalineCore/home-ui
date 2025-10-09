@@ -7,6 +7,5 @@ export enum BlockType {
   SHARED_THREE_COLUMN_GRID = `shared.three-column-grid`,
   SHARED_COLLAGE_WITH_LINK = `shared.collage-with-link`,
   SHARED_SHOWCASE_GRID = `shared.showcase-grid`,
-
-  HOME_FORM_BLOCK = `home.form-block`,
+  SHARED_FORM_BLOCK = `shared.form`,
 }

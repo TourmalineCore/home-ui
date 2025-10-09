@@ -12,11 +12,16 @@ import { Payment } from '../../components/Payment/Payment';
 import { Cooperation } from '../../components/Cooperation/Cooperation';
 import { ServicesTechnology } from '../../components/ServicesTechnology/ServicesTechnology';
 import { useScrollTop } from '../../common/hooks/useScrollTop';
+import { useIsRussianCountry } from '../../common/hooks';
+import { TechnologyPageAnchorLink } from '../../common/enums';
+import { FormBlock } from '../../components/FormBlock/FormBlock';
 
 export default function QAPage() {
   const {
     t,
   } = useTranslation(`common`);
+
+  const isCountryRus = useIsRussianCountry();
 
   useScrollTop({
     dependencies: [],
@@ -47,10 +52,12 @@ export default function QAPage() {
         <Payment />
         <Cooperation />
         <ServicesTechnology />
-        {/* <FormBlock
-          id={TechnologyPageAnchorLink.Contact}
-          buttonClassName="qa__form-button"
-        /> */}
+        {isCountryRus && (
+          <FormBlock
+            id={TechnologyPageAnchorLink.Contact}
+            buttonClassName="qa__form-button"
+          />
+        )}
       </Layout>
     </>
   );
