@@ -1,6 +1,6 @@
 
 import { Breakpoint } from "../../../common/enums";
-import { NavigationListResponse, Navigation } from "../../../common/types";
+import { NavigationListResponse } from "../../../common/types";
 import { cmsFetch } from "../../../services/cms/api/http-client";
 import { createCmsActions } from "../../create-cms-actions";
 import { E2E_UI_NAME_PREFIX } from "../../constants/e2e-ui-name-prefix";
@@ -27,25 +27,13 @@ test.describe(`Main scenario for filling layout`, layoutMainScenarioTest);
 
 async function layoutMainScenarioTest() {
   test.beforeEach(async () => {
-    await cleanupNavigationByNameApi({
-      name: HEADER_NAVIGATION,
-    });
-
-    await cleanupNavigationByNameApi({
-      name: NESTED_HEADER_NAVIGATION,
-    });
+    await cleanupNavigation();
 
     await cleanupLayoutApi();
   });
 
   test.afterEach(async () => {
-    await cleanupNavigationByNameApi({
-      name: HEADER_NAVIGATION,
-    });
-
-    await cleanupNavigationByNameApi({
-      name: NESTED_HEADER_NAVIGATION,
-    });
+    await cleanupNavigation();
 
     await cleanupLayoutApi();
   });
@@ -213,26 +201,24 @@ async function layoutMainScenarioTest() {
   );
 }
 
-async function cleanupNavigationByNameApi({
-  name,
+async function cleanupNavigation({
   locale = `en`,
 }: {
-  name: string;
   locale?: 'ru' | 'en';
-}) {
+} = {}) {
   try {
     const navigationList = await cmsFetch<NavigationListResponse>(`${NAVIGATION_ENDPOINT}?populate=*&locale=${locale}`);
 
-    const navigation = navigationList?.data?.find((navigationItem: Navigation) => navigationItem.name === name);
+    const navigationToDelete = navigationList?.data?.filter((navigation) => navigation.name.startsWith(E2E_UI_NAME_PREFIX));
 
-    if (navigation) {
+    navigationToDelete?.forEach(async (navigation) => {
       const response = await cmsFetch(`${NAVIGATION_ENDPOINT}/${navigation.documentId}?locale=${locale}`, {
         method: `DELETE`,
       });
 
       await expect(response.status, `Navigation should be deleted with status 204`)
         .toEqual(204);
-    }
+    });
   } catch (error: any) {
     throw new Error(`Failed to delete test navigation: ${error.message}`);
   }
