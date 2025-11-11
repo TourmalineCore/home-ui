@@ -60,9 +60,6 @@ module.exports = withReactSvg({
       {
         protocol: 'https',
         hostname: 'storage.yandexcloud.net',
-
-        // Todo: need specify production bucket name 
-        // pathname: '/bucketName/**',
       },
       ...(process.env.CDN_ENABLED === 'true' && process.env.CDN_DOMAIN ? [
         {
