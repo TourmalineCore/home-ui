@@ -15,6 +15,11 @@ WORKDIR /app
 COPY --from=deps /app/node_modules ./node_modules
 COPY . .
 
+ARG CDN_ENABLED
+ENV CDN_ENABLED=${CDN_ENABLED}
+ARG CDN_DOMAIN
+ENV CDN_DOMAIN=${CDN_DOMAIN}
+
 RUN npm run build
 
 # Runner
