@@ -20,6 +20,7 @@ jobs:
         build-args: |
           CDN_ENABLED=true
           CDN_DOMAIN=cdn.home.demo.tourmalinecore.com
+          CORS_ORIGIN=https://home.demo.tourmalinecore.com
           ENABLE_SEO_INDEXING=false
     # without this it cannot login to the registry
     secrets: inherit
