@@ -16,7 +16,7 @@ containerPorts:
 # if pod uses more resources than limits in spite of the reason kube-system will perform a forced restart
 resources:
   limits:
-    memory: 512Mi
+    memory: 640Mi
   requests:
     cpu: 1m
     memory: 256Mi
