@@ -78,6 +78,11 @@ module.exports = withReactSvg({
         protocol: 'https',
         hostname: 'storage.yandexcloud.net',
       },
+      {
+        protocol: 'https',
+        hostname: 'raw.githubusercontent.com',
+        pathname: '/TourmalineCore/**'
+      },
       ...(process.env.CDN_ENABLED === 'true' && process.env.CDN_DOMAIN ? [
         {
           protocol: 'https',
