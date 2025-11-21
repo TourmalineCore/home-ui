@@ -24,23 +24,6 @@ module.exports = withReactSvg({
   devIndicators: false,
   i18n,
   include: path.resolve(__dirname, 'icons'),
-  images: {
-    domains: ['raw.githubusercontent.com'],
-    remotePatterns: [
-      {
-        protocol: 'http',
-        hostname: 'localhost',
-      },
-      {
-        protocol: 'http',
-        hostname: 'minio-s3',
-      },
-      {
-        protocol: 'https',
-        hostname: 'storage.yandexcloud.net',
-      },
-    ]
-  },
   env: {
     METRICS_ENABLED: process.env.METRICS_ENABLED,
   },
@@ -77,6 +60,11 @@ module.exports = withReactSvg({
       {
         protocol: 'https',
         hostname: 'storage.yandexcloud.net',
+      },
+      {
+        protocol: 'https',
+        hostname: 'raw.githubusercontent.com',
+        pathname: '/TourmalineCore/**'
       },
       ...(process.env.CDN_ENABLED === 'true' && process.env.CDN_DOMAIN ? [
         {
