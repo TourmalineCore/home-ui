@@ -9,7 +9,7 @@ module.exports = withReactSvg({
     return [
       // Icons are not cached by default, so we do it manually
       {
-        source: "/(apple-touch-icon|favicon-96x96.png|favicon.ico|favicon.svg|web-app-manifest-192x192.png|web-app-manifest-512x512.png|site.webmanifest)",
+        source: "/(android-chrome-192x192.png|android-chrome-512x512.png|apple-touch-icon.png|favicon-16x16.png|favicon-32x32.png|favicon.ico|mstile-150x150.png|safari-pinned-tab.svg)",
         headers: [
           {
             key: "Cache-Control",
@@ -32,9 +32,7 @@ module.exports = withReactSvg({
           // Specifies the origin that has access to the resource
           {
             key: "Access-Control-Allow-Origin",
-            value: process.env.NODE_ENV === "production"
-              ? process.env.CORS_ORIGIN
-              : process.env.CORS_ORIGIN || "http://localhost:3000",
+            value: process.env.CORS_ORIGIN,
           },
 
           // Indicates how the browser should handle opening new windows and tabs in the context of cross-origin requests
@@ -67,7 +65,7 @@ module.exports = withReactSvg({
           // Block access to browser features and APIs
           {
             key: 'Permissions-Policy',
-            value: "interest-cohort=(), camera=(), microphone=(), geolocation=(), fullscreen=(), payment=(), usb=(), accelerometer=(), display-capture=(), gyroscope=(), magnetometer=(), midi=(), picture-in-picture=(self), xr-spatial-tracking=()",
+            value: "interest-cohort=(), camera=(), microphone=(), fullscreen=(), payment=(), usb=(), accelerometer=(), display-capture=(), gyroscope=(), magnetometer=(), midi=(), picture-in-picture=(self), xr-spatial-tracking=()",
           }
         ]
       }
