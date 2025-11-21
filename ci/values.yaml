@@ -16,7 +16,8 @@ containerPorts:
 # if pod uses more resources than limits in spite of the reason kube-system will perform a forced restart
 resources:
   limits:
-    memory: 640Mi
+    # UI can request ~850 Mi of RAM while optimizing images so in that reason limit was set to 1Gi to avoid OOMKilled termination 
+    memory: 1Gi
   requests:
     cpu: 1m
     memory: 256Mi
