@@ -40,7 +40,7 @@ export default class MyDocument extends Document {
 
           <link
             rel="icon"
-            href="/favicon/favicon.ico"
+            href="/favicon.ico"
           />
           <link
             rel="manifest"
@@ -48,7 +48,7 @@ export default class MyDocument extends Document {
           />
           <link
             rel="apple-touch-icon"
-            href="/favicon/logo192.png"
+            href="/logo192.png"
           />
 
           <link
