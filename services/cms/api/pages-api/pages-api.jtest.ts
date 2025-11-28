@@ -19,7 +19,7 @@ describe(`getPageData`, () => {
 
   test(`
     GIVEN locale = zh
-    WHEN getLayoutData is called with then
+    WHEN getLayoutData is called with this locale
     THEN query string should contain locale en
     `, async () => {
     await getPageData({
