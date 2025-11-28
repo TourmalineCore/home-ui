@@ -17,6 +17,7 @@ dotenv.config({
 export default defineConfig({
   testDir: `./playwright-tests/e2e`,
   outputDir: `./playwright-test-results/e2e-tests`,
+  testMatch: `**/*.spec.{js,ts}`,
   timeout: 45000,
   /* Run tests in files in parallel */
   fullyParallel: false,

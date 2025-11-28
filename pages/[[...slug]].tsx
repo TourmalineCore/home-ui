@@ -6,8 +6,8 @@ import { BlockRenderer } from '../components/BlockRenderer/BlockRenderer';
 import { AppRoute, BlockType } from '../common/enums';
 import { loadTranslations } from '../common/utils';
 import { Block, LayoutData, Seo } from '../common/types';
-import { getLayoutData } from '../services/cms/api/layout-api';
-import { getPageData } from '../services/cms/api/pages-api';
+import { getLayoutData } from '../services/cms/api/layout-api/layout-api';
+import { getPageData } from '../services/cms/api/pages-api/pages-api';
 import { useScrollTop } from '../common/hooks/useScrollTop';
 
 type PageData = {

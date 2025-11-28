@@ -1,12 +1,12 @@
 import qs from 'qs';
-import { cmsFetch } from "./http-client";
+import { cmsFetch } from "../http-client";
 import {
   FooterNavigationItem,
   HeaderNavigationItem,
   LayoutData,
   LayoutResponse,
   NavigationLink,
-} from '../../../common/types';
+} from '../../../../common/types';
 
 export async function getLayoutData({
   locale,
@@ -17,7 +17,9 @@ export async function getLayoutData({
 }): Promise<LayoutData> {
   const queryParams = {
     populate: `all`,
-    locale,
+    locale: locale === `zh`
+      ? `en`
+      : locale,
     status,
   };
 

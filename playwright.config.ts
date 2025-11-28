@@ -15,6 +15,7 @@ export default defineConfig({
   testDir: `./`,
   outputDir: `./playwright-test-results/test`,
   snapshotDir: `./playwright-tests/screenshots`,
+  testMatch: `**/*.spec.{js,ts}`,
   testIgnore: [`**/e2e/**`],
   /* Run tests in files in parallel */
   fullyParallel: true,
