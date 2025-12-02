@@ -3,7 +3,7 @@ name: Trigger Home Env
 on:
   push:
     branches:
-      - feature/*
+      - master
 
 jobs:
   # this is needed to wait for the new docker image to be build and published to the registry
