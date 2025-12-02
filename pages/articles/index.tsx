@@ -1,65 +1,45 @@
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
-import { useTranslation } from 'next-i18next';
+import { useTranslation } from 'react-i18next';
+
 import { Layout } from '../../components/Layout/Layout';
 import { PageHead } from '../../components/PageHead/PageHead';
-import { HeroBlockTechnology } from '../../components/HeroBlockTechnology/HeroBlockTechnology';
-import { Points } from '../../components/Points/Points';
-import { Tasks } from '../../components/Tasks/Tasks';
-import { Cta } from '../../components/Cta/Cta';
-import { Payment } from '../../components/Payment/Payment';
-import { Cooperation } from '../../components/Cooperation/Cooperation';
-import { ServicesTechnology } from '../../components/ServicesTechnology/ServicesTechnology';
-import { useScrollTop } from '../../common/hooks/useScrollTop';
+import Articles from '../../features/Articles/components/Articles/Articles';
+
+import { fetchArticlesListWithMeta } from '../../features/Articles/fetchHelpers/fetchArticlesListWithMeta';
 import { LayoutData } from '../../common/types';
 import { getLayoutData } from '../../services/cms/api/layout-api/layout-api';
 import { loadTranslations } from '../../common/utils';
 
-export default function BackendPage({
+export default function ArticlesPage({
   layoutData,
+  articles,
 }: {
   layoutData: {
     headerContent: LayoutData['headerContent'];
   };
+  articles: string;
 }) {
   const {
     t,
-  } = useTranslation(`common`);
-
-  useScrollTop({
-    dependencies: [],
-  });
+  } = useTranslation(`articles`);
 
   return (
     <>
       <PageHead
         seoData={{
           seo: {
-            title: t(`metaTitle`),
-            description: t(`metaDescription`),
+            title: t(`title`),
+            description: t(`description`),
           },
-          keywords: t(`metaKeywords`),
+          keywords: t(`keywords`),
           metaTags: [],
           structuredData: ``,
           additionalCode: ``,
         }}
       />
-      <Layout
-        mainClassName="backend"
-        headerContent={layoutData.headerContent}
-      >
-        <div className="backend__hero-block-container">
-          <HeroBlockTechnology />
-          <Points />
-        </div>
-        <Tasks />
-        <Cta />
-        <Payment />
-        <Cooperation />
-        <ServicesTechnology />
-        {/* <FormBlock
-          id={TechnologyPageAnchorLink.Contact}
-          buttonClassName="backend__form-button"
-        /> */}
+
+      <Layout headerContent={layoutData.headerContent}>
+        <Articles articles={articles} />
       </Layout>
     </>
   );
@@ -72,6 +52,8 @@ export async function getServerSideProps({
   locale: string;
   preview: boolean;
 }) {
+  const articlesWithMeta = await fetchArticlesListWithMeta();
+
   if (process.env.IS_STATIC_MODE === `true`) {
     const translationsPageData = await loadTranslations(locale, [`headerRedesign`]);
 
@@ -80,6 +62,7 @@ export async function getServerSideProps({
         layoutData: {
           headerContent: translationsPageData.headerRedesign,
         },
+        articles: articlesWithMeta,
         ...(await getStaticTranslation({
           locale,
         })),
@@ -97,6 +80,7 @@ export async function getServerSideProps({
   return {
     props: {
       layoutData,
+      articles: articlesWithMeta,
       isPreview: preview,
       ...(await getStaticTranslation({
         locale,
@@ -112,17 +96,9 @@ async function getStaticTranslation({
 }) {
   return serverSideTranslations(locale, [
     `common`,
+    `articles`,
     `footer`,
     `cookie`,
-    `form`,
-    `formBlock`,
-    `heroBackend`,
-    `pointsBackend`,
-    `tasksBackend`,
-    `payment`,
-    `cta`,
-    `cooperation`,
-    `servicesTechnologyBackend`,
     `formBlockRedesign`,
   ]);
 }
