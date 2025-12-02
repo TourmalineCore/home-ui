@@ -1,4 +1,3 @@
-import { GetServerSideProps } from 'next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import { useTranslation } from 'next-i18next';
 import { Layout } from '../../components/Layout/Layout';
@@ -13,8 +12,17 @@ import { Payment } from '../../components/Payment/Payment';
 import { Cooperation } from '../../components/Cooperation/Cooperation';
 import { ServicesTechnology } from '../../components/ServicesTechnology/ServicesTechnology';
 import { useScrollTop } from '../../common/hooks/useScrollTop';
+import { getLayoutData } from '../../services/cms/api/layout-api/layout-api';
+import { loadTranslations } from '../../common/utils';
+import { LayoutData } from '../../common/types';
 
-export default function FrontendPage() {
+export default function FrontendPage({
+  layoutData,
+}: {
+  layoutData: {
+    headerContent: LayoutData['headerContent'];
+  };
+}) {
   const {
     t,
   } = useTranslation(`common`);
@@ -37,7 +45,10 @@ export default function FrontendPage() {
           additionalCode: ``,
         }}
       />
-      <Layout mainClassName="frontend">
+      <Layout
+        mainClassName="frontend"
+        headerContent={layoutData.headerContent}
+      >
         <div className="frontend__hero-block-container">
           <HeroBlockTechnology />
           <Points />
@@ -58,26 +69,66 @@ export default function FrontendPage() {
   );
 }
 
-export const getStaticProps: GetServerSideProps = async ({
+export async function getServerSideProps({
   locale,
-}) => ({
-  props: {
-    ...(await serverSideTranslations(locale as string, [
-      `common`,
-      `footer`,
-      `cookie`,
-      `form`,
-      `formBlock`,
-      `heroFrontend`,
-      `pointsFrontend`,
-      `tasksFrontend`,
-      `payment`,
-      `cta`,
-      `stackFrontend`,
-      `cooperation`,
-      `servicesTechnologyFrontend`,
-      `casesFrontend`,
-      `formBlockRedesign`,
-    ])),
-  },
-});
+  preview = false,
+}: {
+  locale: string;
+  preview: boolean;
+}) {
+  if (process.env.IS_STATIC_MODE === `true`) {
+    const translationsPageData = await loadTranslations(locale, [`headerRedesign`]);
+
+    return {
+      props: {
+        layoutData: {
+          headerContent: translationsPageData.headerRedesign,
+        },
+        ...(await getStaticTranslation({
+          locale,
+        })),
+      },
+    };
+  }
+
+  const status = preview ? `draft` : `published`;
+
+  const layoutData = await getLayoutData({
+    locale,
+    status,
+  });
+
+  return {
+    props: {
+      layoutData,
+      isPreview: preview,
+      ...(await getStaticTranslation({
+        locale,
+      })),
+    },
+  };
+}
+
+async function getStaticTranslation({
+  locale,
+}: {
+  locale: string;
+}) {
+  return serverSideTranslations(locale, [
+    `common`,
+    `footer`,
+    `cookie`,
+    `form`,
+    `formBlock`,
+    `heroFrontend`,
+    `pointsFrontend`,
+    `tasksFrontend`,
+    `payment`,
+    `cta`,
+    `stackFrontend`,
+    `cooperation`,
+    `servicesTechnologyFrontend`,
+    `casesFrontend`,
+    `formBlockRedesign`,
+  ]);
+}
