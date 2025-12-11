@@ -13,7 +13,8 @@ module.exports = withReactSvg({
         headers: [
           {
             key: "Cache-Control",
-            value: "public, max-age=3600, immutable"
+            // 604800 is 60 seconds * 60 minutes * 24 hours * 7 days = 1 week
+            value: "public, max-age=604800, immutable"
           }
         ]
       },
@@ -95,8 +96,8 @@ module.exports = withReactSvg({
 
     // lifetime in seconds for cached optimized images
     // https://nextjs.org/docs/pages/api-reference/components/image#minimumcachettl
-    // 1 hour
-    minimumCacheTTL: 3600,
+    // 604800 is 60 seconds * 60 minutes * 24 hours * 7 days = 1 week
+    minimumCacheTTL: 604800,
     formats: ['image/avif', 'image/webp'],
     remotePatterns: [
       {
