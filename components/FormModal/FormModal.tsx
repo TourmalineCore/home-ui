@@ -20,6 +20,7 @@ export function FormModal({
       <FormBlockRedesign
         isModal
         initializeIsSubmit={initializeIsSubmit}
+        onCloseModal={onClose}
         isComponentPage={isComponentPage}
       />
     </Modal>
