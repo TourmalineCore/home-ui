@@ -1,4 +1,3 @@
-import { GetServerSideProps } from 'next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import { useTranslation } from 'next-i18next';
 import { Layout } from '../../components/Layout/Layout';
@@ -14,8 +13,17 @@ import { useScrollTop } from '../../common/hooks/useScrollTop';
 import { useIsRussianCountry } from '../../common/hooks';
 import { FormBlock } from '../../components/FormBlock/FormBlock';
 import { TechnologyPageAnchorLink } from '../../common/enums';
+import { LayoutData } from '../../common/types';
+import { getLayoutData } from '../../services/cms/api/layout-api/layout-api';
+import { loadTranslations } from '../../common/utils';
 
-export default function FrontendTeamPage() {
+export default function FrontendTeamPage({
+  layoutData,
+}: {
+  layoutData: {
+    headerContent: LayoutData['headerContent'];
+  };
+}) {
   const {
     t,
   } = useTranslation(`common`);
@@ -40,7 +48,10 @@ export default function FrontendTeamPage() {
           additionalCode: ``,
         }}
       />
-      <Layout mainClassName="frontend-team">
+      <Layout
+        mainClassName="frontend-team"
+        headerContent={layoutData.headerContent}
+      >
         <div className="frontend-team__hero-block-container">
           <HeroBlockTechnology />
           <Points />
@@ -65,25 +76,65 @@ export default function FrontendTeamPage() {
   );
 }
 
-export const getStaticProps: GetServerSideProps = async ({
+export async function getServerSideProps({
   locale,
-}) => ({
-  props: {
-    ...(await serverSideTranslations(locale as string, [
-      `common`,
-      `footer`,
-      `cookie`,
-      `form`,
-      `formBlock`,
-      `heroFrontend-team`,
-      `pointsFrontend-team`,
-      `servicesTechnologyFrontend-team`,
-      `benefitsFrontend-team`,
-      `tasksFrontend-team`,
-      `stackFrontend-team`,
-      `casesFrontend-team`,
-      `stagesFrontend-team`,
-      `formBlockRedesign`,
-    ])),
-  },
-});
+  preview = false,
+}: {
+  locale: string;
+  preview: boolean;
+}) {
+  if (process.env.IS_STATIC_MODE === `true`) {
+    const translationsPageData = await loadTranslations(locale, [`headerRedesign`]);
+
+    return {
+      props: {
+        layoutData: {
+          headerContent: translationsPageData.headerRedesign,
+        },
+        ...(await getStaticTranslation({
+          locale,
+        })),
+      },
+    };
+  }
+
+  const status = preview ? `draft` : `published`;
+
+  const layoutData = await getLayoutData({
+    locale,
+    status,
+  });
+
+  return {
+    props: {
+      layoutData,
+      isPreview: preview,
+      ...(await getStaticTranslation({
+        locale,
+      })),
+    },
+  };
+}
+
+async function getStaticTranslation({
+  locale,
+}: {
+  locale: string;
+}) {
+  return serverSideTranslations(locale, [
+    `common`,
+    `footer`,
+    `cookie`,
+    `form`,
+    `formBlock`,
+    `heroFrontend-team`,
+    `pointsFrontend-team`,
+    `servicesTechnologyFrontend-team`,
+    `benefitsFrontend-team`,
+    `tasksFrontend-team`,
+    `stackFrontend-team`,
+    `casesFrontend-team`,
+    `stagesFrontend-team`,
+    `formBlockRedesign`,
+  ]);
+}
