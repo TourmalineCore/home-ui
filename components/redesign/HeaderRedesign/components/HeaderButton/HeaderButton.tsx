@@ -1,36 +1,25 @@
 import clsx from "clsx";
-import Link from "next/link";
 import { ReactNode } from "react";
 
 export function HeaderButton({
   children,
   className,
-  // onClick,
+  onClick,
 }: {
   children: ReactNode;
   className?: string;
-  // onClick: (isOpen: boolean) => void;
+  onClick: (isOpen: boolean) => void;
 }) {
   return (
-    // Todo: uncomment after editing the form
-    // <button
-    //   className={clsx(
-    //     `header-button`,
-    //     className,
-    //   )}
-    //   type="button"
-    //   onClick={() => onClick(true)}
-    // >
-    //   {children}
-    // </button>
-    <Link
+    <button
       className={clsx(
         `header-button`,
         className,
       )}
-      href="mailto:contact@tourmalinecore.com"
+      type="button"
+      onClick={() => onClick(true)}
     >
       {children}
-    </Link>
+    </button>
   );
 }
