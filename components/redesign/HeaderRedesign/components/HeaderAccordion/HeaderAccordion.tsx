@@ -1,8 +1,8 @@
 import clsx from 'clsx';
-import Link from 'next/link';
 import IconDownArrow from '../../../../../icons/icon-arrow-down-redesign.svg';
 import { HeaderNavigationItem } from '../../../../../common/types';
 import { useDeviceSize, useOnScrollDirections } from '../../../../../common/hooks';
+import { SmartLink } from '../../../../SmartLink/SmartLink';
 
 export function HeaderAccordion({
   className,
@@ -71,12 +71,12 @@ export function HeaderAccordion({
                   className="header-accordion__list-item"
                   key={el.id}
                 >
-                  <Link
+                  <SmartLink
                     className="header-accordion__link"
                     href={el.link || ``}
                   >
                     {el.name}
-                  </Link>
+                  </SmartLink>
                 </li>
               ))}
             </ul>

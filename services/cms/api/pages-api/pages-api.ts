@@ -5,11 +5,11 @@ import {
   SharedSeoComponent,
   Seo,
   NavigationListResponse,
-} from "../../../common/types";
-import { cmsFetch } from "./http-client";
-import { mapBlockResponseByType } from "../utils/mapBlockResponseByType";
-import { AppRoute } from "../../../common/enums";
-import { BlockApi } from "../../../common/types/blocks/api-block";
+} from "../../../../common/types";
+import { cmsFetch } from "../http-client";
+import { mapBlockResponseByType } from "../../utils/mapBlockResponseByType";
+import { AppRoute } from "../../../../common/enums";
+import { BlockApi } from "../../../../common/types/blocks/api-block";
 
 export async function getPageData({
   locale,
@@ -22,7 +22,9 @@ export async function getPageData({
 }): Promise<Page | null> {
   const generalQueryParams = {
     populate: `all`,
-    locale,
+    locale: locale === `zh`
+      ? `en`
+      : locale,
     status,
   };
 

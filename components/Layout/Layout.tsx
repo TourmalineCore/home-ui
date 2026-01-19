@@ -2,15 +2,18 @@ import clsx from 'clsx';
 import { ReactNode, useRef } from 'react';
 import { useRouter } from 'next/router';
 import { Footer } from '../Footer/Footer';
-import { Header } from '../Header/Header';
 import { SkipLink } from '../SkipLink/SkipLink';
 import { isChineseLanguage } from '../../common/utils';
+import { HeaderRedesign } from '../redesign/HeaderRedesign/HeaderRedesign';
+import { HeaderRedesignProps } from '../../common/types';
 
 export function Layout({
   children,
+  headerContent,
   mainClassName,
 }: {
   children: ReactNode;
+  headerContent: HeaderRedesignProps;
   mainClassName?: string;
 }) {
   const {
@@ -27,7 +30,13 @@ export function Layout({
       <SkipLink
         mainElementRef={mainElementRef}
       />
-      <Header />
+      <HeaderRedesign
+        navigationLists={headerContent.navigationLists}
+        buttonLabel={headerContent.buttonLabel}
+        emailCaption={headerContent.emailCaption}
+        emailAddress={headerContent.emailAddress}
+        socialLinks={headerContent.socialLinks}
+      />
       <main
         id="main-content"
         ref={mainElementRef}

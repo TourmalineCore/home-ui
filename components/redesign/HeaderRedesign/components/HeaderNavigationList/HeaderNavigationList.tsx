@@ -1,9 +1,9 @@
-import Link from "next/link";
 import clsx from "clsx";
 import { useState } from "react";
 import { HeaderAccordion } from "../HeaderAccordion/HeaderAccordion";
 import { HeaderRedesignProps } from "../../../../../common/types";
 import { useDeviceSize } from "../../../../../common/hooks";
+import { SmartLink } from "../../../../SmartLink/SmartLink";
 
 export function HeaderNavigationList({
   className,
@@ -62,12 +62,12 @@ export function HeaderNavigationList({
             className="header-navigation-list__list-item"
             key={el.id}
           >
-            <Link
+            <SmartLink
               className="header-navigation-list__link"
               href={el.link || ``}
             >
               {el.name}
-            </Link>
+            </SmartLink>
           </li>
         )))}
       </ul>
