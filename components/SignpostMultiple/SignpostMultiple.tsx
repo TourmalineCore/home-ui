@@ -36,7 +36,7 @@ export function SignpostMultiple({
           title: signpostTitle,
           subtitle,
           link,
-          imageUrl,
+          imageWithBlurDataURL,
         }) => (
           <li
             key={signpostTitle}
@@ -50,7 +50,7 @@ export function SignpostMultiple({
               title={signpostTitle}
               subtitle={subtitle}
               link={link}
-              imageUrl={imageUrl}
+              imageWithBlurDataURL={imageWithBlurDataURL}
             />
           </li>
         ))}

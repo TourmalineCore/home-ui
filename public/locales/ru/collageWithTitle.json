@@ -1,14 +1,41 @@
 {
   "title": "Делимся опытом и\u00A0знаниями",
-  "imageUrls": [
-    "/images/experience-image-1.png",
-    "/images/experience-image-2.png",
-    "/images/experience-image-3.png",
-    "/images/experience-image-4.png",
-    "/images/experience-image-5.png",
-    "/images/experience-image-6.png",
-    "/images/experience-image-7.png",
-    "/images/experience-image-8.png",
-    "/images/experience-image-9.png"
+  "imagesWithBlurDataURL": [
+    {
+      "url": "/images/experience-image-1.png",
+      "blurDataURL": ""
+    },
+    {
+      "url": "/images/experience-image-2.png",
+      "blurDataURL": ""
+    },
+    {
+      "url": "/images/experience-image-3.png",
+      "blurDataURL": ""
+    },
+    {
+      "url": "/images/experience-image-4.png",
+      "blurDataURL": ""
+    },
+    {
+      "url": "/images/experience-image-5.png",
+      "blurDataURL": ""
+    },
+    {
+      "url": "/images/experience-image-6.png",
+      "blurDataURL": ""
+    },
+    {
+      "url": "/images/experience-image-7.png",
+      "blurDataURL": ""
+    },
+    {
+      "url": "/images/experience-image-8.png",
+      "blurDataURL": ""
+    },
+    {
+      "url": "/images/experience-image-9.png",
+      "blurDataURL": ""
+    }
   ]
 }

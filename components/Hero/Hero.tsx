@@ -6,9 +6,12 @@ export function Hero({
   description,
   media,
 }: Omit<HeroBlock, '__component' | 'id'>) {
-  const imageUrls = (media || [])
+  const imagesWithBlurDataURL = (media || [])
     .filter((item) => item.mime?.startsWith(`image`))
-    .map((item) => item.url);
+    .map((item) => ({
+      url: item.url,
+      blurDataURL: item.blurDataURL!,
+    }));
 
   const isVideo = media?.[0].mime?.startsWith(`video`);
   const videoUrl = media?.[0].url;
@@ -21,7 +24,7 @@ export function Hero({
       <div className="container-redesign hero__wrapper">
         <h1 className="hero__title">{title}</h1>
         {description && <p className="hero__description">{description}</p>}
-        {(isVideo || imageUrls.length > 0) && (
+        {(isVideo || imagesWithBlurDataURL.length > 0) && (
           <div className="hero__media">
             {isVideo ? (
               <video
@@ -33,11 +36,8 @@ export function Hero({
               />
             ) : (
               <ImageSlider
-                imageUrls={imageUrls}
-                fill
+                imagesWithBlurDataURL={imagesWithBlurDataURL}
                 interval={1600}
-                priority
-                alt=""
               />
             )}
           </div>

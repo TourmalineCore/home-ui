@@ -1,4 +1,6 @@
 {
-  "imageUrl": "/images/heisenbug.png"
+  "imageWithBlurDataURL": {
+    "url": "/images/heisenbug.png"
+  }
 }
 

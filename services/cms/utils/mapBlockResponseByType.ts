@@ -8,39 +8,61 @@ import {
   HeroBlock,
 } from "../../../common/types";
 import { BlockApi } from "../../../common/types/blocks/api-block";
+import { generateBlurDataURL } from "./generateBlurDataURL";
 
-export function mapBlockResponseByType(block: BlockApi): Block | null {
+export async function mapBlockResponseByType(block: BlockApi): Promise<Block | null> {
   const component = block.__component;
 
   if (component === BlockType.SHARED_HERO) {
+    const media = block.media?.[0].mime?.startsWith(`video`)
+      ? block.media
+      : await Promise.all(
+        (block.media || []).map(async (image) => ({
+          url: image.url || ``,
+          mime: image.mime,
+          blurDataURL: await generateBlurDataURL({
+            image,
+          }),
+        })),
+      );
+
     return {
       __component: BlockType.SHARED_HERO,
       id: block.id,
       title: block.title || ``,
       description: block.description,
-      media: block.media as HeroBlock['media'],
+      media: media as HeroBlock['media'],
     };
   }
 
   if (component === BlockType.SHARED_FEATURED_CARDS_LIST) {
-    const featuredCards = block.featuredCards?.map((card) => ({
-      id: card.id,
-      type: card.type,
-      theme: card.cardWithPoints?.theme || card.cardWithImage?.theme || null,
-      title: card.wideCard?.title || card.cardWithPoints?.title || null,
-      points: card.cardWithPoints?.points?.map(({
-        text,
-      }) => text) || null,
-      link: card.cardWithPoints?.link || card.wideCard?.link || null,
-      imageUrl: card.cardWithImage?.image?.url || null,
-      description: card.wideCard?.description || null,
-      wideCardItems: card.wideCard?.wideCardItems?.map((item) => ({
-        id: item.id,
-        name: item.name || ``,
-        link: item.link,
-        icon: item.icon?.url || null,
-      })) || null,
-    }));
+    const featuredCards = await Promise.all(
+      (block.featuredCards || []).map(async (card) => ({
+        id: card.id,
+        type: card.type,
+        theme: card.cardWithPoints?.theme || card.cardWithImage?.theme || null,
+        title: card.wideCard?.title || card.cardWithPoints?.title || null,
+        points: card.cardWithPoints?.points?.map(({
+          text,
+        }) => text) || null,
+        link: card.cardWithPoints?.link || card.wideCard?.link || null,
+        ...(card.cardWithImage?.image?.url && {
+          imageWithBlurDataURL: {
+            url: card.cardWithImage.image.url,
+            blurDataURL: await generateBlurDataURL({
+              image: card.cardWithImage.image,
+            }),
+          },
+        }),
+        description: card.wideCard?.description || null,
+        wideCardItems: card.wideCard?.wideCardItems?.map((item) => ({
+          id: item.id,
+          name: item.name || ``,
+          link: item.link,
+          icon: item.icon?.url || null,
+        })) || null,
+      })),
+    );
 
     return {
       __component: BlockType.SHARED_FEATURED_CARDS_LIST,
@@ -52,40 +74,63 @@ export function mapBlockResponseByType(block: BlockApi): Block | null {
   }
 
   if (component === BlockType.SHARED_COLLAGE_WITH_TITLE) {
+    const imagesWithBlurDataURL = await Promise.all(
+      (block.images || []).map(async (image) => ({
+        url: image.url || ``,
+        blurDataURL: await generateBlurDataURL({
+          image,
+        }),
+      })),
+    );
+
     return {
       __component: BlockType.SHARED_COLLAGE_WITH_TITLE,
       id: block.id,
       title: block.title || ``,
-      imageUrls: block.images?.map(({
-        url,
-      }) => url || ``) || [],
+      imagesWithBlurDataURL,
     };
   }
 
   if (component === BlockType.SHARED_COLLAGE_WITH_LINK) {
+    const imagesWithBlurDataURL = await Promise.all(
+      (block.images || []).map(async (image) => ({
+        url: image.url || ``,
+        blurDataURL: await generateBlurDataURL({
+          image,
+        }),
+      })),
+    );
+
     return {
       __component: BlockType.SHARED_COLLAGE_WITH_LINK,
       id: block.id,
       text: block.link?.text || ``,
       link: block.link?.url || ``,
-      imageUrls: block.images?.map(({
-        url,
-      }) => url || ``) || [],
+      imagesWithBlurDataURL,
     };
   }
 
   if (component === BlockType.SHARED_SIGNPOST_MULTIPLE) {
+    const signposts = await Promise.all(
+      (block.signposts || []).map(async (signpost) => ({
+        title: signpost.title || ``,
+        subtitle: signpost.subtitle,
+        link: signpost.link,
+        imageWithBlurDataURL: {
+          url: signpost.image?.url || ``,
+          blurDataURL: await generateBlurDataURL({
+            image: signpost.image,
+          }),
+        },
+      })),
+    );
+
     return {
       __component: BlockType.SHARED_SIGNPOST_MULTIPLE,
       id: block.id,
       title: block.title,
       viewAllLink: block.link as SignpostMultipleBlock['viewAllLink'],
-      signposts: block.signposts?.map((signpost) => ({
-        title: signpost.title || ``,
-        subtitle: signpost.subtitle,
-        link: signpost.link,
-        imageUrl: signpost.image?.url || ``,
-      })) || [],
+      signposts,
     };
   }
 
@@ -93,40 +138,73 @@ export function mapBlockResponseByType(block: BlockApi): Block | null {
     return {
       __component: BlockType.SHARED_SINGLE_IMAGE,
       id: block.id,
-      imageUrl: block.image?.url || ``,
+      imageWithBlurDataURL: {
+        url: block.image?.url || ``,
+        blurDataURL: await generateBlurDataURL({
+          image: block.image,
+        }),
+      },
     };
   }
 
   if (component === BlockType.SHARED_THREE_COLUMN_GRID) {
-    return {
-      __component: BlockType.SHARED_THREE_COLUMN_GRID,
-      id: block.id,
-      columns: block.columnsWithContent?.map((column) => ({
+    const columns = await Promise.all(
+      (block.columnsWithContent || []).map(async (column) => ({
         id: column.id,
         type: column.type,
         columnWithImage: {
           ...column.columnWithImage,
-          imageUrl: column.columnWithImage?.image?.url || ``,
+          imageWithBlurDataURL: {
+            url: column.columnWithImage?.image?.url || ``,
+            blurDataURL: await generateBlurDataURL({
+              image: column.columnWithImage?.image,
+            }),
+          },
         },
         columnWithRepositories: column.columnWithRepositories,
         columnWithTextAndDate: column.columnWithTextAndDate,
-      })) as Column[] || [],
+      })),
+    );
+
+    return {
+      __component: BlockType.SHARED_THREE_COLUMN_GRID,
+      id: block.id,
+      columns: columns as Column[],
     };
   }
 
   if (component === BlockType.SHARED_SHOWCASE_GRID) {
+    const showcaseColumns = await Promise.all(
+      (block.showcaseColumns || []).map(async (column) => ({
+        id: column.id,
+        type: column.type,
+        showcaseColumnWithMedia: column.showcaseColumnWithMedia ? {
+          title: column.showcaseColumnWithMedia.title,
+          description: column.showcaseColumnWithMedia.description,
+          media: {
+            url: column.showcaseColumnWithMedia.media?.url || ``,
+            mime: column.showcaseColumnWithMedia.media?.mime || ``,
+            ...(column.showcaseColumnWithMedia.media?.mime?.startsWith(`image`) && {
+              blurDataURL: await generateBlurDataURL({
+                image: column.showcaseColumnWithMedia?.media,
+              }),
+            }),
+          },
+          link: column.showcaseColumnWithMedia.link,
+          isNda: column.showcaseColumnWithMedia.isNda,
+          size: column.showcaseColumnWithMedia.size,
+        } : null,
+        showcaseColumnWithMarkdown: column.showcaseColumnWithMarkdown || null,
+      })),
+    );
+
     return {
       __component: BlockType.SHARED_SHOWCASE_GRID,
       id: block.id,
       showOnMobile: block.showOnMobile!,
       title: block.title,
       anchorId: block.anchorId,
-      showcaseColumns: block.showcaseColumns?.map((column) => ({
-        id: column.id,
-        type: column.type,
-        showcaseColumnWithMedia: column.showcaseColumnWithMedia || null,
-        showcaseColumnWithMarkdown: column.showcaseColumnWithMarkdown || null,
-      })) as ShowcaseGridBlock['showcaseColumns'] || [],
+      showcaseColumns: showcaseColumns as ShowcaseGridBlock['showcaseColumns'] || [],
     };
   }
   return null;

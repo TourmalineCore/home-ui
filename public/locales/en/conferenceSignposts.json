@@ -3,22 +3,30 @@
   "viewAllLink": null,
   "signposts": [
     {
-      "imageUrl": "/images/conference-1.png",
+      "imageWithBlurDataURL": {
+        "url": "/images/conference-1.png"
+      },
       "title": "Testing and automating an open-source site for Chelyabinsk Zoo using TDD",
       "subtitle": "Heisenbug 2025"
     },
     {
-      "imageUrl": "/images/conference-2.png",
+      "imageWithBlurDataURL": {
+        "url": "/images/conference-2.png"
+      },
       "title": "Software Licenses: theory that saves you from financial disasters",
       "subtitle": "C++ Russia 2025"
     },
     {
-      "imageUrl": "/images/conference-3.png",
+      "imageWithBlurDataURL": {
+        "url": "/images/conference-3.png"
+      },
       "title": "Launching a cloud product in Kubernetes on a developer's laptop, in production, and on the client's hardware",
       "subtitle": "DevOops 2024"
     },
     {
-      "imageUrl": "/images/conference-4.png",
+      "imageWithBlurDataURL": {
+        "url": "/images/conference-4.png"
+      },
       "title": "Practical application of Dev Containers",
       "subtitle": "С++ Russia 2023"
     }

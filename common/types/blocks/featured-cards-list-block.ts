@@ -1,4 +1,5 @@
 import { BlockType } from "../../enums";
+import { ImagesWithBlurDataURL } from "../shared";
 import { BaseBlock } from "./base-block";
 
 export interface FeaturedCardsListBlock extends BaseBlock<BlockType.SHARED_FEATURED_CARDS_LIST> {
@@ -24,7 +25,7 @@ export interface Points {
 
 export interface ImageCard {
   theme: Theme;
-  imageUrl?: string;
+  imageWithBlurDataURL?: ImagesWithBlurDataURL;
 }
 
 export interface WideCardProps {

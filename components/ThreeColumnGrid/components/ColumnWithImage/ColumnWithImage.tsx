@@ -1,12 +1,13 @@
-import Image from 'next/image';
 import clsx from 'clsx';
 import { ColumnWithContent } from '../../../ColumnWithContent/ColumnWithContent';
 import { ColumnWithImageProps } from '../../../../common/types';
 
+import { ImageWithBlur } from '../../../ImageWithBlur/ImageWithBlur';
+
 export function ColumnWithImage({
   title,
   markdownText,
-  imageUrl,
+  imageWithBlurDataURL,
   className,
 }: ColumnWithImageProps & {
   className: string;
@@ -18,10 +19,9 @@ export function ColumnWithImage({
       className={clsx(`column-with-image`, className)}
     >
       <div className="column-with-image__image">
-        <Image
-          src={imageUrl}
-          fill
-          alt=""
+        <ImageWithBlur
+          src={imageWithBlurDataURL.url}
+          blurDataURL={imageWithBlurDataURL.blurDataURL}
         />
       </div>
     </ColumnWithContent>

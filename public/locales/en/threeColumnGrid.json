@@ -5,7 +5,10 @@
       "type": "image",
       "columnWithImage": {  
         "title": "We teach\n at the university",
-        "imageUrl": "/images/teach-at-the-university.png",
+        "imageWithBlurDataURL": {
+          "url": "/images/teach-at-the-university.png",
+          "blurDataURL": ""
+        },
         "markdownText": "We talk about the\u00A0basics of\u00A0web architecture and\u00A0extreme approaches to\u00A0development in\u00A0class"
       }
     },

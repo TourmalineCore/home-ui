@@ -1,12 +1,12 @@
-import Image, { ImageProps } from 'next/image';
 import { useEffect, useState } from 'react';
+import { ImageWithBlur } from '../ImageWithBlur/ImageWithBlur';
+import { ImagesWithBlurDataURL } from '../../common/types';
 
 export function ImageSlider({
-  imageUrls,
+  imagesWithBlurDataURL,
   interval,
-  ...imageProps
-}: Omit<ImageProps, 'src'> & {
-  imageUrls: string[];
+}: {
+  imagesWithBlurDataURL: ImagesWithBlurDataURL[];
   interval: number;
 }) {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -14,18 +14,17 @@ export function ImageSlider({
   useEffect(() => {
     const timer = setInterval(() => {
       setTimeout(() => {
-        setCurrentIndex((prevIndex) => (prevIndex === imageUrls.length - 1 ? 0 : prevIndex + 1));
+        setCurrentIndex((prevIndex) => (prevIndex === imagesWithBlurDataURL.length - 1 ? 0 : prevIndex + 1));
       }, 500);
     }, interval);
 
     return () => clearInterval(timer);
-  }, [imageUrls.length, interval]);
+  }, [imagesWithBlurDataURL.length, interval]);
 
   return (
-    <Image
-      src={imageUrls[currentIndex]}
-      {...imageProps}
-      alt=""
+    <ImageWithBlur
+      src={imagesWithBlurDataURL[currentIndex].url}
+      blurDataURL={imagesWithBlurDataURL[currentIndex].blurDataURL}
     />
   );
 }

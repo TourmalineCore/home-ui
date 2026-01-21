@@ -23,7 +23,9 @@
     },
     {
       "id": 2,
-      "imageUrl": "/images/services-card.png",
+      "imageWithBlurDataURL": {
+        "url": "/images/services-card.png"
+      },
       "theme": "blue",
       "type": "image"
     },
@@ -73,7 +75,9 @@
     },
     {
       "id": 8,
-      "imageUrl": "/images/services-card-2.png",
+      "imageWithBlurDataURL": {
+        "url": "/images/services-card-2.png"
+      },
       "theme": "blue",
       "type": "image"
     },

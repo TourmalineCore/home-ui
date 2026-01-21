@@ -9,4 +9,5 @@ export interface HeroBlock extends BaseBlock<BlockType.SHARED_HERO> {
 export interface MediaProps {
   url: string;
   mime: string;
+  blurDataURL?: string;
 }

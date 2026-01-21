@@ -139,13 +139,16 @@
     }
   }
 
-  &--blue {
+  &--image {
     display: none;
-    background-color: $color-deep-blue-redesign;
 
     @include desktop {
       display: block;
     }
+  }
+
+  &--blue {
+    background-color: $color-deep-blue-redesign;
   }
 
   &--grey {
