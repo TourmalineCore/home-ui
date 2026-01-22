@@ -13,8 +13,7 @@ export function Hero({
       blurDataURL: item.blurDataURL!,
     }));
 
-  const isVideo = media?.[0].mime?.startsWith(`video`);
-  const videoUrl = media?.[0].url;
+  const isVideo = media?.[0]?.mime?.startsWith(`video`);
 
   return (
     <section
@@ -28,7 +27,7 @@ export function Hero({
           <div className="hero__media">
             {isVideo ? (
               <video
-                src={videoUrl}
+                src={media![0].url}
                 playsInline
                 loop
                 muted
