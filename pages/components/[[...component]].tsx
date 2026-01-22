@@ -69,7 +69,7 @@ export default function ComponentsPage({
     return (
       <CollageWithTitle
         title={collageWithTitle.title}
-        imagesWithBlurDataURL={collageWithLink.imagesWithBlurDataURL}
+        imagesWithBlurDataURL={collageWithTitle.imagesWithBlurDataURL}
       />
     );
   }
