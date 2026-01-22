@@ -32,7 +32,7 @@ export function FeaturedCardsList({
           link,
           theme,
           wideCardItems,
-          imageUrl,
+          imageWithBlurDataURL,
           type,
         }) => (
           <FeaturedCard
@@ -42,7 +42,7 @@ export function FeaturedCardsList({
             points={points}
             link={link}
             theme={theme}
-            imageUrl={imageUrl}
+            imageWithBlurDataURL={imageWithBlurDataURL}
             type={type}
             wideCardItems={wideCardItems}
           />

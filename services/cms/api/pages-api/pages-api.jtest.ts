@@ -5,6 +5,10 @@ import { getPageData } from './pages-api';
 jest.mock(`@/services/cms/api/http-client`);
 const mockedApiFetch = jest.mocked(cmsFetch);
 
+jest.mock(`plaiceholder`, () => ({
+  getPlaiceholder: jest.fn(),
+}));
+
 describe(`getPageData`, () => {
   beforeEach(() => {
     jest.clearAllMocks();

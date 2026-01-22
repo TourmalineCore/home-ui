@@ -72,7 +72,7 @@ type PageResponse = HomepageResponse | null | {
   };
 };
 
-function mapPageResponse(response: PageResponse): Page {
+async function mapPageResponse(response: PageResponse): Promise<Page> {
   if (!response?.data) {
     return {
       blocks: [],
@@ -87,15 +87,16 @@ function mapPageResponse(response: PageResponse): Page {
   const {
     data,
   } = response;
-
   const {
     seo, blocks,
   } = data;
 
+  const mappedBlocks = await Promise.all(
+    blocks.map(async (block) => mapBlockResponseByType(block)),
+  );
+
   return {
-    blocks: blocks
-      .map((block) => mapBlockResponseByType(block))
-      .filter((mappedBlock) => mappedBlock !== null),
+    blocks: mappedBlocks.filter((mappedBlock) => mappedBlock !== null),
     seo: mapSeoResponse(seo),
   };
 }

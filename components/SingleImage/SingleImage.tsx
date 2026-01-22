@@ -1,8 +1,8 @@
-import Image from 'next/image';
 import { SingleImageBlock } from '../../common/types';
+import { ImageWithBlur } from '../ImageWithBlur/ImageWithBlur';
 
 export function SingleImage({
-  imageUrl,
+  imageWithBlurDataURL,
 }: Omit<SingleImageBlock, "__component">) {
   return (
     <section
@@ -10,10 +10,9 @@ export function SingleImage({
       data-testid="single-image"
     >
       <div className="single-image__container">
-        <Image
-          src={imageUrl}
-          fill
-          alt=""
+        <ImageWithBlur
+          src={imageWithBlurDataURL.url}
+          blurDataURL={imageWithBlurDataURL.blurDataURL}
         />
       </div>
     </section>
