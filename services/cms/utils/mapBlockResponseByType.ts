@@ -171,8 +171,8 @@ async function mapMediaArray(medias: any): Promise<{ url: string; mime: string; 
       }
 
       return {
-        url: media.url || ``,
-        mime: media.mime || ``,
+        url: media?.url || ``,
+        mime: media?.mime || ``,
         blurDataURL: await generateBlurDataURL({
           image: media,
         }),
@@ -183,7 +183,7 @@ async function mapMediaArray(medias: any): Promise<{ url: string; mime: string; 
 
 async function mapImageWithBlur(image: any): Promise<{ url: string; blurDataURL: string; }> {
   return {
-    url: image.url || ``,
+    url: image?.url || ``,
     blurDataURL: await generateBlurDataURL({
       image,
     }),
