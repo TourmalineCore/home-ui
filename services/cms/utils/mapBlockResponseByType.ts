@@ -14,24 +14,12 @@ export async function mapBlockResponseByType(block: BlockApi): Promise<Block | n
   const component = block.__component;
 
   if (component === BlockType.SHARED_HERO) {
-    const media = block.media?.[0].mime?.startsWith(`video`)
-      ? block.media
-      : await Promise.all(
-        (block.media || []).map(async (image) => ({
-          url: image.url || ``,
-          mime: image.mime,
-          blurDataURL: await generateBlurDataURL({
-            image,
-          }),
-        })),
-      );
-
     return {
       __component: BlockType.SHARED_HERO,
       id: block.id,
       title: block.title || ``,
       description: block.description,
-      media: media as HeroBlock['media'],
+      media: await mapMediaArray(block.media) as HeroBlock['media'],
     };
   }
 
@@ -47,12 +35,7 @@ export async function mapBlockResponseByType(block: BlockApi): Promise<Block | n
         }) => text) || null,
         link: card.cardWithPoints?.link || card.wideCard?.link || null,
         ...(card.cardWithImage?.image?.url && {
-          imageWithBlurDataURL: {
-            url: card.cardWithImage.image.url,
-            blurDataURL: await generateBlurDataURL({
-              image: card.cardWithImage.image,
-            }),
-          },
+          imageWithBlurDataURL: await mapImageWithBlur(card.cardWithImage.image),
         }),
         description: card.wideCard?.description || null,
         wideCardItems: card.wideCard?.wideCardItems?.map((item) => ({
@@ -69,44 +52,26 @@ export async function mapBlockResponseByType(block: BlockApi): Promise<Block | n
       id: block.id,
       title: block.title,
       anchorId: block.anchorId,
-      cards: featuredCards as FeaturedCardProps[] || [],
+      cards: featuredCards as FeaturedCardProps[],
     };
   }
 
   if (component === BlockType.SHARED_COLLAGE_WITH_TITLE) {
-    const imagesWithBlurDataURL = await Promise.all(
-      (block.images || []).map(async (image) => ({
-        url: image.url || ``,
-        blurDataURL: await generateBlurDataURL({
-          image,
-        }),
-      })),
-    );
-
     return {
       __component: BlockType.SHARED_COLLAGE_WITH_TITLE,
       id: block.id,
       title: block.title || ``,
-      imagesWithBlurDataURL,
+      imagesWithBlurDataURL: await mapMediaArray(block.images),
     };
   }
 
   if (component === BlockType.SHARED_COLLAGE_WITH_LINK) {
-    const imagesWithBlurDataURL = await Promise.all(
-      (block.images || []).map(async (image) => ({
-        url: image.url || ``,
-        blurDataURL: await generateBlurDataURL({
-          image,
-        }),
-      })),
-    );
-
     return {
       __component: BlockType.SHARED_COLLAGE_WITH_LINK,
       id: block.id,
       text: block.link?.text || ``,
       link: block.link?.url || ``,
-      imagesWithBlurDataURL,
+      imagesWithBlurDataURL: await mapMediaArray(block.images),
     };
   }
 
@@ -116,12 +81,7 @@ export async function mapBlockResponseByType(block: BlockApi): Promise<Block | n
         title: signpost.title || ``,
         subtitle: signpost.subtitle,
         link: signpost.link,
-        imageWithBlurDataURL: {
-          url: signpost.image?.url || ``,
-          blurDataURL: await generateBlurDataURL({
-            image: signpost.image,
-          }),
-        },
+        imageWithBlurDataURL: await mapImageWithBlur(signpost.image),
       })),
     );
 
@@ -138,12 +98,7 @@ export async function mapBlockResponseByType(block: BlockApi): Promise<Block | n
     return {
       __component: BlockType.SHARED_SINGLE_IMAGE,
       id: block.id,
-      imageWithBlurDataURL: {
-        url: block.image?.url || ``,
-        blurDataURL: await generateBlurDataURL({
-          image: block.image,
-        }),
-      },
+      imageWithBlurDataURL: await mapImageWithBlur(block.image),
     };
   }
 
@@ -154,12 +109,7 @@ export async function mapBlockResponseByType(block: BlockApi): Promise<Block | n
         type: column.type,
         columnWithImage: {
           ...column.columnWithImage,
-          imageWithBlurDataURL: {
-            url: column.columnWithImage?.image?.url || ``,
-            blurDataURL: await generateBlurDataURL({
-              image: column.columnWithImage?.image,
-            }),
-          },
+          imageWithBlurDataURL: await mapImageWithBlur(column.columnWithImage?.image),
         },
         columnWithRepositories: column.columnWithRepositories,
         columnWithTextAndDate: column.columnWithTextAndDate,
@@ -204,8 +154,38 @@ export async function mapBlockResponseByType(block: BlockApi): Promise<Block | n
       showOnMobile: block.showOnMobile!,
       title: block.title,
       anchorId: block.anchorId,
-      showcaseColumns: showcaseColumns as ShowcaseGridBlock['showcaseColumns'] || [],
+      showcaseColumns: showcaseColumns as ShowcaseGridBlock['showcaseColumns'],
     };
   }
+
   return null;
+}
+
+async function mapMediaArray(medias: any): Promise<{ url: string; mime: string; blurDataURL: string; }[]> {
+  if (!medias) return [];
+
+  return Promise.all(
+    medias.map(async (media: any) => {
+      if (media.mime?.startsWith(`video`)) {
+        return media;
+      }
+
+      return {
+        url: media.url || ``,
+        mime: media.mime || ``,
+        blurDataURL: await generateBlurDataURL({
+          image: media,
+        }),
+      };
+    }),
+  );
+}
+
+async function mapImageWithBlur(image: any): Promise<{ url: string; blurDataURL: string; }> {
+  return {
+    url: image.url || ``,
+    blurDataURL: await generateBlurDataURL({
+      image,
+    }),
+  };
 }
