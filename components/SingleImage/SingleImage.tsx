@@ -11,8 +11,8 @@ export function SingleImage({
     >
       <div className="single-image__container">
         <ImageWithBlur
-          src={imageWithBlurDataURL.url}
-          blurDataURL={imageWithBlurDataURL.blurDataURL}
+          src={imageWithBlurDataURL?.url}
+          blurDataURL={imageWithBlurDataURL?.blurDataURL}
         />
       </div>
     </section>

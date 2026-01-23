@@ -36,8 +36,8 @@ export function ShowcaseColumnWithMedia({
           {
             media.mime.startsWith(`image`) ? (
               <ImageWithBlur
-                src={media.url}
-                blurDataURL={media.blurDataURL}
+                src={media?.url}
+                blurDataURL={media?.blurDataURL}
               />
             ) : (
               <video
