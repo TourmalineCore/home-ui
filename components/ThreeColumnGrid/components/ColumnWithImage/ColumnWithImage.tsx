@@ -20,8 +20,8 @@ export function ColumnWithImage({
     >
       <div className="column-with-image__image">
         <ImageWithBlur
-          src={imageWithBlurDataURL.url}
-          blurDataURL={imageWithBlurDataURL.blurDataURL}
+          src={imageWithBlurDataURL?.url}
+          blurDataURL={imageWithBlurDataURL?.blurDataURL}
         />
       </div>
     </ColumnWithContent>

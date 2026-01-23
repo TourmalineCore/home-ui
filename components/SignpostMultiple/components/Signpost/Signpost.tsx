@@ -27,8 +27,8 @@ export function Signpost({
       <>
         <div className="signpost__image-container">
           <ImageWithBlur
-            src={imageWithBlurDataURL.url}
-            blurDataURL={imageWithBlurDataURL.blurDataURL}
+            src={imageWithBlurDataURL?.url}
+            blurDataURL={imageWithBlurDataURL?.blurDataURL}
           />
         </div>
         <h3 className="signpost__title">

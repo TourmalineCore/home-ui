@@ -72,7 +72,7 @@ type PageResponse = HomepageResponse | null | {
   };
 };
 
-async function mapPageResponse(response: PageResponse): Promise<Page> {
+function mapPageResponse(response: PageResponse): Page {
   if (!response?.data) {
     return {
       blocks: [],
@@ -91,9 +91,7 @@ async function mapPageResponse(response: PageResponse): Promise<Page> {
     seo, blocks,
   } = data;
 
-  const mappedBlocks = await Promise.all(
-    blocks.map(async (block) => mapBlockResponseByType(block)),
-  );
+  const mappedBlocks = blocks.map((block) => mapBlockResponseByType(block));
 
   return {
     blocks: mappedBlocks.filter((mappedBlock) => mappedBlock !== null),

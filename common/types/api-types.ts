@@ -156,6 +156,7 @@ export interface SharedHeroComponent {
       documentId?: string;
     };
     folderPath?: string;
+    blurDataURL?: string;
     /** @format date-time */
     createdAt?: string;
     /** @format date-time */
@@ -207,6 +208,7 @@ export interface FeaturedCardCardWithImageComponent {
       documentId?: string;
     };
     folderPath?: string;
+    blurDataURL?: string;
     /** @format date-time */
     createdAt?: string;
     /** @format date-time */
@@ -279,6 +281,7 @@ export interface FeaturedCardWideCardItemsComponent {
       documentId?: string;
     };
     folderPath?: string;
+    blurDataURL?: string;
     /** @format date-time */
     createdAt?: string;
     /** @format date-time */
@@ -357,6 +360,7 @@ export interface SharedCollageWithTitleComponent {
       documentId?: string;
     };
     folderPath?: string;
+    blurDataURL?: string;
     /** @format date-time */
     createdAt?: string;
     /** @format date-time */
@@ -408,6 +412,7 @@ export interface SharedSignpostComponent {
       documentId?: string;
     };
     folderPath?: string;
+    blurDataURL?: string;
     /** @format date-time */
     createdAt?: string;
     /** @format date-time */
@@ -471,6 +476,7 @@ export interface SharedSingleImageComponent {
       documentId?: string;
     };
     folderPath?: string;
+    blurDataURL?: string;
     /** @format date-time */
     createdAt?: string;
     /** @format date-time */
@@ -523,6 +529,7 @@ export interface ColumnWithContentColumnWithImageComponent {
       documentId?: string;
     };
     folderPath?: string;
+    blurDataURL?: string;
     /** @format date-time */
     createdAt?: string;
     /** @format date-time */
@@ -620,6 +627,7 @@ export interface ShowcaseColumnShowcaseColumnWithMediaComponent {
       documentId?: string;
     };
     folderPath?: string;
+    blurDataURL?: string;
     /** @format date-time */
     createdAt?: string;
     /** @format date-time */
@@ -692,6 +700,7 @@ export interface SharedCollageWithLinkComponent {
       documentId?: string;
     };
     folderPath?: string;
+    blurDataURL?: string;
     /** @format date-time */
     createdAt?: string;
     /** @format date-time */
@@ -745,6 +754,7 @@ export interface SharedSeoComponent {
       documentId?: string;
     };
     folderPath?: string;
+    blurDataURL?: string;
     /** @format date-time */
     createdAt?: string;
     /** @format date-time */
