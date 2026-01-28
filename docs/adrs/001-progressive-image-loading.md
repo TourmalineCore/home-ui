@@ -236,7 +236,7 @@ Disadvantages:
 
 Rejected due to critical performance issues:
 
-1. Blocking operation (5-6 seconds delay)
+1. Blocking rendering (5-6 seconds delay)
 
 2. High load on the server with each rendering
 
