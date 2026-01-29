@@ -15,7 +15,7 @@ All tests must support concurrent parallel invocation. The only exception is end
 | E2E  | UI & CMS Integration   | No    | Yes    | Yes (?)   | Playwright |
 | Screenshot |   UI   | No    | No    | No    | Playwright |
 | Unit    | Requests to CMS (Preview mode, Filter, Sort)   | No    | No    | No    | Jest |
-| Accessability    |  UI Accessability | No    | No    | No    | Playwright, Axe-core |
+| Accessibility    |  UI Accessibility | No    | No    | No    | Playwright, Axe-core |
 
 ### E2E
 
@@ -83,3 +83,31 @@ We can check such functionality as e.g. calculations or requests to CMS (Preview
 
 #### What we don't test
 The work of the application as a whole and its UI. 
+
+### Accessibility Testing
+
+#### Why do we write these tests?
+We want our application to be accessible to all categories of users, including those with temporary and permanent limitations. Ensuring accessibility is an integral part of our development process, so we need to test it just like any other functionality. 
+
+#### When do we write these tests?
+Tests involving axe-core can be integrated at the start of the project to follow TDD approach.
+Tests on correct keyboard navigation and focus visibility are written after the page is ready, because we need all interactive elements to be present on the page to be able to test them.
+
+#### What we test
+1. Axe-core
+- sufficient color ratio
+- alt attributes
+- labels
+- etc. </br>
+These checks are based on [WCAG principles](https://www.w3.org/WAI/standards-guidelines/wcag/) level AA.
+
+2. Correct keyboard navigation
+3. Focus visibility of interactive elements
+
+#### What we don't test
+We don't autotest: 
+- work of screenreaders such as VoiceOver or NVDA,
+- usability
+- content
+
+These checks are done manually.
