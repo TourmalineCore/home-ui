@@ -65,3 +65,21 @@ We don't test components' behavior.
 
 ToDo
 - add link to the document with flow.
+
+
+### Unit Testing
+ToDo
+- How do we test the work of functions e.g. filtration? We can test the request with Jest unit tests, but seems like we are missing some kind of component testing? To make sure that this request is triggered on click.
+
+#### Why do we write these tests?
+Here we can test functionality which we don't normally test in E2E, because it may not be a part of happy path scenario, including edge cases. 
+These tests are easy to write and maintain, as well as faster and less demanding in terms of resources than E2E.
+
+#### When do we write these tests?
+Some minor functionality is too expensive to test in E2E. With unit tests we don't need to run CMS, database, and other extra dependencies. We can check such functionality in isolation. 
+
+#### What we test
+We can check such functionality as e.g. calculations or requests to CMS (Preview mode, Filter, Sort). 
+
+#### What we don't test
+The work of the application as a whole and its UI. 
