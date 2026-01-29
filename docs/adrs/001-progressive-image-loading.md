@@ -7,7 +7,7 @@ Proposed
 It is required to implement progressive image loading in a Next.js application using Strapi CMS. Progressive loading enhances the user experience by displaying a blurred version of the image before the full version is loaded.
 
 ## Decision
-Generating blurDataURL on the CMS side (Strapi)
+Generating blurDataURL on the CMS side (Strapi).
 
 ## Rationale
 
@@ -19,7 +19,7 @@ After analyzing both approaches, the option of generating blurDataURL on the CMS
 | **Generation on the CMS Side (Strapi)** | < 1 second | • Instant page load<br>• Generation happens once when the image is uploaded<br> | • Need modifying Strapi<br>• Additional dependency on the CMS
 
 
-## Realization
+## Implementation
 Since Strapi doesn't have built-in support for generating `blurDataURL`, we need to extend its functionality.
 
 Using the Strapi documentation on [extending plugins](https://docs.strapi.io/cms/plugins-development/plugins-extension#extending-a-plugins-interface), the following steps were taken.
@@ -36,7 +36,7 @@ plugin.contentTypes.file.schema.attributes.blurDataURL = {
 };
 ```
 
-3. A new service for generating blur was added. Blur image generation was also done using the [sharp](https://www.npmjs.com/package/sharp) package. 
+3. A new service for generating blur was added. Blur image generation was done using the [sharp](https://www.npmjs.com/package/sharp) package. 
 
 ```js
 plugin.services[`blur-generator`] = {
@@ -222,13 +222,13 @@ After implementation, the API response will include the `blurDataURL` field:
 
 Advantages:
 
-1. Improving UX: Users see content immediately, even with a slow internet connection.
+1. Improving UX: users see content immediately, even with a slow internet connection.
 
-2. No website loading issues: Generation is handled on the CMS side.
+2. No website loading issues: generation is handled on the CMS side.
 
 Disadvantages:
 
-1. Dependency on Strapi CMS: An additional dependency on the CMS arises. If a different CMS is used in the future, this functionality will need to be reimplemented for it.
+1. Dependency on Strapi CMS: an additional dependency on the CMS arises. If a different CMS is used in the future, this functionality will need to be reimplemented for it.
 
 ## Alternatives
 
