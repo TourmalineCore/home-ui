@@ -37,7 +37,31 @@ ToDo
 - We don't test ALL of the components in E2E - how can we be sure that data from CMS is mapped correctly? Screenshot testing is done with mocks, not real data. 
 - We don't test against Prod because it is too risky to lose client's data. It may be more or less safe to test Collection Types because we add a new entry and it doesn't affect the rest. But this is not the case with Single Types. So is this potentailly OK to test Collection but not Single types?
 
-
 #### What we don't test
 
 Edge cases with different deviations of input data.
+
+### Screenshot Testing
+
+#### Why do we write these tests?
+
+We aim at creating stable robust UI and want keep it under control when the project is growing. We want to make sure that new components or pages don't affect the existing ones.</br>
+We also want to test manually as little as possible, including the stage of design conformance.
+
+#### When do we write these tests?
+
+Everytime we start to write HTML and add styles for a component.</br>
+In case you need to update the component, you need to regenerate its screenshot so it was up-to-date with the component's new appearnace.
+
+#### What we test
+Components with static data.</br>
+If a component has several states, we can test them with screenshots, e.g. accordion in both collapsed and open state.</br>
+We test components on all regular breakpoints: mobile, tablet, tablet-xl, desktop, desktop-xl.
+
+#### What we don't test
+We don't test on real dynamic data as it is too unpredictable. </br>
+We also disable animations if they are present and disable autoplay for a video to make it static.</br>
+We don't test components' behavior.
+
+ToDo
+- add link to the document with flow.
