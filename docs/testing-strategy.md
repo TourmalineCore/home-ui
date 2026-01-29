@@ -62,10 +62,11 @@ We test components on all regular breakpoints: mobile, tablet, tablet-xl, deskto
 We don't test on real dynamic data as it is too unpredictable. </br>
 We also disable animations if they are present and disable autoplay for a video to make it static.</br>
 We don't test components' behavior.
+We dont test components between the breakpoints.
+We don't test in all browsers, only in Chrome.
 
 ToDo
 - add link to the document with flow.
-
 
 ### Unit Testing
 ToDo
