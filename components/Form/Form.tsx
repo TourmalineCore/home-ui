@@ -152,8 +152,8 @@ export function Form({
           sitekey={process.env.NEXT_PUBLIC_SMARTCAPTCHA_CLIENT_KEY as string}
           language={routerLocale === `ru` ? `ru` : `en`}
           onSuccess={handleCaptchaSuccess}
+          onChallengeHidden={() => setIsCaptchaVisible(false)}
           visible={isCaptchaVisible}
-          test
         />
       </div>
     </form>
