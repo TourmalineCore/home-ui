@@ -10,9 +10,9 @@ export function MobileMenu({
   emailCaption,
   emailAddress,
   socialLinks,
-  // setIsModalOpen,
+  setIsModalOpen,
 }: HeaderRedesignProps & {
-  // setIsModalOpen: (isOpen: boolean) => void;
+  setIsModalOpen: (isOpen: boolean) => void;
 }) {
   return (
     <div
@@ -27,8 +27,7 @@ export function MobileMenu({
       {buttonLabel && (
         <HeaderButton
           className="mobile-menu-redesign__button"
-          // ToDo: uncomment after editing the form
-          // onClick={setIsModalOpen}
+          onClick={setIsModalOpen}
         >
           {buttonLabel}
         </HeaderButton>

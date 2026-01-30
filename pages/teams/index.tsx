@@ -9,6 +9,9 @@ import { Stack } from '../../components/Stack/Stack';
 import { Cases } from '../../components/Cases/Cases';
 import { Stages } from '../../components/Stages/Stages';
 import { useScrollTop } from '../../common/hooks/useScrollTop';
+import { useIsRussianCountry } from '../../common/hooks';
+import { TechnologyPageAnchorLink } from '../../common/enums';
+import { FormBlock } from '../../components/FormBlock/FormBlock';
 import { getLayoutData } from '../../services/cms/api/layout-api/layout-api';
 import { loadTranslations } from '../../common/utils';
 import { LayoutData } from '../../common/types';
@@ -23,6 +26,8 @@ export default function TeamsPage({
   const {
     t,
   } = useTranslation(`common`);
+
+  const isCountryRus = useIsRussianCountry();
 
   useScrollTop({
     dependencies: [],
@@ -54,10 +59,12 @@ export default function TeamsPage({
         <Stack />
         <Cases />
         <Stages />
-        {/* <FormBlock
-          id={TechnologyPageAnchorLink.Contact}
-          buttonClassName="teams__form-button"
-        /> */}
+        {isCountryRus && (
+          <FormBlock
+            id={TechnologyPageAnchorLink.Contact}
+            buttonClassName="teams__form-button"
+          />
+        )}
       </Layout>
     </>
   );
