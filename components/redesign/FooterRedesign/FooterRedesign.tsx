@@ -1,5 +1,6 @@
 
 import { useRouter } from 'next/router';
+import { useEffect, useState } from 'react';
 import { FooterNavigationListRedesign } from './components/FooterNavigationListRedesign/FooterNavigationListRedesign';
 import { FooterRedesignProps } from '../../../common/types';
 import { useDeviceSize } from '../../../common/hooks';
@@ -9,6 +10,8 @@ export function FooterRedesign({
   emailAddress,
   navigationLists,
 }: FooterRedesignProps) {
+  const [currentYear, setCurrentYear] = useState<number | null>(null);
+
   const {
     locale,
   } = useRouter();
@@ -22,6 +25,11 @@ export function FooterRedesign({
   const footerNavigationStyle = {
     gridTemplateColumns: ` repeat(${isTabletXl ? colCount : 2}, auto)`,
   };
+
+  useEffect(() => {
+    setCurrentYear(new Date()
+      .getFullYear());
+  }, []);
 
   return (
     <footer
@@ -41,8 +49,7 @@ export function FooterRedesign({
         </div>
         <div className="footer-redesign__copyright">
           <span>
-            {`© 2019-${new Date()
-              .getFullYear()} Tourmaline Core`}
+            {`© 2019-${currentYear} Tourmaline Core`}
           </span>
           <a
             href={`/documents/policy-${locale}.pdf`}

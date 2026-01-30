@@ -24,6 +24,7 @@ export interface ShowcaseColumnWithMediaProps {
   media: {
     url: string;
     mime: string;
+    blurDataURL?: string;
   };
   link?: string;
   isNda?: boolean;

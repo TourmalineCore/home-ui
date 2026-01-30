@@ -1,9 +1,9 @@
-import Image from 'next/image';
 import { CollageWithTitleBlock } from '../../common/types';
+import { ImageWithBlur } from '../ImageWithBlur/ImageWithBlur';
 
 export function CollageWithTitle({
   title,
-  imageUrls,
+  imagesWithBlurDataURL,
 }: Omit<CollageWithTitleBlock, "__component">) {
   return (
     <section
@@ -12,16 +12,18 @@ export function CollageWithTitle({
     >
       <div className="collage-with-title__wrapper">
         <h2 className="container-redesign collage-with-title__title">{title}</h2>
-        {imageUrls.slice(0, 9)
-          .map((imageUrl, index) => (
+        {imagesWithBlurDataURL.slice(0, 9)
+          .map(({
+            url,
+            blurDataURL,
+          }, index) => (
             <div
-              key={imageUrl}
+              key={url}
               className={`collage-with-title__image collage-with-title__image--${index + 1}`}
             >
-              <Image
-                src={imageUrl}
-                fill
-                alt=""
+              <ImageWithBlur
+                src={url}
+                blurDataURL={blurDataURL}
               />
             </div>
           ))}

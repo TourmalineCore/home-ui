@@ -1,6 +1,6 @@
-import Image from 'next/image';
 import { ShowcaseColumnWithMediaProps } from '../../../../common/types';
 import { SmartLink } from '../../../SmartLink/SmartLink';
+import { ImageWithBlur } from '../../../ImageWithBlur/ImageWithBlur';
 
 export function ShowcaseColumnWithMedia({
   title,
@@ -35,10 +35,9 @@ export function ShowcaseColumnWithMedia({
           {isNda && <span className="showcase-column-with-media__nda">NDA</span>}
           {
             media.mime.startsWith(`image`) ? (
-              <Image
-                src={media.url}
-                fill
-                alt=""
+              <ImageWithBlur
+                src={media?.url}
+                blurDataURL={media?.blurDataURL}
               />
             ) : (
               <video

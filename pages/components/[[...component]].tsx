@@ -60,7 +60,7 @@ export default function ComponentsPage({
       <CollageWithLink
         text={collageWithLink.text}
         link={collageWithLink.link}
-        imageUrls={collageWithLink.imageUrls}
+        imagesWithBlurDataURL={collageWithLink.imagesWithBlurDataURL}
       />
     );
   }
@@ -69,7 +69,7 @@ export default function ComponentsPage({
     return (
       <CollageWithTitle
         title={collageWithTitle.title}
-        imageUrls={collageWithTitle.imageUrls}
+        imagesWithBlurDataURL={collageWithTitle.imagesWithBlurDataURL}
       />
     );
   }
@@ -173,7 +173,7 @@ export default function ComponentsPage({
   if (componentName === ComponentName.SINGLE_IMAGE) {
     return (
       <SingleImage
-        imageUrl={singleImage.imageUrl}
+        imageWithBlurDataURL={singleImage.imageWithBlurDataURL}
       />
     );
   }
@@ -183,7 +183,6 @@ export default function ComponentsPage({
       <FormBlockRedesign
         testId="form-block"
         isComponentPage
-
       />
     );
   }

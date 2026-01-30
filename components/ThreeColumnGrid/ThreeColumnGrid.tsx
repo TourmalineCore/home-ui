@@ -29,7 +29,7 @@ export function ThreeColumnGrid({
                   className="three-column-grid__card-with-image"
                   title={columnWithImage!.title}
                   markdownText={columnWithImage!.markdownText}
-                  imageUrl={columnWithImage!.imageUrl}
+                  imageWithBlurDataURL={columnWithImage!.imageWithBlurDataURL}
                 />
               )}
               {type === `repositories` && (
