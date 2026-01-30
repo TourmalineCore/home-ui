@@ -4,7 +4,6 @@ import Image from 'next/image';
 import { useTranslation } from 'next-i18next';
 import { FormRedesign } from '../FormRedesign/FormRedesign';
 import { sendEmail } from '../../../services/emailService/emailService';
-import { getMessageFromForm } from '../../../common/utils';
 import { useIsRussianCountry } from '../../../common/hooks';
 import { MarkdownText } from '../../MarkdownText/MarkdownText';
 
@@ -93,11 +92,16 @@ export function FormBlockRedesign({
     </section>
   );
 
-  async function onFormSubmit(formData: FormData) {
+  async function onFormSubmit({
+    formData,
+  }: {
+    formData: {
+      email: string;
+      name: string;
+      description: string;
+    }; }) {
     if (!isComponentPage) {
-      const messageSend = getMessageFromForm(formData);
-
-      await sendEmail(messageSend);
+      await sendEmail(formData);
       setIsSubmit(true);
     }
   }

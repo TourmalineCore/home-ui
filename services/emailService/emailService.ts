@@ -1,5 +1,7 @@
-export async function sendEmail(messageData: {
-  [key: string]: string;
+export async function sendEmail(formData: {
+  email: string;
+  name: string;
+  description: string;
 }) {
   try {
     await fetch(`/api/sendEmail`, {
@@ -10,8 +12,8 @@ export async function sendEmail(messageData: {
       body: JSON.stringify({
         to: process.env.NEXT_PUBLIC_TARGET_EMAIL,
         subject: `Text`,
-        message: `Email: ${messageData.email}\nИмя: ${messageData.name}\n\n${messageData.message ? `Описание задачи:\n${messageData.message}` : ``}`,
-        html: `Email: ${messageData.email}<br/>Имя: ${messageData.name}<br/><br/>${messageData.message ? `Описание задачи:<br/>${messageData.message}` : ``}`,
+        message: `Email: ${formData.email}\nИмя: ${formData.name}\n\n${formData.description ? `Описание задачи:\n${formData.description}` : ``}`,
+        html: `Email: ${formData.email}<br/>Имя: ${formData.name}<br/><br/>${formData.description ? `Описание задачи:<br/>${formData.description}` : ``}`,
       }),
     });
   } catch (error) {
