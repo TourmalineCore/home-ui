@@ -1,4 +1,5 @@
 import { BlockType } from "../../enums";
+import { ImagesWithBlurDataURL } from "../shared";
 import { BaseBlock } from "./base-block";
 
 export interface ThreeColumnGridBlock extends BaseBlock<BlockType.SHARED_THREE_COLUMN_GRID> {
@@ -14,7 +15,7 @@ export interface Column {
 }
 
 export interface ColumnWithImageProps extends ColumnWithContentProps {
-  imageUrl: string;
+  imageWithBlurDataURL: ImagesWithBlurDataURL;
 }
 
 export interface ColumnWithRepositoriesProps extends ColumnWithContentProps {

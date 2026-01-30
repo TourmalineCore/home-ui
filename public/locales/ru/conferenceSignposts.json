@@ -3,22 +3,30 @@
    "viewAllLink": null,
   "signposts": [
     {
-      "imageUrl": "/images/conference-1.png",
+      "imageWithBlurDataURL": {
+        "url": "/images/conference-1.png"
+      },
       "title": "Тестируем и автоматизируем open-source сайт для Челябинского зоопарка\u00A0по TDD",
       "subtitle": "Heisenbug 2025"
     },
     {
-      "imageUrl": "/images/conference-2.png",
+      "imageWithBlurDataURL": {
+        "url": "/images/conference-2.png"
+      },
       "title": "Лицензии ПО: теория, которая спасает\u00A0от финансовых катастроф",
       "subtitle": "C++ Russia 2025"
     },
     {
-      "imageUrl": "/images/conference-3.png",
+      "imageWithBlurDataURL": {
+        "url": "/images/conference-3.png"
+      },
       "title": "Запуск облачного продукта в Kubernetes на ноуте разработчика, в проде и на железе клиента",
       "subtitle": "DevOops 2024"
     },
     {
-      "imageUrl": "/images/conference-4.png",
+      "imageWithBlurDataURL": {
+        "url": "/images/conference-4.png"
+      },
       "title": "Практическое применение dev-контейнеров",
       "subtitle": "С++ Russia 2023"
     }

@@ -1,12 +1,12 @@
-import Image from 'next/image';
 import { SignpostProps } from '../../../../common/types';
 import { SmartLink } from '../../../SmartLink/SmartLink';
+import { ImageWithBlur } from '../../../ImageWithBlur/ImageWithBlur';
 
 export function Signpost({
   title,
   subtitle,
   link,
-  imageUrl,
+  imageWithBlurDataURL,
 }: SignpostProps) {
   return (
     <div className="signpost">
@@ -26,10 +26,9 @@ export function Signpost({
     return (
       <>
         <div className="signpost__image-container">
-          <Image
-            src={imageUrl}
-            fill
-            alt=""
+          <ImageWithBlur
+            src={imageWithBlurDataURL?.url}
+            blurDataURL={imageWithBlurDataURL?.blurDataURL}
           />
         </div>
         <h3 className="signpost__title">

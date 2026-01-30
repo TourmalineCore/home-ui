@@ -5,7 +5,10 @@
       "type":"image",
       "columnWithImage":{
         "title":"Преподаём\n в университете",
-        "imageUrl":"/images/teach-at-the-university.png",
+        "imageWithBlurDataURL": {
+          "url": "/images/teach-at-the-university.png",
+          "blurDataURL": ""
+        },
         "markdownText":"Рассказываем на\u00A0парах об\u00A0основах проектирования веб-сервисов и\u00A0экстремальных подходах к\u00A0разработке"
       }
     },

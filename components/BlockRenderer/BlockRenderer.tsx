@@ -51,7 +51,7 @@ export const BlockRenderer = ({
     return (
       <CollageWithTitle
         title={block.title}
-        imageUrls={block.imageUrls}
+        imagesWithBlurDataURL={block.imagesWithBlurDataURL}
       />
     );
   }
@@ -69,7 +69,7 @@ export const BlockRenderer = ({
   if (block.__component === BlockType.SHARED_SINGLE_IMAGE) {
     return (
       <SingleImage
-        imageUrl={block.imageUrl}
+        imageWithBlurDataURL={block.imageWithBlurDataURL}
       />
     );
   }
@@ -87,7 +87,7 @@ export const BlockRenderer = ({
       <CollageWithLink
         text={block.text}
         link={block.link}
-        imageUrls={block.imageUrls}
+        imagesWithBlurDataURL={block.imagesWithBlurDataURL}
       />
     );
   }

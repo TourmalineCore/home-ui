@@ -1,9 +1,9 @@
 import clsx from 'clsx';
-import Image from 'next/image';
 import IconArrow from '../../../../icons/icon-arrow-redesign.svg';
 import { FeaturedCardProps } from '../../../../common/types';
 import { WideCard } from './components/WideCard/WideCard';
 import { SmartLink } from '../../../SmartLink/SmartLink';
+import { ImageWithBlur } from '../../../ImageWithBlur/ImageWithBlur';
 
 export function FeaturedCard({
   title,
@@ -12,13 +12,15 @@ export function FeaturedCard({
   link,
   wideCardItems,
   theme,
-  imageUrl,
+  imageWithBlurDataURL,
   type,
 }: Omit<FeaturedCardProps, 'id'>) {
   if (type === `points` || type === `image`) {
     return (
       <li
-        className={clsx(`featured-card featured-card--${theme.toLowerCase()} col-tablet-6 col-tablet-xl-4 col-desktop-3`)}
+        className={clsx(`featured-card featured-card--${theme.toLowerCase()} col-tablet-6 col-tablet-xl-4 col-desktop-3`, {
+          'featured-card--image': type === `image`,
+        })}
       >
         {link ? (
           <SmartLink
@@ -87,13 +89,11 @@ export function FeaturedCard({
           </span>
         )}
         {
-          imageUrl && (
+          imageWithBlurDataURL?.url && (
             <div className="featured-card__image-container">
-              <Image
-                src={imageUrl}
-                fill
-                priority
-                alt=""
+              <ImageWithBlur
+                src={imageWithBlurDataURL.url}
+                blurDataURL={imageWithBlurDataURL.blurDataURL}
               />
             </div>
           )

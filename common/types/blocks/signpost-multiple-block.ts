@@ -1,4 +1,5 @@
 import { BlockType } from "../../enums";
+import { ImagesWithBlurDataURL } from "../shared";
 import { BaseBlock } from "./base-block";
 
 export interface SignpostMultipleBlock extends BaseBlock<BlockType.SHARED_SIGNPOST_MULTIPLE> {
@@ -14,5 +15,5 @@ export interface SignpostProps {
   title: string;
   subtitle?: string;
   link?: string;
-  imageUrl: string;
+  imageWithBlurDataURL: ImagesWithBlurDataURL;
 }

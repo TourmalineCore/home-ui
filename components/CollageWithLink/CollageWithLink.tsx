@@ -1,11 +1,11 @@
-import Image from 'next/image';
 import { CollageWithLinkBlock } from '../../common/types';
 import { SmartLink } from '../SmartLink/SmartLink';
+import { ImageWithBlur } from '../ImageWithBlur/ImageWithBlur';
 
 export function CollageWithLink({
   text,
   link,
-  imageUrls,
+  imagesWithBlurDataURL,
 }: Omit<CollageWithLinkBlock, "__component">) {
   return (
     <section
@@ -31,16 +31,18 @@ export function CollageWithLink({
             </span>
           </SmartLink>
         )}
-        {imageUrls.slice(0, 8)
-          .map((imageUrl, index) => (
+        {imagesWithBlurDataURL.slice(0, 8)
+          .map(({
+            url,
+            blurDataURL,
+          }, index) => (
             <div
-              key={imageUrl}
+              key={url}
               className={`collage-with-link__image collage-with-link__image--${index + 1}`}
             >
-              <Image
-                src={imageUrl}
-                fill
-                alt=""
+              <ImageWithBlur
+                src={url}
+                blurDataURL={blurDataURL}
               />
             </div>
           ))}
