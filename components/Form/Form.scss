@@ -69,12 +69,6 @@
     }
   }
 
-  &__captcha {
-    position: absolute;
-    left: 0;
-    top: 0;
-  }
-
   &--zh {
     #{$this}__approval {
       font-size: 16px;
@@ -92,8 +86,4 @@
       }
     }
   }
-}
-
-.grecaptcha-badge {
-  visibility: hidden;
 }

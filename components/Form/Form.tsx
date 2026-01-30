@@ -2,14 +2,13 @@ import clsx from 'clsx';
 import { Trans, useTranslation } from 'next-i18next';
 import { useRouter } from 'next/router';
 import {
-  FormEvent,
   useMemo,
   useRef,
   KeyboardEvent,
   useState,
 } from 'react';
 
-import { SmartCaptcha } from '@yandex/smart-captcha';
+import { InvisibleSmartCaptcha } from '@yandex/smart-captcha';
 import { Input } from './components/Input/Input';
 import { PrimaryButton } from '../PrimaryButton/PrimaryButton';
 import { Textarea } from './components/Textarea/Textarea';
@@ -23,7 +22,15 @@ export function Form({
   onSubmit = () => {},
   buttonClassName,
 }: {
-  onSubmit: (formData: FormData) => unknown;
+  onSubmit: ({
+    formData,
+  }: {
+    formData: {
+      email: string;
+      name: string;
+      description: string;
+    };
+  }) => unknown;
   buttonClassName?: string;
 }) {
   const {
@@ -32,11 +39,14 @@ export function Form({
   const router = useRouter();
 
   const submitButtonRef = useRef<HTMLButtonElement>(null);
+  const formRef = useRef<HTMLFormElement>(null);
 
   const [isLoading, setIsLoading] = useState(false);
 
-  const [showCaptcha, setShowCaptcha] = useState(false);
-  const [isCaptchaVerified, setIsCaptchaVerified] = useState<boolean>(false);
+  const [isCaptchaVisible, setIsCaptchaVisible] = useState<boolean>(false);
+  // It is needed to recreate a captcha, because if a captcha has been sent once, its lifecycle ends.
+  // This allows you to use the captcha multiple times without reloading the page.
+  const [captchaKey, setCaptchaKey] = useState(0);
 
   const routerLocale = useMemo(() => {
     if (!router.locale) {
@@ -48,10 +58,14 @@ export function Form({
 
   return (
     <form
+      ref={formRef}
       className={clsx(`form`, {
         'form--zh': isChineseLanguage(router.locale),
       })}
-      onSubmit={handleFormSubmit}
+      onSubmit={(e) => {
+        e.preventDefault();
+        setIsCaptchaVisible(true);
+      }}
     >
       <Input
         id="name"
@@ -133,50 +147,42 @@ export function Form({
               : t(`buttonText`)
           }
         </PrimaryButton>
-        {showCaptcha && (
-          <div className="form__captcha">
-            <SmartCaptcha
-              sitekey={process.env.NEXT_PUBLIC_SMARTCAPTCHA_CLIENT_KEY as string}
-              language={routerLocale === `ru` ? `ru` : `en`}
-              onSuccess={handleCaptchaSuccess}
-            />
-          </div>
-        )}
+        <InvisibleSmartCaptcha
+          key={captchaKey}
+          sitekey={process.env.NEXT_PUBLIC_SMARTCAPTCHA_CLIENT_KEY as string}
+          language={routerLocale === `ru` ? `ru` : `en`}
+          onSuccess={handleCaptchaSuccess}
+          visible={isCaptchaVisible}
+          test
+        />
       </div>
     </form>
   );
 
   async function handleCaptchaSuccess(captchaToken: string) {
-    const response = await validateCaptchaToken(captchaToken);
-
-    if (response.status === `ok`) {
-      setIsCaptchaVerified(true);
-    }
-
-    setShowCaptcha(false);
-
-    if (submitButtonRef.current) {
-      submitButtonRef.current.focus();
-    }
-  }
-
-  async function handleFormSubmit(event: FormEvent) {
-    event.preventDefault();
-    setIsLoading(true);
-
     try {
-      if (!isCaptchaVerified) {
-        setShowCaptcha(true);
-        return;
+      setIsLoading(true);
+      const response = await validateCaptchaToken(captchaToken);
+
+      if (response.status === `ok` && formRef.current) {
+        const formData = new FormData(formRef.current);
+
+        await onSubmit({
+          formData: {
+            email: formData.get(`email`) as string,
+            name: formData.get(`name`) as string,
+            description: formData.get(`message`) as string,
+          },
+        });
       }
 
-      const formData = new FormData(event.target as HTMLFormElement);
-
-      await onSubmit(formData);
-
-      setIsCaptchaVerified(false);
+      if (submitButtonRef.current) {
+        submitButtonRef.current.focus();
+      }
     } finally {
+      setIsCaptchaVisible(false);
       setIsLoading(false);
+      setCaptchaKey((prev) => prev + 1);
     }
   }
 
