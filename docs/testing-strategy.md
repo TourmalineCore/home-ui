@@ -82,6 +82,24 @@ Such functionality as e.g. calculations, requests to CMS (Preview mode, Filtrati
 #### What we don't test
 The work of the application as a whole and its UI. 
 
+### Component Testing
+
+#### Why do we write these tests?
+Some components involve some business logic, e.g. validations, filtration, etc. We need to check that this logic is correct and doesn't break as the project evolves.
+To make sure that a request is triggered on click.
+
+#### When do we write these tests?
+We write such tests following TDD approach when we develop a component once we want to implement its specific behavior.
+
+#### What we test
+Component's behavior in isolation.
+
+Edge cases, such as: 
+- validations
+- disabling / enabling a button
+- filtration
+- sorting
+
 ### Accessibility Testing
 
 #### Why do we write these tests?
@@ -108,5 +126,36 @@ We don't autotest:
 - content.
 These checks are done manually.
 
-ToDo
-- types linting
+### Types Linting
+
+This is a static type of testing which allows to automatically check the contract between UI & Backend.
+
+Response types are generated based on Swagger with the help of [*swagger-typescript-api* package](https://www.npmjs.com/package/swagger-typescript-api). We use these types in responses and if there is any change on backend, e.g. a field is added or deleted, we will see this immediately in the IDE or pipeline when the test fails. 
+This type of testing also ensures that we correctly map the data from backend to use it in UI components.
+
+#### Why do we write these tests?
+Vanilla Javascript doesn't support types, whereas we use TypeScript to make our code stable and predictable. So we need a way to make sure we use the correct types.
+
+#### When do we write these tests?
+Once we coordinate the contract between UI & backend, we need to create the types for this contract. Here is when we can employ types linting.
+
+#### What we test
+- data mapping
+- contract between UI & backend
+
+### API Tests
+
+#### Why do we write these tests?
+We want to make sure that there are all necessary fields in the API response. This way we are certain that the structure we set in the CMS is correct. 
+
+#### When do we write these tests?
+Here we step away from the TDD principles, because it is not easy to think through the structure of the CMS component without creating it in the CMS first. 
+
+So after we have added a Single type or Collection type, we can add the test to check its structure.
+To validate the JSON schema of the response we use [*Zod* package](https://www.npmjs.com/package/zod).
+
+#### What we test
+API response - all the fields that are used in UI. 
+
+#### What don't we test
+The fields that are not used in UI are as a rule omitted.
