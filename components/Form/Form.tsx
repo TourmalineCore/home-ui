@@ -154,6 +154,7 @@ export function Form({
           onSuccess={handleCaptchaSuccess}
           onChallengeHidden={() => setIsCaptchaVisible(false)}
           visible={isCaptchaVisible}
+          hideShield
         />
       </div>
     </form>
