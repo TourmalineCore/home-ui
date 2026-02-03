@@ -6,7 +6,7 @@ import { useRouter } from 'next/router';
 import { Form } from '../Form/Form';
 import { PrimaryButton } from '../PrimaryButton/PrimaryButton';
 import { isChineseLanguage } from '../../common/utils';
-import { sendEmail } from '../../services/emailService/emailService';
+import { sendEmail } from '../../services/sendEmail/sendEmail';
 
 export function FormBlock({
   id,
