@@ -7,16 +7,25 @@ Our goal is to test every feature we build from the start to make sure it works 
 ## Parallel Execution of Tests
 All tests must support concurrent parallel invocation. The only exception is end-to-end tests which run one after the other. The reason is that we emulate the user's interaction with Strapi CMS, which reloads the page on save. So, saving some data in one test will cause the other E2E tests to fail if we try to run them in parallel. And we have no control of this behavior.
 
+ToDo
+- issue on github
+
 ## Types of Tests
 | Type    | Target | Run Against Prod | Use Real DB | Need Data Cleanup | Tools |
 | -------- | ------- | ------- |------- |------- |------- |
-| E2E  | UI & CMS Integration   | No    | Yes    | Yes (?)   | Playwright |
+| E2E  | UI & CMS Integration   | No*    | Yes    | Yes (?)   | Playwright |
 | Screenshot |   UI   | No    | No    | No    | Playwright |
-| Unit    | Requests to CMS (Preview mode, Filter, Sort)   | No    | No    | No    | Jest |
+| Unit    | Functions (Preview mode, Filter, Sort)   | No    | No    | No    | Jest |
 | Component    |  Components narrow functionality  | No    | No    | No    | Playwright |
 | Accessibility    |  UI Accessibility (WCAG AA) | No    | No    | No    | Playwright, Axe-core |
 | Types Linting    | API Contract Safety | No    | No    | No    | TypeScript |
 | API   | API Response | No    | No    | No    | Playwright |
+
+* impossible to run in one tenant
+
+ToDo
+- monitoring tests (jMeter, lighthouse. robots.txt)
+- move details to appendix? e.g. parallel running; typical features; screenshots
 
 ### E2E
 
@@ -40,6 +49,7 @@ All E2E tests are executed against Local Env.
 
 #### What we don't test
 Edge cases with different deviations of input data.
+Example
 
 ### Screenshot Testing
 
@@ -60,14 +70,23 @@ We test components on all regular breakpoints: mobile, tablet, tablet-xl, deskto
 #### What we don't test
 We don't test on real dynamic data as it is too unpredictable. </br>
 We disable animations if they are present and disable autoplay for a video to make it static.</br>
-We don't test components' behavior.
-We don't test components between the breakpoints.
+We don't test components' behavior.</br>
+We don't test components between the breakpoints.</br>
 We don't test in all browsers, only in Chrome.
 
 *ToDo*
-- add link to the document with flow.
+- add link to the document with flow
+- experiment with the rest of browsers
+- image mocks 
+- threshold 0
 
 ### Unit Testing
+
+ToDo
+- definition
+- is it really easier to write them?
+- functions in isolation on mocks
+- example with screenshots
 
 #### Why do we write these tests?
 Here we can test functionality which we don't normally test in E2E, because it may not be a part of the happy path scenario, including edge cases. 
@@ -85,8 +104,7 @@ The work of the application as a whole and its UI.
 ### Component Testing
 
 #### Why do we write these tests?
-Some components involve some business logic, e.g. validations, filtration, etc. We need to check that this logic is correct and doesn't break as the project evolves.
-To make sure that a request is triggered on click.
+Some components involve some business logic, e.g. validations, filtration, etc. We need to check that this logic is correct and doesn't break as the project evolves. E.g., to make sure that a request is triggered on click (query parameter is added?).
 
 #### When do we write these tests?
 We write such tests following TDD approach when we develop a component once we want to implement its specific behavior.
@@ -124,6 +142,7 @@ We don't autotest:
 - work of screenreaders such as VoiceOver or NVDA,
 - usability,
 - content.
+
 These checks are done manually.
 
 ### Types Linting
@@ -132,6 +151,9 @@ This is a static type of testing which allows to automatically check the contrac
 
 Response types are generated based on Swagger with the help of [*swagger-typescript-api* package](https://www.npmjs.com/package/swagger-typescript-api). We use these types in responses and if there is any change on backend, e.g. a field is added or deleted, we will see this immediately in the IDE or pipeline when the test fails. 
 This type of testing also ensures that we correctly map the data from backend to use it in UI components.
+
+ToDo
+-  client experiment -> add note why we dont generate client
 
 #### Why do we write these tests?
 Vanilla Javascript doesn't support types, whereas we use TypeScript to make our code stable and predictable. So we need a way to make sure we use the correct types.
@@ -159,3 +181,6 @@ API response - all the fields that are used in UI.
 
 #### What don't we test
 The fields that are not used in UI are as a rule omitted.
+
+ToDo:
+Example: we need to add a section to the page - what kind of tests do we need and in what amount? what is the scenario?
