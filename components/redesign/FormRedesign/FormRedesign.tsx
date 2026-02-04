@@ -170,7 +170,7 @@ export function FormRedesign({
                   components={{
                     personalData: <a
                       className="form-redesign__consent-link"
-                      href={`/documents/policy-${locale}.pdf#page=4`}
+                      href={`/documents/policy-${routerLocale}.pdf#page=${routerLocale === `ru` ? `4` : `3`}`}
                       target="_blank"
                       rel="noreferrer"
                       aria-label={
