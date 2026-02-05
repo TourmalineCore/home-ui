@@ -59,6 +59,8 @@ We also want to test manually as little as possible, including the stage of desi
 Everytime we start to write HTML and add styles for a component.</br>
 Besides, in case you need to update the component, you need to regenerate its screenshot so it was up-to-date with the component's new appearance.
 
+You can have a look at the flow of a component's screenshot testing based on the TDD approach [here](https://github.com/TourmalineCore/pelican-documentation/blob/master/architecture%20decision%20records/%D0%9F%D1%80%D0%BE%D1%86%D0%B5%D1%81%D1%81%20%D0%B2%D0%B5%D1%80%D1%81%D1%82%D0%BA%D0%B8%20%D1%87%D0%B5%D1%80%D0%B5%D0%B7%20TDD.md).
+
 #### What we test
 Components with static data.</br>
 If a component has several states, we can test all of them with screenshots, e.g. an accordion in both collapsed and open state.
@@ -83,7 +85,7 @@ Playwright offers several options to configure the tolerance for differences in 
 However, we set the threshold to 0, because
 
 *ToDo*</br>
--add link to the document with flow</br>
++add link to the document with flow</br>
 -experiment with the rest of browsers</br>
 +image mocks</br>
 +-threshold</br>
