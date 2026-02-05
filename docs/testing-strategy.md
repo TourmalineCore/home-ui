@@ -21,10 +21,10 @@ ToDo
 | Types Linting    | API Contract Safety | No    | No    | No    | TypeScript |
 | API   | API Response | No    | No    | No    | Playwright |
 
-* impossible to run in one tenant
+*impossible to run in one tenant
 
 ToDo
-- monitoring tests (jMeter, lighthouse. robots.txt)
+- monitoring tests (jMeter, lighthouse. robots.txt, валидации кеширования изображений?)
 - move details to appendix? e.g. parallel running; typical features; screenshots
 
 ### E2E
@@ -42,14 +42,12 @@ We test only the happy path - the core business flow. We limit the number of E2E
 
 Alongside the happy path, we also test SEO that is set in the CMS to make sure it is applied in HTML tree of the page.
 
-All E2E tests are executed against Local Env. 
-
-*ToDo*
-- We don't test against Prod because it is too risky to lose client's data. It may be more or less safe to test Collection Types because we add a new entry and it doesn't affect the rest of the entries. But this is not the case with Single Types. So is this potentailly OK to test Collection types but not Single types?
+All E2E tests are executed against Local Env. We don't test against Prod because it is too risky to lose client's data. It may be more or less safe to test Collection Types because we add a new entry and it doesn't affect the rest of the entries. But this is not the case with Single Types.
 
 #### What we don't test
 Edge cases with different deviations of input data.
-Example
+
+For example, when a content manager creates a news article entry, fills only the title, but leaves the content body, image, and publication date empty and publishes the incomplete entry.
 
 ### Screenshot Testing
 
@@ -72,25 +70,56 @@ We don't test on real dynamic data as it is too unpredictable. </br>
 We disable animations if they are present and disable autoplay for a video to make it static.</br>
 We don't test components' behavior.</br>
 We don't test components between the breakpoints.</br>
-We don't test in all browsers, only in Chrome.
+We don't test in all browsers, only in Chrome.</br>
 
-*ToDo*
-- add link to the document with flow
-- experiment with the rest of browsers
-- image mocks 
-- threshold 0
+#### Stubs for images
+If there is an image part of a component, we substitute the image with an image stub, because there have been many flacks with images in screenshot testing, when random pixels where red showing discrepancies that are not distinguishable with the human eye. Using a stub we no longer get this problem, the image is always the same. 
+
+![image](../docs/images/image-flacks.png)
+<img src="../docs/images/image-stub.png" width="400" />
+
+#### Threshold
+Playwright offers several options to configure the tolerance for differences in the toHaveScreenshot() assertions: maxDiffPixels / maxDiffPixelRatio.
+However, we set the threshold to 0, because
+
+*ToDo*</br>
+-add link to the document with flow</br>
+-experiment with the rest of browsers</br>
++image mocks</br>
++-threshold</br>
 
 ### Unit Testing
 
-ToDo
-- definition
-- is it really easier to write them?
-- functions in isolation on mocks
-- example with screenshots
+ToDo</br>
++definition</br>
++is it really easier to write them?</br>
++functions in isolation on mocks</br>
++example with screenshots</br>
+
+A unit test is an isolated test of individual functionality that checks edge cases without external dependencies such as e.g. CMS or databases, and uses mocks, not real data. It verifies logic that is too expensive for E2E but doesn't test full workflows or UI.
+
+E.g., here we check swiching locale to Chinese:
+```JavaScript
+  test(`
+    GIVEN locale = zh
+    WHEN getLayoutData is called with this locale
+    THEN query string should contain locale en
+    `, async () => {
+    await getLayoutData({
+      locale: `zh`,
+    });
+
+    expect(mockedApiFetch)
+      .toHaveBeenCalledWith(
+        expect.stringContaining(`locale=en`),
+      );
+  });
+```
 
 #### Why do we write these tests?
 Here we can test functionality which we don't normally test in E2E, because it may not be a part of the happy path scenario, including edge cases. 
-These tests are easy to write and maintain, as well as faster and less demanding in terms of resources than E2E.
+These tests are easy to write and maintain: you only test one function, not an entire user journey, with no external dependencies.
+They are also faster and less demanding in terms of resources than E2E.
 
 #### When do we write these tests?
 When we need to test some minor functionality that is too expensive to test in E2E. With unit tests we don't need to run CMS, database, or other extra dependencies, and can check such functionality in isolation. 
