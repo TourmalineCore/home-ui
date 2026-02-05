@@ -78,6 +78,8 @@ export function FormRedesign({
     titleSubmitted,
   } = getTranslations();
 
+  const isSmartCaptchaEnabled = process.env.NEXT_PUBLIC_ENABLE_SMARTCAPTCHA === `true`;
+
   return (
     <form
       ref={formRef}
@@ -85,9 +87,13 @@ export function FormRedesign({
         'form-redesign--is-submitted': isSubmit,
         'is-modal': isModal,
       })}
-      onSubmit={(e) => {
+      onSubmit={async (e) => {
         e.preventDefault();
-        setIsCaptchaVisible(true);
+        if (isSmartCaptchaEnabled) {
+          setIsCaptchaVisible(true);
+        } else {
+          await handleSubmit();
+        }
       }}
     >
       {
@@ -170,7 +176,7 @@ export function FormRedesign({
                   components={{
                     personalData: <a
                       className="form-redesign__consent-link"
-                      href={`/documents/policy-${locale}.pdf#page=4`}
+                      href={`/documents/policy-${routerLocale}.pdf#page=${routerLocale === `ru` ? `4` : `3`}`}
                       target="_blank"
                       rel="noreferrer"
                       aria-label={
@@ -225,14 +231,18 @@ export function FormRedesign({
             </button>
           )
         }
-        <InvisibleSmartCaptcha
-          key={captchaKey}
-          sitekey={process.env.NEXT_PUBLIC_SMARTCAPTCHA_CLIENT_KEY as string}
-          language={routerLocale === `ru` ? `ru` : `en`}
-          onSuccess={handleCaptchaSuccess}
-          onChallengeHidden={() => setIsCaptchaVisible(false)}
-          visible={isCaptchaVisible}
-        />
+
+        {isSmartCaptchaEnabled && (
+          <InvisibleSmartCaptcha
+            key={captchaKey}
+            sitekey={process.env.NEXT_PUBLIC_SMARTCAPTCHA_CLIENT_KEY as string}
+            language={routerLocale === `ru` ? `ru` : `en`}
+            onSuccess={handleCaptchaSuccess}
+            onChallengeHidden={() => setIsCaptchaVisible(false)}
+            visible={isCaptchaVisible}
+            hideShield
+          />
+        )}
       </div>
     </form>
   );
@@ -268,16 +278,8 @@ export function FormRedesign({
       setIsLoading(true);
       const response = await validateCaptchaToken(captchaToken);
 
-      if (response.status === `ok` && formRef.current) {
-        const formData = new FormData(formRef.current);
-
-        await onSubmit({
-          formData: {
-            email: formData.get(`email`) as string,
-            name: formData.get(`name`) as string,
-            description: formData.get(`message`) as string,
-          },
-        });
+      if (response.status === `ok`) {
+        await handleSubmit();
       }
 
       if (submitButtonRef.current) {
@@ -287,6 +289,19 @@ export function FormRedesign({
       setIsCaptchaVisible(false);
       setIsLoading(false);
       setCaptchaKey((prev) => prev + 1);
+    }
+  }
+
+  async function handleSubmit() {
+    if (formRef.current) {
+      const formData = new FormData(formRef.current);
+      await onSubmit({
+        formData: {
+          email: formData.get(`email`) as string,
+          name: formData.get(`name`) as string,
+          description: formData.get(`message`) as string,
+        },
+      });
     }
   }
 

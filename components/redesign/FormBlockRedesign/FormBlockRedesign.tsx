@@ -3,7 +3,7 @@ import { useState } from 'react';
 import Image from 'next/image';
 import { useTranslation } from 'next-i18next';
 import { FormRedesign } from '../FormRedesign/FormRedesign';
-import { sendEmail } from '../../../services/emailService/emailService';
+import { sendEmail } from '../../../services/sendEmail/sendEmail';
 import { useIsRussianCountry } from '../../../common/hooks';
 import { MarkdownText } from '../../MarkdownText/MarkdownText';
 

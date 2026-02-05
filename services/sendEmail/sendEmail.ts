@@ -11,7 +11,7 @@ export async function sendEmail(formData: {
       },
       body: JSON.stringify({
         to: process.env.NEXT_PUBLIC_TARGET_EMAIL,
-        subject: `Text`,
+        subject: `Discuss project`,
         message: `Email: ${formData.email}\nИмя: ${formData.name}\n\n${formData.description ? `Описание задачи:\n${formData.description}` : ``}`,
         html: `Email: ${formData.email}<br/>Имя: ${formData.name}<br/><br/>${formData.description ? `Описание задачи:<br/>${formData.description}` : ``}`,
       }),
