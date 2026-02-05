@@ -38,6 +38,7 @@ export function Modal({
 
   return (
     <FocusLock
+      whiteList={(node) => node.title !== `SmartCaptcha advanced widget`}
       returnFocus
     >
       <div

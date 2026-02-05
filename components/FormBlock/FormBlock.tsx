@@ -5,8 +5,8 @@ import clsx from 'clsx';
 import { useRouter } from 'next/router';
 import { Form } from '../Form/Form';
 import { PrimaryButton } from '../PrimaryButton/PrimaryButton';
-import { getMessageFromForm, isChineseLanguage } from '../../common/utils';
-import { sendEmail } from '../../services/emailService/emailService';
+import { isChineseLanguage } from '../../common/utils';
+import { sendEmail } from '../../services/sendEmail/sendEmail';
 
 export function FormBlock({
   id,
@@ -68,11 +68,18 @@ export function FormBlock({
     </section>
   );
 
-  async function onFormSubmit(formData: FormData) {
-    const messageSend = getMessageFromForm(formData);
+  async function onFormSubmit({
+    formData,
+  }: {
+    formData: {
+      email: string;
+      name: string;
+      description: string;
+    };
+  }) {
+    await sendEmail(formData);
 
-    await sendEmail(messageSend);
-    setEmail(messageSend.email);
+    setEmail(formData.email);
     setIsSubmit(true);
   }
 }
