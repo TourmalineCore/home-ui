@@ -24,6 +24,7 @@ export function FormRedesign({
   setIsSubmit,
   isModal,
   onCloseModal,
+  isComponentPage,
 } : {
   onSubmit: ({
     formData,
@@ -38,6 +39,7 @@ export function FormRedesign({
   setIsSubmit: (value: boolean) => void;
   isModal?: boolean;
   onCloseModal?: () => void;
+  isComponentPage?: boolean;
 }) {
   const {
     t,
@@ -232,7 +234,7 @@ export function FormRedesign({
           )
         }
 
-        {isSmartCaptchaEnabled && (
+        {(isSmartCaptchaEnabled && !isComponentPage) && (
           <InvisibleSmartCaptcha
             key={captchaKey}
             sitekey={process.env.NEXT_PUBLIC_SMARTCAPTCHA_CLIENT_KEY as string}

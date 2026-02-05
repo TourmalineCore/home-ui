@@ -53,6 +53,7 @@ export function FormBlockRedesign({
                         setIsSubmit={setIsSubmit}
                         isModal={isModal}
                         onCloseModal={onCloseModal}
+                        isComponentPage={isComponentPage}
                       />
                     </div>
                     <div className="form-block-redesign__aside">
@@ -82,6 +83,7 @@ export function FormBlockRedesign({
                       setIsSubmit={setIsSubmit}
                       isModal={isModal}
                       onCloseModal={onCloseModal}
+                      isComponentPage={isComponentPage}
                     />
                   </div>
                 )
