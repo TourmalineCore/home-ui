@@ -135,7 +135,7 @@ export async function getServerSideProps({
         ...translationsPageData.showcaseGridFifthSection,
       },
       {
-        __component: BlockType.HOME_FORM_BLOCK,
+        __component: BlockType.SHARED_FORM_BLOCK,
       },
       {
         __component: BlockType.SHARED_COLLAGE_WITH_TITLE,

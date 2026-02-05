@@ -145,5 +145,12 @@ export function mapBlockResponseByType(block: BlockApi): Block | null {
     };
   }
 
+  if (component === BlockType.SHARED_FORM_BLOCK) {
+    return {
+      id: block.id,
+      __component: BlockType.SHARED_FORM_BLOCK,
+    };
+  }
+
   return null;
 }
