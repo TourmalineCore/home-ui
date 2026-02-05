@@ -56,15 +56,21 @@ export function Form({
     return router.locale;
   }, [router.locale]);
 
+  const isSmartCaptchaEnabled = process.env.NEXT_PUBLIC_ENABLE_SMARTCAPTCHA === `true`;
+
   return (
     <form
       ref={formRef}
       className={clsx(`form`, {
         'form--zh': isChineseLanguage(router.locale),
       })}
-      onSubmit={(e) => {
+      onSubmit={async (e) => {
         e.preventDefault();
-        setIsCaptchaVisible(true);
+        if (isSmartCaptchaEnabled) {
+          setIsCaptchaVisible(true);
+        } else {
+          await handleSubmit();
+        }
       }}
     >
       <Input
@@ -147,15 +153,17 @@ export function Form({
               : t(`buttonText`)
           }
         </PrimaryButton>
-        <InvisibleSmartCaptcha
-          key={captchaKey}
-          sitekey={process.env.NEXT_PUBLIC_SMARTCAPTCHA_CLIENT_KEY as string}
-          language={routerLocale === `ru` ? `ru` : `en`}
-          onSuccess={handleCaptchaSuccess}
-          onChallengeHidden={() => setIsCaptchaVisible(false)}
-          visible={isCaptchaVisible}
-          hideShield
-        />
+        {isCaptchaVisible && (
+          <InvisibleSmartCaptcha
+            key={captchaKey}
+            sitekey={process.env.NEXT_PUBLIC_SMARTCAPTCHA_CLIENT_KEY as string}
+            language={routerLocale === `ru` ? `ru` : `en`}
+            onSuccess={handleCaptchaSuccess}
+            onChallengeHidden={() => setIsCaptchaVisible(false)}
+            visible={isCaptchaVisible}
+            hideShield
+          />
+        )}
       </div>
     </form>
   );
@@ -165,16 +173,8 @@ export function Form({
       setIsLoading(true);
       const response = await validateCaptchaToken(captchaToken);
 
-      if (response.status === `ok` && formRef.current) {
-        const formData = new FormData(formRef.current);
-
-        await onSubmit({
-          formData: {
-            email: formData.get(`email`) as string,
-            name: formData.get(`name`) as string,
-            description: formData.get(`message`) as string,
-          },
-        });
+      if (response.status === `ok`) {
+        await handleSubmit();
       }
 
       if (submitButtonRef.current) {
@@ -184,6 +184,20 @@ export function Form({
       setIsCaptchaVisible(false);
       setIsLoading(false);
       setCaptchaKey((prev) => prev + 1);
+    }
+  }
+
+  async function handleSubmit() {
+    if (formRef.current) {
+      const formData = new FormData(formRef.current);
+
+      await onSubmit({
+        formData: {
+          email: formData.get(`email`) as string,
+          name: formData.get(`name`) as string,
+          description: formData.get(`message`) as string,
+        },
+      });
     }
   }
 
