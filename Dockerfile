@@ -15,7 +15,7 @@ WORKDIR /app
 COPY --from=deps /app/node_modules ./node_modules
 COPY . .
 
-ARG NODE_ENV
+ARG NODE_ENV=production
 ENV NODE_ENV=${NODE_ENV}
 ARG CDN_ENABLED
 ENV CDN_ENABLED=${CDN_ENABLED}

@@ -13,7 +13,6 @@ jobs:
     with:
         # Build-args used to define variables that will be used in image
         build-args: |
-          NODE_ENV=production
           CDN_ENABLED=true
           CDN_DOMAIN=cdn.tourmalinecore.com
           CORS_ORIGIN=https://tourmalinecore.com
