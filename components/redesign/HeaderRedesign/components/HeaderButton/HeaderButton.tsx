@@ -1,5 +1,6 @@
 import clsx from "clsx";
 import { ReactNode } from "react";
+import { useIsRussianCountry } from "../../../../../common/hooks";
 
 export function HeaderButton({
   children,
@@ -10,16 +11,31 @@ export function HeaderButton({
   className?: string;
   onClick: (isOpen: boolean) => void;
 }) {
+  const isCountryRus = useIsRussianCountry();
+
   return (
-    <button
-      className={clsx(
-        `header-button`,
-        className,
-      )}
-      type="button"
-      onClick={() => onClick(true)}
-    >
-      {children}
-    </button>
+    isCountryRus ? (
+      <button
+        className={clsx(
+          `header-button`,
+          className,
+        )}
+        type="button"
+        onClick={() => onClick(true)}
+      >
+        {children}
+      </button>
+    ) : (
+      <a
+        className={clsx(
+          `header-button`,
+          className,
+        )}
+        role="button"
+        href="mailto:contact@tourmalinecore.com"
+      >
+        {children}
+      </a>
+    )
   );
 }
