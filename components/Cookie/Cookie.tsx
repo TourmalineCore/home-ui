@@ -30,7 +30,7 @@ export function Cookie({
 
   const [isCookieVisible, setIsCookieVisible] = useState(isComponentPage || false);
   const [date, setDate] = useState<Date | null>(null);
-  const isMetricsEnabled = process.env.METRICS_ENABLED === `true`;
+  const isMetricsEnabled = process.env.NEXT_PUBLIC_METRICS_ENABLED === `true`;
 
   useEffect(() => {
     if (!isComponentPage) {
