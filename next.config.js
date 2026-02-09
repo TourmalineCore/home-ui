@@ -75,9 +75,9 @@ module.exports = withReactSvg({
   devIndicators: false,
   i18n,
   include: path.resolve(__dirname, 'icons'),
-  env: {
-    METRICS_ENABLED: process.env.METRICS_ENABLED,
-  },
+  // env: {
+  //   METRICS_ENABLED: process.env.METRICS_ENABLED,
+  // },
 
   ...(process.env.CDN_ENABLED === 'true' && process.env.CDN_DOMAIN && {
     // https://nextjs.org/docs/app/api-reference/config/next-config-js/assetPrefix
