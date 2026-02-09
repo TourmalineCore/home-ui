@@ -3,6 +3,8 @@ export async function sendEmail(formData: {
   name: string;
   description: string;
 }) {
+  // eslint-disable-next-line no-console
+  console.log(`Target Email`, process.env.NEXT_PUBLIC_TARGET_EMAIL);
   try {
     await fetch(`/api/sendEmail`, {
       method: `POST`,
