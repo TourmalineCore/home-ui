@@ -38,6 +38,8 @@ export default function UniversalPage({
     seo,
   } = pageData;
 
+  console.log(`NEXT_PUBLIC_TARGET_EMAIL`, process.env.NEXT_PUBLIC_TARGET_EMAIL);
+
   return (
     <>
       <PageHead
