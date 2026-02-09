@@ -14,7 +14,6 @@ jobs:
         prefix: "local-env"
         # Build-args used to define variables that will be used in image
         build-args: |
-          NODE_ENV=development
           CDN_ENABLED=false
     # without this it cannot login to the registry
     secrets: inherit

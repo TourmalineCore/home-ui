@@ -15,8 +15,6 @@ WORKDIR /app
 COPY --from=deps /app/node_modules ./node_modules
 COPY . .
 
-ARG NODE_ENV=production
-ENV NODE_ENV=${NODE_ENV}
 ARG CDN_ENABLED
 ENV CDN_ENABLED=${CDN_ENABLED}
 ARG CDN_DOMAIN
@@ -34,6 +32,7 @@ RUN npm run build
 FROM base AS runner
 WORKDIR /app
 
+ENV NODE_ENV=production
 ENV NEXT_TELEMETRY_DISABLED=1
 
 RUN addgroup --system --gid 1001 nodejs
