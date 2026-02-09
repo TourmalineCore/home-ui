@@ -18,6 +18,7 @@ jobs:
         prefix: "staging-env"
         # Build-args used to define variables that will be used in image
         build-args: |
+          NODE_ENV=production
           CDN_ENABLED=true
           CDN_DOMAIN=cdn.home.demo.tourmalinecore.com
           CORS_ORIGIN=https://home.demo.tourmalinecore.com
