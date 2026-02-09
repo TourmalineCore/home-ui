@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import { useRouter } from 'next/router';
 import { PageHead } from '../components/PageHead/PageHead';
@@ -79,6 +80,10 @@ export async function getServerSideProps({
   };
   preview: boolean;
 }) {
+  console.log(`NEXT_PUBLIC_SMARTCAPTCHA_CLIENT_KEY`, process.env.NEXT_PUBLIC_SMARTCAPTCHA_CLIENT_KEY);
+  console.log(`NEXT_PUBLIC_ENABLE_SMARTCAPTCHA`, process.env.NEXT_PUBLIC_ENABLE_SMARTCAPTCHA);
+  console.log(`NEXT_PUBLIC_ENABLE_SMARTCAPTCHA`, process.env.MAILRU_EMAIL);
+  console.log(`NEXT_PUBLIC_TARGET_EMAIL`, process.env.NEXT_PUBLIC_TARGET_EMAIL);
   if (process.env.IS_STATIC_MODE === `true`) {
     const translationsPageData = await loadTranslations(locale, [
       `common`,
