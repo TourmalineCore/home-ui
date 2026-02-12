@@ -11,7 +11,7 @@
     overflow-x: scroll;
     margin: 0 -12px;
     gap: $grid-mobile-gap;
-    grid-template-columns: repeat(4, 1fr);
+    grid-auto-flow: column;
     -ms-overflow-style: none;
     scrollbar-width: none;
 
@@ -19,6 +19,7 @@
       overflow-x: auto;
       margin: 0;
       gap: $grid-desktop-gap;
+      grid-auto-flow: unset;
       grid-template-columns: repeat(12, 1fr);
     }
   }
