@@ -1,16 +1,32 @@
 # Testing Strategy
+## Table of Contents
+
+1. [Objective](#objective)
+2. [Parallel Execution of Tests](#parallel-execution)
+3. [Types of Tests](#types-of-tests)</br>
+3.1. [E2E Testing](#e2e-testing)</br>
+3.2 [Screenshot Testing](#screenshot-testing)</br>
+3.3. [Unit Testing](#unit-testing)</br>
+3.4. [Component Testing](#component-testing)</br>
+3.5. [Accessibility Testing](#accessibility-testing)</br>
+3.6. [Types Linting](#types-linting)</br>
+3.7. [API Tests](#api-tests)</br>
+3.7. [Monitoring Tests](#monitoring-tests)
+
 We are aimed at building reliable, accessible, and maintainable software. To achieve this, we follow Test-Driven Development (TDD) principles, writing tests before implementation code.
 
-## Objective
+<h2 id="objective">Objective</h2>
 Our goal is to test every feature we build from the start to make sure it works correctly, looks right, and is accessible to everyone. This helps us find problems early and keep our software stable.
 
-## Parallel Execution of Tests
+<h2 id="parallel-execution">Parallel Execution of Tests</h2>
+
 All tests must support concurrent parallel invocation. The only exception is end-to-end tests which run one after the other. The reason is that we emulate the user's interaction with Strapi CMS, which reloads the page on save. So, saving some data in one test will cause the other E2E tests to fail if we try to run them in parallel. And we have no control of this behavior.
 
 ToDo
 - issue on github
 
-## Types of Tests
+<h2 id="types-of-tests">Types of Tests</h2>
+
 | Type    | Target | Run Against Prod | Use Real DB | Need Data Cleanup | Tools |
 | -------- | ------- | ------- |------- |------- |------- |
 | E2E  | UI & CMS Integration   | No*    | Yes    | Yes (?)   | Playwright |
@@ -26,7 +42,7 @@ ToDo
 ToDo
 - move details to appendix? e.g. parallel running; typical features; screenshots
 
-### E2E
+<h3 id="e2e-testing">E2E Testing</h3>
 
 #### Why do we write these tests?
 We want to test the happy path of the content manager's work with CMS: filling the content in the admin panel, saving and publishing changes, and expecting to see them on UI. 
@@ -48,7 +64,7 @@ Edge cases with different deviations of input data.
 
 For example, when a content manager creates a news article entry, fills only the title, but leaves the content body, image, and publication date empty and publishes the incomplete entry.
 
-### Screenshot Testing
+<h3 id="screenshot-testing">Screenshot Testing</h3>
 
 #### Why do we write these tests?
 We aim at creating a stable robust UI and want keep it under control when the project is growing. We want to make sure that new components or pages don't affect the existing ones.</br>
@@ -89,7 +105,7 @@ However, we set the threshold to 0, because we want to detect any visual change 
 +image mocks</br>
 +threshold</br>
 
-### Unit Testing
+<h3 id="unit-testing">Unit Testing</h3>
 
 ToDo</br>
 +definition</br>
@@ -131,7 +147,7 @@ Such functionality as e.g. calculations, requests to CMS (Preview mode, Filtrati
 #### What we don't test
 The work of the application as a whole and its UI. 
 
-### Component Testing
+<h3 id="component-testing">Component Testing</h3>
 
 #### Why do we write these tests?
 Some components involve some business logic, e.g. validations, filtration, etc. We need to check that this logic is correct and doesn't break as the project evolves. E.g., to make sure that a request is triggered on click (query parameter is added?).
@@ -148,7 +164,7 @@ Edge cases, such as:
 - filtration
 - sorting
 
-### Accessibility Testing
+<h3 id="accessibility-testing">Accessibility Testing</h3>
 
 #### Why do we write these tests?
 We want our application to be accessible to all categories of users, including those with temporary or permanent limitations. Ensuring accessibility is an integral part of our development process, so we need to test it just like any other functionality. 
@@ -175,7 +191,7 @@ We don't autotest:
 
 These checks are done manually.
 
-### Types Linting
+<h3 id="types-linting">Types Linting</h3>
 
 This is a static type of testing which allows to automatically check the contract between UI & Backend.
 
@@ -195,7 +211,7 @@ Once we coordinate the contract between UI & backend, we need to create the type
 - data mapping
 - contract between UI & backend
 
-### API Tests
+<h3 id="api-tests">API Tests</h3>
 
 #### Why do we write these tests?
 We want to make sure that there are all necessary fields in the API response. This way we are certain that the structure we set in the CMS is correct. 
@@ -216,7 +232,8 @@ ToDo:
 Example: we need to add a section to the page - what kind of tests do we need and in what amount? what is the scenario?
 
 
-### Monitoring Tests 
+<h3 id="monitoring-tests">Monitoring Tests</h3>
+
 On one of the projects we have a separate [repo](https://github.com/TourmalineCore/pelican-monitoring/blob/master/README.md) with CI/CD pipeline for monitoring performance, security, and accessibility in production, and this practice can be adopted for other projects as well. The pipeline is scheduled to run once an hour. 
 
 #### Robots.txt Validation
