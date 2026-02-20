@@ -80,14 +80,14 @@ If there is an image part of a component, we substitute the image with an image 
 <img src="../docs/images/image-stub.png" width="400" />
 
 #### Threshold
-Playwright offers several options to configure the tolerance for differences in the toHaveScreenshot() assertions: maxDiffPixels / maxDiffPixelRatio.
-However, we set the threshold to 0, because
+Playwright offers several options to configure the tolerance for differences in the *toHaveScreenshot()* assertions: *maxDiffPixels / maxDiffPixelRatio*.
+However, we set the threshold to 0, because we want to detect any visual change to prevent unintended visual regressions.
 
 *ToDo*</br>
 +add link to the document with flow</br>
 -experiment with the rest of browsers</br>
 +image mocks</br>
-+-threshold</br>
++threshold</br>
 
 ### Unit Testing
 
