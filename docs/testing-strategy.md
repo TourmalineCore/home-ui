@@ -24,7 +24,6 @@ ToDo
 *impossible to run in one tenant
 
 ToDo
-- monitoring tests (jMeter, lighthouse. robots.txt, валидации кеширования изображений?)
 - move details to appendix? e.g. parallel running; typical features; screenshots
 
 ### E2E
@@ -215,3 +214,19 @@ The fields that are not used in UI are as a rule omitted.
 
 ToDo:
 Example: we need to add a section to the page - what kind of tests do we need and in what amount? what is the scenario?
+
+
+### Monitoring Tests 
+On one of the projects we have a separate [repo](https://github.com/TourmalineCore/pelican-monitoring/blob/master/README.md) with CI/CD pipeline for monitoring performance, security, and accessibility in production, and this practice can be adopted for other projects as well. The pipeline is scheduled to run once an hour. 
+
+#### Robots.txt Validation
+Downloads a robots.txt from prod and compares it against the expected content (disallow /components, HTTPS host, link to sitemap). It uses Curl + diff in the pipeline and expects the exact match with the expected content.
+
+####  JMeter Load Tests
+Using Apache JMeter it simulates load on pages (5 requests/sec for 60 cycles, ~300 requests in total), measures maximum and average response time, percentiles, errors.
+
+#### Lighthouse Audits
+Using Lighthouse CI + validator script it conducts an audit of key page performance metrics (FCP, LCP, TBT, TTI, etc.), security (CSP against XSS, full HTTPS usage, HTTP to HTTPS redirects, etc.), and accessibility.
+
+#### Image Cache Validation
+Using Playwright it scans the page for images (img tags, background images), fetches headers from CDN/Yandex, validates Cache-Control for exact match.
