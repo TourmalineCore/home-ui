@@ -26,13 +26,14 @@ All tests must support concurrent parallel invocation. The only exception is end
 
 | Type    | Target | Run Against Prod | Use Real DB | Need Data Cleanup | Tools |
 | -------- | ------- | ------- |------- |------- |------- |
-| E2E  | UI & CMS Integration   | No*    | Yes    | Yes (?)   | Playwright |
+| E2E  | UI & CMS Integration   | No*    | Yes    | Yes   | Playwright |
 | Screenshot |   UI   | No    | No    | No    | Playwright |
 | Unit    | Functions (Preview mode, Filter, Sort)   | No    | No    | No    | Jest |
 | Component    |  Components narrow functionality  | No    | No    | No    | Playwright |
 | Accessibility    |  UI Accessibility (WCAG AA) | No    | No    | No    | Playwright, Axe-core |
 | Types Linting    | API Contract Safety | No    | No    | No    | TypeScript |
 | API   | API Response | No    | No    | No    | Playwright |
+| Monitoring   |  Performance, security, accessibility on prod | Yes    | N/A   | No    | JMeter, Lighthouse, Playwright |
 
 *impossible to run in one tenant
 
