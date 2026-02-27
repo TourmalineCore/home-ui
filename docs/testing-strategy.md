@@ -12,6 +12,7 @@
 3.6. [Types Linting](#types-linting)</br>
 3.7. [API Tests](#api-tests)</br>
 3.7. [Monitoring Tests](#monitoring-tests)
+4. [Example](#example)
 
 We are aimed at building reliable, accessible, and maintainable software. To achieve this, we follow Test-Driven Development (TDD) principles, writing tests before implementation code.
 
@@ -231,8 +232,10 @@ Using Lighthouse CI + validator script it conducts an audit of key page performa
 #### Image Cache Validation
 Using Playwright it scans the page for images (img tags, background images), fetches headers from CDN/Yandex, validates Cache-Control for exact match.
 
-### Example
+<h2 id="example">Example</h2>
+
 If we need to add a section to the page (e.g. Hero block), we would generally follow these steps:
+
 1. We create the component with mock data and style it => **screenshot tests**.
 2. We check the accessibility of the component => **axe-core tests** & **focus order tests**. As a rule, focus order tests are written for the whole page, so we need to modify the existing test expanding it with the new component's interactive element.
 3. If the new component contains some inner logic (such as validation, show/hide logic) => **component tests**.
