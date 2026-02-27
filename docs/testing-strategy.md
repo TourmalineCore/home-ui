@@ -247,3 +247,13 @@ Using Lighthouse CI + validator script it conducts an audit of key page performa
 
 #### Image Cache Validation
 Using Playwright it scans the page for images (img tags, background images), fetches headers from CDN/Yandex, validates Cache-Control for exact match.
+
+### Example
+If we need to add a section to the page (e.g. Hero block), we would generally follow these steps:
+1. We create the component with mock data and style it => **screenshot tests**.
+2. We check the accessibility of the component => **axe-core tests** & **focus order tests**. As a rule, focus order tests are written for the whole page, so we need to modify the existing test expanding it with the new component's interactive element.
+3. If the new component contains some inner logic (such as validation, show/hide logic) => **component tests**.
+4. We integrate the component with the CMS => **API tests**. We need to check that the response contains the fields of the new component.
+5. We **regenerate the types** with *swagger-typescript-api* package on UI to apply them in the code for requests and responses. 
+6. If necessary, we test the function that makes a request with **unit tests** (e.g., sorting, preview mode, language parameter).
+7. Our new component is a part of a page that can be already covered by **E2E test**, so we need to add its functionality to this E2E test if it is a part of user's happy path on the website. 
