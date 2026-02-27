@@ -22,9 +22,6 @@ Our goal is to test every feature we build from the start to make sure it works 
 
 All tests must support concurrent parallel invocation. The only exception is end-to-end tests which run one after the other. The reason is that we emulate the user's interaction with Strapi CMS, which reloads the page on save. So, saving some data in one test will cause the other E2E tests to fail if we try to run them in parallel. And we have no control of this behavior.
 
-ToDo
-- issue on github
-
 <h2 id="types-of-tests">Types of Tests</h2>
 
 | Type    | Target | Run Against Prod | Use Real DB | Need Data Cleanup | Tools |
@@ -39,8 +36,6 @@ ToDo
 
 *impossible to run in one tenant
 
-ToDo
-- move details to appendix? e.g. parallel running; typical features; screenshots
 
 <h3 id="e2e-testing">E2E Testing</h3>
 
@@ -100,18 +95,9 @@ Playwright offers several options to configure the tolerance for differences in 
 However, we set the threshold to 0, because we want to detect any visual change to prevent unintended visual regressions.
 
 *ToDo*</br>
-+add link to the document with flow</br>
 -experiment with the rest of browsers</br>
-+image mocks</br>
-+threshold</br>
 
 <h3 id="unit-testing">Unit Testing</h3>
-
-ToDo</br>
-+definition</br>
-+is it really easier to write them?</br>
-+functions in isolation on mocks</br>
-+example with screenshots</br>
 
 A unit test is an isolated test of individual functionality that checks edge cases without external dependencies such as e.g. CMS or databases, and uses mocks, not real data. It verifies logic that is too expensive for E2E but doesn't test full workflows or UI.
 
@@ -198,8 +184,7 @@ This is a static type of testing which allows to automatically check the contrac
 Response types are generated based on Swagger with the help of [*swagger-typescript-api* package](https://www.npmjs.com/package/swagger-typescript-api). We use these types in responses and if there is any change on backend, e.g. a field is added or deleted, we will see this immediately in the IDE or pipeline when the test fails. 
 This type of testing also ensures that we correctly map the data from backend to use it in UI components.
 
-ToDo
--  client experiment -> add note why we dont generate client
+We don't generate client because Swagger with Strapi generates wrong parameters for endpoints (needs checking).
 
 #### Why do we write these tests?
 Vanilla Javascript doesn't support types, whereas we use TypeScript to make our code stable and predictable. So we need a way to make sure we use the correct types.
@@ -227,9 +212,6 @@ API response - all the fields that are used in UI.
 
 #### What don't we test
 The fields that are not used in UI are as a rule omitted.
-
-ToDo:
-Example: we need to add a section to the page - what kind of tests do we need and in what amount? what is the scenario?
 
 
 <h3 id="monitoring-tests">Monitoring Tests</h3>
