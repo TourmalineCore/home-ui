@@ -1,3 +1,4 @@
+# THIS REPOSITORY IS DEPRECATED AND WILL NO LONGER BE UPDATED! THE NEW SOURCE CODE CAN BE FOUND [HERE](https://github.com/TourmalineCore/home/tree/master/ui)
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 
